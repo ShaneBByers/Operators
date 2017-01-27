@@ -17,7 +17,8 @@ struct PuzzleLabel {
         let _label : UILabel
         
         if isSolution {
-            _label = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 60))
+            let width = 30*text.characters.count + 5
+            _label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: 60))
         } else {
             _label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         }
@@ -345,7 +346,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             var rightPuzzleLabel : PuzzleLabel? = nil
             
             for (i,puzzleLabel) in puzzleLabels.enumerated() {
-                if leftPuzzleLabelIndex == nil && label.center.x < puzzleLabel.label.center.x {
+                if i > 0 && leftPuzzleLabelIndex == nil && label.center.x < puzzleLabel.label.center.x && puzzleLabel.isOperand {
                     leftPuzzleLabelIndex = i - 1
                 }
             }
@@ -354,7 +355,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 if index >= 0 {
                     leftPuzzleLabel = puzzleLabels[index]
                 }
-                if index + 1 < puzzleLabels.count {
+                if index + 3 < puzzleLabels.count {
                     rightPuzzleLabel = puzzleLabels[index+1]
                 }
             }
@@ -367,20 +368,28 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     if hasPlaceholder && placeholderIndex != leftPuzzleLabelIndex! + 1 {
                         
-                        removePlaceholder()
+                        if placeholderIndex! < leftPuzzleLabelIndex! {
                         
-                        insertPlaceholder(at: leftPuzzleLabelIndex! + 1)
+                            removePlaceholder()
+                        
+                            insertPlaceholder(at: leftPuzzleLabelIndex!)
+                            
+                        } else {
+                            
+                            removePlaceholder()
+                            
+                            insertPlaceholder(at: leftPuzzleLabelIndex! + 1)
+                            
+                        }
                         
                     } else if !hasPlaceholder {
                         
                         insertPlaceholder(at: leftPuzzleLabelIndex! + 1)
-                        
-                    } else {
-                        
+
                     }
                     
                     
-                } else if hasPlaceholder && leftPuzzleLabel.label != kPlaceholderLabel.label && rightPuzzleLabel.label != kPlaceholderLabel.label && rightPuzzleLabel.label.text! != Symbols.Equals {
+                } else if hasPlaceholder && leftPuzzleLabel.label != kPlaceholderLabel.label && rightPuzzleLabel.label != kPlaceholderLabel.label && rightPuzzleLabel.label.text! == Symbols.Equals {
                     
                     removePlaceholder()
                 }
@@ -737,9 +746,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func placePuzzle(isNewPuzzle: Bool) {
         
-        let totalWidth = self.view.frame.size.width - kLabelBuffer*2.0
+        let solutionWidth = puzzleLabels[puzzleLabels.count - 1].label.frame.size.width
         
-        let oneWidth = totalWidth/CGFloat(puzzleLabels.count)
+        let totalWidth = self.view.frame.size.width - kLabelBuffer*6.0 - solutionWidth - kPuzzleLabelSize.width
+        
+        let oneWidth = totalWidth/CGFloat(puzzleLabels.count - 2)
         
         let oneWidthCenter = oneWidth/2
         
@@ -747,7 +758,13 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             let xPositionCenter: CGFloat
             
-            xPositionCenter = oneWidth*CGFloat(i) + oneWidthCenter
+            if i == puzzleLabels.count - 1 {
+                xPositionCenter = self.view.frame.size.width - kLabelBuffer*2.0 - solutionWidth/2
+            } else if i == puzzleLabels.count - 2 {
+                xPositionCenter = self.view.frame.size.width - kLabelBuffer*4.0 - solutionWidth - puzzleLabel.label.frame.size.width/2
+            } else {
+                xPositionCenter = oneWidth*CGFloat(i) + oneWidthCenter
+            }
             
             if isNewPuzzle {
             
