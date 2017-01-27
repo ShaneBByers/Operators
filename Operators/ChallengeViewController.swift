@@ -65,18 +65,22 @@ class ChallengeViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let index = sender as! Int
+        
         
         switch segue.identifier! {
         case "challengePuzzleSelectedSegue":
+            let index = sender as! Int
             
             let equation = challengeModel.equationAtIndex(index: index)
             
             let destinationViewController = segue.destination as! PuzzleViewController
             
             destinationViewController.configureChallenge(withEquation: equation)
+        case "unwindToGameType": break
         default:
             assert(false, "Unhandled Segue")
         }
     }
+    
+    @IBAction func unwindToChallenge(segue: UIStoryboardSegue) {}
 }

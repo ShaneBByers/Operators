@@ -33,7 +33,10 @@ class TimedViewController: UIViewController {
             timedModel.initialize(withDifficulty: difficulty, withTime: time)
             
             destination.configureTimed(withDifficulty: difficulty, withTime: timedModel.totalTime!)
+        case "unwindToGameType": break
         default: assert(false, "Unhandled Segue")
         }
     }
+    
+    @IBAction func unwindToTimed(segue: UIStoryboardSegue) {}
 }

@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="ZFB-rX-r4v">
             <objects>
-                <navigationController id="Yo1-TJ-XGC" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Um2-tp-vzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="Yo1-TJ-XGC" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N6h-tF-bYC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="q1Q-lU-RUy">
+                        <rect key="frame" x="0.0" y="370" width="736" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="fc4-5o-GWx" kind="relationship" relationship="rootViewController" id="Opc-U1-fZW"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Um2-tp-vzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2988" y="38"/>
         </scene>
         <!--Game Mode-->
         <scene sceneID="Tpp-JN-YIJ">
             <objects>
-                <viewController id="fc4-5o-GWx" sceneMemberID="viewController">
+                <viewController id="fc4-5o-GWx" customClass="GameModeViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iAd-CM-Iry"/>
                         <viewControllerLayoutGuide type="bottom" id="dr9-EI-4Nk"/>
@@ -86,10 +91,32 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41k-Je-KOT">
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="﹤Back">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KdE-9f-6Tj"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="41k-Je-KOT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jBw-FK-0Yn"/>
+                            <constraint firstItem="41k-Je-KOT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qjQ-Fb-XiH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToChallenge" unwindAction="unwindToChallengeWithSegue:" id="MSA-DZ-sct"/>
+                        <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToOriginal" unwindAction="unwindToOriginalWithSegue:" id="1fR-Hi-guw"/>
+                        <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToTimed" unwindAction="unwindToTimedWithSegue:" id="9eH-4a-hjI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="P6i-I5-cgB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="38"/>
         </scene>
@@ -151,6 +178,16 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="timedOptionsSelectedSegue" id="jbn-RP-Rxt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM4-hK-S3z">
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="﹤Back">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="eGQ-wI-KgP" kind="unwind" identifier="unwindToGameType" unwindAction="unwindToGameTypeWithSegue:" id="p5B-Yd-AVS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -158,12 +195,14 @@
                             <constraint firstItem="T8y-jJ-oAW" firstAttribute="top" secondItem="Tev-FE-Xci" secondAttribute="bottom" constant="8" id="F4P-fD-bvL"/>
                             <constraint firstItem="FMU-xz-QXa" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="Grh-zx-oVU"/>
                             <constraint firstItem="iaO-Yl-Mt9" firstAttribute="top" secondItem="PZc-yM-byL" secondAttribute="bottom" constant="20" id="IIq-uf-Iby"/>
+                            <constraint firstItem="FM4-hK-S3z" firstAttribute="top" secondItem="aTF-uB-mmL" secondAttribute="bottom" id="Ux1-q9-Tmd"/>
                             <constraint firstItem="T8y-jJ-oAW" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="kOu-Eq-9g2"/>
                             <constraint firstItem="Tev-FE-Xci" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="laa-Sp-RAP"/>
                             <constraint firstItem="wNV-ee-zGP" firstAttribute="top" secondItem="T8y-jJ-oAW" secondAttribute="bottom" constant="34" id="sE7-aA-wly"/>
                             <constraint firstItem="PZc-yM-byL" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="tUR-fc-tqP"/>
                             <constraint firstItem="T8y-jJ-oAW" firstAttribute="centerY" secondItem="lHh-T9-p6g" secondAttribute="centerY" id="wWm-PQ-DZ4"/>
                             <constraint firstItem="FMU-xz-QXa" firstAttribute="top" secondItem="wNV-ee-zGP" secondAttribute="bottom" constant="8" id="wvi-uI-Tak"/>
+                            <constraint firstItem="FM4-hK-S3z" firstAttribute="leading" secondItem="lHh-T9-p6g" secondAttribute="leadingMargin" id="zrU-rp-03P"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Timed Options" id="NPg-gF-tLs"/>
@@ -173,13 +212,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nH-4i-xJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eGQ-wI-KgP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-771.01449275362324" y="-656.25"/>
         </scene>
         <!--Game Type-->
         <scene sceneID="UkE-Ra-rkR">
             <objects>
-                <viewController id="biE-Q0-UEI" sceneMemberID="viewController">
+                <viewController id="biE-Q0-UEI" customClass="GameTypeViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xr9-ZP-Vmv"/>
                         <viewControllerLayoutGuide type="bottom" id="ghy-QE-jdN"/>
@@ -224,22 +264,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xah-XT-ZAG">
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="﹤Back">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Qd6-Zk-KXE" kind="unwind" unwindAction="unwindToGameModeWithSegue:" id="5Gr-qr-ZvM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oMp-Kh-EUf" firstAttribute="top" secondItem="OGk-9g-XGa" secondAttribute="bottom" constant="8" id="3CH-Fg-pBs"/>
+                            <constraint firstItem="Xah-XT-ZAG" firstAttribute="leading" secondItem="eCv-3T-aKh" secondAttribute="leadingMargin" id="91j-Nn-pmf"/>
                             <constraint firstItem="OGk-9g-XGa" firstAttribute="centerX" secondItem="eCv-3T-aKh" secondAttribute="centerX" id="NVo-eO-cPf"/>
                             <constraint firstItem="vpS-tj-uK9" firstAttribute="centerX" secondItem="eCv-3T-aKh" secondAttribute="centerX" id="Vv8-Id-ime"/>
                             <constraint firstItem="Aca-nA-bbm" firstAttribute="centerY" secondItem="eCv-3T-aKh" secondAttribute="centerY" id="W6w-pX-73f"/>
                             <constraint firstItem="Aca-nA-bbm" firstAttribute="top" secondItem="oMp-Kh-EUf" secondAttribute="bottom" constant="8" id="YhM-4J-dvg"/>
+                            <constraint firstItem="Xah-XT-ZAG" firstAttribute="top" secondItem="Xr9-ZP-Vmv" secondAttribute="bottom" id="aXh-Di-hnw"/>
                             <constraint firstItem="vpS-tj-uK9" firstAttribute="top" secondItem="Aca-nA-bbm" secondAttribute="bottom" constant="8" id="ebl-uE-0qg"/>
                             <constraint firstItem="oMp-Kh-EUf" firstAttribute="centerX" secondItem="eCv-3T-aKh" secondAttribute="centerX" id="f7d-gL-2gr"/>
                             <constraint firstItem="Aca-nA-bbm" firstAttribute="centerX" secondItem="eCv-3T-aKh" secondAttribute="centerX" id="p5L-TX-W1s"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Type" id="C8B-Pl-t7S"/>
+                    <connections>
+                        <segue destination="Qd6-Zk-KXE" kind="unwind" identifier="unwindToGameMode" unwindAction="unwindToGameModeWithSegue:" id="ofe-ML-h3B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecX-iR-Hdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Qd6-Zk-KXE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1520" y="38"/>
         </scene>
@@ -288,13 +344,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rkx-eF-iN4">
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="﹤Back">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="VnX-1d-VQm" kind="unwind" identifier="unwindToGameType" unwindAction="unwindToGameTypeWithSegue:" id="RJh-mf-anU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Iy2-PR-LkS" firstAttribute="top" secondItem="j3Q-5n-bRl" secondAttribute="bottom" constant="8" id="1ml-ZJ-Zxl"/>
+                            <constraint firstItem="Rkx-eF-iN4" firstAttribute="top" secondItem="9ce-ku-yr2" secondAttribute="bottom" id="EPO-rJ-fND"/>
                             <constraint firstItem="Iy2-PR-LkS" firstAttribute="centerX" secondItem="FCM-7t-SQc" secondAttribute="centerX" id="GVZ-ZR-JYL"/>
                             <constraint firstItem="tyO-Xj-csb" firstAttribute="centerX" secondItem="FCM-7t-SQc" secondAttribute="centerX" id="Mex-wV-AaM"/>
                             <constraint firstItem="j3Q-5n-bRl" firstAttribute="centerX" secondItem="FCM-7t-SQc" secondAttribute="centerX" id="VmH-X4-JuR"/>
+                            <constraint firstItem="Rkx-eF-iN4" firstAttribute="leading" secondItem="FCM-7t-SQc" secondAttribute="leadingMargin" id="hCk-QY-T0H"/>
                             <constraint firstItem="tyO-Xj-csb" firstAttribute="top" secondItem="Iy2-PR-LkS" secondAttribute="bottom" constant="8" id="lO0-7U-SMW"/>
                             <constraint firstItem="j3Q-5n-bRl" firstAttribute="top" secondItem="14y-1C-dWV" secondAttribute="bottom" constant="8" id="p8i-B7-Y9W"/>
                             <constraint firstItem="Iy2-PR-LkS" firstAttribute="centerY" secondItem="FCM-7t-SQc" secondAttribute="centerY" id="qfn-cs-v9f"/>
@@ -304,6 +372,7 @@
                     <navigationItem key="navigationItem" title="Difficulty" id="q74-hA-qla"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFk-1G-08p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VnX-1d-VQm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-771" y="38"/>
         </scene>
@@ -696,6 +765,16 @@
                                     <action selector="difficultyButtonPressed:" destination="qJu-EG-PHW" eventType="touchUpInside" id="DK0-hW-C3i"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXj-Ys-YQY">
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="﹤Back">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Vvb-Z5-x3J" kind="unwind" identifier="unwindToGameType" unwindAction="unwindToGameTypeWithSegue:" id="t22-GA-kF3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -705,6 +784,7 @@
                             <constraint firstItem="BzB-Ol-eNQ" firstAttribute="centerY" secondItem="NbZ-ku-jgm" secondAttribute="centerY" id="3FH-rG-1nL"/>
                             <constraint firstItem="5NR-JU-Ta7" firstAttribute="leading" secondItem="x88-UJ-jRo" secondAttribute="trailing" constant="8" id="3jW-qW-u4A"/>
                             <constraint firstItem="OuY-ZH-iHU" firstAttribute="centerY" secondItem="NbZ-ku-jgm" secondAttribute="centerY" id="4WN-GB-Ojq"/>
+                            <constraint firstItem="fXj-Ys-YQY" firstAttribute="leading" secondItem="NbZ-ku-jgm" secondAttribute="leadingMargin" id="7a8-oS-CqZ"/>
                             <constraint firstItem="BzB-Ol-eNQ" firstAttribute="leading" secondItem="i9L-xJ-hLa" secondAttribute="trailing" constant="8" id="7kI-Fl-0f0"/>
                             <constraint firstItem="5NR-JU-Ta7" firstAttribute="centerX" secondItem="NbZ-ku-jgm" secondAttribute="centerX" id="8bZ-Fo-438"/>
                             <constraint firstItem="2zt-Sm-2oF" firstAttribute="top" secondItem="yMg-cG-pcN" secondAttribute="bottom" constant="8" id="9Vd-xP-DmM"/>
@@ -715,6 +795,7 @@
                             <constraint firstItem="OuY-ZH-iHU" firstAttribute="top" secondItem="ly9-Jh-Sbh" secondAttribute="bottom" constant="8" id="Hvv-Ix-QVP"/>
                             <constraint firstItem="Rqb-EL-a4i" firstAttribute="leading" secondItem="lIf-0V-mdc" secondAttribute="trailing" constant="8" id="IEU-NV-QJ7"/>
                             <constraint firstItem="lIf-0V-mdc" firstAttribute="top" secondItem="5NR-JU-Ta7" secondAttribute="bottom" constant="8" id="IKx-pK-8LE"/>
+                            <constraint firstItem="fXj-Ys-YQY" firstAttribute="top" secondItem="OAq-cp-iD1" secondAttribute="bottom" id="JmH-WB-FO9"/>
                             <constraint firstItem="dXY-k7-b25" firstAttribute="centerX" secondItem="NbZ-ku-jgm" secondAttribute="centerX" id="LdG-vw-95H"/>
                             <constraint firstItem="lIf-0V-mdc" firstAttribute="centerX" secondItem="NbZ-ku-jgm" secondAttribute="centerX" id="LjY-0a-d0u"/>
                             <constraint firstItem="i9L-xJ-hLa" firstAttribute="top" secondItem="ipu-Jj-rpj" secondAttribute="bottom" constant="8" id="MIG-fz-n9L"/>
@@ -791,11 +872,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZI7-dR-bXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Vvb-Z5-x3J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-771" y="778"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7Xf-0H-0gA"/>
+        <segue reference="Xtm-sH-4WU"/>
     </inferredMetricsTieBreakers>
 </document>

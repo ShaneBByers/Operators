@@ -107,6 +107,20 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         gameType = GameType.timed
     }
     
+    // MARK: - Segues
+    //
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        switch gameType! {
+        case .challenge:
+            performSegue(withIdentifier: "unwindToChallenge", sender: self)
+        case .original:
+            performSegue(withIdentifier: "unwindToOriginal", sender: self)
+        case .timed:
+            performSegue(withIdentifier: "unwindToTimed", sender: self)
+        }
+    }
+    
+    
     // MARK: - Init/Load
     //
     required init?(coder aDecoder: NSCoder) {
