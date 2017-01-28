@@ -126,12 +126,94 @@
                         <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToChallenge" unwindAction="unwindToChallengeWithSegue:" id="MSA-DZ-sct"/>
                         <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToOriginal" unwindAction="unwindToOriginalWithSegue:" id="1fR-Hi-guw"/>
                         <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToTimed" unwindAction="unwindToTimedWithSegue:" id="9eH-4a-hjI"/>
+                        <segue destination="9dV-rM-8gZ" kind="presentation" identifier="challengePuzzleCompletedSegue" id="fxC-z7-tW4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="P6i-I5-cgB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="38"/>
+        </scene>
+        <!--Challenge Puzzle Completed View Controller-->
+        <scene sceneID="fSf-W3-jfN">
+            <objects>
+                <viewController id="9dV-rM-8gZ" customClass="ChallengePuzzleCompletedViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rHF-7S-oBQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="v35-OI-U4s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="akj-Fk-xFf">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlW-qo-Kcf">
+                                <rect key="frame" x="200" y="130" width="337" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy Challenge Puzzle #1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03Y-ff-kAz">
+                                <rect key="frame" x="20" y="184" width="696" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKO-su-Gm3">
+                                <rect key="frame" x="20" y="294" width="696" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="Easy Challenge Puzzle #1">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextPuzzleButtonPressed:" destination="9dV-rM-8gZ" eventType="touchUpInside" id="1bU-Jv-IRh"/>
+                                    <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CiK-Ju-UPj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KI-fm-BeL">
+                                <rect key="frame" x="20" y="348" width="696" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="Challenge Puzzle Menu">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuButtonPressed:" destination="9dV-rM-8gZ" eventType="touchUpInside" id="bOG-72-T4y"/>
+                                    <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CoF-Sb-k6b"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congrats!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbc-Lx-PaJ">
+                                <rect key="frame" x="260" y="76" width="217" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eKO-su-Gm3" firstAttribute="leading" secondItem="akj-Fk-xFf" secondAttribute="leadingMargin" id="8Pj-mA-tSZ"/>
+                            <constraint firstItem="SlW-qo-Kcf" firstAttribute="centerX" secondItem="akj-Fk-xFf" secondAttribute="centerX" id="9JR-1h-YmK"/>
+                            <constraint firstItem="9KI-fm-BeL" firstAttribute="trailing" secondItem="akj-Fk-xFf" secondAttribute="trailingMargin" id="Bsq-ah-zcg"/>
+                            <constraint firstItem="03Y-ff-kAz" firstAttribute="leading" secondItem="akj-Fk-xFf" secondAttribute="leadingMargin" id="FgG-iq-nRL"/>
+                            <constraint firstItem="SlW-qo-Kcf" firstAttribute="top" secondItem="vbc-Lx-PaJ" secondAttribute="bottom" constant="8" id="Kem-7a-Ntv"/>
+                            <constraint firstItem="9KI-fm-BeL" firstAttribute="leading" secondItem="akj-Fk-xFf" secondAttribute="leadingMargin" id="Kzr-4k-wr1"/>
+                            <constraint firstItem="v35-OI-U4s" firstAttribute="top" secondItem="9KI-fm-BeL" secondAttribute="bottom" constant="20" id="OUp-ns-5i5"/>
+                            <constraint firstItem="9KI-fm-BeL" firstAttribute="centerX" secondItem="akj-Fk-xFf" secondAttribute="centerX" id="Pa3-S5-hkg"/>
+                            <constraint firstItem="eKO-su-Gm3" firstAttribute="trailing" secondItem="akj-Fk-xFf" secondAttribute="trailingMargin" id="TVg-hr-hbk"/>
+                            <constraint firstItem="9KI-fm-BeL" firstAttribute="top" secondItem="eKO-su-Gm3" secondAttribute="bottom" constant="8" id="UKc-TJ-v1M"/>
+                            <constraint firstItem="03Y-ff-kAz" firstAttribute="trailing" secondItem="akj-Fk-xFf" secondAttribute="trailingMargin" id="ZmT-I8-XWK"/>
+                            <constraint firstItem="03Y-ff-kAz" firstAttribute="centerX" secondItem="akj-Fk-xFf" secondAttribute="centerX" id="ajn-RS-9TO"/>
+                            <constraint firstItem="03Y-ff-kAz" firstAttribute="top" secondItem="SlW-qo-Kcf" secondAttribute="bottom" constant="8" id="fDJ-NL-fW2"/>
+                            <constraint firstItem="03Y-ff-kAz" firstAttribute="centerY" secondItem="akj-Fk-xFf" secondAttribute="centerY" id="mbT-hm-CyO"/>
+                            <constraint firstItem="vbc-Lx-PaJ" firstAttribute="centerX" secondItem="akj-Fk-xFf" secondAttribute="centerX" id="nLw-Ob-e3g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="completedPuzzleLabel" destination="03Y-ff-kAz" id="sgW-Bz-SOD"/>
+                        <outlet property="nextPuzzleButton" destination="eKO-su-Gm3" id="T7n-eb-MW4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5iD-uf-lZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="776.81159420289862"/>
         </scene>
         <!--Timed Options-->
         <scene sceneID="xhK-jK-VJT">
@@ -955,6 +1037,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jbn-RP-Rxt"/>
+        <segue reference="Z7g-Ii-fTi"/>
     </inferredMetricsTieBreakers>
 </document>

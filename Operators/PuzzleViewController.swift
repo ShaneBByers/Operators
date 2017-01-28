@@ -125,6 +125,30 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "challengePuzzleCompletedSegue":
+            let destination = segue.destination as! ChallengePuzzleCompletedViewController
+            
+            if challengeModel.hasNextPuzzle() {
+                destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: challengeModel.difficulty, nextPuzzleNumber: challengeModel.currentIndex! + 1)
+            } else {
+                switch challengeModel.difficulty {
+                case .easy:
+                    destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: .medium, nextPuzzleNumber: nil)
+                case .medium:
+                    destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: .hard, nextPuzzleNumber: nil)
+                case .hard:
+                    destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: nil, nextPuzzleNumber: nil)
+                }
+            }
+        case "unwindToOriginal": break
+        case "unwindToChallenge": break
+        case "unwindToTimed": break
+        default: assert(false, "Unhandled Segue")
+        }
+    }
+    
     
     // MARK: - Init/Load
     //
@@ -235,6 +259,17 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         newPuzzleButton.addTarget(self, action: #selector(newPuzzleButtonPressed(_:)), for: .touchUpInside)
         newPuzzleButton.tag = 1
         self.view.addSubview(newPuzzleButton)
+        
+        let solveButton: UIButton = UIButton()
+        solveButton.frame.size = CGSize(width: 100, height: kPuzzleLabelSize.height)
+        solveButton.frame.origin.x = self.view.frame.size.width - 2.0*kLabelBuffer - solveButton.frame.size.width
+        solveButton.center.y = self.view.frame.size.height - 2.0*kLabelBuffer
+        solveButton.setTitleColor(.green, for: .normal)
+        solveButton.setTitle("Solve", for: .normal)
+        solveButton.titleLabel!.font = Fonts.smallBold
+        solveButton.addTarget(self, action: #selector(solveButtonPressed(_:)), for: .touchUpInside)
+        solveButton.tag = 2
+        self.view.addSubview(solveButton)
     }
     
     func initializeExpressionLabel() {
@@ -612,7 +647,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func challengePuzzleActionSheet() {
         
-        let alertController : UIAlertController
+        /*let alertController : UIAlertController
         
         if challengeModel.hasNextPuzzle() {
             
@@ -660,7 +695,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         alertController.addAction(returnToMenuAction)
         
-        self.present(alertController, animated: true)
+        self.present(alertController, animated: true)*/
+        
+        performSegue(withIdentifier: "challengePuzzleCompletedSegue", sender: self)
     }
     
     func timerFired(timer : Timer) {
@@ -670,7 +707,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         } else {
             timer.invalidate()
             
-            let alertController = UIAlertController(title: "Congrats!", message: "You have completed \(timedModel.completedPuzzles()) puzzles!", preferredStyle: .actionSheet)
+            let alertController = UIAlertController(title: "You completed \(timedModel.completedPuzzles()) puzzles!", message: "Correct Solution: \(puzzleModel.equation!.toString())", preferredStyle: .actionSheet)
             
             let restartAction = UIAlertAction(title: "Restart", style: .default)
             { (action) in
@@ -789,6 +826,63 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             bestScoreModel.resetBestSolution()
             bestScoreLabel!.text = "Best: N/A"
         }
+        
+        resetButtonAction(enable: false)
+    }
+    
+    func solveButtonPressed(_ : UIButton) {
+        let equation = puzzleModel.equation!
+        
+        var count = 0
+        
+        let max = puzzleLabels.count
+        
+        var operators : [Int] = []
+        
+        var insertOperators : [PuzzleLabel] = []
+        
+        for element in equation.elements {
+            if Int(element.string) == nil {
+                let operatorPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
+                
+                let newLabel = PuzzleLabel(text: element.string, isOperand: false, isOperator: true, isSolution: false)
+                
+                newLabel.label.addGestureRecognizer(operatorPanGestureRecognizer)
+                
+                insertOperators.append(newLabel)
+            }
+        }
+        
+        for (i,puzzleLabel) in puzzleLabels.enumerated() {
+            UIView.animate(withDuration: 0.2, animations: {
+                if puzzleLabel.isOperator {
+                    puzzleLabel.label.alpha = 0.0
+                }
+            }, completion: { (value) in
+                if puzzleLabel.isOperator {
+                    operators.append(i)
+                }
+                count += 1
+                if count == max {
+                    operators.sort(by: >)
+                    for index in operators {
+                        self.puzzleLabels.remove(at: index)
+                    }
+                    for i in self.puzzleLabels.indices {
+                        if self.puzzleLabels[i].isOperand && self.puzzleLabels[i+1].isOperand {
+                            self.puzzleLabels.insert(insertOperators.removeFirst(), at: i+1)
+                        }
+                    }
+
+                    self.placePuzzle(isNewPuzzle: false)
+                    
+                    self.displayExpression()
+                    
+                    self.resetButtonAction(enable: true)
+                }
+            })
+        }
+        
     }
     
     func setupPuzzle(withEquation eq: Equation) {

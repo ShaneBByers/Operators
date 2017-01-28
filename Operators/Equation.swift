@@ -12,6 +12,16 @@ struct Equation {
     var elements : [Element]
     
     var solution : Element
+    
+    func toString() -> String {
+        var returnString : String = ""
+        for element in elements {
+            returnString.append(element.string)
+        }
+        returnString.append(solution.string)
+        
+        return returnString
+    }
 }
 
 struct Element {
