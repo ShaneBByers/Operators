@@ -80,6 +80,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var defaultOperatorLabels : [UILabel]
     var puzzleLabels : [PuzzleLabel] = []
     
+    // MARK: - Buttons
+    //
+    @IBOutlet weak var resetButton: UIButton!
+    
+    
     // MARK: - Custom Variables
     //
     var gameType : GameType?
@@ -161,6 +166,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             self.initializeTimer()
             self.newPuzzleButtonPressed(UIButton())
         }
+        
+        resetButton.alpha = 0.0
+        resetButton.isEnabled = false
         
     }
     
@@ -509,6 +517,16 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 })
             }
         }
+        
+        var resetEnabled = false
+        
+        for puzzleLabel in puzzleLabels {
+            if puzzleLabel.isOperator {
+                resetEnabled = true
+            }
+        }
+        
+        resetButtonAction(enable: resetEnabled)
     }
     
     // MARK: - Placeholder Manipulation
@@ -612,19 +630,19 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             switch challengeModel.difficulty {
             case .easy:
+                self.challengeModel.changeDifficulty(toDifficulty: .medium)
                 alertController = UIAlertController(title: "Congrats!", message: "You have completed all of the Easy Puzzles!", preferredStyle: .actionSheet)
                 let nextDifficultyAction = UIAlertAction(title: "Continue to Medium Puzzles", style: .default)
                 { (action) in
-                    self.challengeModel.changeDifficulty(toDifficulty: .medium)
                     self.challengeEquation = self.challengeModel.nextEquation()
                     self.setupPuzzle(withEquation: self.challengeEquation!)
                 }
                 alertController.addAction(nextDifficultyAction)
             case .medium:
+                self.challengeModel.changeDifficulty(toDifficulty: .hard)
                 alertController = UIAlertController(title: "Congrats!", message: "You have completed all of the Medium Puzzles!", preferredStyle: .actionSheet)
                 let nextDifficultyAction = UIAlertAction(title: "Continue to Hard Puzzles", style: .default)
                 { (action) in
-                    self.challengeModel.changeDifficulty(toDifficulty: .hard)
                     self.challengeEquation = self.challengeModel.nextEquation()
                     self.setupPuzzle(withEquation: self.challengeEquation!)
                 }
@@ -699,8 +717,57 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    func resetButtonAction(enable: Bool) {
+        if enable {
+            resetButton.isEnabled = true
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.resetButton.alpha = 1.0
+            })
+        } else {
+            resetButton.isEnabled = false
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.resetButton.alpha = 0.0
+            })
+        }
+    }
+    
     // MARK: - Puzzle Updates
     //
+    @IBAction func resetButtonPressed(_ sender: UIButton) {
+        var count = 0
+        
+        let max = puzzleLabels.count
+        
+        var operators : [Int] = []
+        
+        expressionLabel!.text = ""
+        
+        resetButton.alpha = 0.0
+        
+        resetButton.isEnabled = false
+        
+        for (i,puzzleLabel) in puzzleLabels.enumerated() {
+            UIView.animate(withDuration: 0.2, animations: {
+                if puzzleLabel.isOperator {
+                    puzzleLabel.label.alpha = 0.0
+                }
+            }, completion: { (value) in
+                if puzzleLabel.isOperator {
+                    operators.append(i)
+                }
+                count += 1
+                if count == max {
+                    operators.sort(by: >)
+                    for index in operators {
+                        self.puzzleLabels.remove(at: index)
+                    }
+                    self.placePuzzle(isNewPuzzle: false)
+                }
+            })
+        }
+    }
+    
+    
     func newPuzzleButtonPressed(_ : UIButton) {
         
         let equation : Equation

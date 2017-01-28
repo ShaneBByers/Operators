@@ -24,7 +24,7 @@ class TimedModel {
     var solution : Int?
     
     init() {
-        timeOptions = [30, 60, 120, 300]
+        timeOptions = [30, 61, 121, 301]
         completed = 0
     }
     

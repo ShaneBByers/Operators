@@ -12,13 +12,40 @@ class TimedViewController: UIViewController {
     
     let timedModel = TimedModel.sharedInstance
 
-    @IBOutlet weak var difficultySegmentedControl: UISegmentedControl!
+    var currentDifficulty : Difficulty = .easy
     
-    @IBOutlet weak var timeSegmentedControl: UISegmentedControl!
+    var currentTime : String = "30 sec"
+    
+    
+    @IBOutlet var difficultyButtons: [UIButton]!
+    
+    @IBOutlet var timeButtons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+    }
+    
+    @IBAction func difficultyButtonPressed(_ sender: UIButton) {
+        for button in difficultyButtons {
+            button.titleLabel!.font = Fonts.smallRegular
+        }
+        
+        sender.titleLabel!.font = Fonts.smallBold
+        
+        currentDifficulty = Difficulty(rawValue: sender.titleLabel!.text!)!
+        
+    }
+    
+    @IBAction func timeButtonPressed(_ sender: UIButton) {
+        for button in timeButtons {
+            button.titleLabel!.font = Fonts.smallRegular
+        }
+        
+        sender.titleLabel!.font = Fonts.smallBold
+        
+        currentTime = sender.titleLabel!.text!
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -26,9 +53,9 @@ class TimedViewController: UIViewController {
         case "timedOptionsSelectedSegue":
             let destination = segue.destination as! PuzzleViewController
             
-            let difficulty = difficultySegmentedControl.titleForSegment(at: difficultySegmentedControl.selectedSegmentIndex)!
+            let difficulty = currentDifficulty.rawValue
             
-            let time = timeSegmentedControl.titleForSegment(at: timeSegmentedControl.selectedSegmentIndex)!
+            let time = currentTime
             
             timedModel.initialize(withDifficulty: difficulty, withTime: time)
             

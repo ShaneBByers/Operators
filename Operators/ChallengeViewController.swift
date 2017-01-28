@@ -24,6 +24,16 @@ class ChallengeViewController: UIViewController {
         for (i,button) in puzzleButtons.enumerated() {
             button.isEnabled = challengeModel.puzzleAvailableAt(index: i)
         }
+        
+        for button in difficultyButtons {
+            button.titleLabel!.font = Fonts.smallRegular
+        }
+        
+        switch challengeModel.difficulty {
+        case .easy: difficultyButtons[0].titleLabel!.font = Fonts.smallBold
+        case .medium: difficultyButtons[1].titleLabel!.font = Fonts.smallBold
+        case .hard: difficultyButtons[2].titleLabel!.font = Fonts.smallBold
+        }
     }
     
     
