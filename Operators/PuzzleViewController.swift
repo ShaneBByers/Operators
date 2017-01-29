@@ -135,13 +135,17 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             } else {
                 switch challengeModel.difficulty {
                 case .easy:
+                    challengeModel.changeDifficulty(toDifficulty: .medium)
                     destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: .medium, nextPuzzleNumber: nil)
                 case .medium:
+                    challengeModel.changeDifficulty(toDifficulty: .hard)
                     destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: .hard, nextPuzzleNumber: nil)
                 case .hard:
                     destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: nil, nextPuzzleNumber: nil)
                 }
             }
+            
+            destination.configurePuzzleViewController(viewController : self)
         case "unwindToOriginal": break
         case "unwindToChallenge": break
         case "unwindToTimed": break
@@ -485,7 +489,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     updateBestScore()
                 case .challenge:
                     if correctChallengeSolution() {
-                        challengePuzzleActionSheet()
+                        performSegue(withIdentifier: "challengePuzzleCompletedSegue", sender: self)
                         challengeModel.completeCurrentPuzzle()
                     }
                 case .timed:
@@ -645,59 +649,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func challengePuzzleActionSheet() {
-        
-        /*let alertController : UIAlertController
-        
-        if challengeModel.hasNextPuzzle() {
-            
-            alertController = UIAlertController(title: "Congrats!", message: "You have completed Puzzle #\(challengeModel.currentPuzzleNumber())", preferredStyle: .actionSheet)
-            
-            let nextPuzzleAction = UIAlertAction(title: "Next Puzzle", style: .default)
-            { (action) in
-                self.challengeEquation = self.challengeModel.nextEquation()
-                self.setupPuzzle(withEquation: self.challengeEquation!)
-            }
-            alertController.addAction(nextPuzzleAction)
-            
-            
-        } else {
-            
-            switch challengeModel.difficulty {
-            case .easy:
-                self.challengeModel.changeDifficulty(toDifficulty: .medium)
-                alertController = UIAlertController(title: "Congrats!", message: "You have completed all of the Easy Puzzles!", preferredStyle: .actionSheet)
-                let nextDifficultyAction = UIAlertAction(title: "Continue to Medium Puzzles", style: .default)
-                { (action) in
-                    self.challengeEquation = self.challengeModel.nextEquation()
-                    self.setupPuzzle(withEquation: self.challengeEquation!)
-                }
-                alertController.addAction(nextDifficultyAction)
-            case .medium:
-                self.challengeModel.changeDifficulty(toDifficulty: .hard)
-                alertController = UIAlertController(title: "Congrats!", message: "You have completed all of the Medium Puzzles!", preferredStyle: .actionSheet)
-                let nextDifficultyAction = UIAlertAction(title: "Continue to Hard Puzzles", style: .default)
-                { (action) in
-                    self.challengeEquation = self.challengeModel.nextEquation()
-                    self.setupPuzzle(withEquation: self.challengeEquation!)
-                }
-                alertController.addAction(nextDifficultyAction)
-            case .hard:
-                alertController = UIAlertController(title: "Congrats!", message: "You have completed ALL of the puzzles!", preferredStyle: .actionSheet)
-            }
-            
-            
-        }
-        
-        let returnToMenuAction = UIAlertAction(title: "Return to Challenge Menu", style: .destructive)
-        { (action) in
-            self.navigationController!.popViewController(animated: true)
-        }
-        alertController.addAction(returnToMenuAction)
-        
-        self.present(alertController, animated: true)*/
-        
-        performSegue(withIdentifier: "challengePuzzleCompletedSegue", sender: self)
+    func nextChallengePuzzle() {
+        self.challengeEquation = self.challengeModel.nextEquation()
+        self.setupPuzzle(withEquation: self.challengeEquation!)
+        resetButtonAction(enable: false)
     }
     
     func timerFired(timer : Timer) {

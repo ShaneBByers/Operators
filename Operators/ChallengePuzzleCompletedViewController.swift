@@ -18,6 +18,8 @@ class ChallengePuzzleCompletedViewController: UIViewController {
     
     var nextPuzzleText : String?
     
+    var puzzleViewController : PuzzleViewController?
+    
     
     func configureText(completedPuzzleDifficulty : Difficulty, completedPuzzleNumber : Int, nextPuzzleDifficulty : Difficulty?, nextPuzzleNumber : Int?) {
         completedPuzzleText = "\(completedPuzzleDifficulty.rawValue) Challenge Puzzle #\(completedPuzzleNumber + 1)"
@@ -28,6 +30,10 @@ class ChallengePuzzleCompletedViewController: UIViewController {
         } else if let nextPuzzleDifficulty = nextPuzzleDifficulty {
             nextPuzzleText = "Continue to \(nextPuzzleDifficulty.rawValue) Puzzles"
         }
+    }
+    
+    func configurePuzzleViewController(viewController : PuzzleViewController) {
+        puzzleViewController = viewController
     }
 
     override func viewDidLoad() {
@@ -44,10 +50,13 @@ class ChallengePuzzleCompletedViewController: UIViewController {
     }
     
     @IBAction func nextPuzzleButtonPressed(_ sender: UIButton) {
-        
+        puzzleViewController!.nextChallengePuzzle()
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func menuButtonPressed(_ sender: UIButton) {
-        
+        dismiss(animated: true) { 
+            self.puzzleViewController!.backButtonPressed(UIButton())
+        }
     }
 }
