@@ -126,6 +126,7 @@ class ChallengeModel {
             case .easy: archive.easyPuzzlesAvailable[currentIndex! + 1] = true
             case .medium: archive.mediumPuzzlesAvailable[currentIndex! + 1] = true
             case .hard: archive.hardPuzzlesAvailable[currentIndex! + 1] = true
+            case .random: break
             }
         } else {
             switch difficulty {
@@ -134,12 +135,14 @@ class ChallengeModel {
             case .medium:
                 changeDifficulty(toDifficulty: .hard)
             case .hard: break
+            case .random: break
             }
             availablePuzzles[difficulty]![0] = true
             switch difficulty {
             case .easy: archive.easyPuzzlesAvailable[0] = true
             case .medium: archive.mediumPuzzlesAvailable[0] = true
             case .hard: archive.hardPuzzlesAvailable[0] = true
+            case .random: break
             }
         }
         

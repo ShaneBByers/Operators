@@ -142,6 +142,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: .hard, nextPuzzleNumber: nil)
                 case .hard:
                     destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: nil, nextPuzzleNumber: nil)
+                case .random: break
                 }
             }
             
@@ -768,6 +769,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         case .easy: equation = puzzleModel.newEquation(operands: 3)
         case .medium: equation = puzzleModel.newEquation(operands: 4)
         case .hard: equation = puzzleModel.newEquation(operands: 5)
+        case .random:
+            let operands = Int(arc4random_uniform(3) + 3)
+            equation = puzzleModel.newEquation(operands: operands)
         }
         
         switch gameType! {

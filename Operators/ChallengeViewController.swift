@@ -33,6 +33,7 @@ class ChallengeViewController: UIViewController {
         case .easy: difficultyButtons[0].titleLabel!.font = Fonts.smallBold
         case .medium: difficultyButtons[1].titleLabel!.font = Fonts.smallBold
         case .hard: difficultyButtons[2].titleLabel!.font = Fonts.smallBold
+        case .random: break
         }
     }
     

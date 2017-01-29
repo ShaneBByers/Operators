@@ -258,17 +258,8 @@
                                     <segue destination="eGQ-wI-KgP" kind="unwind" identifier="unwindToGameType" unwindAction="unwindToGameTypeWithSegue:" id="p5B-Yd-AVS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-cN-6OD">
-                                <rect key="frame" x="314" y="184" width="109" height="46"/>
-                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Medium"/>
-                                <connections>
-                                    <action selector="difficultyButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="DyR-u9-4pT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlv-5O-ltY">
-                                <rect key="frame" x="211" y="184" width="73" height="46"/>
+                                <rect key="frame" x="141.66666666666666" y="184" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Easy"/>
@@ -303,6 +294,24 @@
                                     <action selector="timeButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="Gtj-n5-85O"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqt-PS-v9W">
+                                <rect key="frame" x="383.66666666666669" y="184" width="73" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Hard"/>
+                                <connections>
+                                    <action selector="difficultyButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="E89-PN-Dpj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfp-62-Ga1">
+                                <rect key="frame" x="486.66666666666663" y="184" width="108.99999999999989" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Random"/>
+                                <connections>
+                                    <action selector="difficultyButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="4GS-MD-lOr"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctD-uL-2qy">
                                 <rect key="frame" x="444" y="280" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
@@ -321,13 +330,21 @@
                                     <action selector="timeButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="KMz-5j-kGU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqt-PS-v9W">
-                                <rect key="frame" x="453" y="184" width="73" height="46"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDW-Kk-Yt0" userLabel="Difficulty Center">
+                                <rect key="frame" x="368" y="184" width="1" height="46"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Wst-BR-lTf"/>
+                                    <constraint firstAttribute="width" constant="1" id="sph-sD-qvw"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-cN-6OD">
+                                <rect key="frame" x="244.66666666666669" y="184" width="109.00000000000006" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Hard"/>
+                                <state key="normal" title="Medium"/>
                                 <connections>
-                                    <action selector="difficultyButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="E89-PN-Dpj"/>
+                                    <action selector="difficultyButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="DyR-u9-4pT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -338,15 +355,20 @@
                             <constraint firstItem="uF2-cN-6OD" firstAttribute="top" secondItem="Tev-FE-Xci" secondAttribute="bottom" constant="8" id="6T1-cs-F7D"/>
                             <constraint firstItem="FUz-80-cXc" firstAttribute="leading" secondItem="Py3-Ts-hNv" secondAttribute="trailing" constant="30" id="86r-Zo-3Ha"/>
                             <constraint firstItem="wNV-ee-zGP" firstAttribute="top" secondItem="uF2-cN-6OD" secondAttribute="bottom" constant="8" id="EKG-EY-85q"/>
+                            <constraint firstItem="zDW-Kk-Yt0" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="HUH-ic-ZrT"/>
                             <constraint firstItem="iaO-Yl-Mt9" firstAttribute="top" secondItem="PZc-yM-byL" secondAttribute="bottom" constant="20" id="IIq-uf-Iby"/>
                             <constraint firstItem="Tev-FE-Xci" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="IPw-DZ-sEF"/>
+                            <constraint firstItem="Iqt-PS-v9W" firstAttribute="centerY" secondItem="lHh-T9-p6g" secondAttribute="centerY" id="Jm4-vU-Fib"/>
                             <constraint firstItem="j89-xH-yrK" firstAttribute="top" secondItem="Py3-Ts-hNv" secondAttribute="top" id="Ll0-EH-y1Y"/>
                             <constraint firstItem="z9h-8y-lMD" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="Ly8-hd-lke"/>
                             <constraint firstItem="j89-xH-yrK" firstAttribute="leading" secondItem="ctD-uL-2qy" secondAttribute="trailing" constant="30" id="Mag-dp-wJN"/>
+                            <constraint firstItem="zDW-Kk-Yt0" firstAttribute="leading" secondItem="uF2-cN-6OD" secondAttribute="trailing" constant="14.5" id="N12-19-J7m"/>
+                            <constraint firstItem="Iqt-PS-v9W" firstAttribute="leading" secondItem="zDW-Kk-Yt0" secondAttribute="trailing" constant="14.5" id="NGY-tt-ULV"/>
+                            <constraint firstItem="tfp-62-Ga1" firstAttribute="leading" secondItem="Iqt-PS-v9W" secondAttribute="trailing" constant="30" id="S3B-X3-ANZ"/>
+                            <constraint firstItem="uF2-cN-6OD" firstAttribute="leading" secondItem="nlv-5O-ltY" secondAttribute="trailing" constant="30" id="SMX-QV-4ki"/>
                             <constraint firstItem="z9h-8y-lMD" firstAttribute="leading" secondItem="FUz-80-cXc" secondAttribute="trailing" constant="30" id="SR9-9e-QQY"/>
                             <constraint firstItem="FM4-hK-S3z" firstAttribute="top" secondItem="aTF-uB-mmL" secondAttribute="bottom" id="Ux1-q9-Tmd"/>
-                            <constraint firstItem="Iqt-PS-v9W" firstAttribute="leading" secondItem="uF2-cN-6OD" secondAttribute="trailing" constant="30" id="X1O-Vg-a7M"/>
-                            <constraint firstItem="uF2-cN-6OD" firstAttribute="leading" secondItem="nlv-5O-ltY" secondAttribute="trailing" constant="30" id="Yrm-Ud-L3q"/>
+                            <constraint firstItem="tfp-62-Ga1" firstAttribute="centerY" secondItem="lHh-T9-p6g" secondAttribute="centerY" id="VDj-t4-a4z"/>
                             <constraint firstItem="Iqt-PS-v9W" firstAttribute="top" secondItem="Tev-FE-Xci" secondAttribute="bottom" constant="8" id="Zp5-DR-zQf"/>
                             <constraint firstItem="z9h-8y-lMD" firstAttribute="top" secondItem="wNV-ee-zGP" secondAttribute="bottom" constant="8" id="cLV-vT-FGp"/>
                             <constraint firstItem="nlv-5O-ltY" firstAttribute="top" secondItem="Tev-FE-Xci" secondAttribute="bottom" constant="8" id="eVZ-BN-hbl"/>
@@ -354,8 +376,7 @@
                             <constraint firstItem="z9h-8y-lMD" firstAttribute="top" secondItem="Py3-Ts-hNv" secondAttribute="top" id="fMY-hc-EYq"/>
                             <constraint firstItem="wNV-ee-zGP" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="gIX-pH-v1S"/>
                             <constraint firstItem="PZc-yM-byL" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="tUR-fc-tqP"/>
-                            <constraint firstItem="uF2-cN-6OD" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="u1B-cL-odf"/>
-                            <constraint firstItem="uF2-cN-6OD" firstAttribute="centerY" secondItem="lHh-T9-p6g" secondAttribute="centerY" id="z04-P2-5Lo"/>
+                            <constraint firstItem="zDW-Kk-Yt0" firstAttribute="centerY" secondItem="lHh-T9-p6g" secondAttribute="centerY" id="vIf-QY-1E0"/>
                             <constraint firstItem="FM4-hK-S3z" firstAttribute="leading" secondItem="lHh-T9-p6g" secondAttribute="leadingMargin" id="zrU-rp-03P"/>
                         </constraints>
                     </view>
@@ -368,6 +389,7 @@
                         <outletCollection property="timeButtons" destination="FUz-80-cXc" collectionClass="NSMutableArray" id="gRb-f9-VGF"/>
                         <outletCollection property="timeButtons" destination="z9h-8y-lMD" collectionClass="NSMutableArray" id="bmi-V6-EEY"/>
                         <outletCollection property="timeButtons" destination="ctD-uL-2qy" collectionClass="NSMutableArray" id="bo7-7B-Ela"/>
+                        <outletCollection property="difficultyButtons" destination="tfp-62-Ga1" collectionClass="NSMutableArray" id="E3t-1M-Oem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nH-4i-xJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -513,13 +535,24 @@
                                     <segue destination="VnX-1d-VQm" kind="unwind" identifier="unwindToGameType" unwindAction="unwindToGameTypeWithSegue:" id="RJh-mf-anU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4M-HN-g5c">
+                                <rect key="frame" x="314" y="292" width="109" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Random"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showPuzzleRandomDifficulty" id="bcW-eA-Imx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Iy2-PR-LkS" firstAttribute="top" secondItem="j3Q-5n-bRl" secondAttribute="bottom" constant="8" id="1ml-ZJ-Zxl"/>
                             <constraint firstItem="Rkx-eF-iN4" firstAttribute="top" secondItem="9ce-ku-yr2" secondAttribute="bottom" id="EPO-rJ-fND"/>
+                            <constraint firstItem="z4M-HN-g5c" firstAttribute="top" secondItem="tyO-Xj-csb" secondAttribute="bottom" constant="8" id="GIh-T8-Qag"/>
                             <constraint firstItem="Iy2-PR-LkS" firstAttribute="centerX" secondItem="FCM-7t-SQc" secondAttribute="centerX" id="GVZ-ZR-JYL"/>
                             <constraint firstItem="tyO-Xj-csb" firstAttribute="centerX" secondItem="FCM-7t-SQc" secondAttribute="centerX" id="Mex-wV-AaM"/>
+                            <constraint firstItem="z4M-HN-g5c" firstAttribute="centerX" secondItem="FCM-7t-SQc" secondAttribute="centerX" id="UbD-dp-fCw"/>
                             <constraint firstItem="j3Q-5n-bRl" firstAttribute="centerX" secondItem="FCM-7t-SQc" secondAttribute="centerX" id="VmH-X4-JuR"/>
                             <constraint firstItem="Rkx-eF-iN4" firstAttribute="leading" secondItem="FCM-7t-SQc" secondAttribute="leadingMargin" id="hCk-QY-T0H"/>
                             <constraint firstItem="tyO-Xj-csb" firstAttribute="top" secondItem="Iy2-PR-LkS" secondAttribute="bottom" constant="8" id="lO0-7U-SMW"/>
@@ -1037,6 +1070,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Z7g-Ii-fTi"/>
+        <segue reference="jbn-RP-Rxt"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,7 @@ class DifficultyViewController: UIViewController {
         case "showPuzzleEasyDifficulty": showPuzzle(segue: segue, sender: sender)
         case "showPuzzleMediumDifficulty": showPuzzle(segue: segue, sender: sender)
         case "showPuzzleHardDifficulty": showPuzzle(segue: segue, sender: sender)
+        case "showPuzzleRandomDifficulty": showPuzzle(segue: segue, sender: sender)
         case "unwindToGameType": break
         default: assert(false, "Unhandled Segue")
         }

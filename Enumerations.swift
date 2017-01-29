@@ -12,6 +12,7 @@ enum Difficulty: String {
     case easy = "Easy"
     case medium = "Medium"
     case hard = "Hard"
+    case random = "Random"
 }
 
 enum GameType {
