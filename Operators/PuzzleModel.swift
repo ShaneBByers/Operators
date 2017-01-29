@@ -48,29 +48,41 @@ class PuzzleModel {
             
             var _expression : [String] = []
             
+            var _doubleExpression : [String] = []
+            
             for element in _equationStrings {
                 switch element {
                 case Symbols.Add:
                     _expression.append("+")
+                    _doubleExpression.append("+")
                 case Symbols.Subtract:
                     _expression.append("-")
+                    _doubleExpression.append("-")
                 case Symbols.Multiply:
                     _expression.append("*")
+                    _doubleExpression.append("*")
                 case Symbols.Divide:
                     _expression.append("/")
+                    _doubleExpression.append("/")
                 default:
                     _expression.append(element)
+                    _doubleExpression.append(String(Double(element)!))
                 }
             }
             
             let _expressionString = _expression.joined()
+            let _doubleExpressionString = _doubleExpression.joined()
             
             let mathExpression = NSExpression(format: _expressionString, argumentArray: [])
+            let doubleMathExpression = NSExpression(format: _doubleExpressionString, argumentArray: [])
             
             solution = mathExpression.expressionValue(with: nil, context: nil) as? Int
+            let doubleSolution = doubleMathExpression.expressionValue(with: nil, context: nil) as? Double
             
-            if let _ = solution {
-                invalidSolution = false
+            if Double(solution!) == doubleSolution {
+                if let _ = solution {
+                    invalidSolution = false
+                }
             }
             
         }
