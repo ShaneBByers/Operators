@@ -87,13 +87,13 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     //
     @IBOutlet weak var resetButton: UIButton!
     
-    
     // MARK: - Custom Variables
     //
     var gameType : GameType?
     var difficulty : Difficulty?
     var challengeEquation : Equation?
     var timer : Timer?
+    var solvePuzzleButtonPressed : Bool = false
     
     // MARK: - Configurations
     //
@@ -507,7 +507,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 
                 switch gameType! {
                 case .original:
-                    updateBestScore()
+                    if !solvePuzzleButtonPressed {
+                        updateBestScore()
+                    }
                 case .challenge:
                     if correctChallengeSolution() {
                         performSegue(withIdentifier: "challengePuzzleCompletedSegue", sender: self)
@@ -813,6 +815,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func solveButtonPressed(_ : UIButton) {
+        
+        solvePuzzleButtonPressed = true
+        
         let equation = puzzleModel.equation!
         
         var count = 0
@@ -899,6 +904,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         placePuzzle(isNewPuzzle: true)
         
         expressionLabel!.text = ""
+        
+        solvePuzzleButtonPressed = false
     }
     
     func placePuzzle(isNewPuzzle: Bool) {
