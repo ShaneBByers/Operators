@@ -11,27 +11,46 @@ import Foundation
 class BestScoreModel {
     static let sharedInstance = BestScoreModel()
     
-    var bestSolution : Int?
+    var current : Int?
+    
+    var total : Int = 0
     
     func calculateBestSolution(withEquation equation: Equation, withSolution solution: Int) -> Int? {
         if let correctSolution = equation.solution.number {
-            if let bestSolution = bestSolution {
-                if abs(correctSolution - solution) <= bestSolution {
-                    self.bestSolution = abs(correctSolution - solution)
+            let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + 10)
+            let newScore = Int(100 - ceil(percentageError*100))
+            if let currentScore = current {
+                if newScore >= 0 && newScore >= currentScore {
+                    self.total -= self.current!
+                    self.current = newScore
+                    self.total += self.current!
                 }
             } else {
-                self.bestSolution = abs(correctSolution - solution)
+                if newScore >= 0 {
+                    self.current = newScore
+                } else {
+                    self.current = 0
+                }
+                self.total += self.current!
             }
         }
         
-        return bestSolution
+        return current
     }
     
-    func currentBestSolution() -> Int? {
-        return bestSolution
+    func currentScore() -> Int? {
+        return current
     }
     
-    func resetBestSolution() {
-        bestSolution = nil
+    func resetCurrentScore() {
+        current = nil
+    }
+    
+    func totalScore() -> Int {
+        return total
+    }
+    
+    func resetTotalScore() {
+        total = 0
     }
 }

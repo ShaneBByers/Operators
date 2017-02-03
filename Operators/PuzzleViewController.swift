@@ -62,6 +62,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var initialPoint : CGPoint = CGPoint.zero
     var kTopLabelPosition = CGPoint.zero
     var kBottomLabelPosition = CGPoint.zero
+    var kBottomSubLabelPosition = CGPoint.zero
     var kPuzzleLabelsYPosition : CGFloat = 0.0
     
     // MARK: - Labels
@@ -76,6 +77,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var bestScoreLabel : UILabel?
     var timerLabel : UILabel?
+    
+    var bestScoreSubLabel : UILabel?
     
     var defaultOperatorLabels : [UILabel]
     var puzzleLabels : [PuzzleLabel] = []
@@ -175,7 +178,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         kTopLabelPosition = CGPoint(x: self.view.center.x, y: self.view.center.y - 2.0*(kPuzzleLabelSize.height + kLabelBuffer))
         
-        kBottomLabelPosition = CGPoint(x: self.view.center.x, y: self.view.frame.size.height - kPuzzleLabelSize.height - 2.0*kLabelBuffer)
+        kBottomLabelPosition = CGPoint(x: self.view.center.x, y: self.view.frame.size.height - 2.0*kPuzzleLabelSize.height)
+        
+        kBottomSubLabelPosition = CGPoint(x: self.view.center.x, y: self.view.frame.size.height - (kPuzzleLabelSize.height + kLabelBuffer))
         
         kPuzzleLabelsYPosition = self.view.center.y - kPuzzleLabelSize.height - kLabelBuffer
         
@@ -206,6 +211,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if let timer = timer {
             timer.invalidate()
+        }
+        
+        if gameType! == .original {
+            bestScoreModel.resetTotalScore()
         }
     }
     
@@ -251,9 +260,20 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         bestScoreLabel!.font = Fonts.largeBold
         bestScoreLabel!.textAlignment = .center
-        bestScoreLabel!.text = "Best: N/A"
+        bestScoreLabel!.text = "Score: 0"
         
         self.view.addSubview(bestScoreLabel!)
+        
+        bestScoreSubLabel = UILabel()
+        
+        bestScoreSubLabel!.frame.size = CGSize(width: self.view.frame.size.width, height: kPuzzleLabelSize.height)
+        bestScoreSubLabel!.center = kBottomSubLabelPosition
+        
+        bestScoreSubLabel!.font = Fonts.smallBold
+        bestScoreSubLabel!.textAlignment = .center
+        bestScoreSubLabel!.text = "Current: N/A"
+        
+        self.view.addSubview(bestScoreSubLabel!)
         
         let newPuzzleButton: UIButton = UIButton()
         newPuzzleButton.frame.size = CGSize(width: self.view.frame.size.width/2, height: kPuzzleLabelSize.height)
@@ -293,7 +313,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func initializeDefaultOperators() {
 
-        let yPositionCenter = self.view.center.y + kPuzzleLabelSize.height
+        let yPositionCenter = self.view.center.y + 2.0*kLabelBuffer
         
         let totalWidth = self.view.frame.size.width
         
@@ -399,7 +419,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         label.center = newCenter
         recognizer.setTranslation(CGPoint.zero, in: self.view)
         
-        if (label.center.y >= kPuzzleLabelsYPosition - kPuzzleLabelSize.height/2.0 && label.center.y <= kPuzzleLabelsYPosition + kPuzzleLabelSize.height/2) {
+        if (label.center.y >= kPuzzleLabelsYPosition - kPuzzleLabelSize.height/2.0 && label.center.y <= kPuzzleLabelsYPosition + kPuzzleLabelSize.height/2.0) {
             
             var leftPuzzleLabel : PuzzleLabel? = nil
             
@@ -426,7 +446,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 let rightPuzzleLabel = rightPuzzleLabel {
                 
                 
-                if leftPuzzleLabel.isOperand && rightPuzzleLabel.isOperand {
+                if leftPuzzleLabel.isOperand && rightPuzzleLabel.isOperand && !(label.text! == Symbols.Divide && rightPuzzleLabel.label.text! == "0") {
                     
                     if hasPlaceholder && placeholderIndex != leftPuzzleLabelIndex! + 1 {
                         
@@ -611,7 +631,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         var newExpression : [String] = []
         
-        var bestScore : Int?
+        var currentScore : Int?
         
         for puzzleLabel in puzzleLabels {
             if puzzleLabel.isOperand || puzzleLabel.isOperator {
@@ -620,16 +640,18 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         if let solution = puzzleModel.solutionFor(expression: newExpression) {
-            bestScore = bestScoreModel.calculateBestSolution(withEquation: puzzleModel.equation!, withSolution: solution)
+            currentScore = bestScoreModel.calculateBestSolution(withEquation: puzzleModel.equation!, withSolution: solution)
         } else {
-            bestScore = bestScoreModel.currentBestSolution()
+            currentScore = bestScoreModel.currentScore()
         }
         
-        if let best = bestScore {
-            bestScoreLabel!.text = "Best: " + String(best)
+        if let best = currentScore {
+            bestScoreSubLabel!.text = "Current: " + String(best)
         } else {
-            bestScoreLabel!.text = "Best: N/A"
+            bestScoreSubLabel!.text = "Current: N/A"
         }
+        
+        bestScoreLabel!.text = "Score: " + String(bestScoreModel.totalScore())
     }
     
     func correctChallengeSolution() -> Bool {
@@ -782,8 +804,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         self.setupPuzzle(withEquation: equation)
         
         if gameType == .original {
-            bestScoreModel.resetBestSolution()
-            bestScoreLabel!.text = "Best: N/A"
+            bestScoreModel.resetCurrentScore()
+            bestScoreLabel!.text = "Score: " + String(bestScoreModel.totalScore())
+            bestScoreSubLabel!.text = "Current: N/A"
         }
         
         resetButtonAction(enable: false)
