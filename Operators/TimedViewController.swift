@@ -16,6 +16,7 @@ class TimedViewController: UIViewController {
     
     var currentTime : String = "30 sec"
     
+    @IBOutlet weak var highScoreLabel: UILabel!
     
     @IBOutlet var difficultyButtons: [UIButton]!
     
@@ -23,7 +24,11 @@ class TimedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        timedModel.initialize(withDifficulty: currentDifficulty.rawValue, withTime: currentTime)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        highScoreLabel.text = String(timedModel.highScore())
     }
     
     @IBAction func difficultyButtonPressed(_ sender: UIButton) {
@@ -35,6 +40,10 @@ class TimedViewController: UIViewController {
         
         currentDifficulty = Difficulty(rawValue: sender.titleLabel!.text!)!
         
+        timedModel.changeDifficulty(toDifficulty: currentDifficulty)
+        
+        highScoreLabel.text = String(timedModel.highScore())
+        
     }
     
     @IBAction func timeButtonPressed(_ sender: UIButton) {
@@ -45,6 +54,10 @@ class TimedViewController: UIViewController {
         sender.titleLabel!.font = Fonts.smallBold
         
         currentTime = sender.titleLabel!.text!
+        
+        timedModel.changeTime(toTime: currentTime)
+        
+        highScoreLabel.text = String(timedModel.highScore())
         
     }
     

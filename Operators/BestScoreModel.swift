@@ -15,7 +15,35 @@ class BestScoreModel {
     
     var total : Int = 0
     
-    func updateScores(withEquation equation: Equation, withSolution solution: Int) -> Int? {
+    var highScores : [String:Int] = [:]
+    
+    var bestScoreURL : URL
+    
+    var archive : BestScoreArchive
+    
+    init() {
+        let fileManager = FileManager.default
+        let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        bestScoreURL = documentURL.appendingPathComponent("originalHighScores.archive")
+        
+        let fileExists = fileManager.fileExists(atPath: bestScoreURL.path)
+        
+        if fileExists {
+            archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
+            highScores = archive.scores
+        } else {
+            
+            highScores[Difficulty.easy.rawValue] = 0
+            highScores[Difficulty.medium.rawValue] = 0
+            highScores[Difficulty.hard.rawValue] = 0
+            highScores[Difficulty.random.rawValue] = 0
+            
+            archive = BestScoreArchive(highScores: highScores)
+            NSKeyedArchiver.archiveRootObject(archive, toFile: bestScoreURL.path)
+        }        
+    }
+    
+    func updateScores(withEquation equation: Equation, withSolution solution: Int, forDifficulty difficulty: Difficulty) -> Int? {
         if let correctSolution = equation.solution.number {
             let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + 10)
             let newScore = Int(100 - ceil(percentageError*100))
@@ -35,6 +63,12 @@ class BestScoreModel {
             }
         }
         
+        if self.total > highScores[difficulty.rawValue]! {
+            highScores[difficulty.rawValue] = self.total
+            archive.scores = highScores
+            saveArchive()
+        }
+        
         return current
     }
     
@@ -52,5 +86,13 @@ class BestScoreModel {
     
     func resetTotalScore() {
         total = 0
+    }
+    
+    func highScore(forDifficulty difficulty: Difficulty) -> Int {
+        return highScores[difficulty.rawValue]!
+    }
+    
+    func saveArchive() {
+        NSKeyedArchiver.archiveRootObject(archive, toFile: bestScoreURL.path)
     }
 }

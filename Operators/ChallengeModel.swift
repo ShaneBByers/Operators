@@ -27,7 +27,7 @@ class ChallengeModel {
     
     var challengeURL : URL
     
-    var archive : Archive
+    var archive : ChallengeArchive
     
     init() {
 
@@ -39,7 +39,7 @@ class ChallengeModel {
         
         if fileExists {
             
-            archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! Archive
+            archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
             availablePuzzles[.easy] = archive.easyPuzzlesAvailable
             availablePuzzles[.medium] = archive.mediumPuzzlesAvailable
             availablePuzzles[.hard] = archive.hardPuzzlesAvailable
@@ -60,7 +60,7 @@ class ChallengeModel {
             
             availablePuzzles[.easy]![24] = false
             
-            archive = Archive(easyPuzzles: availablePuzzles[.easy]!, mediumPuzzles: availablePuzzles[.medium]!, hardPuzzles: availablePuzzles[.hard]!)
+            archive = ChallengeArchive(easyPuzzles: availablePuzzles[.easy]!, mediumPuzzles: availablePuzzles[.medium]!, hardPuzzles: availablePuzzles[.hard]!)
             NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
         }
         

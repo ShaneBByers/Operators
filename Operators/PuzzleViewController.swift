@@ -43,6 +43,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Models
     //
+    
     let puzzleModel = PuzzleModel.sharedInstance
     let challengeModel = ChallengeModel.sharedInstance
     let bestScoreModel = BestScoreModel.sharedInstance
@@ -672,7 +673,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         if let solution = puzzleModel.solutionFor(expression: newExpression) {
-            currentScore = bestScoreModel.updateScores(withEquation: puzzleModel.equation!, withSolution: solution)
+            currentScore = bestScoreModel.updateScores(withEquation: puzzleModel.equation!, withSolution: solution, forDifficulty: difficulty!)
         } else {
             currentScore = bestScoreModel.currentScore()
         }

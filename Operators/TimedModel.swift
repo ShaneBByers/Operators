@@ -27,9 +27,41 @@ class TimedModel {
     
     var totalScore : Int = 0
     
+    var highScores : [String:[Int:Int]] = [:]
+    
+    var timedURL : URL
+    
+    var archive : TimedArchive
+    
     init() {
         timeOptions = [30, 61, 121, 301]
         completed = 0
+        
+        let fileManager = FileManager.default
+        let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        timedURL = documentURL.appendingPathComponent("timedHighScores.archive")
+        
+        let fileExists = fileManager.fileExists(atPath: timedURL.path)
+        
+        if fileExists {
+            archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
+            highScores = archive.scores
+        } else {
+            
+            var initTimeHighScores : [Int:Int] = [:]
+            
+            for time in timeOptions {
+                initTimeHighScores[Int(time)] = 0
+            }
+            
+            highScores[Difficulty.easy.rawValue] = initTimeHighScores
+            highScores[Difficulty.medium.rawValue] = initTimeHighScores
+            highScores[Difficulty.hard.rawValue] = initTimeHighScores
+            highScores[Difficulty.random.rawValue] = initTimeHighScores
+            
+            archive = TimedArchive(highScores: highScores)
+            NSKeyedArchiver.archiveRootObject(archive, toFile: timedURL.path)
+        }
     }
     
     func initialize(withDifficulty diff: String, withTime time: String) {
@@ -75,6 +107,20 @@ class TimedModel {
         }
     }
     
+    func changeDifficulty(toDifficulty difficulty: Difficulty) {
+        self.difficulty = difficulty
+    }
+    
+    func changeTime(toTime time: String) {
+        switch time {
+        case "30 sec": totalTime = timeOptions[0]
+        case "1 min": totalTime = timeOptions[1]
+        case "2 min": totalTime = timeOptions[2]
+        case "5 min": totalTime = timeOptions[3]
+        default: totalTime = timeOptions[0]
+        }
+    }
+    
     func completePuzzle() {
         completed += 1
         solution = nil
@@ -93,6 +139,11 @@ class TimedModel {
     }
     
     func restart() {
+        if totalScore > highScores[difficulty!.rawValue]![Int(totalTime!)]! {
+            highScores[difficulty!.rawValue]![Int(totalTime!)]! = totalScore
+            archive.scores = highScores
+            saveArchive()
+        }
         totalScore = 0
         completed = 0
         currentTime = totalTime!
@@ -126,5 +177,13 @@ class TimedModel {
     
     func resetCurrentScore() {
         current = nil
+    }
+    
+    func highScore() -> Int {
+        return highScores[difficulty!.rawValue]![Int(totalTime!)]!
+    }
+    
+    func saveArchive() {
+        NSKeyedArchiver.archiveRootObject(archive, toFile: timedURL.path)
     }
 }

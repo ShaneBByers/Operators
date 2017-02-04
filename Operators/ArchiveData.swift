@@ -12,10 +12,11 @@ struct ArchiveKey {
     static let easyPuzzlesAvailable = "easyPuzzlesAvailable"
     static let mediumPuzzlesAvailable = "mediumPuzzlesAvailable"
     static let hardPuzzlesAvailable = "hardPuzzlesAvailable"
-    
+    static let originalHighScores = "originalHighScores"
+    static let timedHighScores = "timedHighScores"
 }
 
-class Archive : NSObject, NSCoding {
+class ChallengeArchive : NSObject, NSCoding {
     var easyPuzzlesAvailable : [Bool]
     var mediumPuzzlesAvailable : [Bool]
     var hardPuzzlesAvailable : [Bool]
@@ -41,4 +42,40 @@ class Archive : NSObject, NSCoding {
         
     }
     
+}
+
+class BestScoreArchive : NSObject, NSCoding {
+    var scores : [String:Int]
+    
+    init(highScores: [String:Int]) {
+        self.scores = highScores
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let highScores = aDecoder.decodeObject(forKey: ArchiveKey.originalHighScores) as! [String:Int]
+        
+        self.init(highScores: highScores)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(scores, forKey: ArchiveKey.originalHighScores)
+    }
+}
+
+class TimedArchive : NSObject, NSCoding {
+    var scores : [String:[Int:Int]]
+    
+    init(highScores: [String:[Int:Int]]) {
+        self.scores = highScores
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let highScores = aDecoder.decodeObject(forKey: ArchiveKey.timedHighScores) as! [String:[Int:Int]]
+        
+        self.init(highScores: highScores)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(scores, forKey: ArchiveKey.timedHighScores)
+    }
 }

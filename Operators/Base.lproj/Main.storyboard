@@ -240,6 +240,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sit-g1-INw">
+                                <rect key="frame" x="278" y="32" width="181" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZc-yM-byL">
                                 <rect key="frame" x="323" y="348" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
@@ -348,6 +355,13 @@
                                     <action selector="difficultyButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="DyR-u9-4pT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9c-aA-XVD">
+                                <rect key="frame" x="144" y="74" width="448" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -383,6 +397,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Timed Options" id="NPg-gF-tLs"/>
                     <connections>
+                        <outlet property="highScoreLabel" destination="f9c-aA-XVD" id="YNY-cY-8tb"/>
                         <outletCollection property="difficultyButtons" destination="nlv-5O-ltY" collectionClass="NSMutableArray" id="De2-V3-4gS"/>
                         <outletCollection property="difficultyButtons" destination="uF2-cN-6OD" collectionClass="NSMutableArray" id="pBW-Ri-jFF"/>
                         <outletCollection property="difficultyButtons" destination="Iqt-PS-v9W" collectionClass="NSMutableArray" id="S1j-uF-QCc"/>
@@ -396,7 +411,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nH-4i-xJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eGQ-wI-KgP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-771" y="-952"/>
+            <point key="canvasLocation" x="-771.19565217391312" y="-952.17391304347836"/>
         </scene>
         <!--Game Type-->
         <scene sceneID="UkE-Ra-rkR">
@@ -521,8 +536,36 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14y-1C-dWV">
-                                <rect key="frame" x="140" y="76" width="457" height="46"/>
-                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <rect key="frame" x="197" y="88" width="342.33333333333337" height="34"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX1-Hk-FUc">
+                                <rect key="frame" x="581" y="88" width="135" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6n9-1C-INi">
+                                <rect key="frame" x="581" y="136" width="135" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iem-4s-skU">
+                                <rect key="frame" x="581" y="190" width="135" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-mk-KB0">
+                                <rect key="frame" x="581" y="244" width="135" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -545,6 +588,13 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="showPuzzleRandomDifficulty" id="bcW-eA-Imx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVI-J2-PyW">
+                                <rect key="frame" x="581" y="298" width="135" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -563,11 +613,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Difficulty" id="q74-hA-qla"/>
+                    <connections>
+                        <outlet property="easyHighScoreLabel" destination="6n9-1C-INi" id="bAZ-wn-xdO"/>
+                        <outlet property="hardHighScoreLabel" destination="BPn-mk-KB0" id="HSW-Fk-8zh"/>
+                        <outlet property="mediumHighScoreLabel" destination="iem-4s-skU" id="VIZ-9P-8bZ"/>
+                        <outlet property="randomHighScoreLabel" destination="YVI-J2-PyW" id="Cyn-Zg-uNC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFk-1G-08p" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VnX-1d-VQm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-771" y="38"/>
+            <point key="canvasLocation" x="-771.19565217391312" y="37.681159420289859"/>
         </scene>
         <!--Challenge Puzzles-->
         <scene sceneID="LFW-uV-UsA">
@@ -1152,6 +1208,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bcW-eA-Imx"/>
+        <segue reference="jbn-RP-Rxt"/>
     </inferredMetricsTieBreakers>
 </document>
