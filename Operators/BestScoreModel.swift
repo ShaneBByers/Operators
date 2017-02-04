@@ -15,7 +15,7 @@ class BestScoreModel {
     
     var total : Int = 0
     
-    func calculateBestSolution(withEquation equation: Equation, withSolution solution: Int) -> Int? {
+    func updateScores(withEquation equation: Equation, withSolution solution: Int) -> Int? {
         if let correctSolution = equation.solution.number {
             let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + 10)
             let newScore = Int(100 - ceil(percentageError*100))

@@ -79,6 +79,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var timerLabel : UILabel?
     
     var bestScoreSubLabel : UILabel?
+    var timedScoreLabel : UILabel?
     
     var defaultOperatorLabels : [UILabel]
     var puzzleLabels : [PuzzleLabel] = []
@@ -213,8 +214,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             timer.invalidate()
         }
         
-        if gameType! == .original {
-            bestScoreModel.resetTotalScore()
+        switch gameType! {
+        case .original: bestScoreModel.resetTotalScore()
+        case .timed: timedModel.restart()
+        default: break
         }
     }
     
@@ -249,6 +252,27 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         let timerInterval : TimeInterval = 0.1
         
         timer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
+        
+        let skipButton: UIButton = UIButton()
+        skipButton.frame.size = CGSize(width: 100, height: kPuzzleLabelSize.height)
+        skipButton.frame.origin.x = self.view.frame.size.width - 2.0*kLabelBuffer - skipButton.frame.size.width
+        skipButton.center.y = self.view.frame.size.height - 2.0*kLabelBuffer
+        skipButton.setTitleColor(.green, for: .normal)
+        skipButton.setTitle("Skip", for: .normal)
+        skipButton.titleLabel!.font = Fonts.smallBold
+        skipButton.addTarget(self, action: #selector(newPuzzleButtonPressed(_:)), for: .touchUpInside)
+        self.view.addSubview(skipButton)
+        
+        timedScoreLabel = UILabel()
+        
+        timedScoreLabel!.frame.size = CGSize(width: self.view.frame.size.width, height: kPuzzleLabelSize.height)
+        timedScoreLabel!.center = kBottomSubLabelPosition
+        
+        timedScoreLabel!.font = Fonts.smallBold
+        timedScoreLabel!.textAlignment = .center
+        timedScoreLabel!.text = "Score: 0"
+        
+        self.view.addSubview(timedScoreLabel!)
     }
     
     func initializeBestScore() {
@@ -516,6 +540,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         challengeModel.completeCurrentPuzzle()
                     }
                 case .timed:
+                    updateTimedScore()
                     if correctTimedSolution() {
                         timedModel.completePuzzle()
                         timedCompletedLabel!.text = "Completed: \(timedModel.completedPuzzles())"
@@ -642,7 +667,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         if let solution = puzzleModel.solutionFor(expression: newExpression) {
-            currentScore = bestScoreModel.calculateBestSolution(withEquation: puzzleModel.equation!, withSolution: solution)
+            currentScore = bestScoreModel.updateScores(withEquation: puzzleModel.equation!, withSolution: solution)
         } else {
             currentScore = bestScoreModel.currentScore()
         }
@@ -654,6 +679,24 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         bestScoreLabel!.text = "Score: " + String(bestScoreModel.totalScore())
+    }
+    
+    func updateTimedScore() {
+        
+        var newExpression : [String] = []
+        
+        for puzzleLabel in puzzleLabels {
+            if puzzleLabel.isOperand || puzzleLabel.isOperator {
+                newExpression.append(puzzleLabel.label.text!)
+            }
+        }
+        
+        if let solution = puzzleModel.solutionFor(expression: newExpression) {
+            timedModel.updateScore(withEquation: puzzleModel.equation!, withSolution: solution)
+        }
+        
+        timedScoreLabel!.text = "Score: " + String(timedModel.score())
+        
     }
     
     func correctChallengeSolution() -> Bool {
@@ -799,17 +842,18 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         switch gameType! {
-        case .timed: timedModel.updateSolution(solution: equation.solution.number!)
+        case .original:
+            bestScoreModel.resetCurrentScore()
+            bestScoreLabel!.text = "Score: " + String(bestScoreModel.totalScore())
+            bestScoreSubLabel!.text = "Current: N/A"
+        case .timed:
+            timedModel.resetCurrentScore()
+            timedScoreLabel!.text = "Score: " + String(timedModel.score())
+            timedModel.updateSolution(solution: equation.solution.number!)
         default: break
         }
         
         self.setupPuzzle(withEquation: equation)
-        
-        if gameType == .original {
-            bestScoreModel.resetCurrentScore()
-            bestScoreLabel!.text = "Score: " + String(bestScoreModel.totalScore())
-            bestScoreSubLabel!.text = "Current: N/A"
-        }
         
         resetButtonAction(enable: false)
     }

@@ -15,13 +15,17 @@ class TimedModel {
     
     var totalTime : TimeInterval?
     
-    var current : TimeInterval?
+    var currentTime : TimeInterval?
     
     let timeOptions : [TimeInterval]
     
     var completed : Int
     
     var solution : Int?
+    
+    var current : Int?
+    
+    var totalScore : Int = 0
     
     init() {
         timeOptions = [30, 61, 121, 301]
@@ -37,17 +41,17 @@ class TimedModel {
         default: totalTime = timeOptions[0]
         }
         
-        current = totalTime!
+        currentTime = totalTime!
         
         difficulty = Difficulty(rawValue: diff)
     }
     
     func remainingTime(timeElapsed elapsed: TimeInterval) -> TimeInterval? {
         
-        current = round((current! - elapsed)*10)/10
+        currentTime = round((currentTime! - elapsed)*10)/10
         
-        if current! > 0.0 {
-            return current
+        if currentTime! > 0.0 {
+            return currentTime
         } else {
             return nil
         }
@@ -89,8 +93,38 @@ class TimedModel {
     }
     
     func restart() {
+        totalScore = 0
         completed = 0
-        current = totalTime!
+        currentTime = totalTime!
         solution = nil
+    }
+    
+    func updateScore(withEquation equation: Equation, withSolution solution: Int) {
+        if let correctSolution = equation.solution.number {
+            let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + 10)
+            let newScore = Int(100 - ceil(percentageError*100))
+            if let currentScore = current {
+                if newScore >= 0 && newScore >= currentScore {
+                    self.totalScore -= self.current!
+                    self.current = newScore
+                    self.totalScore += self.current!
+                }
+            } else {
+                if newScore >= 0 {
+                    self.current = newScore
+                } else {
+                    self.current = 0
+                }
+                self.totalScore += self.current!
+            }
+        }
+    }
+    
+    func score() -> Int {
+        return totalScore
+    }
+    
+    func resetCurrentScore() {
+        current = nil
     }
 }
