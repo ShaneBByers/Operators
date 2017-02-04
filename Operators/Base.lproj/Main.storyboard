@@ -28,7 +28,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Um2-tp-vzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2988" y="38"/>
+            <point key="canvasLocation" x="-3485" y="38"/>
         </scene>
         <!--Game Mode-->
         <scene sceneID="Tpp-JN-YIJ">
@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcr-Ud-Kbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2251.630434782609" y="37.681159420289859"/>
+            <point key="canvasLocation" x="-2674" y="38"/>
         </scene>
         <!--Puzzle View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -127,12 +127,13 @@
                         <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToOriginal" unwindAction="unwindToOriginalWithSegue:" id="1fR-Hi-guw"/>
                         <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToTimed" unwindAction="unwindToTimedWithSegue:" id="9eH-4a-hjI"/>
                         <segue destination="9dV-rM-8gZ" kind="presentation" identifier="challengePuzzleCompletedSegue" id="fxC-z7-tW4"/>
+                        <segue destination="4jn-1d-UeH" kind="presentation" identifier="timerCompletedSegue" id="18n-C9-cag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="P6i-I5-cgB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="38"/>
+            <point key="canvasLocation" x="232" y="38"/>
         </scene>
         <!--Challenge Puzzle Completed View Controller-->
         <scene sceneID="fSf-W3-jfN">
@@ -213,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iD-uf-lZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="776.81159420289862"/>
+            <point key="canvasLocation" x="232" y="1216"/>
         </scene>
         <!--Timed Options-->
         <scene sceneID="xhK-jK-VJT">
@@ -395,7 +396,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nH-4i-xJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eGQ-wI-KgP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-771.01449275362324" y="-656.25"/>
+            <point key="canvasLocation" x="-771" y="-952"/>
         </scene>
         <!--Game Type-->
         <scene sceneID="UkE-Ra-rkR">
@@ -478,7 +479,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecX-iR-Hdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Qd6-Zk-KXE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1520" y="38"/>
+            <point key="canvasLocation" x="-1785" y="38"/>
         </scene>
         <!--Difficulty-->
         <scene sceneID="eJD-SA-fv1">
@@ -1066,10 +1067,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZI7-dR-bXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Vvb-Z5-x3J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-771" y="778"/>
+            <point key="canvasLocation" x="-771" y="1216"/>
+        </scene>
+        <!--Timed Completed View Controller-->
+        <scene sceneID="H7f-vV-hRb">
+            <objects>
+                <viewController id="4jn-1d-UeH" customClass="TimedCompletedViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F82-mH-rFI"/>
+                        <viewControllerLayoutGuide type="bottom" id="k6A-3X-wdb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7AS-Me-QOK">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed: Puzzles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8u-gu-ym2">
+                                <rect key="frame" x="104" y="130" width="529" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9f-FW-jow">
+                                <rect key="frame" x="20" y="184" width="696" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NME-vc-Efc">
+                                <rect key="frame" x="20" y="294" width="696" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="Restart">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L6n-qr-1Yc"/>
+                                    <action selector="restartButtonPressed:" destination="4jn-1d-UeH" eventType="touchUpInside" id="wfl-hn-1bd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbg-Nj-Jco">
+                                <rect key="frame" x="20" y="348" width="696" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="Timed Puzzle Menu">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuButtonPressed:" destination="4jn-1d-UeH" eventType="touchUpInside" id="Y8s-fJ-9Z8"/>
+                                    <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZcL-gY-qp8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congrats!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-zO-leE">
+                                <rect key="frame" x="260" y="76" width="217" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K8u-gu-ym2" firstAttribute="top" secondItem="3cm-zO-leE" secondAttribute="bottom" constant="8" id="0iY-Ja-SN2"/>
+                            <constraint firstItem="NME-vc-Efc" firstAttribute="leading" secondItem="7AS-Me-QOK" secondAttribute="leadingMargin" id="1kL-f4-mId"/>
+                            <constraint firstItem="N9f-FW-jow" firstAttribute="centerX" secondItem="7AS-Me-QOK" secondAttribute="centerX" id="294-w1-Sas"/>
+                            <constraint firstItem="NME-vc-Efc" firstAttribute="trailing" secondItem="7AS-Me-QOK" secondAttribute="trailingMargin" id="7Zw-NW-NqC"/>
+                            <constraint firstItem="Wbg-Nj-Jco" firstAttribute="leading" secondItem="7AS-Me-QOK" secondAttribute="leadingMargin" id="8zW-Se-lxi"/>
+                            <constraint firstItem="K8u-gu-ym2" firstAttribute="centerX" secondItem="7AS-Me-QOK" secondAttribute="centerX" id="924-ac-Tgx"/>
+                            <constraint firstItem="N9f-FW-jow" firstAttribute="centerY" secondItem="7AS-Me-QOK" secondAttribute="centerY" id="Dtr-Km-T63"/>
+                            <constraint firstItem="Wbg-Nj-Jco" firstAttribute="centerX" secondItem="7AS-Me-QOK" secondAttribute="centerX" id="FmI-uN-QGg"/>
+                            <constraint firstItem="N9f-FW-jow" firstAttribute="top" secondItem="K8u-gu-ym2" secondAttribute="bottom" constant="8" id="IlA-jw-oDL"/>
+                            <constraint firstItem="N9f-FW-jow" firstAttribute="leading" secondItem="7AS-Me-QOK" secondAttribute="leadingMargin" id="NUm-ik-MGs"/>
+                            <constraint firstItem="Wbg-Nj-Jco" firstAttribute="top" secondItem="NME-vc-Efc" secondAttribute="bottom" constant="8" id="hOp-bN-fLQ"/>
+                            <constraint firstItem="N9f-FW-jow" firstAttribute="trailing" secondItem="7AS-Me-QOK" secondAttribute="trailingMargin" id="mjC-fx-kOe"/>
+                            <constraint firstItem="k6A-3X-wdb" firstAttribute="top" secondItem="Wbg-Nj-Jco" secondAttribute="bottom" constant="20" id="pPw-GN-DH7"/>
+                            <constraint firstItem="3cm-zO-leE" firstAttribute="centerX" secondItem="7AS-Me-QOK" secondAttribute="centerX" id="qcc-fe-0b6"/>
+                            <constraint firstItem="Wbg-Nj-Jco" firstAttribute="trailing" secondItem="7AS-Me-QOK" secondAttribute="trailingMargin" id="tW4-rI-P81"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="completedPuzzlesLabel" destination="K8u-gu-ym2" id="kTr-RB-fzA"/>
+                        <outlet property="scoreLabel" destination="N9f-FW-jow" id="9qu-4V-9H7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G3H-g0-sKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232" y="-952"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jbn-RP-Rxt"/>
+        <segue reference="bcW-eA-Imx"/>
     </inferredMetricsTieBreakers>
 </document>

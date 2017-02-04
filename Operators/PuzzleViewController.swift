@@ -151,6 +151,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             
             destination.configurePuzzleViewController(viewController : self)
+        case "timerCompletedSegue":
+            let destination = segue.destination as! TimedCompletedViewController
+            
+            destination.configureText(completedPuzzles: timedModel.completedPuzzles(), score: timedModel.score())
+            destination.configurePuzzleViewController(viewController: self)
         case "unwindToOriginal": break
         case "unwindToChallenge": break
         case "unwindToTimed": break
@@ -723,38 +728,23 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         resetButtonAction(enable: false)
     }
     
+    func restartTimedPuzzle() {
+        self.timedModel.restart()
+        
+        self.timedCompletedLabel!.text = "Completed: \(self.timedModel.completedPuzzles())"
+        self.timerLabel!.text = "\(self.timedModel.remainingMinutesSeconds(timeElapsed: 0.0)!)"
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
+        
+        self.newPuzzleButtonPressed(UIButton())
+    }
+    
     func timerFired(timer : Timer) {
         
         if let remaining = timedModel.remainingMinutesSeconds(timeElapsed: timer.timeInterval) {
             timerLabel!.text = remaining
         } else {
             timer.invalidate()
-            
-            let alertController = UIAlertController(title: "You completed \(timedModel.completedPuzzles()) puzzles!", message: "Correct Solution: \(puzzleModel.equation!.toString())", preferredStyle: .actionSheet)
-            
-            let restartAction = UIAlertAction(title: "Restart", style: .default)
-            { (action) in
-                
-                self.timedModel.restart()
-                
-                self.timedCompletedLabel!.text = "Completed: \(self.timedModel.completedPuzzles())"
-                self.timerLabel!.text = "\(self.timedModel.remainingMinutesSeconds(timeElapsed: 0.0)!)"
-                self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
-                
-                self.newPuzzleButtonPressed(UIButton())
-                
-                alertController.dismiss(animated: true, completion: nil)
-            }
-            alertController.addAction(restartAction)
-            
-            let returnToMenuAction = UIAlertAction(title: "Return to Timed Options Menu", style: .destructive)
-            { (action) in
-                alertController.dismiss(animated: true, completion: nil)
-                self.navigationController!.popViewController(animated: true)
-            }
-            alertController.addAction(returnToMenuAction)
-            
-            self.present(alertController, animated: true)
+            self.performSegue(withIdentifier: "timerCompletedSegue", sender: self)
         }
         
     }

@@ -36,6 +36,7 @@
 		43B8A76A1DFE35EE00840590 /* math_operations_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B8A7621DFE35EE00840590 /* math_operations_120.png */; };
 		43B8A76B1DFE35EE00840590 /* math_operations_120_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B8A7631DFE35EE00840590 /* math_operations_120_2.png */; };
 		43B8A76C1DFE35EE00840590 /* math_operations_180.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B8A7641DFE35EE00840590 /* math_operations_180.png */; };
+		43F6C9B31E463C360082EF8F /* TimedCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		43B8A7621DFE35EE00840590 /* math_operations_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = math_operations_120.png; sourceTree = "<group>"; };
 		43B8A7631DFE35EE00840590 /* math_operations_120_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = math_operations_120_2.png; sourceTree = "<group>"; };
 		43B8A7641DFE35EE00840590 /* math_operations_180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = math_operations_180.png; sourceTree = "<group>"; };
+		43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedCompletedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				435DC2F51E3C0A5D0047FD47 /* GameModeViewController.swift */,
 				435DC2F71E3C0A810047FD47 /* GameTypeViewController.swift */,
 				43430DD51DFC9BBD00841DF4 /* TimedViewController.swift */,
+				43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */,
 				431F70E01DF34871002B0455 /* ChallengeViewController.swift */,
 				435DC2F91E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift */,
 				431F70D61DF273C2002B0455 /* DifficultyViewController.swift */,
@@ -321,6 +324,7 @@
 			files = (
 				435DC2FA1E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift in Sources */,
 				43430DD81DFC9F5B00841DF4 /* TimedModel.swift in Sources */,
+				43F6C9B31E463C360082EF8F /* TimedCompletedViewController.swift in Sources */,
 				431F70DD1DF28048002B0455 /* Enumerations.swift in Sources */,
 				43B8A73A1DFE1EC100840590 /* ArchiveData.swift in Sources */,
 				431F70ED1DFB87E8002B0455 /* BestScoreModel.swift in Sources */,
