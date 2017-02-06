@@ -112,17 +112,86 @@
                                     <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r25-1F-SM6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blg-qp-bfd">
+                                <rect key="frame" x="20" y="360" width="73" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="Hint">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="hintsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QuM-MG-m0O"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aF-30-0ib">
+                                <rect key="frame" x="278" y="360" width="181" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="New Puzzle">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="newPuzzleButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0yN-j2-xgb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msk-eC-qBu">
+                                <rect key="frame" x="625" y="360" width="91" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <state key="normal" title="Solve">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="solveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YSV-0r-1Ut"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y0-4I-by6">
+                                <rect key="frame" x="248" y="259" width="241" height="57"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current: N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mm-SZ-ht2">
+                                <rect key="frame" x="260.33333333333331" y="324" width="217" height="34"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expression" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-Mh-psi">
+                                <rect key="frame" x="20" y="67" width="696" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="696" id="Nd6-K5-j0c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5Mm-SZ-ht2" firstAttribute="top" secondItem="1y0-4I-by6" secondAttribute="bottom" constant="8" id="0h2-q4-evC"/>
                             <constraint firstItem="9nY-uR-PjB" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="432-dH-ZhU"/>
+                            <constraint firstItem="WEf-Mh-psi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8P2-pn-2jb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7aF-30-0ib" secondAttribute="bottom" constant="8" id="9Oh-X3-Ib3"/>
                             <constraint firstItem="9nY-uR-PjB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Nqf-C7-rJo"/>
+                            <constraint firstItem="1y0-4I-by6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ODi-h5-WSK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Blg-qp-bfd" secondAttribute="bottom" constant="8" id="Qgw-8P-HJl"/>
+                            <constraint firstItem="Blg-qp-bfd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="RgY-gM-QSH"/>
+                            <constraint firstItem="WEf-Mh-psi" firstAttribute="top" secondItem="9nY-uR-PjB" secondAttribute="bottom" constant="1" id="YNZ-dz-9Ar"/>
+                            <constraint firstItem="5Mm-SZ-ht2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gmA-nG-ijx"/>
+                            <constraint firstItem="Msk-eC-qBu" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="iEe-mU-7gU"/>
                             <constraint firstItem="41k-Je-KOT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jBw-FK-0Yn"/>
+                            <constraint firstItem="7aF-30-0ib" firstAttribute="top" secondItem="5Mm-SZ-ht2" secondAttribute="bottom" constant="2" id="n4t-bl-2Fa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Msk-eC-qBu" secondAttribute="bottom" constant="8" id="pC5-vL-wiI"/>
                             <constraint firstItem="41k-Je-KOT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qjQ-Fb-XiH"/>
+                            <constraint firstItem="7aF-30-0ib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="we2-2c-Y8u"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="expressionLabel" destination="WEf-Mh-psi" id="okg-wo-2cC"/>
+                        <outlet property="hintsButton" destination="Blg-qp-bfd" id="WNg-Fh-DKg"/>
+                        <outlet property="newPuzzleButton" destination="7aF-30-0ib" id="Vsp-DX-WsV"/>
+                        <outlet property="primaryLabel" destination="1y0-4I-by6" id="R3X-ek-bgr"/>
                         <outlet property="resetButton" destination="9nY-uR-PjB" id="9UI-51-A4e"/>
+                        <outlet property="secondaryLabel" destination="5Mm-SZ-ht2" id="Inn-oG-Ijb"/>
+                        <outlet property="solveButton" destination="Msk-eC-qBu" id="6rS-e4-S2d"/>
                         <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToChallenge" unwindAction="unwindToChallengeWithSegue:" id="MSA-DZ-sct"/>
                         <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToOriginal" unwindAction="unwindToOriginalWithSegue:" id="1fR-Hi-guw"/>
                         <segue destination="P6i-I5-cgB" kind="unwind" identifier="unwindToTimed" unwindAction="unwindToTimedWithSegue:" id="9eH-4a-hjI"/>
@@ -133,7 +202,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="P6i-I5-cgB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="232" y="38"/>
+            <point key="canvasLocation" x="231.52173913043481" y="37.681159420289859"/>
         </scene>
         <!--Challenge Puzzle Completed View Controller-->
         <scene sceneID="fSf-W3-jfN">
