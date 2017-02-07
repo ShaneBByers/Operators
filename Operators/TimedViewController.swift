@@ -33,10 +33,10 @@ class TimedViewController: UIViewController {
     
     @IBAction func difficultyButtonPressed(_ sender: UIButton) {
         for button in difficultyButtons {
-            button.titleLabel!.font = Fonts.smallRegular
+            button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
         }
         
-        sender.titleLabel!.font = Fonts.smallBold
+        sender.titleLabel!.font = UIFont(descriptor: sender.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: sender.titleLabel!.font.pointSize)
         
         currentDifficulty = Difficulty(rawValue: sender.titleLabel!.text!)!
         
@@ -48,10 +48,10 @@ class TimedViewController: UIViewController {
     
     @IBAction func timeButtonPressed(_ sender: UIButton) {
         for button in timeButtons {
-            button.titleLabel!.font = Fonts.smallRegular
+            button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
         }
         
-        sender.titleLabel!.font = Fonts.smallBold
+        sender.titleLabel!.font = UIFont(descriptor: sender.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: sender.titleLabel!.font.pointSize)
         
         currentTime = sender.titleLabel!.text!
         

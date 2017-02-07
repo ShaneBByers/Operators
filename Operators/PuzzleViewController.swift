@@ -24,7 +24,7 @@ struct PuzzleLabel {
             _label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         }
         
-        _label.font = Fonts.largeBold
+        _label.font = Fonts.wRhC
         _label.textColor = .green
         _label.textAlignment = .center
         _label.text = text
@@ -67,12 +67,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Labels
     //
-    @IBOutlet weak var addLabel: UILabel!
-    @IBOutlet weak var subtractLabel: UILabel!
-    @IBOutlet weak var multiplyLabel: UILabel!
-    @IBOutlet weak var divideLabel: UILabel!
-    
-    @IBOutlet var defaultOperatorLabels: [UILabel]!
+    var defaultOperatorLabels : [UILabel] = []
     
     var puzzleLabels : [PuzzleLabel] = []
 
@@ -166,6 +161,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Init/Load
     //
     required init?(coder aDecoder: NSCoder) {
+        for _ in 0..<4 {
+            defaultOperatorLabels.append(UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize)))
+        }
         super.init(coder: aDecoder)
     }
     
@@ -206,6 +204,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.initializeDefaultOperators()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -222,6 +226,37 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Initializations
     //
+    func initializeDefaultOperators() {
+        
+        let yPositionCenter = primaryLabel.frame.origin.y - kPuzzleLabelSize.height/2.0
+        
+        let totalWidth = self.view.frame.size.width
+        
+        let oneWidth = totalWidth/CGFloat(defaultOperatorLabels.count)
+        
+        let oneWidthCenter = oneWidth/2
+        
+        for (i, label) in defaultOperatorLabels.enumerated() {
+            label.font = Fonts.wRhC
+            label.textColor = .green
+            label.textAlignment = .center
+            label.isUserInteractionEnabled = true
+            
+            let xPositionCenter: CGFloat
+            
+            xPositionCenter = oneWidth*CGFloat(i) + oneWidthCenter
+            
+            label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
+            
+            self.view.addSubview(label)
+        }
+        
+        defaultOperatorLabels[0].text = Symbols.Add
+        defaultOperatorLabels[1].text = Symbols.Subtract
+        defaultOperatorLabels[2].text = Symbols.Multiply
+        defaultOperatorLabels[3].text = Symbols.Divide
+    }
+    
     func initializeTimer() {
         
         primaryLabel.textColor = UIColor.green
@@ -750,6 +785,13 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if let remaining = timedModel.remainingMinutesSeconds(timeElapsed: timer.timeInterval) {
             primaryLabel.text = remaining
+            let doubleRemaining = Double(timedModel.currentTime!)
+            let intRemaining = Int(doubleRemaining)
+            if doubleRemaining <= 10.1 && abs(doubleRemaining - Double(intRemaining)) <= 0.1 {
+                primaryLabel.textColor = .red
+            } else {
+                primaryLabel.textColor = .green
+            }
         } else {
             timer.invalidate()
             self.performSegue(withIdentifier: "timerCompletedSegue", sender: self)

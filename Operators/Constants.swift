@@ -26,10 +26,5 @@ class OperatorFunctions {
 }
 
 class Fonts {
-    static let smallBold = UIFont(name: "CourierNewPS-BoldMT", size: 30)
-    static let largeBold = UIFont(name: "CourierNewPS-BoldMT", size: 50)
-    
-    static let smallRegular = UIFont(name: "CourierNewPSMT", size: 30)
-    static let largeRegular = UIFont(name: "CourierNewPSMT", size: 50)
-    
+    static let wRhC = UIFont(name: "CourierNewPS-BoldMT", size: 50)
 }

@@ -172,7 +172,17 @@ class PuzzleModel {
             let solution = mathExpression.expressionValue(with: nil, context: nil) as? Int
             
             if let solution = solution {
-                return _expression.joined(separator: " ") + " " + Symbols.Equals + " " + String(solution)
+                var _operatorExpression : [String] = []
+                for element in _expression {
+                    switch element {
+                    case "+": _operatorExpression.append(Symbols.Add)
+                    case "-": _operatorExpression.append(Symbols.Subtract)
+                    case "*": _operatorExpression.append(Symbols.Multiply)
+                    case "/": _operatorExpression.append(Symbols.Divide)
+                    default:  _operatorExpression.append(element)
+                    }
+                }
+                return _operatorExpression.joined(separator: " ") + " " + Symbols.Equals + " " + String(solution)
             } else {
                 return nil
             }

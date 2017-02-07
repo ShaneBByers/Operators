@@ -26,13 +26,15 @@ class ChallengeViewController: UIViewController {
         }
         
         for button in difficultyButtons {
-            button.titleLabel!.font = Fonts.smallRegular
+            button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
         }
         
+        let boldFont = UIFont(descriptor: difficultyButtons[0].titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: difficultyButtons[0].titleLabel!.font.pointSize)
+        
         switch challengeModel.difficulty {
-        case .easy: difficultyButtons[0].titleLabel!.font = Fonts.smallBold
-        case .medium: difficultyButtons[1].titleLabel!.font = Fonts.smallBold
-        case .hard: difficultyButtons[2].titleLabel!.font = Fonts.smallBold
+        case .easy: difficultyButtons[0].titleLabel!.font = boldFont
+        case .medium: difficultyButtons[1].titleLabel!.font = boldFont
+        case .hard: difficultyButtons[2].titleLabel!.font = boldFont
         case .random: break
         }
     }
@@ -47,10 +49,10 @@ class ChallengeViewController: UIViewController {
         if changed {
             
             for button in difficultyButtons {
-                button.titleLabel!.font = Fonts.smallRegular
+                button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
             }
             
-            sender.titleLabel!.font = Fonts.smallBold
+            sender.titleLabel!.font = UIFont(descriptor: sender.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: sender.titleLabel!.font.pointSize)
             
             for (i,button) in puzzleButtons.enumerated() {
                 UIView.animate(withDuration: 0.2, animations: {
