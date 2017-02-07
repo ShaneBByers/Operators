@@ -63,19 +63,17 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var placeholderIndex : Int?
     
     var initialPoint : CGPoint = CGPoint.zero
-    var kTopLabelPosition = CGPoint.zero
-    var kBottomLabelPosition = CGPoint.zero
-    var kBottomSubLabelPosition = CGPoint.zero
     var kPuzzleLabelsYPosition : CGFloat = 0.0
     
     // MARK: - Labels
     //
-    var addLabel : UILabel!
-    var subtractLabel : UILabel!
-    var multiplyLabel : UILabel!
-    var divideLabel : UILabel!
+    @IBOutlet weak var addLabel: UILabel!
+    @IBOutlet weak var subtractLabel: UILabel!
+    @IBOutlet weak var multiplyLabel: UILabel!
+    @IBOutlet weak var divideLabel: UILabel!
     
-    var defaultOperatorLabels : [UILabel]
+    @IBOutlet var defaultOperatorLabels: [UILabel]!
+    
     var puzzleLabels : [PuzzleLabel] = []
 
     @IBOutlet weak var expressionLabel: UILabel!
@@ -168,13 +166,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Init/Load
     //
     required init?(coder aDecoder: NSCoder) {
-        addLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
-        subtractLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
-        multiplyLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
-        divideLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
-        
-        defaultOperatorLabels = [addLabel, subtractLabel, multiplyLabel, divideLabel]
-        
         super.init(coder: aDecoder)
     }
     
@@ -183,15 +174,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         kPlaceholderLabel.label.alpha = 0.0
         
-        kTopLabelPosition = CGPoint(x: self.view.center.x, y: self.view.center.y - 2.0*(kPuzzleLabelSize.height + kLabelBuffer))
-        
-        kBottomLabelPosition = CGPoint(x: self.view.center.x, y: self.view.frame.size.height - 2.0*kPuzzleLabelSize.height)
-        
-        kBottomSubLabelPosition = CGPoint(x: self.view.center.x, y: self.view.frame.size.height - (kPuzzleLabelSize.height + kLabelBuffer))
-        
         kPuzzleLabelsYPosition = self.view.center.y - kPuzzleLabelSize.height - kLabelBuffer
-        
-        self.initializeDefaultOperators()
         
         self.intializeGestureRecognizers()
         
@@ -274,74 +257,19 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         secondaryLabel.alpha = 0.0
     }
     
-    func initializeDefaultOperators() {
-
-        let yPositionCenter = self.view.center.y + 2.0*kLabelBuffer
-        
-        let totalWidth = self.view.frame.size.width
-        
-        let oneWidth = totalWidth/CGFloat(defaultOperatorLabels.count)
-        
-        let oneWidthCenter = oneWidth/2
-        
-        for (i, label) in defaultOperatorLabels.enumerated() {
-            label.font = Fonts.largeBold
-            label.textColor = .green
-            label.textAlignment = .center
-            label.isUserInteractionEnabled = true
-            
-            let xPositionCenter: CGFloat
-            
-            xPositionCenter = oneWidth*CGFloat(i) + oneWidthCenter
-                
-            label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
-                
-            self.view.addSubview(label)
-        }
-        
-        addLabel.text = Symbols.Add
-        subtractLabel.text = Symbols.Subtract
-        multiplyLabel.text = Symbols.Multiply
-        divideLabel.text = Symbols.Divide
-    }
-    
     // MARK: - Label Gestures
     //
     func intializeGestureRecognizers() {
-        let addPanRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorPanned(_:)))
-        let subtractPanRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorPanned(_:)))
-        let multiplyPanRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorPanned(_:)))
-        let dividePanRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorPanned(_:)))
+        for label in defaultOperatorLabels {
+            let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorPanned(_:)))
+            panRecognizer.delegate = self
+            label.addGestureRecognizer(panRecognizer)
         
-        addPanRecognizer.delegate = self
-        subtractPanRecognizer.delegate = self
-        multiplyPanRecognizer.delegate = self
-        dividePanRecognizer.delegate = self
-        
-        addLabel.addGestureRecognizer(addPanRecognizer)
-        subtractLabel.addGestureRecognizer(subtractPanRecognizer)
-        multiplyLabel.addGestureRecognizer(multiplyPanRecognizer)
-        divideLabel.addGestureRecognizer(dividePanRecognizer)
-        
-        let addDoubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorDoubleTapped(_:)))
-        let subtractDoubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorDoubleTapped(_:)))
-        let multiplyDoubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorDoubleTapped(_:)))
-        let divideDoubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorDoubleTapped(_:)))
-        
-        addDoubleTapRecognizer.numberOfTapsRequired = 2
-        subtractDoubleTapRecognizer.numberOfTapsRequired = 2
-        multiplyDoubleTapRecognizer.numberOfTapsRequired = 2
-        divideDoubleTapRecognizer.numberOfTapsRequired = 2
-        
-        addDoubleTapRecognizer.delegate = self
-        subtractDoubleTapRecognizer.delegate = self
-        multiplyDoubleTapRecognizer.delegate = self
-        divideDoubleTapRecognizer.delegate = self
-        
-        addLabel.addGestureRecognizer(addDoubleTapRecognizer)
-        subtractLabel.addGestureRecognizer(subtractDoubleTapRecognizer)
-        multiplyLabel.addGestureRecognizer(multiplyDoubleTapRecognizer)
-        divideLabel.addGestureRecognizer(divideDoubleTapRecognizer)
+            let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorDoubleTapped(_:)))
+            doubleTapRecognizer.numberOfTapsRequired = 2
+            doubleTapRecognizer.delegate = self
+            label.addGestureRecognizer(doubleTapRecognizer)
+        }
     }
     
     func defaultOperatorPanned(_ recognizer : UIPanGestureRecognizer) {
@@ -472,11 +400,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Label Panned Cases
     //
     func operatorBeganPanning(label: UILabel, isDefaultOperator: Bool) {
+        
         label.transform = CGAffineTransform(scaleX: kGrowthFactor, y: kGrowthFactor)
         
-        self.view.bringSubview(toFront: label)
-        
         initialPoint = label.center
+        
+        self.view.bringSubview(toFront: label)
         
         if !isDefaultOperator {
             
@@ -513,6 +442,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             var rightPuzzleLabel : PuzzleLabel? = nil
             
             for (i,puzzleLabel) in puzzleLabels.enumerated() {
+                if i == 0 && label.center.x < puzzleLabel.label.center.x {
+                    break
+                }
                 if i > 0 && leftPuzzleLabelIndex == nil && label.center.x < puzzleLabel.label.center.x && puzzleLabel.isOperand {
                     leftPuzzleLabelIndex = i - 1
                 }
@@ -529,7 +461,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             if let leftPuzzleLabel = leftPuzzleLabel,
                 let rightPuzzleLabel = rightPuzzleLabel {
-                
                 
                 if leftPuzzleLabel.isOperand && rightPuzzleLabel.isOperand && !(label.text! == Symbols.Divide && rightPuzzleLabel.label.text! == "0") {
                     
@@ -550,14 +481,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         }
                         
                     } else if !hasPlaceholder {
-                        
                         insertPlaceholder(at: leftPuzzleLabelIndex! + 1)
-
                     }
-                    
-                    
                 } else if hasPlaceholder && leftPuzzleLabel.label != kPlaceholderLabel.label && rightPuzzleLabel.label != kPlaceholderLabel.label && rightPuzzleLabel.label.text! == Symbols.Equals {
-                    
                     removePlaceholder()
                 }
             } else if hasPlaceholder {
@@ -568,9 +494,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             removePlaceholder()
         }
+        
     }
     
     func operatorEndedPanning(label: UILabel, isDefaultOperator: Bool) {
+        
         label.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         
         if (label.center.y >= kPuzzleLabelsYPosition - kPuzzleLabelSize.height/2 && label.center.y <= kPuzzleLabelsYPosition + kPuzzleLabelSize.height/2) {
@@ -697,13 +625,16 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Placeholder Manipulation
     //
     func insertPlaceholder(at index: Int) {
+        
         placeholderIndex = index
         puzzleLabels.insert(kPlaceholderLabel, at: placeholderIndex!)
         placePuzzle(isNewPuzzle: false)
         hasPlaceholder = true
+        
     }
     
     func removePlaceholder() {
+        
         puzzleLabels.remove(at: placeholderIndex!)
         placePuzzle(isNewPuzzle: false)
         hasPlaceholder = false
@@ -1193,4 +1124,5 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
+    
 }
