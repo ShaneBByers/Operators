@@ -351,12 +351,14 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
-        if gameType! == .original {
+        switch gameType! {
+        case .original:
             if let score = bestScoreModel.currentScore() {
                 if score == 100 {
                     resetEnabled = false
                 }
             }
+        default: break
         }
         
         resetButtonAction(enable: resetEnabled)
@@ -543,6 +545,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     if correctTimedSolution() {
                         timedModel.completePuzzle()
                         self.newPuzzleButtonPressed(UIButton())
+                        resetButtonAction(enable: false)
                     }
                 }
                 
@@ -625,16 +628,13 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Placeholder Manipulation
     //
     func insertPlaceholder(at index: Int) {
-        
         placeholderIndex = index
         puzzleLabels.insert(kPlaceholderLabel, at: placeholderIndex!)
         placePuzzle(isNewPuzzle: false)
         hasPlaceholder = true
-        
     }
     
     func removePlaceholder() {
-        
         puzzleLabels.remove(at: placeholderIndex!)
         placePuzzle(isNewPuzzle: false)
         hasPlaceholder = false
