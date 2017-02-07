@@ -204,9 +204,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.initializeDefaultOperators()
     }
     
@@ -464,8 +463,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func operatorChangedPanning(recognizer: UIPanGestureRecognizer, label: UILabel) {
-        let translation = recognizer.translation(in: self.view)
         
+        let translation = recognizer.translation(in: self.view)
         let newCenter = CGPoint(x: label.center.x + translation.x, y: label.center.y + translation.y)
         label.center = newCenter
         recognizer.setTranslation(CGPoint.zero, in: self.view)
