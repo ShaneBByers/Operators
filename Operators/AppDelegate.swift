@@ -15,16 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        let barButtonProxy = UIBarButtonItem.appearance()
-        barButtonProxy.tintColor = UIColor.green
-        
-        let buttonProxy = UIButton.appearance()
-        buttonProxy.tintColor = UIColor.green
-        
-        let navBarProxy = UINavigationBar.appearance()
-        navBarProxy.tintColor = UIColor.black
-        
         return true
     }
 

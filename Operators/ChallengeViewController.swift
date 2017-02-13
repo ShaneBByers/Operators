@@ -31,11 +31,26 @@ class ChallengeViewController: UIViewController {
         
         let boldFont = UIFont(descriptor: difficultyButtons[0].titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: difficultyButtons[0].titleLabel!.font.pointSize)
         
+        var buttonTintColor : UIColor = .green
+        
         switch challengeModel.difficulty {
-        case .easy: difficultyButtons[0].titleLabel!.font = boldFont
-        case .medium: difficultyButtons[1].titleLabel!.font = boldFont
-        case .hard: difficultyButtons[2].titleLabel!.font = boldFont
+        case .easy:
+            difficultyButtons[0].titleLabel!.font = boldFont
+            difficultyButtons[0].titleLabel!.textColor = .green
+            buttonTintColor = .green
+        case .medium:
+            difficultyButtons[1].titleLabel!.font = boldFont
+            difficultyButtons[1].titleLabel!.textColor = .yellow
+            buttonTintColor = .yellow
+        case .hard:
+            difficultyButtons[2].titleLabel!.font = boldFont
+            difficultyButtons[2].titleLabel!.textColor = .red
+            buttonTintColor = .red
         case .random: break
+        }
+        
+        for button in puzzleButtons {
+            button.tintColor = buttonTintColor
         }
     }
     
@@ -58,6 +73,7 @@ class ChallengeViewController: UIViewController {
                 UIView.animate(withDuration: 0.2, animations: {
                     button.alpha = 0.0
                 }) { (action) in
+                    button.tintColor = sender.tintColor
                     button.isEnabled = self.challengeModel.puzzleAvailableAt(index: i)
                     UIView.animate(withDuration: 0.2, animations: {
                         button.alpha = 1.0

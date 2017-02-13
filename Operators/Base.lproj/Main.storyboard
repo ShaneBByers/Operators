@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
-    <device id="retina4_7" orientation="landscape">
+    <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -39,11 +39,11 @@
                         <viewControllerLayoutGuide type="bottom" id="dr9-EI-4Nk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iFY-WP-fB7">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvG-97-YP0">
-                                <rect key="frame" x="216" y="164.5" width="235" height="46"/>
+                                <rect key="frame" x="211.66666666666663" y="178" width="313" height="58"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <state key="normal" title="Single Player">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pg-kl-kwJ">
-                                <rect key="frame" x="234" y="218.5" width="199" height="46"/>
+                                <rect key="frame" x="235.66666666666663" y="244" width="265" height="58"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <state key="normal" title="Multiplayer"/>
                                 <variation key="heightClass=compact-widthClass=compact">
@@ -64,7 +64,7 @@
                                 </variation>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Game Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StU-ZI-Kjx">
-                                <rect key="frame" x="171.5" y="122.5" width="324.5" height="34"/>
+                                <rect key="frame" x="152" y="124.66666666666669" width="432.33333333333337" height="45.333333333333314"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUN-Pc-7c4">
-                                <rect key="frame" x="261" y="265.5" width="145" height="35"/>
+                                <rect key="frame" x="274" y="303" width="188" height="42"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="26"/>
                                 <state key="normal" title="Coming Soon!"/>
                                 <variation key="heightClass=compact-widthClass=compact">
@@ -108,11 +108,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9nY-uR-PjB">
-                                <rect key="frame" x="571" y="20" width="76" height="41"/>
+                                <rect key="frame" x="625" y="20" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -125,7 +125,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blg-qp-bfd">
-                                <rect key="frame" x="20" y="326" width="61" height="41"/>
+                                <rect key="frame" x="20" y="360" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Hint">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -138,7 +138,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aF-30-0ib">
-                                <rect key="frame" x="258" y="326" width="151" height="41"/>
+                                <rect key="frame" x="277.66666666666669" y="360" width="181" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="New Puzzle">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,7 +151,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msk-eC-qBu">
-                                <rect key="frame" x="571" y="326" width="76" height="41"/>
+                                <rect key="frame" x="625" y="360" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Solve">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -164,7 +164,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y0-4I-by6">
-                                <rect key="frame" x="249.5" y="247.5" width="168.5" height="40"/>
+                                <rect key="frame" x="247.99999999999997" y="259.33333333333326" width="240.33333333333329" height="56.666666666666686"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current: N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mm-SZ-ht2">
-                                <rect key="frame" x="243.5" y="295.5" width="180.5" height="28.5"/>
+                                <rect key="frame" x="260" y="324" width="216.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -182,7 +182,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41k-Je-KOT">
-                                <rect key="frame" x="20" y="20" width="86" height="41"/>
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="﹤Back">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -195,7 +195,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expression" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-Mh-psi">
-                                <rect key="frame" x="273" y="29" width="120.5" height="23"/>
+                                <rect key="frame" x="278" y="26" width="180.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -253,11 +253,11 @@
                         <viewControllerLayoutGuide type="bottom" id="v35-OI-U4s"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="akj-Fk-xFf">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlW-qo-Kcf">
-                                <rect key="frame" x="207.5" y="129" width="252.5" height="34"/>
+                                <rect key="frame" x="200" y="131.66666666666663" width="336.33333333333337" height="45.333333333333343"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -266,7 +266,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy Challenge Puzzle #" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03Y-ff-kAz">
-                                <rect key="frame" x="20" y="170.5" width="627" height="34"/>
+                                <rect key="frame" x="20" y="184.33333333333334" width="696" height="45.333333333333314"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -275,7 +275,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKO-su-Gm3">
-                                <rect key="frame" x="20" y="265" width="627" height="41"/>
+                                <rect key="frame" x="20" y="294" width="696" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Easy Challenge Puzzle #">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -289,7 +289,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KI-fm-BeL">
-                                <rect key="frame" x="20" y="314" width="627" height="41"/>
+                                <rect key="frame" x="20" y="348" width="696" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Challenge Puzzle Menu">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -303,7 +303,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congrats!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbc-Lx-PaJ">
-                                <rect key="frame" x="239" y="81" width="189.5" height="40"/>
+                                <rect key="frame" x="260" y="78.333333333333329" width="216.33333333333331" height="45.333333333333343"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -349,11 +349,11 @@
                         <viewControllerLayoutGuide type="bottom" id="iaO-Yl-Mt9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lHh-T9-p6g">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tev-FE-Xci">
-                                <rect key="frame" x="258.5" y="130.5" width="150.5" height="28.5"/>
+                                <rect key="frame" x="278" y="142" width="180.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -362,7 +362,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9c-aA-XVD">
-                                <rect key="frame" x="109.5" y="88.5" width="448" height="34"/>
+                                <rect key="frame" x="144" y="88.666666666666686" width="448" height="45.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="448" id="vE4-qN-3WI"/>
                                 </constraints>
@@ -374,7 +374,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZc-yM-byL">
-                                <rect key="frame" x="288" y="309" width="91" height="46"/>
+                                <rect key="frame" x="322.66666666666669" y="348" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Start"/>
@@ -383,7 +383,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM4-hK-S3z">
-                                <rect key="frame" x="20" y="20" width="86" height="41"/>
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="﹤Back">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -396,7 +396,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlv-5O-ltY">
-                                <rect key="frame" x="136.5" y="167" width="61" height="41"/>
+                                <rect key="frame" x="141" y="184" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Easy"/>
@@ -408,7 +408,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Py3-Ts-hNv">
-                                <rect key="frame" x="68.5" y="252.5" width="91" height="41"/>
+                                <rect key="frame" x="123" y="280" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="30 sec"/>
@@ -420,7 +420,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUz-80-cXc">
-                                <rect key="frame" x="189.5" y="252.5" width="76" height="41"/>
+                                <rect key="frame" x="262" y="280" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="1 min"/>
@@ -431,20 +431,8 @@
                                     <action selector="timeButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="LFH-Tt-df9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9h-8y-lMD">
-                                <rect key="frame" x="295.5" y="252.5" width="76" height="41"/>
-                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="2 min"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
-                                </variation>
-                                <connections>
-                                    <action selector="timeButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="Gtj-n5-85O"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqt-PS-v9W">
-                                <rect key="frame" x="348.5" y="167" width="61" height="41"/>
+                                <rect key="frame" x="383" y="184" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Hard"/>
@@ -456,7 +444,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfp-62-Ga1">
-                                <rect key="frame" x="439.5" y="167" width="91" height="41"/>
+                                <rect key="frame" x="486" y="184" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Random"/>
@@ -468,7 +456,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctD-uL-2qy">
-                                <rect key="frame" x="401.5" y="252.5" width="76" height="41"/>
+                                <rect key="frame" x="504" y="280" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="5 min"/>
@@ -479,28 +467,24 @@
                                     <action selector="timeButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="oIV-Ep-qOf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j89-xH-yrK">
-                                <rect key="frame" x="507.5" y="252.5" width="91" height="41"/>
-                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Custom"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
-                                </variation>
-                                <connections>
-                                    <action selector="timeButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="KMz-5j-kGU"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDW-Kk-Yt0" userLabel="Difficulty Center">
-                                <rect key="frame" x="333" y="164.5" width="1" height="46"/>
+                                <rect key="frame" x="367.66666666666669" y="184" width="1" height="46"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Wst-BR-lTf"/>
                                     <constraint firstAttribute="width" constant="1" id="sph-sD-qvw"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8g-QZ-pub" userLabel="Time Center">
+                                <rect key="frame" x="367.66666666666669" y="280" width="1" height="46"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Nws-fb-xy1"/>
+                                    <constraint firstAttribute="width" constant="1" id="dPa-Gh-qrP"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-cN-6OD">
-                                <rect key="frame" x="227.5" y="167" width="91" height="41"/>
+                                <rect key="frame" x="244" y="184" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Medium"/>
@@ -512,7 +496,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sit-g1-INw">
-                                <rect key="frame" x="258.5" y="52.5" width="150.5" height="28.5"/>
+                                <rect key="frame" x="278" y="46.666666666666671" width="180.33333333333331" height="34.000000000000014"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -521,7 +505,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNV-ee-zGP">
-                                <rect key="frame" x="303.5" y="216" width="60.5" height="28.5"/>
+                                <rect key="frame" x="332" y="238" width="72.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -529,10 +513,23 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9h-8y-lMD">
+                                <rect key="frame" x="383" y="280" width="91" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="2 min"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
+                                </variation>
+                                <connections>
+                                    <action selector="timeButtonPressed:" destination="D47-sn-EvT" eventType="touchUpInside" id="Gtj-n5-85O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ctD-uL-2qy" firstAttribute="leading" secondItem="z9h-8y-lMD" secondAttribute="trailing" constant="30" id="2PT-aW-NGl"/>
+                            <constraint firstItem="y8g-QZ-pub" firstAttribute="top" secondItem="wNV-ee-zGP" secondAttribute="bottom" constant="8" id="3Sq-lf-uIJ"/>
                             <constraint firstItem="sit-g1-INw" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="3Ue-ET-kjo"/>
                             <constraint firstItem="ctD-uL-2qy" firstAttribute="top" secondItem="Py3-Ts-hNv" secondAttribute="top" id="5Ax-Xw-QU1"/>
                             <constraint firstItem="uF2-cN-6OD" firstAttribute="top" secondItem="Tev-FE-Xci" secondAttribute="bottom" constant="8" id="6T1-cs-F7D"/>
@@ -543,14 +540,11 @@
                             <constraint firstItem="Tev-FE-Xci" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="IPw-DZ-sEF"/>
                             <constraint firstItem="Iqt-PS-v9W" firstAttribute="centerY" secondItem="lHh-T9-p6g" secondAttribute="centerY" id="Jm4-vU-Fib"/>
                             <constraint firstItem="Tev-FE-Xci" firstAttribute="top" secondItem="f9c-aA-XVD" secondAttribute="bottom" constant="8" id="L9C-DD-uhe"/>
-                            <constraint firstItem="j89-xH-yrK" firstAttribute="top" secondItem="Py3-Ts-hNv" secondAttribute="top" id="Ll0-EH-y1Y"/>
-                            <constraint firstItem="z9h-8y-lMD" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="Ly8-hd-lke"/>
-                            <constraint firstItem="j89-xH-yrK" firstAttribute="leading" secondItem="ctD-uL-2qy" secondAttribute="trailing" constant="30" id="Mag-dp-wJN"/>
                             <constraint firstItem="zDW-Kk-Yt0" firstAttribute="leading" secondItem="uF2-cN-6OD" secondAttribute="trailing" constant="14.5" id="N12-19-J7m"/>
                             <constraint firstItem="Iqt-PS-v9W" firstAttribute="leading" secondItem="zDW-Kk-Yt0" secondAttribute="trailing" constant="14.5" id="NGY-tt-ULV"/>
                             <constraint firstItem="tfp-62-Ga1" firstAttribute="leading" secondItem="Iqt-PS-v9W" secondAttribute="trailing" constant="30" id="S3B-X3-ANZ"/>
                             <constraint firstItem="uF2-cN-6OD" firstAttribute="leading" secondItem="nlv-5O-ltY" secondAttribute="trailing" constant="30" id="SMX-QV-4ki"/>
-                            <constraint firstItem="z9h-8y-lMD" firstAttribute="leading" secondItem="FUz-80-cXc" secondAttribute="trailing" constant="30" id="SR9-9e-QQY"/>
+                            <constraint firstItem="z9h-8y-lMD" firstAttribute="leading" secondItem="y8g-QZ-pub" secondAttribute="trailing" constant="14.5" id="Sgz-6E-Nw5"/>
                             <constraint firstItem="FM4-hK-S3z" firstAttribute="top" secondItem="aTF-uB-mmL" secondAttribute="bottom" id="Ux1-q9-Tmd"/>
                             <constraint firstItem="tfp-62-Ga1" firstAttribute="centerY" secondItem="lHh-T9-p6g" secondAttribute="centerY" id="VDj-t4-a4z"/>
                             <constraint firstItem="f9c-aA-XVD" firstAttribute="top" secondItem="sit-g1-INw" secondAttribute="bottom" constant="8" id="WeE-qI-mZ8"/>
@@ -560,6 +554,8 @@
                             <constraint firstItem="FUz-80-cXc" firstAttribute="top" secondItem="Py3-Ts-hNv" secondAttribute="top" id="ecX-KT-eOA"/>
                             <constraint firstItem="z9h-8y-lMD" firstAttribute="top" secondItem="Py3-Ts-hNv" secondAttribute="top" id="fMY-hc-EYq"/>
                             <constraint firstItem="wNV-ee-zGP" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="gIX-pH-v1S"/>
+                            <constraint firstItem="y8g-QZ-pub" firstAttribute="leading" secondItem="FUz-80-cXc" secondAttribute="trailing" constant="14.5" id="iTe-gg-rfq"/>
+                            <constraint firstItem="y8g-QZ-pub" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="kqS-d8-olv"/>
                             <constraint firstItem="f9c-aA-XVD" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="ojq-96-Zdw"/>
                             <constraint firstItem="PZc-yM-byL" firstAttribute="centerX" secondItem="lHh-T9-p6g" secondAttribute="centerX" id="tUR-fc-tqP"/>
                             <constraint firstItem="zDW-Kk-Yt0" firstAttribute="centerY" secondItem="lHh-T9-p6g" secondAttribute="centerY" id="vIf-QY-1E0"/>
@@ -593,11 +589,11 @@
                         <viewControllerLayoutGuide type="bottom" id="ghy-QE-jdN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eCv-3T-aKh">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aca-nA-bbm">
-                                <rect key="frame" x="265.5" y="167" width="136" height="41"/>
+                                <rect key="frame" x="286.66666666666669" y="184" width="163" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Challenge">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -610,7 +606,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMp-Kh-EUf">
-                                <rect key="frame" x="273" y="118" width="121" height="41"/>
+                                <rect key="frame" x="295.66666666666669" y="130" width="145" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Original">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -623,7 +619,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpS-tj-uK9">
-                                <rect key="frame" x="295.5" y="216" width="76" height="41"/>
+                                <rect key="frame" x="322.66666666666669" y="238" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Timed">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -636,7 +632,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Game Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGk-9g-XGa">
-                                <rect key="frame" x="171.5" y="76" width="324.5" height="34"/>
+                                <rect key="frame" x="152" y="76.666666666666686" width="432.33333333333337" height="45.333333333333329"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -645,7 +641,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xah-XT-ZAG">
-                                <rect key="frame" x="20" y="20" width="86" height="41"/>
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="﹤Back">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -691,11 +687,11 @@
                         <viewControllerLayoutGuide type="bottom" id="2oU-I4-7RS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FCM-7t-SQc">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iy2-PR-LkS">
-                                <rect key="frame" x="288" y="167" width="91" height="41"/>
+                                <rect key="frame" x="313.66666666666669" y="184" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Medium"/>
@@ -707,7 +703,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyO-Xj-csb">
-                                <rect key="frame" x="303" y="216" width="61" height="41"/>
+                                <rect key="frame" x="331.66666666666669" y="238" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Hard"/>
@@ -719,7 +715,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3Q-5n-bRl">
-                                <rect key="frame" x="303" y="118" width="61" height="41"/>
+                                <rect key="frame" x="331.66666666666669" y="130" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Easy"/>
@@ -731,7 +727,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14y-1C-dWV">
-                                <rect key="frame" x="191" y="81.5" width="285.5" height="28.5"/>
+                                <rect key="frame" x="197" y="88" width="342.33333333333337" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -740,7 +736,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX1-Hk-FUc">
-                                <rect key="frame" x="512" y="82" width="135" height="28.5"/>
+                                <rect key="frame" x="581" y="88.666666666666671" width="135" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="bz2-hf-QZ3"/>
                                 </constraints>
@@ -752,7 +748,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6n9-1C-INi">
-                                <rect key="frame" x="512" y="124.5" width="135" height="28.5"/>
+                                <rect key="frame" x="581" y="136.66666666666666" width="135" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="0vA-Qf-1Xt"/>
                                 </constraints>
@@ -764,7 +760,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iem-4s-skU">
-                                <rect key="frame" x="512" y="173" width="135" height="28.5"/>
+                                <rect key="frame" x="581" y="190.66666666666666" width="135" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="mKd-AV-7zk"/>
                                 </constraints>
@@ -776,7 +772,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-mk-KB0">
-                                <rect key="frame" x="512" y="221.5" width="135" height="28.5"/>
+                                <rect key="frame" x="581" y="244.66666666666669" width="135" height="34.000000000000057"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="Csu-83-vnZ"/>
                                 </constraints>
@@ -788,7 +784,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rkx-eF-iN4">
-                                <rect key="frame" x="20" y="20" width="86" height="41"/>
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="﹤Back">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -801,7 +797,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4M-HN-g5c">
-                                <rect key="frame" x="288" y="265" width="91" height="41"/>
+                                <rect key="frame" x="313.66666666666669" y="292" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Random"/>
@@ -813,7 +809,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVI-J2-PyW">
-                                <rect key="frame" x="512" y="270" width="135" height="28.5"/>
+                                <rect key="frame" x="581" y="298.66666666666669" width="135" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="ppp-Rb-utH"/>
                                 </constraints>
@@ -877,11 +873,11 @@
                         <viewControllerLayoutGuide type="bottom" id="1KC-Nq-jY0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NbZ-ku-jgm">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NR-JU-Ta7">
-                                <rect key="frame" x="313.5" y="167.5" width="40" height="40"/>
+                                <rect key="frame" x="343" y="182" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="1sR-09-lrY"/>
@@ -912,7 +908,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-xJ-hLa">
-                                <rect key="frame" x="361.5" y="167.5" width="40" height="40"/>
+                                <rect key="frame" x="401" y="182" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="BBW-oo-1rU"/>
@@ -943,7 +939,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzB-Ol-eNQ">
-                                <rect key="frame" x="409.5" y="167.5" width="40" height="40"/>
+                                <rect key="frame" x="459" y="182" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="4c7-Ya-aMH"/>
@@ -974,7 +970,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuY-ZH-iHU">
-                                <rect key="frame" x="217.5" y="167.5" width="40" height="40"/>
+                                <rect key="frame" x="227" y="182" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="F8O-r6-JVL"/>
@@ -1005,7 +1001,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x88-UJ-jRo">
-                                <rect key="frame" x="265.5" y="167.5" width="40" height="40"/>
+                                <rect key="frame" x="285" y="182" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="0Uc-9o-Pie"/>
@@ -1036,7 +1032,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIf-0V-mdc">
-                                <rect key="frame" x="313.5" y="215.5" width="40" height="40"/>
+                                <rect key="frame" x="343" y="240" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Hgn-Kd-Mbb"/>
@@ -1067,7 +1063,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqb-EL-a4i">
-                                <rect key="frame" x="361.5" y="215.5" width="40" height="40"/>
+                                <rect key="frame" x="401" y="240" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="44Z-Qg-W6i"/>
@@ -1098,7 +1094,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPl-ev-cyS">
-                                <rect key="frame" x="409.5" y="215.5" width="40" height="40"/>
+                                <rect key="frame" x="459" y="240" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="4pl-de-VKp"/>
@@ -1129,7 +1125,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwb-3b-Vbf">
-                                <rect key="frame" x="217.5" y="215.5" width="40" height="40"/>
+                                <rect key="frame" x="227" y="240" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9Bg-fd-UT1"/>
@@ -1160,7 +1156,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMg-cG-pcN">
-                                <rect key="frame" x="265.5" y="215.5" width="40" height="40"/>
+                                <rect key="frame" x="285" y="240" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1bh-5h-iey"/>
@@ -1191,7 +1187,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFe-H7-rqM">
-                                <rect key="frame" x="313.5" y="263.5" width="40" height="40"/>
+                                <rect key="frame" x="343" y="298" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="B4b-Ti-DYJ"/>
@@ -1222,7 +1218,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe6-MJ-lDV">
-                                <rect key="frame" x="217.5" y="263.5" width="40" height="40"/>
+                                <rect key="frame" x="227" y="298" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="CgQ-87-muv"/>
@@ -1253,7 +1249,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zt-Sm-2oF">
-                                <rect key="frame" x="265.5" y="263.5" width="40" height="40"/>
+                                <rect key="frame" x="285" y="298" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="6so-na-8eK"/>
@@ -1284,7 +1280,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuB-KT-mR9">
-                                <rect key="frame" x="313.5" y="119.5" width="40" height="40"/>
+                                <rect key="frame" x="343" y="124" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Rpo-3t-Elr"/>
@@ -1315,7 +1311,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipu-Jj-rpj">
-                                <rect key="frame" x="361.5" y="119.5" width="40" height="40"/>
+                                <rect key="frame" x="401" y="124" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="96o-ym-Mxz"/>
@@ -1346,7 +1342,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDw-Ve-k0Q">
-                                <rect key="frame" x="409.5" y="119.5" width="40" height="40"/>
+                                <rect key="frame" x="459" y="124" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="94W-Ej-0ps"/>
@@ -1377,7 +1373,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ly9-Jh-Sbh">
-                                <rect key="frame" x="217.5" y="119.5" width="40" height="40"/>
+                                <rect key="frame" x="227" y="124" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="ZWQ-kn-6Bk"/>
@@ -1408,7 +1404,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIn-zG-IRQ">
-                                <rect key="frame" x="265.5" y="119.5" width="40" height="40"/>
+                                <rect key="frame" x="285" y="124" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="G4L-Ox-g8Y"/>
@@ -1439,7 +1435,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOl-Pk-2Xt">
-                                <rect key="frame" x="313.5" y="71.5" width="40" height="40"/>
+                                <rect key="frame" x="343" y="66" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="5Bu-TY-Qkx"/>
@@ -1470,7 +1466,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgN-fm-y3K">
-                                <rect key="frame" x="361.5" y="71.5" width="40" height="40"/>
+                                <rect key="frame" x="401" y="66" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Hja-go-doV"/>
@@ -1501,7 +1497,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCR-EB-a9S">
-                                <rect key="frame" x="409.5" y="71.5" width="40" height="40"/>
+                                <rect key="frame" x="459" y="66" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="73f-MB-0mv"/>
@@ -1532,7 +1528,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rae-w0-zJi">
-                                <rect key="frame" x="217.5" y="71.5" width="40" height="40"/>
+                                <rect key="frame" x="227" y="66" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EoT-vG-mbs"/>
@@ -1563,7 +1559,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qin-21-LKp">
-                                <rect key="frame" x="265.5" y="71.5" width="40" height="40"/>
+                                <rect key="frame" x="285" y="66" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DeM-Ph-na3"/>
@@ -1594,7 +1590,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjR-A5-aDc">
-                                <rect key="frame" x="361.5" y="263.5" width="40" height="40"/>
+                                <rect key="frame" x="401" y="298" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Fi7-la-9jZ"/>
@@ -1625,7 +1621,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKb-ct-WCI">
-                                <rect key="frame" x="409.5" y="263.5" width="40" height="40"/>
+                                <rect key="frame" x="459" y="298" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="7bM-7Q-74x"/>
@@ -1656,9 +1652,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXY-k7-b25">
-                                <rect key="frame" x="288" y="305.5" width="91" height="41"/>
+                                <rect key="frame" x="313.66666666666669" y="356" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Medium"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
@@ -1668,7 +1664,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIM-cd-pwf">
-                                <rect key="frame" x="217.5" y="305.5" width="61" height="41"/>
+                                <rect key="frame" x="227" y="356" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Easy"/>
@@ -1680,9 +1676,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sl-LU-UDe">
-                                <rect key="frame" x="388.5" y="305.5" width="61" height="41"/>
+                                <rect key="frame" x="436" y="356" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Hard"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
@@ -1692,7 +1688,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXj-Ys-YQY">
-                                <rect key="frame" x="20" y="20" width="86" height="41"/>
+                                <rect key="frame" x="20" y="20" width="103" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="﹤Back">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1834,11 +1830,11 @@
                         <viewControllerLayoutGuide type="bottom" id="k6A-3X-wdb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7AS-Me-QOK">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed: Puzzles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8u-gu-ym2">
-                                <rect key="frame" x="135.5" y="129" width="396.5" height="34"/>
+                                <rect key="frame" x="104" y="131.66666666666663" width="528.33333333333337" height="45.333333333333343"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1847,7 +1843,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9f-FW-jow">
-                                <rect key="frame" x="20" y="170.5" width="627" height="34"/>
+                                <rect key="frame" x="20" y="184.33333333333334" width="696" height="45.333333333333314"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1856,7 +1852,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NME-vc-Efc">
-                                <rect key="frame" x="20" y="265" width="627" height="41"/>
+                                <rect key="frame" x="20" y="294" width="696" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Restart">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1870,7 +1866,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbg-Nj-Jco">
-                                <rect key="frame" x="20" y="314" width="627" height="41"/>
+                                <rect key="frame" x="20" y="348" width="696" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Timed Puzzle Menu">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1884,12 +1880,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Times Up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-zO-leE">
-                                <rect key="frame" x="239" y="81" width="190" height="40"/>
+                                <rect key="frame" x="260" y="78.333333333333329" width="216.33333333333331" height="45.333333333333343"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckA-4I-IpQ">
+                                <rect key="frame" x="20" y="237.66666666666663" width="696" height="45.333333333333371"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 </variation>
                             </label>
                         </subviews>
@@ -1903,17 +1908,21 @@
                             <constraint firstItem="K8u-gu-ym2" firstAttribute="centerX" secondItem="7AS-Me-QOK" secondAttribute="centerX" id="924-ac-Tgx"/>
                             <constraint firstItem="N9f-FW-jow" firstAttribute="centerY" secondItem="7AS-Me-QOK" secondAttribute="centerY" id="Dtr-Km-T63"/>
                             <constraint firstItem="Wbg-Nj-Jco" firstAttribute="centerX" secondItem="7AS-Me-QOK" secondAttribute="centerX" id="FmI-uN-QGg"/>
+                            <constraint firstItem="ckA-4I-IpQ" firstAttribute="trailing" secondItem="7AS-Me-QOK" secondAttribute="trailingMargin" id="HO7-Ir-BH8"/>
                             <constraint firstItem="N9f-FW-jow" firstAttribute="top" secondItem="K8u-gu-ym2" secondAttribute="bottom" constant="8" id="IlA-jw-oDL"/>
                             <constraint firstItem="N9f-FW-jow" firstAttribute="leading" secondItem="7AS-Me-QOK" secondAttribute="leadingMargin" id="NUm-ik-MGs"/>
                             <constraint firstItem="Wbg-Nj-Jco" firstAttribute="top" secondItem="NME-vc-Efc" secondAttribute="bottom" constant="8" id="hOp-bN-fLQ"/>
+                            <constraint firstItem="ckA-4I-IpQ" firstAttribute="top" secondItem="N9f-FW-jow" secondAttribute="bottom" constant="7.5" id="iw0-DL-t8e"/>
                             <constraint firstItem="N9f-FW-jow" firstAttribute="trailing" secondItem="7AS-Me-QOK" secondAttribute="trailingMargin" id="mjC-fx-kOe"/>
                             <constraint firstItem="k6A-3X-wdb" firstAttribute="top" secondItem="Wbg-Nj-Jco" secondAttribute="bottom" constant="20" id="pPw-GN-DH7"/>
                             <constraint firstItem="3cm-zO-leE" firstAttribute="centerX" secondItem="7AS-Me-QOK" secondAttribute="centerX" id="qcc-fe-0b6"/>
                             <constraint firstItem="Wbg-Nj-Jco" firstAttribute="trailing" secondItem="7AS-Me-QOK" secondAttribute="trailingMargin" id="tW4-rI-P81"/>
+                            <constraint firstItem="ckA-4I-IpQ" firstAttribute="leading" secondItem="7AS-Me-QOK" secondAttribute="leadingMargin" id="wpV-Fd-Wb4"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="completedPuzzlesLabel" destination="K8u-gu-ym2" id="kTr-RB-fzA"/>
+                        <outlet property="highScoreLabel" destination="ckA-4I-IpQ" id="EqG-ke-Rfc"/>
                         <outlet property="scoreLabel" destination="N9f-FW-jow" id="9qu-4V-9H7"/>
                     </connections>
                 </viewController>
@@ -1923,6 +1932,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bcW-eA-Imx"/>
+        <segue reference="jbn-RP-Rxt"/>
     </inferredMetricsTieBreakers>
 </document>

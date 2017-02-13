@@ -148,7 +148,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         case "timerCompletedSegue":
             let destination = segue.destination as! TimedCompletedViewController
             
-            destination.configureText(completedPuzzles: timedModel.completedPuzzles(), score: timedModel.score())
+            destination.configureText(completedPuzzles: timedModel.completedPuzzles(), score: timedModel.score(), highScore: timedModel.highScore())
             destination.configurePuzzleViewController(viewController: self)
         case "unwindToOriginal": break
         case "unwindToChallenge": break

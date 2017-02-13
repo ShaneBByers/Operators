@@ -14,12 +14,15 @@ class TimedCompletedViewController: UIViewController {
     
     var score : Int?
     
+    var highScore : Int?
+    
     var puzzleViewController : PuzzleViewController?
     
     @IBOutlet weak var completedPuzzlesLabel: UILabel!
     
     @IBOutlet weak var scoreLabel: UILabel!
     
+    @IBOutlet weak var highScoreLabel: UILabel!
     
     @IBAction func restartButtonPressed(_ sender: UIButton) {
         puzzleViewController!.restartTimedPuzzle()
@@ -32,9 +35,10 @@ class TimedCompletedViewController: UIViewController {
         }
     }
     
-    func configureText(completedPuzzles: Int, score: Int) {
+    func configureText(completedPuzzles: Int, score: Int, highScore: Int) {
         self.completedPuzzles = completedPuzzles
         self.score = score
+        self.highScore = highScore
     }
     
     func configurePuzzleViewController(viewController : PuzzleViewController) {
@@ -46,6 +50,7 @@ class TimedCompletedViewController: UIViewController {
         
         completedPuzzlesLabel.text! = "Completed: " + String(self.completedPuzzles!) + " Puzzles"
         scoreLabel.text! = "Score: " + String(self.score!)
+        highScoreLabel.text! = "High Score: " + String(self.highScore!)
     }
     
 
