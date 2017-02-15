@@ -15,6 +15,7 @@ class Symbols {
     static let Multiply = "✖️"
     static let Divide = "➗"
     static let Equals = "="
+    static let Wildcard = "✪"
 }
 
 class OperatorFunctions {

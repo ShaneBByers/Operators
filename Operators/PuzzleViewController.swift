@@ -59,6 +59,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     let kLabelBuffer : CGFloat = 10
     let kPlaceholderLabel = PuzzleLabel(text: "", isOperand: false, isOperator: false, isSolution: false, isMovable: true)
     
+    let wildcardOperator : UILabel
+    
     var hasPlaceholder = false
     var placeholderIndex : Int?
     
@@ -150,6 +152,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             destination.configureText(completedPuzzles: timedModel.completedPuzzles(), score: timedModel.score(), highScore: timedModel.highScore())
             destination.configurePuzzleViewController(viewController: self)
+        case "hintsSegue":
+            let destination = segue.destination as! HintsViewController
+            
+            destination.configureViewController(viewController: self)
         case "unwindToOriginal": break
         case "unwindToChallenge": break
         case "unwindToTimed": break
@@ -164,6 +170,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         for _ in 0..<4 {
             defaultOperatorLabels.append(UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize)))
         }
+        wildcardOperator = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
         super.init(coder: aDecoder)
     }
     
@@ -226,7 +233,29 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Initializations
     //
     func initializeDefaultOperators() {
+        for label in defaultOperatorLabels {
+            label.font = Fonts.wRhC
+            label.textAlignment = .center
+            label.isUserInteractionEnabled = true
+            
+            self.view.addSubview(label)
+        }
         
+        defaultOperatorLabels[0].text = Symbols.Add
+        defaultOperatorLabels[1].text = Symbols.Subtract
+        defaultOperatorLabels[2].text = Symbols.Multiply
+        defaultOperatorLabels[3].text = Symbols.Divide
+        
+        wildcardOperator.font = Fonts.wRhC
+        wildcardOperator.textAlignment = .center
+        wildcardOperator.isUserInteractionEnabled = true
+        wildcardOperator.text = Symbols.Wildcard
+        wildcardOperator.alpha = 0.0
+        
+        placeDefaultOperators(isInitial: true)
+    }
+    
+    func placeDefaultOperators(isInitial: Bool) {
         let yPositionCenter = primaryLabel.frame.origin.y - kPuzzleLabelSize.height/2.0
         
         let totalWidth = self.view.frame.size.width
@@ -236,24 +265,26 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         let oneWidthCenter = oneWidth/2
         
         for (i, label) in defaultOperatorLabels.enumerated() {
-            label.font = Fonts.wRhC
-            label.textColor = .green
-            label.textAlignment = .center
-            label.isUserInteractionEnabled = true
-            
             let xPositionCenter: CGFloat
             
             xPositionCenter = oneWidth*CGFloat(i) + oneWidthCenter
             
-            label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
-            
-            self.view.addSubview(label)
+            if isInitial {
+                label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
+            } else {
+                if label.text == Symbols.Wildcard {
+                    label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
+                    self.view.addSubview(label)
+                    UIView.animate(withDuration: 0.2, animations: { 
+                        label.alpha = 1.0
+                    })
+                } else {
+                    UIView.animate(withDuration: 0.2, animations: {
+                        label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
+                    })
+                }
+            }
         }
-        
-        defaultOperatorLabels[0].text = Symbols.Add
-        defaultOperatorLabels[1].text = Symbols.Subtract
-        defaultOperatorLabels[2].text = Symbols.Multiply
-        defaultOperatorLabels[3].text = Symbols.Divide
     }
     
     func initializeTimer() {
@@ -304,6 +335,15 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             doubleTapRecognizer.delegate = self
             label.addGestureRecognizer(doubleTapRecognizer)
         }
+        
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorPanned(_:)))
+        panRecognizer.delegate = self
+        wildcardOperator.addGestureRecognizer(panRecognizer)
+        
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorDoubleTapped(_:)))
+        doubleTapRecognizer.numberOfTapsRequired = 2
+        doubleTapRecognizer.delegate = self
+        wildcardOperator.addGestureRecognizer(doubleTapRecognizer)
     }
     
     func defaultOperatorPanned(_ recognizer : UIPanGestureRecognizer) {
@@ -335,24 +375,51 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if let view = recognizer.view {
             let label = view as! UILabel
+            var operatorCounter = 0
             for i in self.puzzleLabels.indices {
+                if self.puzzleLabels[i].isOperator {
+                    operatorCounter += 1
+                }
                 if self.puzzleLabels[i].isOperand && self.puzzleLabels[i+1].isOperand {
                     
-                    let operatorPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
+                    operatorCounter += 1
                     
-                    operatorPanGestureRecognizer.delegate = self
+                    let newLabel : PuzzleLabel
                     
-                    let operatorDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorDoubleTapped(_:)))
-                    
-                    operatorDoubleTapGestureRecognizer.numberOfTapsRequired = 2
-                    
-                    operatorDoubleTapGestureRecognizer.delegate = self
-                    
-                    let newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true)
-                    
-                    newLabel.label.addGestureRecognizer(operatorPanGestureRecognizer)
-                    
-                    newLabel.label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
+                    if label.text! == Symbols.Wildcard {
+                        var elementOperatorCounter = 0
+                        var operatorText : String?
+                        for element in puzzleModel.equation!.elements {
+                            if Int(element.string) == nil {
+                                elementOperatorCounter += 1
+                            }
+                            if operatorCounter == elementOperatorCounter {
+                                operatorText = element.string
+                                break
+                            }
+                        }
+                        
+                        newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false)
+                        
+                        defaultOperatorLabels.remove(at: 2)
+                        
+                        placeDefaultOperators(isInitial: false)
+                        
+                        wildcardOperator.removeFromSuperview()
+                    } else {
+                        let operatorPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
+                        operatorPanGestureRecognizer.delegate = self
+                        
+                        let operatorDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorDoubleTapped(_:)))
+                        operatorDoubleTapGestureRecognizer.numberOfTapsRequired = 2
+                        operatorDoubleTapGestureRecognizer.delegate = self
+
+                        newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true)
+                        
+                        newLabel.label.addGestureRecognizer(operatorPanGestureRecognizer)
+                        
+                        newLabel.label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
+                    }
                     
                     self.puzzleLabels.insert(newLabel, at: i+1)
                     
@@ -540,23 +607,57 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         if (label.center.y >= kPuzzleLabelsYPosition - kPuzzleLabelSize.height/2 && label.center.y <= kPuzzleLabelsYPosition + kPuzzleLabelSize.height/2) {
             
             if hasPlaceholder {
+                
+                
+                
+                let newLabel : PuzzleLabel
+                
+                if label.text! == Symbols.Wildcard {
+                    var operatorCounter = 0
+                    for i in puzzleLabels.indices {
+                        if (puzzleLabels[i].isOperator || (puzzleLabels[i].isOperand && puzzleLabels[i+1].isOperand) || i == placeholderIndex!) {
+                            operatorCounter += 1
+                        }
+                        if i == placeholderIndex! {
+                            break
+                        }
+                    }
+                    
+                    var elementOperatorCounter = 0
+                    var operatorText : String?
+                    for element in puzzleModel.equation!.elements {
+                        if Int(element.string) == nil {
+                            elementOperatorCounter += 1
+                        }
+                        if operatorCounter == elementOperatorCounter {
+                            operatorText = element.string
+                            break
+                        }
+                    }
+                    
+                    newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false)
+                    
+                    defaultOperatorLabels.remove(at: 2)
+                    
+                    placeDefaultOperators(isInitial: false)
+                    
+                    wildcardOperator.removeFromSuperview()
+                } else {
+                    
+                    let operatorPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
+                    operatorPanGestureRecognizer.delegate = self
+                    
+                    let operatorDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorDoubleTapped(_:)))
+                    operatorDoubleTapGestureRecognizer.numberOfTapsRequired = 2
+                    operatorDoubleTapGestureRecognizer.delegate = self
+                    
+                    newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true)
+                    
+                    newLabel.label.addGestureRecognizer(operatorPanGestureRecognizer)
+                    newLabel.label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
+                }
+                
                 puzzleLabels.remove(at: placeholderIndex!)
-                
-                let operatorPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
-                
-                operatorPanGestureRecognizer.delegate = self
-                
-                let operatorDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorDoubleTapped(_:)))
-                
-                operatorDoubleTapGestureRecognizer.numberOfTapsRequired = 2
-                
-                operatorDoubleTapGestureRecognizer.delegate = self
-                
-                let newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true)
-                
-                newLabel.label.addGestureRecognizer(operatorPanGestureRecognizer)
-                
-                newLabel.label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
                 
                 puzzleLabels.insert(newLabel, at: placeholderIndex!)
                 
@@ -986,7 +1087,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    @IBAction func hintsButtonPressed(_ sender: UIButton) {
+    func hintsRandomOperator() {
         var totalOperands : UInt32 = 0
         var totalOperators : UInt32 = 0
         for puzzleLabel in puzzleLabels {
@@ -1075,6 +1176,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         if operatorCounter == Int(totalOperands) - 2 {
             hintsButtonAction(enable: false)
         }
+    }
+    
+    func hintsCustomOperator() {
+        defaultOperatorLabels.insert(wildcardOperator, at: 2)
+        
+        placeDefaultOperators(isInitial: false)
     }
     
     
