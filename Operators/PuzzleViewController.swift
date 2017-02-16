@@ -13,6 +13,7 @@ struct PuzzleLabel {
     var isOperator : Bool
     var isMovable : Bool
     let label : UILabel
+    var lockLabel : UILabel?
     
     init(text: String, isOperand: Bool, isOperator: Bool, isSolution: Bool, isMovable: Bool) {
         let _label : UILabel
@@ -31,12 +32,21 @@ struct PuzzleLabel {
         
         if isOperator {
             _label.isUserInteractionEnabled = true
+            let _lockLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+            
+            _lockLabel.font = Fonts.wRhC
+            _lockLabel.text = "🔒"
+            _lockLabel.textAlignment = .center
+            _lockLabel.alpha = 0.5
+            _lockLabel.isHidden = isMovable
+            self.lockLabel = _lockLabel
         }
         
         self.label = _label
         self.isOperand = isOperand
         self.isOperator = isOperator
         self.isMovable = isMovable
+        
     }
 }
 
@@ -444,6 +454,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         if correctTimedSolution() {
                             timedModel.completePuzzle()
                             self.newPuzzleButtonPressed(UIButton())
+                            addTime(difficulty: difficulty!)
                         }
                     }
                     
@@ -681,6 +692,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         timedModel.completePuzzle()
                         self.newPuzzleButtonPressed(UIButton())
                         resetButtonAction(enable: false)
+                        addTime(difficulty: difficulty!)
                     }
                 }
                 
@@ -804,6 +816,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         var currentScore : Int?
         
+        let oldScore = bestScoreModel.currentScore()
+        
         for puzzleLabel in puzzleLabels {
             if puzzleLabel.isOperand || puzzleLabel.isOperator {
                 newExpression.append(puzzleLabel.label.text!)
@@ -818,6 +832,13 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if let best = currentScore {
             secondaryLabel.text = "Current: " + String(best)
+            if let old = oldScore {
+                if best > old {
+                    primaryLabelUpdate(withText: "\(best-old)")
+                }
+            } else {
+                primaryLabelUpdate(withText: "\(best)")
+            }
             if best == 100 {
                 hintsButtonAction(enable: false)
                 solveButtonAction(enable: false)
@@ -914,6 +935,33 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             return solution == timedModel.currentSolution()
         } else {
             return false
+        }
+    }
+    
+    func addTime(difficulty diff: Difficulty) {
+        let timeAdded = timedModel.addTime(difficulty: diff)
+        primaryLabelUpdate(withText: "\(Int(timeAdded))")
+    }
+    
+    func primaryLabelUpdate(withText text: String) {
+        let primaryUpdateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 60))
+        primaryUpdateLabel.font = Fonts.wRhC
+        primaryUpdateLabel.text = "+\(text)"
+        primaryUpdateLabel.center.y = primaryLabel.center.y
+        primaryUpdateLabel.center.x = primaryLabel.frame.origin.x + primaryLabel.frame.size.width + 4.0*kLabelBuffer
+        primaryUpdateLabel.alpha = 0.0
+        self.view.addSubview(primaryUpdateLabel)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            primaryUpdateLabel.alpha = 1.0
+            primaryUpdateLabel.center.y -= 2.0*self.kLabelBuffer
+        }) { (value) in
+            UIView.animate(withDuration: 0.5, animations: {
+                primaryUpdateLabel.alpha = 0.0
+                primaryUpdateLabel.center.y -= 2.0*self.kLabelBuffer
+            }, completion: { (value) in
+                primaryUpdateLabel.removeFromSuperview()
+            })
         }
     }
     
@@ -1191,8 +1239,14 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             UIView.animate(withDuration: 0.2, animations: {
                 puzzleLabel.label.alpha = 0.0
+                if let lockLabel = puzzleLabel.lockLabel {
+                    lockLabel.alpha = 0.0
+                }
             }, completion: { (value) in
                 puzzleLabel.label.removeFromSuperview()
+                if let lockLabel = puzzleLabel.lockLabel {
+                    lockLabel.removeFromSuperview()
+                }
             })
         }
         
@@ -1255,9 +1309,16 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 
                 if self.view.subviews.contains(puzzleLabel.label) {
                     UIView.animate(withDuration: 0.2, animations: {
+                        if let lockLabel = puzzleLabel.lockLabel {
+                            lockLabel.center = CGPoint(x: xPositionCenter, y: self.kPuzzleLabelsYPosition)
+                        }
                         puzzleLabel.label.center = CGPoint(x: xPositionCenter, y: self.kPuzzleLabelsYPosition)
                     })
                 } else {
+                    if let lockLabel = puzzleLabel.lockLabel {
+                        self.view.addSubview(lockLabel)
+                        lockLabel.center = CGPoint(x: xPositionCenter, y: self.kPuzzleLabelsYPosition)
+                    }
                     self.view.addSubview(puzzleLabel.label)
                     puzzleLabel.label.center = CGPoint(x: xPositionCenter, y: kPuzzleLabelsYPosition)
                 }

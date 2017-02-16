@@ -121,6 +121,20 @@ class TimedModel {
         }
     }
     
+    func addTime(difficulty diff: Difficulty) -> Double {
+        let timeAdded : TimeInterval
+        switch diff {
+        case .easy: timeAdded = 5
+        case .medium: timeAdded = 10
+        case .hard: timeAdded = 15
+        case .random: timeAdded = 10
+        }
+        
+        currentTime! += timeAdded
+        
+        return timeAdded
+    }
+    
     func completePuzzle() {
         completed += 1
         solution = nil
