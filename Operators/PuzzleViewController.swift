@@ -80,6 +80,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Labels
     //
     var defaultOperatorLabels : [UILabel] = []
+    var operatorCountLabels : [String:UILabel] = [:]
     
     var puzzleLabels : [PuzzleLabel] = []
 
@@ -125,6 +126,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Segues
     //
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        resetOnDisappear()
+        
         switch gameType! {
         case .challenge:
             performSegue(withIdentifier: "unwindToChallenge", sender: self)
@@ -157,11 +160,15 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             
             destination.configurePuzzleViewController(viewController : self)
+            
+            resetOnDisappear()
         case "timerCompletedSegue":
             let destination = segue.destination as! TimedCompletedViewController
             
             destination.configureText(completedPuzzles: timedModel.completedPuzzles(), score: timedModel.score(), highScore: timedModel.highScore())
             destination.configurePuzzleViewController(viewController: self)
+            
+            resetOnDisappear()
         case "hintsSegue":
             let destination = segue.destination as! HintsViewController
             
@@ -192,6 +199,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         kPuzzleLabelsYPosition = self.view.center.y - kPuzzleLabelSize.height - kLabelBuffer
         
         self.intializeGestureRecognizers()
+        self.initializeDefaultOperators()
+        self.initializeOperatorCountLabels()
         
         expressionLabel.text = ""
         
@@ -221,14 +230,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.initializeDefaultOperators()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+    func resetOnDisappear() {
         if let timer = timer {
             timer.invalidate()
         }
@@ -265,6 +267,20 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         placeDefaultOperators(isInitial: true)
     }
     
+    func initializeOperatorCountLabels() {
+        for operatorLabel in defaultOperatorLabels {
+            let countLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
+            countLabel.text = ""
+            countLabel.font = Fonts.wRhC
+            countLabel.textColor = .green
+            countLabel.textAlignment = .center
+            countLabel.center.x = operatorLabel.frame.origin.x + operatorLabel.frame.size.width
+            countLabel.center.y = operatorLabel.frame.origin.y
+            countLabel.alpha = 0.0
+            operatorCountLabels[operatorLabel.text!] = countLabel
+        }
+    }
+    
     func placeDefaultOperators(isInitial: Bool) {
         let yPositionCenter = primaryLabel.frame.origin.y - kPuzzleLabelSize.height/2.0
         
@@ -291,6 +307,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 } else {
                     UIView.animate(withDuration: 0.2, animations: {
                         label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
+                        
+                        if let countLabel = self.operatorCountLabels[label.text!] {
+                            countLabel.center.x = label.frame.origin.x + label.frame.size.width
+                        }
                     })
                 }
             }
@@ -437,8 +457,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     self.displayExpression()
                     
-                    resetEnabled = true
-                    
                     switch gameType! {
                     case .original:
                         if !solvePuzzleButtonPressed {
@@ -454,12 +472,19 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         if correctTimedSolution() {
                             timedModel.completePuzzle()
                             self.newPuzzleButtonPressed(UIButton())
+                            resetButtonAction(enable: false)
                             addTime(difficulty: difficulty!)
                         }
                     }
                     
                     break
                 }
+            }
+        }
+        
+        for puzzleLabel in puzzleLabels {
+            if puzzleLabel.isOperator && puzzleLabel.isMovable {
+                resetEnabled = true
             }
         }
         
@@ -836,7 +861,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 if best > old {
                     primaryLabelUpdate(withText: "\(best-old)")
                 }
-            } else {
+            } else if best > 0 {
                 primaryLabelUpdate(withText: "\(best)")
             }
             if best == 100 {
@@ -965,6 +990,17 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    func resetHints() {
+        for countLabel in operatorCountLabels.values {
+            UIView.animate(withDuration: 0.2, animations: { 
+                countLabel.alpha = 0.0
+            }, completion: { (value) in
+                countLabel.text = ""
+                countLabel.removeFromSuperview()
+            })
+        }
+    }
+    
     func resetButtonAction(enable: Bool) {
         if enable {
             resetButton.isEnabled = true
@@ -1073,6 +1109,14 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         hintsButtonAction(enable: true)
         
+        resetHints()
+        
+        if defaultOperatorLabels[2].text! == Symbols.Wildcard {
+            defaultOperatorLabels[2].removeFromSuperview()
+            defaultOperatorLabels.remove(at: 2)
+            placeDefaultOperators(isInitial: false)
+        }
+        
         if gameType! == .original {
             solveButtonAction(enable: true)
         }
@@ -1105,6 +1149,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     puzzleLabel.label.alpha = 0.0
                 }
             }, completion: { (value) in
+                puzzleLabel.label.removeFromSuperview()
+                if let lockLabel = puzzleLabel.lockLabel {
+                    lockLabel.removeFromSuperview()
+                }
                 if puzzleLabel.isOperator {
                     operators.append(i)
                 }
@@ -1232,6 +1280,26 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         placeDefaultOperators(isInitial: false)
     }
     
+    func hintsOperatorUses() {
+        for operatorLabel in defaultOperatorLabels {
+            var operatorCount = 0
+            if operatorLabel.text! != Symbols.Wildcard {
+                for element in puzzleModel.equation!.elements {
+                    if operatorLabel.text! == element.string {
+                        operatorCount += 1
+                    }
+                }
+                if let label = operatorCountLabels[operatorLabel.text!] {
+                    label.text = "\(operatorCount)"
+                    self.view.addSubview(label)
+                    label.sendSubview(toBack: self.view)
+                    UIView.animate(withDuration: 0.2, animations: {
+                        label.alpha = 0.5
+                    })
+                }
+            }
+        }
+    }
     
     func setupPuzzle(withEquation eq: Equation) {
         

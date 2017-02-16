@@ -33,7 +33,9 @@ class HintsViewController: UIViewController {
     }
     
     @IBAction func numberOperatorUsesButtonPressed(_ sender: UIButton) {
-        
+        dismiss(animated: true) { 
+            self.puzzleViewController!.hintsOperatorUses()
+        }
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
