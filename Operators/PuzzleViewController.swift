@@ -14,8 +14,11 @@ struct PuzzleLabel {
     var isMovable : Bool
     let label : UILabel
     var lockLabel : UILabel?
+    var operatorPanGestureRecognizer : UIPanGestureRecognizer
+    var operatorDoubleTapGestureRecognizer : UITapGestureRecognizer
+    var operatorHoldGestureRecognizer : UILongPressGestureRecognizer
     
-    init(text: String, isOperand: Bool, isOperator: Bool, isSolution: Bool, isMovable: Bool) {
+    init(text: String, isOperand: Bool, isOperator: Bool, isSolution: Bool, isMovable: Bool, viewController: PuzzleViewController?) {
         let _label : UILabel
         
         if isSolution {
@@ -29,6 +32,19 @@ struct PuzzleLabel {
         _label.textColor = .green
         _label.textAlignment = .center
         _label.text = text
+        
+        operatorPanGestureRecognizer = UIPanGestureRecognizer(target: viewController, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
+        
+        operatorDoubleTapGestureRecognizer = UITapGestureRecognizer(target: viewController, action: #selector(PuzzleViewController.puzzleOperatorDoubleTapped(_:)))
+        operatorDoubleTapGestureRecognizer.numberOfTapsRequired = 2
+        
+        operatorHoldGestureRecognizer = UILongPressGestureRecognizer(target: viewController, action: #selector(PuzzleViewController.puzzleOperatorHeld(_:)))
+        
+        if viewController != nil {
+            _label.addGestureRecognizer(operatorPanGestureRecognizer)
+            _label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
+            _label.addGestureRecognizer(operatorHoldGestureRecognizer)
+        }
         
         if isOperator {
             _label.isUserInteractionEnabled = true
@@ -47,6 +63,30 @@ struct PuzzleLabel {
         self.isOperator = isOperator
         self.isMovable = isMovable
         
+    }
+    
+    private init(label: UILabel, lockLabel: UILabel, isMovable: Bool, operatorPanGestureRecognizer: UIPanGestureRecognizer, operatorDoubleTapGestureRecognizer: UITapGestureRecognizer, operatorHoldGestureRecognizer: UILongPressGestureRecognizer) {
+        self.isOperand = false
+        self.isOperator = true
+        self.isMovable = isMovable
+        self.label = label
+        self.lockLabel = lockLabel
+        self.operatorPanGestureRecognizer = operatorPanGestureRecognizer
+        self.operatorDoubleTapGestureRecognizer = operatorDoubleTapGestureRecognizer
+        self.operatorHoldGestureRecognizer = operatorHoldGestureRecognizer
+        
+        if isMovable {
+            self.label.addGestureRecognizer(operatorPanGestureRecognizer)
+            self.label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
+            self.label.addGestureRecognizer(operatorHoldGestureRecognizer)
+        } else {
+            self.label.removeGestureRecognizer(operatorPanGestureRecognizer)
+            self.label.removeGestureRecognizer(operatorDoubleTapGestureRecognizer)
+        }
+    }
+    
+    func changeLock() -> PuzzleLabel {
+        return PuzzleLabel(label: self.label, lockLabel: self.lockLabel!, isMovable: !self.isMovable, operatorPanGestureRecognizer: self.operatorPanGestureRecognizer, operatorDoubleTapGestureRecognizer: self.operatorDoubleTapGestureRecognizer, operatorHoldGestureRecognizer: self.operatorHoldGestureRecognizer)
     }
 }
 
@@ -67,7 +107,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     let kPuzzleLabelSize : CGSize = CGSize(width: 60, height: 60)
     let kSolutionLabelSize : CGSize = CGSize(width: 120, height: 60)
     let kLabelBuffer : CGFloat = 10
-    let kPlaceholderLabel = PuzzleLabel(text: "", isOperand: false, isOperator: false, isSolution: false, isMovable: true)
+    let kPlaceholderLabel = PuzzleLabel(text: "", isOperand: false, isOperator: false, isSolution: false, isMovable: true, viewController: nil)
     
     let wildcardOperator : UILabel
     
@@ -429,7 +469,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                             }
                         }
                         
-                        newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false)
+                        newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
                         
                         defaultOperatorLabels.remove(at: 2)
                         
@@ -437,18 +477,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         
                         wildcardOperator.removeFromSuperview()
                     } else {
-                        let operatorPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
-                        operatorPanGestureRecognizer.delegate = self
-                        
-                        let operatorDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorDoubleTapped(_:)))
-                        operatorDoubleTapGestureRecognizer.numberOfTapsRequired = 2
-                        operatorDoubleTapGestureRecognizer.delegate = self
-
-                        newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true)
-                        
-                        newLabel.label.addGestureRecognizer(operatorPanGestureRecognizer)
-                        
-                        newLabel.label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
+                        newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true, viewController: self)
                     }
                     
                     self.puzzleLabels.insert(newLabel, at: i+1)
@@ -534,6 +563,46 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
         }
+    }
+    
+    func puzzleOperatorHeld(_ recognizer: UILongPressGestureRecognizer) {
+        if recognizer.state == .began {
+            if let view = recognizer.view {
+                let label = view as! UILabel
+                for i in puzzleLabels.indices {
+                    if puzzleLabels[i].label == label {
+                        puzzleLabels[i] = puzzleLabels[i].changeLock()
+                        let puzzleLabel = puzzleLabels[i]
+                        
+                        if let lockLabel = puzzleLabel.lockLabel {
+                            if puzzleLabel.isMovable {
+                                UIView.animate(withDuration: 0.2, animations: {
+                                    lockLabel.alpha = 0.0
+                                }, completion: { (value) in
+                                    lockLabel.isHidden = true
+                                })
+                            } else {
+                                lockLabel.alpha = 0.0
+                                lockLabel.isHidden = false
+                                UIView.animate(withDuration: 0.2, animations: {
+                                    lockLabel.alpha = 0.5
+                                })
+                            }
+                        }
+                        break
+                    }
+                }
+            }
+        }
+        var resetEnabled = false
+        
+        for puzzleLabel in puzzleLabels {
+            if puzzleLabel.isOperator && puzzleLabel.isMovable {
+                resetEnabled = true
+            }
+        }
+        
+        resetButtonAction(enable: resetEnabled)
     }
     
     // MARK: - Label Panned Cases
@@ -671,7 +740,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         }
                     }
                     
-                    newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false)
+                    newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
                     
                     defaultOperatorLabels.remove(at: 2)
                     
@@ -679,18 +748,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     wildcardOperator.removeFromSuperview()
                 } else {
-                    
-                    let operatorPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
-                    operatorPanGestureRecognizer.delegate = self
-                    
-                    let operatorDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PuzzleViewController.puzzleOperatorDoubleTapped(_:)))
-                    operatorDoubleTapGestureRecognizer.numberOfTapsRequired = 2
-                    operatorDoubleTapGestureRecognizer.delegate = self
-                    
-                    newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true)
-                    
-                    newLabel.label.addGestureRecognizer(operatorPanGestureRecognizer)
-                    newLabel.label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
+                    newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true, viewController: self)
                 }
                 
                 puzzleLabels.remove(at: placeholderIndex!)
@@ -1137,7 +1195,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         for element in equation.elements {
             if Int(element.string) == nil {
-                let newLabel = PuzzleLabel(text: element.string, isOperand: false, isOperator: true, isSolution: false, isMovable: false)
+                let newLabel = PuzzleLabel(text: element.string, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
                 
                 insertOperators.append(newLabel)
             }
@@ -1234,7 +1292,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 
                 if puzzleLabels[i].isOperand && puzzleLabels[i+1].isOperand {
                     
-                    let newLabel = PuzzleLabel(text: operatorText, isOperand: false, isOperator: true, isSolution: false, isMovable: false)
+                    let newLabel = PuzzleLabel(text: operatorText, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
                     
                     puzzleLabels.insert(newLabel, at: i+1)
                     
@@ -1322,17 +1380,17 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         for element in eq.elements {
             if let _ = element.number {
-                let newLabel = PuzzleLabel(text: element.string, isOperand: true, isOperator: false, isSolution: false, isMovable: false)
+                let newLabel = PuzzleLabel(text: element.string, isOperand: true, isOperator: false, isSolution: false, isMovable: false, viewController: nil)
                 puzzleLabels.append(newLabel)
             }
             
             if let _ = element.equals {
-                puzzleLabels.append(PuzzleLabel(text: element.string, isOperand: false, isOperator: false, isSolution: false, isMovable: false))
+                puzzleLabels.append(PuzzleLabel(text: element.string, isOperand: false, isOperator: false, isSolution: false, isMovable: false, viewController: nil))
             }
         }
         
         
-        puzzleLabels.append(PuzzleLabel(text: eq.solution.string, isOperand: false, isOperator: false, isSolution: true, isMovable: false))
+        puzzleLabels.append(PuzzleLabel(text: eq.solution.string, isOperand: false, isOperator: false, isSolution: true, isMovable: false, viewController: nil))
         
         hasPlaceholder = false
         

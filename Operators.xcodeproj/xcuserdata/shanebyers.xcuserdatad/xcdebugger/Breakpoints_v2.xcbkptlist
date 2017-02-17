@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/PuzzleViewController.swift"
-            timestampString = "508960071.164736"
+            timestampString = "509033939.499778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1343"
-            endingLineNumber = "1343"
+            startingLineNumber = "1401"
+            endingLineNumber = "1401"
             landmarkName = "setupPuzzle(withEquation:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/PuzzleViewController.swift"
-            timestampString = "508960071.164736"
+            timestampString = "509033939.499778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1400"
-            endingLineNumber = "1400"
+            startingLineNumber = "1458"
+            endingLineNumber = "1458"
             landmarkName = "placePuzzle(isNewPuzzle:)"
             landmarkType = "7">
          </BreakpointContent>
