@@ -14,6 +14,7 @@ class Symbols {
     static let Subtract = "➖"
     static let Multiply = "✖️"
     static let Divide = "➗"
+    static let Slash = "∕"
     static let Equals = "="
     static let Wildcard = "✪"
 }
@@ -28,4 +29,10 @@ class OperatorFunctions {
 
 class Fonts {
     static let wRhC = UIFont(name: "CourierNewPS-BoldMT", size: 50)
+}
+
+class Filenames {
+    static let bestScore = "originalHighScores"
+    static let timed = "timedHighScores"
+    static let challenge = "challengePuzzles"
 }

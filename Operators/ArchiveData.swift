@@ -9,37 +9,24 @@
 import Foundation
 
 struct ArchiveKey {
-    static let easyPuzzlesAvailable = "easyPuzzlesAvailable"
-    static let mediumPuzzlesAvailable = "mediumPuzzlesAvailable"
-    static let hardPuzzlesAvailable = "hardPuzzlesAvailable"
+    static let availablePuzzles = "availablePuzzles"
     static let originalHighScores = "originalHighScores"
     static let timedHighScores = "timedHighScores"
 }
 
 class ChallengeArchive : NSObject, NSCoding {
-    var easyPuzzlesAvailable : [Bool]
-    var mediumPuzzlesAvailable : [Bool]
-    var hardPuzzlesAvailable : [Bool]
-    init(easyPuzzles: [Bool], mediumPuzzles: [Bool], hardPuzzles: [Bool]) {
-        self.easyPuzzlesAvailable = easyPuzzles
-        self.mediumPuzzlesAvailable = mediumPuzzles
-        self.hardPuzzlesAvailable = hardPuzzles
+    var availablePuzzles : [String:[Bool]]
+    init(availablePuzzles : [String:[Bool]]) {
+        self.availablePuzzles = availablePuzzles
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        let easy = aDecoder.decodeObject(forKey: ArchiveKey.easyPuzzlesAvailable) as! [Bool]
-        let medium = aDecoder.decodeObject(forKey: ArchiveKey.mediumPuzzlesAvailable) as! [Bool]
-        let hard = aDecoder.decodeObject(forKey: ArchiveKey.hardPuzzlesAvailable) as! [Bool]
-
-        self.init(easyPuzzles: easy, mediumPuzzles: medium, hardPuzzles: hard)
+        let puzzles = aDecoder.decodeObject(forKey: ArchiveKey.availablePuzzles) as! [String:[Bool]]
+        self.init(availablePuzzles : puzzles)
     }
     
     func encode(with aCoder: NSCoder) {
-        
-        aCoder.encode(easyPuzzlesAvailable, forKey: ArchiveKey.easyPuzzlesAvailable)
-        aCoder.encode(mediumPuzzlesAvailable, forKey: ArchiveKey.mediumPuzzlesAvailable)
-        aCoder.encode(hardPuzzlesAvailable, forKey: ArchiveKey.hardPuzzlesAvailable)
-        
+        aCoder.encode(availablePuzzles, forKey: ArchiveKey.availablePuzzles)
     }
     
 }

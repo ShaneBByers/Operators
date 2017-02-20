@@ -24,7 +24,7 @@ class BestScoreModel {
     init() {
         let fileManager = FileManager.default
         let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        bestScoreURL = documentURL.appendingPathComponent("originalHighScores.archive")
+        bestScoreURL = documentURL.appendingPathComponent(Filenames.bestScore + ".archive")
         
         let fileExists = fileManager.fileExists(atPath: bestScoreURL.path)
         
@@ -89,6 +89,8 @@ class BestScoreModel {
     }
     
     func highScore(forDifficulty difficulty: Difficulty) -> Int {
+        archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
+        highScores = archive.scores
         return highScores[difficulty.rawValue]!
     }
     

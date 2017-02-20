@@ -865,6 +865,9 @@
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="divisionSymbolButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="XIP-dt-BKr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muB-ss-f0O">
                                 <rect key="frame" x="28.666666666666671" y="321" width="145" height="46"/>
@@ -875,36 +878,48 @@
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="deleteOriginalScoresPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="jkW-03-7wj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMo-gH-0fe">
-                                <rect key="frame" x="131" y="177.33333333333334" width="145" height="46"/>
+                                <rect key="frame" x="122" y="177.33333333333334" width="181" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Option 1">
+                                <state key="normal" title="Monochrome">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="colorSchemeButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="RiH-zN-WzK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIv-u4-iUj">
-                                <rect key="frame" x="296" y="177.33333333333334" width="145" height="46"/>
+                                <rect key="frame" x="323" y="177.33333333333334" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Option 2">
+                                <state key="normal" title="Ocean">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="colorSchemeButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="vSD-4x-9y6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPo-Nk-End">
-                                <rect key="frame" x="461" y="177.33333333333334" width="145" height="46"/>
+                                <rect key="frame" x="434" y="177.33333333333334" width="145" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Option 3">
+                                <state key="normal" title="Daybreak">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="colorSchemeButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="c0Y-2o-Mu6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZP-ZR-SL6">
                                 <rect key="frame" x="203.66666666666669" y="321" width="91.000000000000057" height="46"/>
@@ -915,16 +930,22 @@
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="deleteTimedScoresPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="TF0-4x-ZsM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ne5-lu-R2p">
                                 <rect key="frame" x="518" y="321" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Medium">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="deleteChallengePuzzlesPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="mqe-wC-eFk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkq-Yh-xId">
                                 <rect key="frame" x="425" y="321" width="73" height="46"/>
@@ -935,16 +956,22 @@
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="deleteChallengePuzzlesPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="zBu-wm-Wlp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AtP-x4-8Ka">
                                 <rect key="frame" x="647" y="321" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Hard">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="deleteChallengePuzzlesPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="32T-9K-bF6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPd-s8-jhQ">
                                 <rect key="frame" x="408.33333333333331" y="75.666666666666671" width="91" height="46"/>
@@ -955,6 +982,9 @@
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
                                 </variation>
+                                <connections>
+                                    <action selector="divisionSymbolButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="Yka-g4-xar"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="➗" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtU-Zo-cfp">
                                 <rect key="frame" x="348.33333333333331" y="75.666666666666671" width="40" height="46"/>
@@ -1037,6 +1067,17 @@
                             <constraint firstItem="xIv-u4-iUj" firstAttribute="top" secondItem="bri-ld-hH3" secondAttribute="bottom" constant="8" id="zKE-Dn-EBP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="divisionSymbolLabel" destination="XtU-Zo-cfp" id="Ypg-X7-9oo"/>
+                        <outletCollection property="divisionSymbolButtons" destination="kT2-eT-NcN" collectionClass="NSMutableArray" id="4gz-WP-WJo"/>
+                        <outletCollection property="divisionSymbolButtons" destination="DPd-s8-jhQ" collectionClass="NSMutableArray" id="edG-LY-IvZ"/>
+                        <outletCollection property="colorSchemeButtons" destination="gMo-gH-0fe" collectionClass="NSMutableArray" id="fBc-8W-fcN"/>
+                        <outletCollection property="colorSchemeButtons" destination="xIv-u4-iUj" collectionClass="NSMutableArray" id="HST-xY-Eca"/>
+                        <outletCollection property="colorSchemeButtons" destination="pPo-Nk-End" collectionClass="NSMutableArray" id="L0q-UE-lRq"/>
+                        <outletCollection property="challengePuzzleButtons" destination="Fkq-Yh-xId" collectionClass="NSMutableArray" id="jBx-dR-E1n"/>
+                        <outletCollection property="challengePuzzleButtons" destination="ne5-lu-R2p" collectionClass="NSMutableArray" id="RUC-sk-Edm"/>
+                        <outletCollection property="challengePuzzleButtons" destination="AtP-x4-8Ka" collectionClass="NSMutableArray" id="AFN-eZ-2Gm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCL-MW-KTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GbN-4K-Vdi" userLabel="Exit" sceneMemberID="exit"/>

@@ -39,7 +39,7 @@ class TimedModel {
         
         let fileManager = FileManager.default
         let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        timedURL = documentURL.appendingPathComponent("timedHighScores.archive")
+        timedURL = documentURL.appendingPathComponent(Filenames.timed + ".archive")
         
         let fileExists = fileManager.fileExists(atPath: timedURL.path)
         
@@ -194,6 +194,8 @@ class TimedModel {
     }
     
     func highScore() -> Int {
+        archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
+        highScores = archive.scores
         return highScores[difficulty!.rawValue]![Int(totalTime!)]!
     }
     

@@ -11,13 +11,11 @@ import Foundation
 class ChallengeModel {
     static let sharedInstance = ChallengeModel()
     
-    var availablePuzzles : [Difficulty:[Bool]] = [:]
+    var availablePuzzles : [String:[Bool]] = [:]
     
     var equations : [Difficulty:[[String]]] = [:]
     
     let kNumberOfPuzzles = 25
-    
-    let plistName = "challengePuzzles"
     
     var currentEquation : Equation?
     
@@ -33,38 +31,36 @@ class ChallengeModel {
 
         let fileManager = FileManager.default
         let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        challengeURL = documentURL.appendingPathComponent(plistName + ".archive")
+        challengeURL = documentURL.appendingPathComponent(Filenames.challenge + ".archive")
         
         let fileExists = fileManager.fileExists(atPath: challengeURL.path)
         
         if fileExists {
             
             archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
-            availablePuzzles[.easy] = archive.easyPuzzlesAvailable
-            availablePuzzles[.medium] = archive.mediumPuzzlesAvailable
-            availablePuzzles[.hard] = archive.hardPuzzlesAvailable
+            availablePuzzles = archive.availablePuzzles
             
         } else {
             
-            availablePuzzles[.easy] = []
+            availablePuzzles[Difficulty.easy.rawValue] = []
             
-            availablePuzzles[.medium] = []
+            availablePuzzles[Difficulty.medium.rawValue] = []
             
-            availablePuzzles[.hard] = []
+            availablePuzzles[Difficulty.hard.rawValue] = []
             
             for _ in 0..<kNumberOfPuzzles {
-                availablePuzzles[.easy]!.append(true)
-                availablePuzzles[.medium]!.append(false)
-                availablePuzzles[.hard]!.append(false)
+                availablePuzzles[Difficulty.easy.rawValue]!.append(true)
+                availablePuzzles[Difficulty.medium.rawValue]!.append(false)
+                availablePuzzles[Difficulty.hard.rawValue]!.append(false)
             }
             
-            availablePuzzles[.easy]![24] = false
+            availablePuzzles[Difficulty.easy.rawValue]![24] = false
             
-            archive = ChallengeArchive(easyPuzzles: availablePuzzles[.easy]!, mediumPuzzles: availablePuzzles[.medium]!, hardPuzzles: availablePuzzles[.hard]!)
+            archive = ChallengeArchive(availablePuzzles: availablePuzzles)
             NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
         }
         
-        if let path = Bundle.main.path(forResource: plistName, ofType: "plist") {
+        if let path = Bundle.main.path(forResource: Filenames.challenge, ofType: "plist") {
             
             if let dictionary = NSDictionary(contentsOfFile: path) as? [String: Any] {
                 let easyEquations = dictionary["easy"] as! [[String]]
@@ -100,7 +96,9 @@ class ChallengeModel {
     }
     
     func puzzleAvailableAt(index: Int) -> Bool {
-        return availablePuzzles[difficulty]![index]
+        archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
+        availablePuzzles = archive.availablePuzzles
+        return availablePuzzles[difficulty.rawValue]![index]
     }
     
     func puzzleAtIndex(index: Int) -> [String] {
@@ -121,13 +119,8 @@ class ChallengeModel {
     
     func completeCurrentPuzzle() {
         if currentIndex! + 1 < kNumberOfPuzzles {
-            availablePuzzles[difficulty]![currentIndex! + 1] = true
-            switch difficulty {
-            case .easy: archive.easyPuzzlesAvailable[currentIndex! + 1] = true
-            case .medium: archive.mediumPuzzlesAvailable[currentIndex! + 1] = true
-            case .hard: archive.hardPuzzlesAvailable[currentIndex! + 1] = true
-            case .random: break
-            }
+            availablePuzzles[difficulty.rawValue]![currentIndex! + 1] = true
+            archive.availablePuzzles[difficulty.rawValue]![currentIndex! + 1] = true
         } else {
             switch difficulty {
             case .easy:
@@ -137,13 +130,8 @@ class ChallengeModel {
             case .hard: break
             case .random: break
             }
-            availablePuzzles[difficulty]![0] = true
-            switch difficulty {
-            case .easy: archive.easyPuzzlesAvailable[0] = true
-            case .medium: archive.mediumPuzzlesAvailable[0] = true
-            case .hard: archive.hardPuzzlesAvailable[0] = true
-            case .random: break
-            }
+            availablePuzzles[difficulty.rawValue]![0] = true
+            archive.availablePuzzles[difficulty.rawValue]![0] = true
         }
         
         saveArchive()
