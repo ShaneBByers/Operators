@@ -29,6 +29,8 @@ class DifficultyViewController: UIViewController {
         mediumHighScoreLabel.text = String(bestScoreModel.highScore(forDifficulty: .medium))
         hardHighScoreLabel.text = String(bestScoreModel.highScore(forDifficulty: .hard))
         randomHighScoreLabel.text = String(bestScoreModel.highScore(forDifficulty: .random))
+        
+        ColorScheme.updateScheme(forView: self.view)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -30,10 +30,11 @@ class SettingsModel {
             settingsArchive = NSKeyedUnarchiver.unarchiveObject(withFile: settingsURL.path)! as! SettingsArchive
             
             Symbols.Divide = settingsArchive.divisionSymbol
+            ColorScheme.scheme = SchemeChoice(rawValue: settingsArchive.colorScheme)!
         } else {
             Symbols.Divide = Symbols.HyphenDots
-            
-            settingsArchive = SettingsArchive(divisionSymbol: Symbols.Divide)
+            ColorScheme.scheme = .monochrome
+            settingsArchive = SettingsArchive(divisionSymbol: Symbols.Divide, colorScheme: ColorScheme.scheme.rawValue)
             NSKeyedArchiver.archiveRootObject(settingsArchive, toFile: settingsURL.path)
         }
     }
@@ -115,6 +116,12 @@ class SettingsModel {
             Symbols.Divide = Symbols.HyphenDots
         }
         settingsArchive.divisionSymbol = Symbols.Divide
+        saveSettingsArchive()
+    }
+    
+    func changeColorScheme(toScheme scheme : String) {
+        ColorScheme.scheme = SchemeChoice(rawValue: scheme)!
+        settingsArchive.colorScheme = ColorScheme.scheme.rawValue
         saveSettingsArchive()
     }
     

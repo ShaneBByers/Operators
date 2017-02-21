@@ -13,7 +13,7 @@ class Symbols {
     static let Add = "➕"
     static let Subtract = "➖"
     static let Multiply = "✖️"
-    static var Divide = ""
+    static var Divide = "➗"
     static let HyphenDots = "➗"
     static let Slash = "/"
     static let Equals = "="

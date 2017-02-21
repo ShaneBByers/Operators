@@ -49,6 +49,10 @@ class ChallengePuzzleCompletedViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ColorScheme.updateScheme(forView: self.view)
+    }
+    
     @IBAction func nextPuzzleButtonPressed(_ sender: UIButton) {
         puzzleViewController!.nextChallengePuzzle()
         dismiss(animated: true, completion: nil)

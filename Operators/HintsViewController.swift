@@ -20,6 +20,10 @@ class HintsViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ColorScheme.updateScheme(forView: self.view)
+    }
+    
     @IBAction func randomOperatorButtonPressed(_ sender: UIButton) {
         dismiss(animated: true) { 
             self.puzzleViewController!.hintsRandomOperator()

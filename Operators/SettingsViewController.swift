@@ -43,6 +43,7 @@ class SettingsViewController: UIViewController {
         }
         
         divisionSymbolLabel.text = Symbols.Divide
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,6 +52,18 @@ class SettingsViewController: UIViewController {
         } else if Symbols.Divide == Symbols.Slash {
             slashButton.titleLabel!.font = UIFont(descriptor: slashButton.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: slashButton.titleLabel!.font.pointSize)
         }
+        
+        for button in colorSchemeButtons {
+            if button.titleLabel!.text! == ColorScheme.scheme.rawValue {
+                button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: button.titleLabel!.font.pointSize)
+            } else {
+                button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        ColorScheme.updateScheme(forView: self.view)
     }
     
     @IBAction func divisionSymbolButtonPressed(_ sender: UIButton) {
@@ -71,6 +84,10 @@ class SettingsViewController: UIViewController {
         }
         
         sender.titleLabel!.font = UIFont(descriptor: sender.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: sender.titleLabel!.font.pointSize)
+        
+        settingsModel.changeColorScheme(toScheme: sender.titleLabel!.text!)
+        
+        ColorScheme.updateScheme(forView: self.view)
     }
     
     @IBAction func deleteOriginalScoresPressed(_ sender: UIButton) {

@@ -32,8 +32,18 @@ struct PuzzleLabel {
         _label.textAlignment = .center
         _label.text = text
         
-        if !isOperator {
-            _label.textColor = .green
+        let colorElements : ColorElements
+        
+        switch ColorScheme.scheme {
+        case .monochrome: colorElements = SchemeElements.monochrome
+        case .ocean: colorElements = SchemeElements.ocean
+        case .daybreak: colorElements = SchemeElements.daybreak
+        }
+        
+        if isOperator {
+            _label.textColor = .black
+        } else {
+            _label.textColor = colorElements.buttonColor
         }
         
         operatorPanGestureRecognizer = UIPanGestureRecognizer(target: viewController, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
@@ -145,6 +155,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var challengeEquation : Equation?
     var timer : Timer?
     var solvePuzzleButtonPressed : Bool = false
+    let colorElements : ColorElements
     
     // MARK: - Configurations
     //
@@ -231,6 +242,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             defaultOperatorLabels.append(UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize)))
         }
         wildcardOperator = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
+        switch ColorScheme.scheme {
+        case .monochrome: colorElements = SchemeElements.monochrome
+        case .ocean: colorElements = SchemeElements.ocean
+        case .daybreak: colorElements = SchemeElements.daybreak
+        }
         super.init(coder: aDecoder)
     }
     
@@ -271,6 +287,15 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         resetButton.alpha = 0.0
         resetButton.isEnabled = false
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        ColorScheme.updateScheme(forView: self.view)
+        for puzzleLabel in puzzleLabels {
+            if !puzzleLabel.isOperator {
+                puzzleLabel.label.textColor = colorElements.buttonColor
+            }
+        }
     }
     
     func resetOnDisappear() {
@@ -315,11 +340,13 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             let countLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
             countLabel.text = ""
             countLabel.font = Fonts.wRhC
-            countLabel.textColor = .green
             countLabel.textAlignment = .center
             countLabel.center.x = operatorLabel.frame.origin.x + operatorLabel.frame.size.width
             countLabel.center.y = operatorLabel.frame.origin.y
             countLabel.alpha = 0.0
+            
+            countLabel.textColor = colorElements.labelColor
+            
             operatorCountLabels[operatorLabel.text!] = countLabel
         }
     }
@@ -362,7 +389,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func initializeTimer() {
         
-        primaryLabel.textColor = UIColor.green
+        primaryLabel.textColor = colorElements.labelColor
         primaryLabel.text = "\(timedModel.remainingMinutesSeconds(timeElapsed: 0.0)!)"
         
         let timerInterval : TimeInterval = 0.1
@@ -997,13 +1024,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             if doubleRemaining <= 10.1 && abs(doubleRemaining - Double(intRemaining)) <= 0.1 {
                 primaryLabel.textColor = .red
             } else {
-                primaryLabel.textColor = .green
+                primaryLabel.textColor = colorElements.buttonColor
             }
         } else {
             timer.invalidate()
             self.performSegue(withIdentifier: "timerCompletedSegue", sender: self)
         }
-        
     }
     
     func correctTimedSolution() -> Bool {

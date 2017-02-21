@@ -29,6 +29,7 @@ class TimedViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         highScoreLabel.text = String(timedModel.highScore())
+        ColorScheme.updateScheme(forView: self.view)
     }
     
     @IBAction func difficultyButtonPressed(_ sender: UIButton) {

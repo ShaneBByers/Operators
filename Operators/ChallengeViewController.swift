@@ -24,6 +24,8 @@ class ChallengeViewController: UIViewController {
         for (i,button) in puzzleButtons.enumerated() {
             button.isEnabled = challengeModel.puzzleAvailableAt(index: i)
         }
+    
+        ColorScheme.updateScheme(forView: self.view)
         
         for button in difficultyButtons {
             button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
@@ -36,15 +38,15 @@ class ChallengeViewController: UIViewController {
         switch challengeModel.difficulty {
         case .easy:
             difficultyButtons[0].titleLabel!.font = boldFont
-            difficultyButtons[0].titleLabel!.textColor = .green
+            difficultyButtons[0].tintColor = .green
             buttonTintColor = .green
         case .medium:
             difficultyButtons[1].titleLabel!.font = boldFont
-            difficultyButtons[1].titleLabel!.textColor = .yellow
+            difficultyButtons[1].tintColor = .yellow
             buttonTintColor = .yellow
         case .hard:
             difficultyButtons[2].titleLabel!.font = boldFont
-            difficultyButtons[2].titleLabel!.textColor = .red
+            difficultyButtons[2].tintColor = .red
             buttonTintColor = .red
         case .random: break
         }

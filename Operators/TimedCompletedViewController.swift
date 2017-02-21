@@ -53,5 +53,9 @@ class TimedCompletedViewController: UIViewController {
         highScoreLabel.text! = "High Score: " + String(self.highScore!)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ColorScheme.updateScheme(forView: self.view)
+    }
+    
 
 }
