@@ -13,8 +13,9 @@ class Symbols {
     static let Add = "➕"
     static let Subtract = "➖"
     static let Multiply = "✖️"
-    static let Divide = "➗"
-    static let Slash = "∕"
+    static var Divide = ""
+    static let HyphenDots = "➗"
+    static let Slash = "/"
     static let Equals = "="
     static let Wildcard = "✪"
 }
@@ -35,4 +36,5 @@ class Filenames {
     static let bestScore = "originalHighScores"
     static let timed = "timedHighScores"
     static let challenge = "challengePuzzles"
+    static let settings = "settings"
 }

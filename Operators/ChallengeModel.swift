@@ -63,15 +63,11 @@ class ChallengeModel {
         if let path = Bundle.main.path(forResource: Filenames.challenge, ofType: "plist") {
             
             if let dictionary = NSDictionary(contentsOfFile: path) as? [String: Any] {
-                let easyEquations = dictionary["easy"] as! [[String]]
-                let mediumEquations = dictionary["medium"] as! [[String]]
-                let hardEquations = dictionary["hard"] as! [[String]]
-                equations[.easy] = easyEquations
-                equations[.medium] = mediumEquations
-                equations[.hard] = hardEquations
+                equations[.easy] = dictionary[Difficulty.easy.rawValue] as? [[String]]
+                equations[.medium] = dictionary[Difficulty.medium.rawValue] as? [[String]]
+                equations[.hard] = dictionary[Difficulty.hard.rawValue] as? [[String]]
             }
         }
-        
     }
     
     func equationAtIndex(index: Int) -> Equation {

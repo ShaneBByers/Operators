@@ -14,6 +14,10 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var divisionSymbolButtons: [UIButton]!
     
+    @IBOutlet weak var hyphenButton: UIButton!
+    
+    @IBOutlet weak var slashButton: UIButton!
+    
     @IBOutlet weak var divisionSymbolLabel: UILabel!
     
     @IBOutlet var colorSchemeButtons: [UIButton]!
@@ -31,6 +35,22 @@ class SettingsViewController: UIViewController {
                 button.alpha = 0.25
             }
         }
+        
+        if Symbols.Divide == Symbols.HyphenDots {
+            hyphenButton.titleLabel!.font = UIFont(descriptor: hyphenButton.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: hyphenButton.titleLabel!.font.pointSize)
+        } else if Symbols.Divide == Symbols.Slash {
+            slashButton.titleLabel!.font = UIFont(descriptor: slashButton.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: slashButton.titleLabel!.font.pointSize)
+        }
+        
+        divisionSymbolLabel.text = Symbols.Divide
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if Symbols.Divide == Symbols.HyphenDots {
+            hyphenButton.titleLabel!.font = UIFont(descriptor: hyphenButton.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: hyphenButton.titleLabel!.font.pointSize)
+        } else if Symbols.Divide == Symbols.Slash {
+            slashButton.titleLabel!.font = UIFont(descriptor: slashButton.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: slashButton.titleLabel!.font.pointSize)
+        }
     }
     
     @IBAction func divisionSymbolButtonPressed(_ sender: UIButton) {
@@ -40,11 +60,9 @@ class SettingsViewController: UIViewController {
         
         sender.titleLabel!.font = UIFont(descriptor: sender.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: sender.titleLabel!.font.pointSize)
         
-        if sender.titleLabel!.text! == "Hyphen" {
-            divisionSymbolLabel.text = Symbols.Divide
-        } else if sender.titleLabel!.text! == "Slash" {
-            divisionSymbolLabel.text = Symbols.Slash
-        }
+        settingsModel.changeDivisionSymbol(fromSymbol: divisionSymbolLabel.text!)
+        
+        divisionSymbolLabel.text = Symbols.Divide
     }
     
     @IBAction func colorSchemeButtonPressed(_ sender: UIButton) {

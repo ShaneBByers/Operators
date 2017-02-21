@@ -858,12 +858,12 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kT2-eT-NcN">
                                 <rect key="frame" x="219.33333333333331" y="75.666666666666671" width="108.99999999999994" height="46"/>
-                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <state key="normal" title="Hyphen">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
                                     <action selector="divisionSymbolButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="XIP-dt-BKr"/>
@@ -1069,6 +1069,8 @@
                     </view>
                     <connections>
                         <outlet property="divisionSymbolLabel" destination="XtU-Zo-cfp" id="Ypg-X7-9oo"/>
+                        <outlet property="hyphenButton" destination="kT2-eT-NcN" id="yGI-Vq-S0o"/>
+                        <outlet property="slashButton" destination="DPd-s8-jhQ" id="SN7-Gh-Ev0"/>
                         <outletCollection property="divisionSymbolButtons" destination="kT2-eT-NcN" collectionClass="NSMutableArray" id="4gz-WP-WJo"/>
                         <outletCollection property="divisionSymbolButtons" destination="DPd-s8-jhQ" collectionClass="NSMutableArray" id="edG-LY-IvZ"/>
                         <outletCollection property="colorSchemeButtons" destination="gMo-gH-0fe" collectionClass="NSMutableArray" id="fBc-8W-fcN"/>

@@ -14,9 +14,28 @@ class SettingsModel {
     let fileManager : FileManager
     let documentURL : URL
     
+    let settingsURL : URL
+    
+    let settingsArchive : SettingsArchive
+    
     init() {
         fileManager = FileManager.default
         documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        settingsURL = documentURL.appendingPathComponent(Filenames.settings + ".archive")
+        
+        let fileExists = fileManager.fileExists(atPath: settingsURL.path)
+        
+        if fileExists {
+            settingsArchive = NSKeyedUnarchiver.unarchiveObject(withFile: settingsURL.path)! as! SettingsArchive
+            
+            Symbols.Divide = settingsArchive.divisionSymbol
+        } else {
+            Symbols.Divide = Symbols.HyphenDots
+            
+            settingsArchive = SettingsArchive(divisionSymbol: Symbols.Divide)
+            NSKeyedArchiver.archiveRootObject(settingsArchive, toFile: settingsURL.path)
+        }
     }
     
     func canDeleteChallengePuzzles(forDifficulty difficulty: Difficulty) -> Bool {
@@ -87,5 +106,19 @@ class SettingsModel {
             }
             NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
         }
+    }
+    
+    func changeDivisionSymbol(fromSymbol symbol : String) {
+        if symbol == Symbols.HyphenDots {
+            Symbols.Divide = Symbols.Slash
+        } else if symbol == Symbols.Slash {
+            Symbols.Divide = Symbols.HyphenDots
+        }
+        settingsArchive.divisionSymbol = Symbols.Divide
+        saveSettingsArchive()
+    }
+    
+    func saveSettingsArchive() {
+        NSKeyedArchiver.archiveRootObject(settingsArchive, toFile: settingsURL.path)
     }
 }

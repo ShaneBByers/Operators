@@ -29,9 +29,12 @@ struct PuzzleLabel {
         }
         
         _label.font = Fonts.wRhC
-        _label.textColor = .green
         _label.textAlignment = .center
         _label.text = text
+        
+        if !isOperator {
+            _label.textColor = .green
+        }
         
         operatorPanGestureRecognizer = UIPanGestureRecognizer(target: viewController, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
         
@@ -95,11 +98,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Models
     //
-    
     let puzzleModel = PuzzleModel.sharedInstance
     let challengeModel = ChallengeModel.sharedInstance
     let bestScoreModel = BestScoreModel.sharedInstance
     let timedModel = TimedModel.sharedInstance
+    let settingsModel = SettingsModel.sharedInstance
     
     // MARK: - Constants
     //
@@ -447,10 +450,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             let label = view as! UILabel
             var operatorCounter = 0
             for i in self.puzzleLabels.indices {
-                if self.puzzleLabels[i].isOperator {
+                if self.puzzleLabels[i].isOperator  {
                     operatorCounter += 1
                 }
-                if self.puzzleLabels[i].isOperand && self.puzzleLabels[i+1].isOperand {
+                if self.puzzleLabels[i].isOperand && self.puzzleLabels[i+1].isOperand && !(label.text! == Symbols.Divide && puzzleLabels[i+1].label.text! == "0") {
                     
                     operatorCounter += 1
                     

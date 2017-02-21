@@ -12,6 +12,7 @@ struct ArchiveKey {
     static let availablePuzzles = "availablePuzzles"
     static let originalHighScores = "originalHighScores"
     static let timedHighScores = "timedHighScores"
+    static let divisionSymbol = "divisionSymbol"
 }
 
 class ChallengeArchive : NSObject, NSCoding {
@@ -64,5 +65,23 @@ class TimedArchive : NSObject, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(scores, forKey: ArchiveKey.timedHighScores)
+    }
+}
+
+class SettingsArchive : NSObject, NSCoding {
+    var divisionSymbol : String
+    
+    init(divisionSymbol : String) {
+        self.divisionSymbol = divisionSymbol
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let symbol = aDecoder.decodeObject(forKey: ArchiveKey.divisionSymbol) as! String
+        
+        self.init(divisionSymbol: symbol)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(divisionSymbol, forKey: ArchiveKey.divisionSymbol)
     }
 }
