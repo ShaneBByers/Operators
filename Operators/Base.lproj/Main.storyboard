@@ -252,17 +252,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Random Operator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeT-J3-2bY">
-                                <rect key="frame" x="20" y="146" width="378.33333333333331" height="34"/>
-                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Number of Operator Uses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKN-IY-STv">
-                                <rect key="frame" x="20" y="234" width="504.33333333333337" height="34"/>
+                                <rect key="frame" x="116" y="238" width="504.33333333333337" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -271,7 +262,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohb-1I-DhC">
-                                <rect key="frame" x="607" y="183.66666666666666" width="109" height="46"/>
+                                <rect key="frame" x="313" y="184" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select"/>
@@ -283,7 +274,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7C-hy-gBh">
-                                <rect key="frame" x="607" y="139.66666666666666" width="109" height="46"/>
+                                <rect key="frame" x="313" y="88" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select"/>
@@ -295,7 +286,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPw-mv-cAU">
-                                <rect key="frame" x="607" y="227.66666666666669" width="109" height="46.000000000000057"/>
+                                <rect key="frame" x="314" y="280" width="109" height="46.000000000000057"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select"/>
@@ -307,19 +298,28 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwh-CU-GrT">
-                                <rect key="frame" x="313.66666666666669" y="348" width="109" height="46"/>
-                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <rect key="frame" x="305" y="342" width="127" height="52"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Cancel"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="1kK-8z-NNq" eventType="touchUpInside" id="oLO-mB-WN8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Custom Operator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwV-Uw-7rE">
-                                <rect key="frame" x="20" y="190" width="378.33333333333331" height="34"/>
+                                <rect key="frame" x="178" y="142" width="378.33333333333337" height="34"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Random Operator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeT-J3-2bY">
+                                <rect key="frame" x="179" y="46" width="378.33333333333337" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -330,19 +330,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="c7C-hy-gBh" firstAttribute="trailing" secondItem="4u9-k3-8B4" secondAttribute="trailingMargin" id="57P-9C-XXT"/>
-                            <constraint firstItem="uwV-Uw-7rE" firstAttribute="leading" secondItem="4u9-k3-8B4" secondAttribute="leadingMargin" id="6ze-EL-oJA"/>
-                            <constraint firstItem="Ohb-1I-DhC" firstAttribute="centerY" secondItem="uwV-Uw-7rE" secondAttribute="centerY" id="8XY-If-5TB"/>
-                            <constraint firstItem="IeT-J3-2bY" firstAttribute="leading" secondItem="4u9-k3-8B4" secondAttribute="leadingMargin" id="F9G-Dh-SCb"/>
-                            <constraint firstItem="uwV-Uw-7rE" firstAttribute="centerY" secondItem="4u9-k3-8B4" secondAttribute="centerY" id="Hln-zK-ysB"/>
+                            <constraint firstItem="GPw-mv-cAU" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="26O-x6-yYg"/>
+                            <constraint firstItem="c7C-hy-gBh" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="2MW-MQ-4W0"/>
+                            <constraint firstItem="Ohb-1I-DhC" firstAttribute="centerY" secondItem="4u9-k3-8B4" secondAttribute="centerY" id="5rR-Kq-PqE"/>
+                            <constraint firstItem="c7C-hy-gBh" firstAttribute="top" secondItem="IeT-J3-2bY" secondAttribute="bottom" constant="8" id="A5r-Yi-f29"/>
                             <constraint firstItem="VvS-v6-vyc" firstAttribute="top" secondItem="Iwh-CU-GrT" secondAttribute="bottom" constant="20" id="IwI-JN-7Bg"/>
-                            <constraint firstItem="mKN-IY-STv" firstAttribute="top" secondItem="uwV-Uw-7rE" secondAttribute="bottom" constant="10" id="Pfw-uL-YiL"/>
-                            <constraint firstItem="c7C-hy-gBh" firstAttribute="centerY" secondItem="IeT-J3-2bY" secondAttribute="centerY" id="T0L-Jq-1Ja"/>
-                            <constraint firstItem="Ohb-1I-DhC" firstAttribute="trailing" secondItem="4u9-k3-8B4" secondAttribute="trailingMargin" id="WAC-MK-N5g"/>
-                            <constraint firstItem="mKN-IY-STv" firstAttribute="leading" secondItem="4u9-k3-8B4" secondAttribute="leadingMargin" id="XbP-XP-C4v"/>
-                            <constraint firstItem="GPw-mv-cAU" firstAttribute="centerY" secondItem="mKN-IY-STv" secondAttribute="centerY" id="eH8-eg-qHz"/>
-                            <constraint firstItem="GPw-mv-cAU" firstAttribute="trailing" secondItem="4u9-k3-8B4" secondAttribute="trailingMargin" id="fpj-uj-FbB"/>
-                            <constraint firstItem="uwV-Uw-7rE" firstAttribute="top" secondItem="IeT-J3-2bY" secondAttribute="bottom" constant="10" id="huz-LH-eFy"/>
+                            <constraint firstItem="GPw-mv-cAU" firstAttribute="top" secondItem="mKN-IY-STv" secondAttribute="bottom" constant="8" id="Mej-0V-Nq4"/>
+                            <constraint firstItem="uwV-Uw-7rE" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="Psi-lq-8hg"/>
+                            <constraint firstItem="mKN-IY-STv" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="TK1-Eh-1S7"/>
+                            <constraint firstItem="IeT-J3-2bY" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="dUB-sL-wqa"/>
+                            <constraint firstItem="mKN-IY-STv" firstAttribute="top" secondItem="Ohb-1I-DhC" secondAttribute="bottom" constant="8" id="jU4-AD-K0z"/>
+                            <constraint firstItem="uwV-Uw-7rE" firstAttribute="top" secondItem="c7C-hy-gBh" secondAttribute="bottom" constant="8" id="kpa-eW-ID9"/>
+                            <constraint firstItem="Ohb-1I-DhC" firstAttribute="top" secondItem="uwV-Uw-7rE" secondAttribute="bottom" constant="8" id="nmC-bE-sQA"/>
+                            <constraint firstItem="Ohb-1I-DhC" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="o4Q-H2-0Xe"/>
                             <constraint firstItem="Iwh-CU-GrT" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="wGe-rz-pIy"/>
                         </constraints>
                     </view>
@@ -915,9 +915,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ne5-lu-R2p">
                                 <rect key="frame" x="518" y="321" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Medium">
-                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Medium"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
@@ -928,9 +927,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkq-Yh-xId">
                                 <rect key="frame" x="425" y="321" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Easy">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Easy"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
@@ -941,9 +939,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AtP-x4-8Ka">
                                 <rect key="frame" x="647" y="321" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Hard">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Hard"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
@@ -2037,9 +2034,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXY-k7-b25">
                                 <rect key="frame" x="313.66666666666669" y="356" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Medium">
-                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Medium"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
                                 </variation>
@@ -2049,12 +2045,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIM-cd-pwf">
                                 <rect key="frame" x="227" y="356" width="73" height="46"/>
-                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Easy">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Easy"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
                                     <action selector="difficultyButtonPressed:" destination="qJu-EG-PHW" eventType="touchUpInside" id="rUs-an-baj"/>
@@ -2063,9 +2058,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sl-LU-UDe">
                                 <rect key="frame" x="436" y="356" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
-                                <state key="normal" title="Hard">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Hard"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
                                 </variation>
@@ -2315,6 +2309,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jbn-RP-Rxt"/>
+        <segue reference="7Xf-0H-0gA"/>
     </inferredMetricsTieBreakers>
 </document>

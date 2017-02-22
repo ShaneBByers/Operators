@@ -29,11 +29,6 @@ class SettingsViewController: UIViewController {
         
         for button in challengePuzzleButtons {
             button.isEnabled = settingsModel.canDeleteChallengePuzzles(forDifficulty: Difficulty(rawValue: button.titleLabel!.text!)!)
-            if button.isEnabled {
-                button.alpha = 1.0
-            } else {
-                button.alpha = 0.25
-            }
         }
         
         if Symbols.Divide == Symbols.HyphenDots {
@@ -64,6 +59,11 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         ColorScheme.updateScheme(forView: self.view)
+        divisionSymbolLabel.textColor = .black
+        
+        challengePuzzleButtons[0].tintColor = .green
+        challengePuzzleButtons[1].tintColor = .yellow
+        challengePuzzleButtons[2].tintColor = .red
     }
     
     @IBAction func divisionSymbolButtonPressed(_ sender: UIButton) {
@@ -88,6 +88,12 @@ class SettingsViewController: UIViewController {
         settingsModel.changeColorScheme(toScheme: sender.titleLabel!.text!)
         
         ColorScheme.updateScheme(forView: self.view)
+        
+        divisionSymbolLabel.textColor = .black
+        
+        challengePuzzleButtons[0].tintColor = .green
+        challengePuzzleButtons[1].tintColor = .yellow
+        challengePuzzleButtons[2].tintColor = .red
     }
     
     @IBAction func deleteOriginalScoresPressed(_ sender: UIButton) {
@@ -102,6 +108,5 @@ class SettingsViewController: UIViewController {
         settingsModel.deleteChallengePuzzles(difficulty: Difficulty(rawValue: sender.titleLabel!.text!)!)
         
         sender.isEnabled = false
-        sender.alpha = 0.25
     }
 }

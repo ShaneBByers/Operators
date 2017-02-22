@@ -16,43 +16,32 @@ class ChallengeViewController: UIViewController {
     
     let challengeModel = ChallengeModel.sharedInstance
     
+    var isInitial = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        for (i,button) in puzzleButtons.enumerated() {
-            button.isEnabled = challengeModel.puzzleAvailableAt(index: i)
-        }
-    
         ColorScheme.updateScheme(forView: self.view)
         
-        for button in difficultyButtons {
-            button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
-        }
-        
-        let boldFont = UIFont(descriptor: difficultyButtons[0].titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: difficultyButtons[0].titleLabel!.font.pointSize)
-        
-        var buttonTintColor : UIColor = .green
-        
-        switch challengeModel.difficulty {
-        case .easy:
-            difficultyButtons[0].titleLabel!.font = boldFont
-            difficultyButtons[0].tintColor = .green
-            buttonTintColor = .green
-        case .medium:
-            difficultyButtons[1].titleLabel!.font = boldFont
-            difficultyButtons[1].tintColor = .yellow
-            buttonTintColor = .yellow
-        case .hard:
-            difficultyButtons[2].titleLabel!.font = boldFont
-            difficultyButtons[2].tintColor = .red
-            buttonTintColor = .red
-        case .random: break
-        }
-        
-        for button in puzzleButtons {
-            button.tintColor = buttonTintColor
+        difficultyButtons[0].tintColor = .green
+        difficultyButtons[1].tintColor = .yellow
+        difficultyButtons[2].tintColor = .red
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if isInitial {
+            for difficultyButton in difficultyButtons {
+                if difficultyButton.titleLabel!.text! == challengeModel.difficulty.rawValue {
+                    difficultyButton.titleLabel!.font = UIFont(descriptor: difficultyButton.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: difficultyButton.titleLabel!.font.pointSize)
+                    for (i,puzzleButton) in puzzleButtons.enumerated() {
+                        puzzleButton.tintColor = difficultyButton.tintColor
+                        puzzleButton.isEnabled = challengeModel.puzzleAvailableAt(index: i)
+                    }
+                }
+            }
+            isInitial = false
         }
     }
     

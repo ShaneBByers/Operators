@@ -296,6 +296,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 puzzleLabel.label.textColor = colorElements.buttonColor
             }
         }
+        for label in defaultOperatorLabels {
+            label.textColor = .black
+        }
+        expressionLabel.textColor = .black
     }
     
     func resetOnDisappear() {

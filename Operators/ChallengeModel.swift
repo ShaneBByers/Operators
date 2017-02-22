@@ -50,8 +50,8 @@ class ChallengeModel {
             
             for _ in 0..<kNumberOfPuzzles {
                 availablePuzzles[Difficulty.easy.rawValue]!.append(true)
-                availablePuzzles[Difficulty.medium.rawValue]!.append(false)
-                availablePuzzles[Difficulty.hard.rawValue]!.append(false)
+                availablePuzzles[Difficulty.medium.rawValue]!.append(true)
+                availablePuzzles[Difficulty.hard.rawValue]!.append(true)
             }
             
             availablePuzzles[Difficulty.easy.rawValue]![24] = false
