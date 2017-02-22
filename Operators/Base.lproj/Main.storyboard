@@ -286,7 +286,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPw-mv-cAU">
-                                <rect key="frame" x="314" y="280" width="109" height="46.000000000000057"/>
+                                <rect key="frame" x="314" y="280" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select"/>
@@ -298,12 +298,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwh-CU-GrT">
-                                <rect key="frame" x="305" y="342" width="127" height="52"/>
-                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                <rect key="frame" x="296.33333333333331" y="336" width="145" height="58"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Cancel"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 </variation>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="1kK-8z-NNq" eventType="touchUpInside" id="oLO-mB-WN8"/>
@@ -861,7 +861,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="deleteOriginalScoresPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="jkW-03-7wj"/>
+                                    <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteOriginalHighScores" id="310-sg-zJ6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMo-gH-0fe">
@@ -909,7 +909,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="deleteTimedScoresPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="TF0-4x-ZsM"/>
+                                    <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteTimedHighScores" id="TNf-ND-LTn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ne5-lu-R2p">
@@ -921,7 +921,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="deleteChallengePuzzlesPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="mqe-wC-eFk"/>
+                                    <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteChallengePuzzles" id="9yX-bu-TlU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkq-Yh-xId">
@@ -933,7 +933,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="deleteChallengePuzzlesPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="zBu-wm-Wlp"/>
+                                    <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteChallengePuzzles" id="VFk-DY-8Bg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AtP-x4-8Ka">
@@ -945,7 +945,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="deleteChallengePuzzlesPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="32T-9K-bF6"/>
+                                    <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteChallengePuzzles" id="VNu-cy-NXn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPd-s8-jhQ">
@@ -995,7 +995,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="GbN-4K-Vdi" kind="unwind" unwindAction="unwindToGameTypeWithSegue:" id="xlC-Pr-i82"/>
+                                    <segue destination="GbN-4K-Vdi" kind="unwind" identifier="unwindToGameType" unwindAction="unwindToGameTypeWithSegue:" id="xlC-Pr-i82"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1043,7 +1043,9 @@
                     <connections>
                         <outlet property="divisionSymbolLabel" destination="XtU-Zo-cfp" id="Ypg-X7-9oo"/>
                         <outlet property="hyphenButton" destination="kT2-eT-NcN" id="yGI-Vq-S0o"/>
+                        <outlet property="originalHighScoreButton" destination="muB-ss-f0O" id="udM-O2-H2d"/>
                         <outlet property="slashButton" destination="DPd-s8-jhQ" id="SN7-Gh-Ev0"/>
+                        <outlet property="timedHighScoreButton" destination="5ZP-ZR-SL6" id="K7e-sC-p6v"/>
                         <outletCollection property="divisionSymbolButtons" destination="kT2-eT-NcN" collectionClass="NSMutableArray" id="4gz-WP-WJo"/>
                         <outletCollection property="divisionSymbolButtons" destination="DPd-s8-jhQ" collectionClass="NSMutableArray" id="edG-LY-IvZ"/>
                         <outletCollection property="colorSchemeButtons" destination="gMo-gH-0fe" collectionClass="NSMutableArray" id="fBc-8W-fcN"/>
@@ -1058,6 +1060,103 @@
                 <exit id="GbN-4K-Vdi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1771.467391304348" y="950.72463768115949"/>
+        </scene>
+        <!--Settings Confirm Delete View Controller-->
+        <scene sceneID="pUm-t8-Idm">
+            <objects>
+                <viewController id="RU1-63-yrt" customClass="SettingsConfirmDeleteViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5nf-50-T2B"/>
+                        <viewControllerLayoutGuide type="bottom" id="145-eN-Imm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BwH-ZF-iFj">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are You Sure?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce5-tu-Ncu">
+                                <rect key="frame" x="193" y="128" width="351.33333333333337" height="51"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Will Delete:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo6-6r-Y5X">
+                                <rect key="frame" x="200.66666666666669" y="187" width="336.33333333333331" height="40"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzo-Fo-b0c">
+                                <rect key="frame" x="314" y="235" width="108.33333333333331" height="34"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-tQ-7bn">
+                                <rect key="frame" x="193" y="342" width="127" height="52"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Cancel"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="RU1-63-yrt" eventType="touchUpInside" id="Enb-Ya-OqL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8Z-xl-fVj">
+                                <rect key="frame" x="417.33333333333337" y="342" width="127.00000000000011" height="52"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="RU1-63-yrt" eventType="touchUpInside" id="Jyz-1f-aDh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This action cannot be undone." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASE-uW-fJe">
+                                <rect key="frame" x="194.33333333333337" y="277" width="348.33333333333326" height="22.666666666666686"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="15"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Oo6-6r-Y5X" firstAttribute="centerX" secondItem="BwH-ZF-iFj" secondAttribute="centerX" id="6g1-0F-0dp"/>
+                            <constraint firstItem="ASE-uW-fJe" firstAttribute="centerX" secondItem="BwH-ZF-iFj" secondAttribute="centerX" id="B7D-dq-HwB"/>
+                            <constraint firstItem="Ce5-tu-Ncu" firstAttribute="centerX" secondItem="BwH-ZF-iFj" secondAttribute="centerX" id="D8l-5R-DL0"/>
+                            <constraint firstItem="Oo6-6r-Y5X" firstAttribute="centerY" secondItem="BwH-ZF-iFj" secondAttribute="centerY" id="Gmi-er-A4L"/>
+                            <constraint firstItem="Yzo-Fo-b0c" firstAttribute="top" secondItem="Oo6-6r-Y5X" secondAttribute="bottom" constant="8" id="Jgs-hv-NMi"/>
+                            <constraint firstItem="145-eN-Imm" firstAttribute="top" secondItem="fLV-tQ-7bn" secondAttribute="bottom" constant="20" id="V76-4S-npO"/>
+                            <constraint firstItem="Yzo-Fo-b0c" firstAttribute="centerX" secondItem="BwH-ZF-iFj" secondAttribute="centerX" id="X5f-VD-ldw"/>
+                            <constraint firstItem="fLV-tQ-7bn" firstAttribute="leading" secondItem="Ce5-tu-Ncu" secondAttribute="leading" id="ZR3-do-ihO"/>
+                            <constraint firstItem="145-eN-Imm" firstAttribute="top" secondItem="K8Z-xl-fVj" secondAttribute="bottom" constant="20" id="dz7-Xh-wb9"/>
+                            <constraint firstItem="ASE-uW-fJe" firstAttribute="top" secondItem="Yzo-Fo-b0c" secondAttribute="bottom" constant="8" id="lgH-ob-ciC"/>
+                            <constraint firstItem="K8Z-xl-fVj" firstAttribute="trailing" secondItem="Ce5-tu-Ncu" secondAttribute="trailing" id="vjf-Ik-FgJ"/>
+                            <constraint firstItem="Oo6-6r-Y5X" firstAttribute="top" secondItem="Ce5-tu-Ncu" secondAttribute="bottom" constant="8" id="xER-cI-9ID"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="deleteTextLabel" destination="Yzo-Fo-b0c" id="Pg0-a5-kHa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQ1-nZ-Z66" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1771" y="1736"/>
         </scene>
         <!--Difficulty-->
         <scene sceneID="eJD-SA-fv1">
@@ -2310,5 +2409,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="7Xf-0H-0gA"/>
+        <segue reference="VNu-cy-NXn"/>
     </inferredMetricsTieBreakers>
 </document>

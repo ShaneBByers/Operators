@@ -58,6 +58,46 @@ class SettingsModel {
         return false
     }
     
+    func canDeleteOriginalHighScores() -> Bool {
+        let bestScoreURL : URL
+        
+        bestScoreURL = documentURL.appendingPathComponent(Filenames.bestScore + ".archive")
+        
+        let fileExists = fileManager.fileExists(atPath: bestScoreURL.path)
+        
+        if fileExists {
+            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
+            
+            for score in archive.scores.values {
+                if score > 0 {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func canDeleteTimedHighScores() -> Bool {
+        let timedURL : URL
+
+        timedURL = documentURL.appendingPathComponent(Filenames.timed + ".archive")
+        
+        let fileExists = fileManager.fileExists(atPath: timedURL.path)
+        
+        if fileExists {
+            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
+            
+            for dict in archive.scores.values {
+                for score in dict.values {
+                    if score > 0 {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
+    
     func deleteOriginalHighScores() {
         let bestScoreURL : URL
         

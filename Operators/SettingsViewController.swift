@@ -22,14 +22,38 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var colorSchemeButtons: [UIButton]!
     
+    @IBOutlet weak var originalHighScoreButton: UIButton!
+    
+    @IBOutlet weak var timedHighScoreButton: UIButton!
+    
     @IBOutlet var challengePuzzleButtons: [UIButton]!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let button = sender! as! UIButton
+        
+        switch segue.identifier! {
+        case "deleteOriginalHighScores":
+            let destination = segue.destination as! SettingsConfirmDeleteViewController
+            
+            destination.configureConfirmDeleteScores(deleteText: "All High Scores on \"Original\" Game Mode", deleteScoresFunction: settingsModel.deleteOriginalHighScores)
+        case "deleteTimedHighScores":
+            let destination = segue.destination as! SettingsConfirmDeleteViewController
+            
+            destination.configureConfirmDeleteScores(deleteText: "All High Scores on \"Timed\" Game Mode", deleteScoresFunction: settingsModel.deleteTimedHighScores)
+        case "deleteChallengePuzzles":
+            let destination = segue.destination as! SettingsConfirmDeleteViewController
+            
+            let difficulty = Difficulty(rawValue: button.titleLabel!.text!)!
+            
+            destination.configureConfirmDeleteChallengePuzzles(deleteText: "All \(difficulty.rawValue) Challenge Puzzles", deletePuzzlesFunction: settingsModel.deleteChallengePuzzles, difficulty: difficulty)
+        case "unwindToGameType": break
+        default: assert(false,"Unhandled Segue")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for button in challengePuzzleButtons {
-            button.isEnabled = settingsModel.canDeleteChallengePuzzles(forDifficulty: Difficulty(rawValue: button.titleLabel!.text!)!)
-        }
         
         if Symbols.Divide == Symbols.HyphenDots {
             hyphenButton.titleLabel!.font = UIFont(descriptor: hyphenButton.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: hyphenButton.titleLabel!.font.pointSize)
@@ -58,12 +82,21 @@ class SettingsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         ColorScheme.updateScheme(forView: self.view)
         divisionSymbolLabel.textColor = .black
         
         challengePuzzleButtons[0].tintColor = .green
         challengePuzzleButtons[1].tintColor = .yellow
         challengePuzzleButtons[2].tintColor = .red
+        
+        for button in challengePuzzleButtons {
+            button.isEnabled = settingsModel.canDeleteChallengePuzzles(forDifficulty: Difficulty(rawValue: button.titleLabel!.text!)!)
+        }
+        
+        originalHighScoreButton.isEnabled = settingsModel.canDeleteOriginalHighScores()
+        
+        timedHighScoreButton.isEnabled = settingsModel.canDeleteTimedHighScores()
     }
     
     @IBAction func divisionSymbolButtonPressed(_ sender: UIButton) {
@@ -94,19 +127,5 @@ class SettingsViewController: UIViewController {
         challengePuzzleButtons[0].tintColor = .green
         challengePuzzleButtons[1].tintColor = .yellow
         challengePuzzleButtons[2].tintColor = .red
-    }
-    
-    @IBAction func deleteOriginalScoresPressed(_ sender: UIButton) {
-        settingsModel.deleteOriginalHighScores()
-    }
-    
-    @IBAction func deleteTimedScoresPressed(_ sender: UIButton) {
-        settingsModel.deleteTimedHighScores()
-    }
-    
-    @IBAction func deleteChallengePuzzlesPressed(_ sender: UIButton) {
-        settingsModel.deleteChallengePuzzles(difficulty: Difficulty(rawValue: sender.titleLabel!.text!)!)
-        
-        sender.isEnabled = false
     }
 }

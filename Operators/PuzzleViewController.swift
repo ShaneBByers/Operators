@@ -572,6 +572,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             for i in puzzleLabels.indices {
                 if puzzleLabels[i].label == label {
+                    if !puzzleLabels[i].isMovable {
+                        break
+                    }
                     UIView.animate(withDuration: 0.2, animations: { 
                         self.puzzleLabels[i].label.alpha = 0.0
                     }, completion: { (value) in
@@ -637,6 +640,24 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         resetButtonAction(enable: resetEnabled)
+        
+        var totalOperands = 0
+        var operatorCounter = 0
+        
+        for i in puzzleLabels.indices {
+            if puzzleLabels[i].isOperator && !puzzleLabels[i].isMovable {
+                operatorCounter += 1
+            }
+            if puzzleLabels[i].isOperand {
+                totalOperands += 1
+            }
+        }
+        
+        if operatorCounter == Int(totalOperands) - 2 {
+            hintsButtonAction(enable: false)
+        } else {
+            hintsButtonAction(enable: true)
+        }
     }
     
     // MARK: - Label Panned Cases

@@ -49,12 +49,12 @@ class ChallengeModel {
             availablePuzzles[Difficulty.hard.rawValue] = []
             
             for _ in 0..<kNumberOfPuzzles {
-                availablePuzzles[Difficulty.easy.rawValue]!.append(true)
-                availablePuzzles[Difficulty.medium.rawValue]!.append(true)
-                availablePuzzles[Difficulty.hard.rawValue]!.append(true)
+                availablePuzzles[Difficulty.easy.rawValue]!.append(false)
+                availablePuzzles[Difficulty.medium.rawValue]!.append(false)
+                availablePuzzles[Difficulty.hard.rawValue]!.append(false)
             }
             
-            availablePuzzles[Difficulty.easy.rawValue]![24] = false
+            availablePuzzles[Difficulty.easy.rawValue]![0] = true
             
             archive = ChallengeArchive(availablePuzzles: availablePuzzles)
             NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
