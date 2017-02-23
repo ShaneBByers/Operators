@@ -43,5 +43,7 @@ class OperandCount {
     static let easy = 3
     static let medium = 4
     static let hard = 5
-    static let random = Int(arc4random_uniform(3) + 3)
+    static func random() -> Int {
+       return Int(arc4random_uniform(3) + 3)
+    }
 }

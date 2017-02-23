@@ -1214,7 +1214,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         case .easy: equation = puzzleModel.newEquation(operands: OperandCount.easy)
         case .medium: equation = puzzleModel.newEquation(operands: OperandCount.medium)
         case .hard: equation = puzzleModel.newEquation(operands: OperandCount.hard)
-        case .random: equation = puzzleModel.newEquation(operands: OperandCount.random)
+        case .random: equation = puzzleModel.newEquation(operands: OperandCount.random())
         }
         
         switch gameType! {
