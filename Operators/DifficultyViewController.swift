@@ -12,23 +12,17 @@ class DifficultyViewController: UIViewController {
     
     let bestScoreModel = BestScoreModel.sharedInstance
 
-    @IBOutlet weak var easyHighScoreLabel: UILabel!
+    @IBOutlet var highScoreLabels: [UILabel]!
     
-    @IBOutlet weak var mediumHighScoreLabel: UILabel!
-    
-    @IBOutlet weak var hardHighScoreLabel: UILabel!
-    
-    @IBOutlet weak var randomHighScoreLabel: UILabel!
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        easyHighScoreLabel.text = String(bestScoreModel.highScore(forDifficulty: .easy))
-        mediumHighScoreLabel.text = String(bestScoreModel.highScore(forDifficulty: .medium))
-        hardHighScoreLabel.text = String(bestScoreModel.highScore(forDifficulty: .hard))
-        randomHighScoreLabel.text = String(bestScoreModel.highScore(forDifficulty: .random))
+        highScoreLabels[0].text = String(bestScoreModel.highScore(forDifficulty: .easy))
+        highScoreLabels[1].text = String(bestScoreModel.highScore(forDifficulty: .medium))
+        highScoreLabels[2].text = String(bestScoreModel.highScore(forDifficulty: .hard))
+        highScoreLabels[3].text = String(bestScoreModel.highScore(forDifficulty: .random))
         
         ColorScheme.updateScheme(forView: self.view)
     }
@@ -36,10 +30,7 @@ class DifficultyViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier! {
-        case "showPuzzleEasyDifficulty": showPuzzle(segue: segue, sender: sender)
-        case "showPuzzleMediumDifficulty": showPuzzle(segue: segue, sender: sender)
-        case "showPuzzleHardDifficulty": showPuzzle(segue: segue, sender: sender)
-        case "showPuzzleRandomDifficulty": showPuzzle(segue: segue, sender: sender)
+        case "showPuzzleSegue": showPuzzle(segue: segue, sender: sender)
         case "unwindToGameType": break
         default: assert(false, "Unhandled Segue")
         }
@@ -55,6 +46,9 @@ class DifficultyViewController: UIViewController {
         destinationViewController.configureBestScore(withDifficulty: difficulty)
     }
     
+    @IBAction func difficultyButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "showPuzzleSegue", sender: sender)
+    }
     @IBAction func unwindToOriginal(segue: UIStoryboardSegue) {}
     
 

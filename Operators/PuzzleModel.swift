@@ -8,14 +8,12 @@
 
 import Foundation
 
-
-
 class PuzzleModel {
     static let sharedInstance = PuzzleModel()
     
-    let operators : [(Int,Int)->Int] = [OperatorFunctions.Add, OperatorFunctions.Subtract, OperatorFunctions.Multiply, OperatorFunctions.Divide]
+    private let operators : [(Int,Int)->Int] = [OperatorFunctions.Add, OperatorFunctions.Subtract, OperatorFunctions.Multiply, OperatorFunctions.Divide]
     
-    let operatorStrings : [String] = [Symbols.Add, Symbols.Subtract, Symbols.Multiply, Symbols.Divide]
+    private let operatorStrings : [String] = [Symbols.Add, Symbols.Subtract, Symbols.Multiply, Symbols.Divide]
     
     var equation : Equation?
     

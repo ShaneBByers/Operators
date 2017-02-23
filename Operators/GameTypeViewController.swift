@@ -9,15 +9,10 @@
 import UIKit
 
 class GameTypeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         ColorScheme.updateScheme(forView: self.view)
     }
 
     @IBAction func unwindToGameType(segue: UIStoryboardSegue) {}
-
 }

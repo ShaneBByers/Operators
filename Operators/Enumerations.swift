@@ -20,4 +20,3 @@ enum GameType {
     case challenge
     case timed
 }
-

@@ -22,6 +22,23 @@ class TimedViewController: UIViewController {
     
     @IBOutlet var timeButtons: [UIButton]!
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "timedOptionsSelectedSegue":
+            let destination = segue.destination as! PuzzleViewController
+            
+            let difficulty = currentDifficulty.rawValue
+            
+            let time = currentTime
+            
+            timedModel.initialize(withDifficulty: difficulty, withTime: time)
+            
+            destination.configureTimed(withDifficulty: difficulty, withTime: timedModel.totalTime!)
+        case "unwindToGameType": break
+        default: assert(false, "Unhandled Segue")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         timedModel.initialize(withDifficulty: currentDifficulty.rawValue, withTime: currentTime)
@@ -60,23 +77,6 @@ class TimedViewController: UIViewController {
         
         highScoreLabel.text = String(timedModel.highScore())
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case "timedOptionsSelectedSegue":
-            let destination = segue.destination as! PuzzleViewController
-            
-            let difficulty = currentDifficulty.rawValue
-            
-            let time = currentTime
-            
-            timedModel.initialize(withDifficulty: difficulty, withTime: time)
-            
-            destination.configureTimed(withDifficulty: difficulty, withTime: timedModel.totalTime!)
-        case "unwindToGameType": break
-        default: assert(false, "Unhandled Segue")
-        }
     }
     
     @IBAction func unwindToTimed(segue: UIStoryboardSegue) {}

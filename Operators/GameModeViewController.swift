@@ -11,18 +11,10 @@ import UIKit
 class GameModeViewController: UIViewController {
     
     let settingsModel = SettingsModel.sharedInstance
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         ColorScheme.updateScheme(forView: self.view)
     }
 
     @IBAction func unwindToGameMode(segue: UIStoryboardSegue) {}
-
-
 }

@@ -24,17 +24,6 @@ class TimedCompletedViewController: UIViewController {
     
     @IBOutlet weak var highScoreLabel: UILabel!
     
-    @IBAction func restartButtonPressed(_ sender: UIButton) {
-        puzzleViewController!.restartTimedPuzzle()
-        self.dismiss(animated: true)
-    }
-    
-    @IBAction func menuButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            self.puzzleViewController!.backButtonPressed(UIButton())
-        }
-    }
-    
     func configureText(completedPuzzles: Int, score: Int, highScore: Int) {
         self.completedPuzzles = completedPuzzles
         self.score = score
@@ -57,5 +46,14 @@ class TimedCompletedViewController: UIViewController {
         ColorScheme.updateScheme(forView: self.view)
     }
     
-
+    @IBAction func restartButtonPressed(_ sender: UIButton) {
+        puzzleViewController!.restartTimedPuzzle()
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func menuButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true) {
+            self.puzzleViewController!.backButtonPressed(UIButton())
+        }
+    }
 }

@@ -11,12 +11,12 @@ import Foundation
 class SettingsModel {
     static let sharedInstance = SettingsModel()
     
-    let fileManager : FileManager
-    let documentURL : URL
+    private let fileManager : FileManager
+    private let documentURL : URL
     
-    let settingsURL : URL
+    private let settingsURL : URL
     
-    let settingsArchive : SettingsArchive
+    private let settingsArchive : SettingsArchive
     
     init() {
         fileManager = FileManager.default

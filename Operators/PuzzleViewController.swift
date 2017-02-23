@@ -18,14 +18,19 @@ struct PuzzleLabel {
     var operatorDoubleTapGestureRecognizer : UITapGestureRecognizer
     var operatorHoldGestureRecognizer : UILongPressGestureRecognizer
     
+    private let kDefaultLabelSize = 60
+    private let kLockString = "🔒"
+    let kLockLabelAlpha : CGFloat = 0.5
+    
     init(text: String, isOperand: Bool, isOperator: Bool, isSolution: Bool, isMovable: Bool, viewController: PuzzleViewController?) {
+        
         let _label : UILabel
         
         if isSolution {
             let width = 30*text.characters.count + 5
-            _label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: 60))
+            _label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: kDefaultLabelSize))
         } else {
-            _label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+            _label = UILabel(frame: CGRect(x: 0, y: 0, width: kDefaultLabelSize, height: kDefaultLabelSize))
         }
         
         _label.font = Fonts.wRhC
@@ -61,12 +66,12 @@ struct PuzzleLabel {
         
         if isOperator {
             _label.isUserInteractionEnabled = true
-            let _lockLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+            let _lockLabel = UILabel(frame: CGRect(x: 0, y: 0, width: kDefaultLabelSize, height: kDefaultLabelSize))
             
             _lockLabel.font = Fonts.wRhC
-            _lockLabel.text = "🔒"
+            _lockLabel.text = kLockString
             _lockLabel.textAlignment = .center
-            _lockLabel.alpha = 0.5
+            _lockLabel.alpha = kLockLabelAlpha
             _lockLabel.isHidden = isMovable
             self.lockLabel = _lockLabel
         }
@@ -116,11 +121,16 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Constants
     //
+    let kInitDefaultOperatorCount = 4
     let kGrowthFactor : CGFloat = 1.1
     let kPuzzleLabelSize : CGSize = CGSize(width: 60, height: 60)
     let kSolutionLabelSize : CGSize = CGSize(width: 120, height: 60)
     let kLabelBuffer : CGFloat = 10
     let kPlaceholderLabel = PuzzleLabel(text: "", isOperand: false, isOperator: false, isSolution: false, isMovable: true, viewController: nil)
+    let kShortAnimationDuration : TimeInterval = 0.2
+    let kLongAnimationDuration : TimeInterval = 0.5
+    let kWildcardOperatorPosition = 2
+    let kTimerInterval : TimeInterval = 0.1
     
     let wildcardOperator : UILabel
     
@@ -238,7 +248,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Init/Load
     //
     required init?(coder aDecoder: NSCoder) {
-        for _ in 0..<4 {
+        for _ in 0..<kInitDefaultOperatorCount {
             defaultOperatorLabels.append(UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize)))
         }
         wildcardOperator = UILabel(frame: CGRect(origin: CGPoint.zero, size: kPuzzleLabelSize))
@@ -375,11 +385,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 if label.text == Symbols.Wildcard {
                     label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
                     self.view.addSubview(label)
-                    UIView.animate(withDuration: 0.2, animations: { 
+                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
                         label.alpha = 1.0
                     })
                 } else {
-                    UIView.animate(withDuration: 0.2, animations: {
+                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
                         label.center = CGPoint(x: xPositionCenter, y: yPositionCenter)
                         
                         if let countLabel = self.operatorCountLabels[label.text!] {
@@ -396,9 +406,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         primaryLabel.textColor = colorElements.labelColor
         primaryLabel.text = "\(timedModel.remainingMinutesSeconds(timeElapsed: 0.0)!)"
         
-        let timerInterval : TimeInterval = 0.1
-        
-        timer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: kTimerInterval, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
         
         newPuzzleButton.alpha = 1.0
         newPuzzleButton.isEnabled = true
@@ -505,7 +513,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         
                         newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
                         
-                        defaultOperatorLabels.remove(at: 2)
+                        defaultOperatorLabels.remove(at: kWildcardOperatorPosition)
                         
                         placeDefaultOperators(isInitial: false)
                         
@@ -554,7 +562,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         switch gameType! {
         case .original:
             if let score = bestScoreModel.currentScore() {
-                if score == 100 {
+                if score == Int(bestScoreModel.maxScore) {
                     resetEnabled = false
                 }
             }
@@ -575,7 +583,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     if !puzzleLabels[i].isMovable {
                         break
                     }
-                    UIView.animate(withDuration: 0.2, animations: { 
+                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
                         self.puzzleLabels[i].label.alpha = 0.0
                     }, completion: { (value) in
                         self.puzzleLabels[i].label.removeFromSuperview()
@@ -613,7 +621,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         
                         if let lockLabel = puzzleLabel.lockLabel {
                             if puzzleLabel.isMovable {
-                                UIView.animate(withDuration: 0.2, animations: {
+                                UIView.animate(withDuration: kShortAnimationDuration, animations: {
                                     lockLabel.alpha = 0.0
                                 }, completion: { (value) in
                                     lockLabel.isHidden = true
@@ -621,8 +629,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                             } else {
                                 lockLabel.alpha = 0.0
                                 lockLabel.isHidden = false
-                                UIView.animate(withDuration: 0.2, animations: {
-                                    lockLabel.alpha = 0.5
+                                UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                                    lockLabel.alpha = self.puzzleLabels[i].kLockLabelAlpha
                                 })
                             }
                         }
@@ -797,7 +805,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
                     
-                    defaultOperatorLabels.remove(at: 2)
+                    defaultOperatorLabels.remove(at: kWildcardOperatorPosition)
                     
                     placeDefaultOperators(isInitial: false)
                     
@@ -839,7 +847,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 if isDefaultOperator {
                     label.center = self.initialPoint
                     
-                    UIView.animate(withDuration: 0.5, animations: {
+                    UIView.animate(withDuration: kLongAnimationDuration, animations: {
                         label.alpha = 1.0
                     })
                 } else {
@@ -849,7 +857,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 hasPlaceholder = false
             } else {
                 if isDefaultOperator {
-                    UIView.animate(withDuration: 0.5, animations: {
+                    UIView.animate(withDuration: kLongAnimationDuration, animations: {
                         label.center = self.initialPoint
                     })
                 } else {
@@ -861,7 +869,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     default: break
                     }
                     
-                    UIView.animate(withDuration: 0.5, animations: {
+                    UIView.animate(withDuration: kLongAnimationDuration, animations: {
                         label.alpha = 0.0
                     }, completion: { (value) in
                         label.removeFromSuperview()
@@ -870,7 +878,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         } else {
             if isDefaultOperator {
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: kLongAnimationDuration, animations: {
                     label.center = self.initialPoint
                 })
             } else {
@@ -883,7 +891,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 default: break
                 }
                 
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: kLongAnimationDuration, animations: {
                     label.alpha = 0.0
                 }, completion: { (value) in
                     label.removeFromSuperview()
@@ -901,7 +909,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if gameType! == .original {
             if let score = bestScoreModel.currentScore() {
-                if score == 100 {
+                if score == Int(bestScoreModel.maxScore) {
                     resetEnabled = false
                 }
             }
@@ -977,7 +985,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             } else if best > 0 {
                 primaryLabelUpdate(withText: "\(best)")
             }
-            if best == 100 {
+            if best == Int(bestScoreModel.maxScore) {
                 hintsButtonAction(enable: false)
                 solveButtonAction(enable: false)
             }
@@ -1035,18 +1043,20 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         self.timedModel.restart()
         
         self.primaryLabel.text = "\(self.timedModel.remainingMinutesSeconds(timeElapsed: 0.0)!)"
-        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: kTimerInterval, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
         
         self.newPuzzleButtonPressed(UIButton())
     }
     
     func timerFired(timer : Timer) {
         
+        let countdownTimerAmount : TimeInterval = 10.1
+        
         if let remaining = timedModel.remainingMinutesSeconds(timeElapsed: timer.timeInterval) {
             primaryLabel.text = remaining
             let doubleRemaining = Double(timedModel.currentTime!)
             let intRemaining = Int(doubleRemaining)
-            if doubleRemaining <= 10.1 && abs(doubleRemaining - Double(intRemaining)) <= 0.1 {
+            if doubleRemaining <= countdownTimerAmount && abs(doubleRemaining - Double(intRemaining)) <= kTimerInterval {
                 primaryLabel.textColor = .red
             } else {
                 primaryLabel.textColor = colorElements.buttonColor
@@ -1081,21 +1091,27 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func primaryLabelUpdate(withText text: String) {
-        let primaryUpdateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 60))
+        
+        let primaryUpdateLabelSize = CGSize(width: 150, height: 60)
+        
+        let primaryLabelBuffer = 4.0*kLabelBuffer
+        
+        let primaryUpdateLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: primaryUpdateLabelSize))
         primaryUpdateLabel.font = Fonts.wRhC
         primaryUpdateLabel.text = "+\(text)"
         primaryUpdateLabel.center.y = primaryLabel.center.y
-        primaryUpdateLabel.center.x = primaryLabel.frame.origin.x + primaryLabel.frame.size.width + 4.0*kLabelBuffer
+        primaryUpdateLabel.center.x = primaryLabel.frame.origin.x + primaryLabel.frame.size.width + primaryLabelBuffer
         primaryUpdateLabel.alpha = 0.0
+        primaryUpdateLabel.textColor = primaryLabel.textColor
         self.view.addSubview(primaryUpdateLabel)
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: kLongAnimationDuration, animations: {
             primaryUpdateLabel.alpha = 1.0
-            primaryUpdateLabel.center.y -= 2.0*self.kLabelBuffer
+            primaryUpdateLabel.center.y -= primaryLabelBuffer/2.0
         }) { (value) in
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: self.kLongAnimationDuration, animations: {
                 primaryUpdateLabel.alpha = 0.0
-                primaryUpdateLabel.center.y -= 2.0*self.kLabelBuffer
+                primaryUpdateLabel.center.y -= primaryLabelBuffer/2.0
             }, completion: { (value) in
                 primaryUpdateLabel.removeFromSuperview()
             })
@@ -1104,7 +1120,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func resetHints() {
         for countLabel in operatorCountLabels.values {
-            UIView.animate(withDuration: 0.2, animations: { 
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 countLabel.alpha = 0.0
             }, completion: { (value) in
                 countLabel.text = ""
@@ -1116,12 +1132,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     func resetButtonAction(enable: Bool) {
         if enable {
             resetButton.isEnabled = true
-            UIView.animate(withDuration: 0.2, animations: { 
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 self.resetButton.alpha = 1.0
             })
         } else {
             resetButton.isEnabled = false
-            UIView.animate(withDuration: 0.2, animations: { 
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 self.resetButton.alpha = 0.0
             })
         }
@@ -1130,12 +1146,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     func hintsButtonAction(enable: Bool) {
         if enable {
             hintsButton.isEnabled = true
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 self.hintsButton.alpha = 1.0
             })
         } else {
             hintsButton.isEnabled = false
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 self.hintsButton.alpha = 0.0
             })
         }
@@ -1144,12 +1160,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     func solveButtonAction(enable: Bool) {
         if enable {
             solveButton.isEnabled = true
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 self.solveButton.alpha = 1.0
             })
         } else {
             solveButton.isEnabled = false
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 self.solveButton.alpha = 0.0
             })
         }
@@ -1171,7 +1187,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         resetButton.isEnabled = false
         
         for (i,puzzleLabel) in puzzleLabels.enumerated() {
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 if puzzleLabel.isOperator && puzzleLabel.isMovable {
                     puzzleLabel.label.alpha = 0.0
                 }
@@ -1195,12 +1211,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         let equation : Equation
         
         switch difficulty! {
-        case .easy: equation = puzzleModel.newEquation(operands: 3)
-        case .medium: equation = puzzleModel.newEquation(operands: 4)
-        case .hard: equation = puzzleModel.newEquation(operands: 5)
-        case .random:
-            let operands = Int(arc4random_uniform(3) + 3)
-            equation = puzzleModel.newEquation(operands: operands)
+        case .easy: equation = puzzleModel.newEquation(operands: OperandCount.easy)
+        case .medium: equation = puzzleModel.newEquation(operands: OperandCount.medium)
+        case .hard: equation = puzzleModel.newEquation(operands: OperandCount.hard)
+        case .random: equation = puzzleModel.newEquation(operands: OperandCount.random)
         }
         
         switch gameType! {
@@ -1223,9 +1237,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         resetHints()
         
-        if defaultOperatorLabels[2].text! == Symbols.Wildcard {
-            defaultOperatorLabels[2].removeFromSuperview()
-            defaultOperatorLabels.remove(at: 2)
+        if defaultOperatorLabels[kWildcardOperatorPosition].text! == Symbols.Wildcard {
+            defaultOperatorLabels[kWildcardOperatorPosition].removeFromSuperview()
+            defaultOperatorLabels.remove(at: kWildcardOperatorPosition)
             placeDefaultOperators(isInitial: false)
         }
         
@@ -1256,7 +1270,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         for (i,puzzleLabel) in puzzleLabels.enumerated() {
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 if puzzleLabel.isOperator {
                     puzzleLabel.label.alpha = 0.0
                 }
@@ -1355,10 +1369,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     displayExpression()
                     
                 } else if puzzleLabels[i].isOperator {
-                    UIView.animate(withDuration: 0.2, animations: {
+                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
                         self.puzzleLabels[i].label.alpha = 0.0
                     }, completion: { (value) in
-                        UIView.animate(withDuration: 0.2, animations: {
+                        UIView.animate(withDuration: self.kShortAnimationDuration, animations: {
                             self.puzzleLabels[i].label.text = operatorText
                             self.puzzleLabels[i].label.alpha = 1.0
                         })
@@ -1387,12 +1401,15 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func hintsCustomOperator() {
-        defaultOperatorLabels.insert(wildcardOperator, at: 2)
+        defaultOperatorLabels.insert(wildcardOperator, at: kWildcardOperatorPosition)
         
         placeDefaultOperators(isInitial: false)
     }
     
     func hintsOperatorUses() {
+        
+        let kOperatorUsesLabelAlpha : CGFloat = 0.5
+        
         for operatorLabel in defaultOperatorLabels {
             var operatorCount = 0
             if operatorLabel.text! != Symbols.Wildcard {
@@ -1405,8 +1422,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     label.text = "\(operatorCount)"
                     self.view.addSubview(label)
                     label.sendSubview(toBack: self.view)
-                    UIView.animate(withDuration: 0.2, animations: {
-                        label.alpha = 0.5
+                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                        label.alpha = kOperatorUsesLabelAlpha
                     })
                 }
             }
@@ -1417,7 +1434,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         for puzzleLabel in puzzleLabels {
             
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
                 puzzleLabel.label.alpha = 0.0
                 if let lockLabel = puzzleLabel.lockLabel {
                     lockLabel.alpha = 0.0
@@ -1459,7 +1476,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let solutionWidth = puzzleLabels[puzzleLabels.count - 1].label.frame.size.width
         
-        let totalWidth = self.view.frame.size.width - kLabelBuffer*6.0 - solutionWidth - kPuzzleLabelSize.width
+        let totalWidth = self.view.frame.size.width - kLabelBuffer*2.0*3.0 - solutionWidth - kPuzzleLabelSize.width
         
         let oneWidth = totalWidth/CGFloat(puzzleLabels.count - 2)
         
@@ -1472,7 +1489,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             if i == puzzleLabels.count - 1 {
                 xPositionCenter = self.view.frame.size.width - kLabelBuffer*2.0 - solutionWidth/2
             } else if i == puzzleLabels.count - 2 {
-                xPositionCenter = self.view.frame.size.width - kLabelBuffer*4.0 - solutionWidth - puzzleLabel.label.frame.size.width/2
+                xPositionCenter = self.view.frame.size.width - kLabelBuffer*2.0*2.0 - solutionWidth - puzzleLabel.label.frame.size.width/2
             } else {
                 xPositionCenter = oneWidth*CGFloat(i) + oneWidthCenter
             }
@@ -1488,7 +1505,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             } else {
                 
                 if self.view.subviews.contains(puzzleLabel.label) {
-                    UIView.animate(withDuration: 0.2, animations: {
+                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
                         if let lockLabel = puzzleLabel.lockLabel {
                             lockLabel.center = CGPoint(x: xPositionCenter, y: self.kPuzzleLabelsYPosition)
                         }
@@ -1507,7 +1524,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if isNewPuzzle {
             for puzzleLabel in puzzleLabels {
-                UIView.animate(withDuration: 0.2, delay: 0.2, options: [], animations: {
+                UIView.animate(withDuration: kShortAnimationDuration, delay: kShortAnimationDuration, options: [], animations: {
                     puzzleLabel.label.alpha = 1.0
                 }, completion: nil)
             }

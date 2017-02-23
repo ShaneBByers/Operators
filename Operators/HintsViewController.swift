@@ -15,10 +15,6 @@ class HintsViewController: UIViewController {
     func configureViewController(viewController: PuzzleViewController) {
         puzzleViewController = viewController
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         ColorScheme.updateScheme(forView: self.view)

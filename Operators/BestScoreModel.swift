@@ -11,15 +11,19 @@ import Foundation
 class BestScoreModel {
     static let sharedInstance = BestScoreModel()
     
-    var current : Int?
+    private var current : Int?
     
-    var total : Int = 0
+    private var total : Int = 0
     
-    var highScores : [String:Int] = [:]
+    private var highScores : [String:Int] = [:]
     
-    var bestScoreURL : URL
+    private var bestScoreURL : URL
     
-    var archive : BestScoreArchive
+    private var archive : BestScoreArchive
+    
+    private let scoreBooster = 10
+    
+    public let maxScore = 100.0
     
     init() {
         let fileManager = FileManager.default
@@ -45,8 +49,8 @@ class BestScoreModel {
     
     func updateScores(withEquation equation: Equation, withSolution solution: Int, forDifficulty difficulty: Difficulty) -> Int? {
         if let correctSolution = equation.solution.number {
-            let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + 10)
-            let newScore = Int(100 - ceil(percentageError*100))
+            let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + scoreBooster)
+            let newScore = Int(maxScore - ceil(percentageError*maxScore))
             if let currentScore = current {
                 if newScore >= 0 && newScore >= currentScore {
                     self.total -= self.current!

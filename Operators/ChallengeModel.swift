@@ -11,21 +11,21 @@ import Foundation
 class ChallengeModel {
     static let sharedInstance = ChallengeModel()
     
-    var availablePuzzles : [String:[Bool]] = [:]
+    private var availablePuzzles : [String:[Bool]] = [:]
     
-    var equations : [Difficulty:[[String]]] = [:]
+    private var equations : [Difficulty:[[String]]] = [:]
     
-    let kNumberOfPuzzles = 25
+    private let kNumberOfPuzzles = 25
     
-    var currentEquation : Equation?
+    private var currentEquation : Equation?
     
-    var currentIndex : Int?
+    public var currentIndex : Int?
     
-    var difficulty : Difficulty = .easy
+    public var difficulty : Difficulty = .easy
     
-    var challengeURL : URL
+    private var challengeURL : URL
     
-    var archive : ChallengeArchive
+    private var archive : ChallengeArchive
     
     init() {
 
@@ -156,7 +156,7 @@ class ChallengeModel {
         currentIndex = -1
     }
     
-    func saveArchive() {
+    internal func saveArchive() {
         NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
     }
 }

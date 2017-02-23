@@ -11,27 +11,27 @@ import Foundation
 class TimedModel {
     static let sharedInstance = TimedModel()
     
-    var difficulty : Difficulty?
+    private var difficulty : Difficulty?
     
-    var totalTime : TimeInterval?
+    public var totalTime : TimeInterval?
     
-    var currentTime : TimeInterval?
+    public var currentTime : TimeInterval?
     
-    let timeOptions : [TimeInterval]
+    private let timeOptions : [TimeInterval]
     
-    var completed : Int
+    private var completed : Int
     
-    var solution : Int?
+    private var solution : Int?
     
-    var current : Int?
+    private var current : Int?
     
-    var totalScore : Int = 0
+    private var totalScore : Int = 0
     
-    var highScores : [String:[Int:Int]] = [:]
+    private var highScores : [String:[Int:Int]] = [:]
     
-    var timedURL : URL
+    private var timedURL : URL
     
-    var archive : TimedArchive
+    private var archive : TimedArchive
     
     init() {
         timeOptions = [30, 61, 121, 301]
@@ -41,9 +41,7 @@ class TimedModel {
         let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         timedURL = documentURL.appendingPathComponent(Filenames.timed + ".archive")
         
-        let fileExists = fileManager.fileExists(atPath: timedURL.path)
-        
-        if fileExists {
+        if fileManager.fileExists(atPath: timedURL.path) {
             archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
             highScores = archive.scores
         } else {
@@ -60,18 +58,12 @@ class TimedModel {
             highScores[Difficulty.random.rawValue] = initTimeHighScores
             
             archive = TimedArchive(highScores: highScores)
-            NSKeyedArchiver.archiveRootObject(archive, toFile: timedURL.path)
+            saveArchive()
         }
     }
     
     func initialize(withDifficulty diff: String, withTime time: String) {
-        switch time {
-        case "30 sec": totalTime = timeOptions[0]
-        case "1 min": totalTime = timeOptions[1]
-        case "2 min": totalTime = timeOptions[2]
-        case "5 min": totalTime = timeOptions[3]
-        default: totalTime = timeOptions[0]
-        }
+        changeTime(toTime: time)
         
         currentTime = totalTime!
         

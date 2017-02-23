@@ -262,7 +262,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohb-1I-DhC">
-                                <rect key="frame" x="313" y="184" width="109" height="46"/>
+                                <rect key="frame" x="313.66666666666669" y="184" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select"/>
@@ -274,7 +274,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7C-hy-gBh">
-                                <rect key="frame" x="313" y="88" width="109" height="46"/>
+                                <rect key="frame" x="313.66666666666669" y="88" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select"/>
@@ -286,7 +286,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPw-mv-cAU">
-                                <rect key="frame" x="314" y="280" width="109" height="46"/>
+                                <rect key="frame" x="313.66666666666669" y="280" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select"/>
@@ -298,7 +298,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwh-CU-GrT">
-                                <rect key="frame" x="296.33333333333331" y="336" width="145" height="58"/>
+                                <rect key="frame" x="295.66666666666669" y="336" width="145" height="58"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Cancel"/>
@@ -310,7 +310,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Custom Operator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwV-Uw-7rE">
-                                <rect key="frame" x="178" y="142" width="378.33333333333337" height="34"/>
+                                <rect key="frame" x="179" y="142" width="378.33333333333337" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -332,8 +332,12 @@
                         <constraints>
                             <constraint firstItem="GPw-mv-cAU" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="26O-x6-yYg"/>
                             <constraint firstItem="c7C-hy-gBh" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="2MW-MQ-4W0"/>
+                            <constraint firstItem="GPw-mv-cAU" firstAttribute="top" secondItem="mKN-IY-STv" secondAttribute="bottom" constant="5" id="4OY-y3-2Ur"/>
+                            <constraint firstItem="mKN-IY-STv" firstAttribute="top" secondItem="Ohb-1I-DhC" secondAttribute="bottom" constant="5" id="4PF-Fb-sdl"/>
                             <constraint firstItem="Ohb-1I-DhC" firstAttribute="centerY" secondItem="4u9-k3-8B4" secondAttribute="centerY" id="5rR-Kq-PqE"/>
                             <constraint firstItem="c7C-hy-gBh" firstAttribute="top" secondItem="IeT-J3-2bY" secondAttribute="bottom" constant="8" id="A5r-Yi-f29"/>
+                            <constraint firstItem="c7C-hy-gBh" firstAttribute="top" secondItem="IeT-J3-2bY" secondAttribute="bottom" constant="5" id="BuB-Ph-wEZ"/>
+                            <constraint firstItem="Ohb-1I-DhC" firstAttribute="top" secondItem="uwV-Uw-7rE" secondAttribute="bottom" constant="5" id="Fiu-qq-v9c"/>
                             <constraint firstItem="VvS-v6-vyc" firstAttribute="top" secondItem="Iwh-CU-GrT" secondAttribute="bottom" constant="20" id="IwI-JN-7Bg"/>
                             <constraint firstItem="GPw-mv-cAU" firstAttribute="top" secondItem="mKN-IY-STv" secondAttribute="bottom" constant="8" id="Mej-0V-Nq4"/>
                             <constraint firstItem="uwV-Uw-7rE" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="Psi-lq-8hg"/>
@@ -343,13 +347,41 @@
                             <constraint firstItem="uwV-Uw-7rE" firstAttribute="top" secondItem="c7C-hy-gBh" secondAttribute="bottom" constant="8" id="kpa-eW-ID9"/>
                             <constraint firstItem="Ohb-1I-DhC" firstAttribute="top" secondItem="uwV-Uw-7rE" secondAttribute="bottom" constant="8" id="nmC-bE-sQA"/>
                             <constraint firstItem="Ohb-1I-DhC" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="o4Q-H2-0Xe"/>
+                            <constraint firstItem="uwV-Uw-7rE" firstAttribute="top" secondItem="c7C-hy-gBh" secondAttribute="bottom" constant="5" id="ue5-ws-Wbd"/>
                             <constraint firstItem="Iwh-CU-GrT" firstAttribute="centerX" secondItem="4u9-k3-8B4" secondAttribute="centerX" id="wGe-rz-pIy"/>
+                            <constraint firstItem="VvS-v6-vyc" firstAttribute="top" secondItem="Iwh-CU-GrT" secondAttribute="bottom" constant="10" id="xHC-AY-wil"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ue5-ws-Wbd"/>
+                                <exclude reference="4PF-Fb-sdl"/>
+                                <exclude reference="BuB-Ph-wEZ"/>
+                                <exclude reference="Fiu-qq-v9c"/>
+                                <exclude reference="xHC-AY-wil"/>
+                                <exclude reference="4OY-y3-2Ur"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="kpa-eW-ID9"/>
+                                <include reference="ue5-ws-Wbd"/>
+                                <include reference="4PF-Fb-sdl"/>
+                                <exclude reference="jU4-AD-K0z"/>
+                                <exclude reference="A5r-Yi-f29"/>
+                                <include reference="BuB-Ph-wEZ"/>
+                                <include reference="Fiu-qq-v9c"/>
+                                <exclude reference="nmC-bE-sQA"/>
+                                <exclude reference="IwI-JN-7Bg"/>
+                                <include reference="xHC-AY-wil"/>
+                                <include reference="4OY-y3-2Ur"/>
+                                <exclude reference="Mej-0V-Nq4"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czl-vq-0aZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085" y="38"/>
+            <point key="canvasLocation" x="1237" y="38"/>
         </scene>
         <!--Challenge Puzzle Completed View Controller-->
         <scene sceneID="fSf-W3-jfN">
@@ -443,7 +475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iD-uf-lZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="231.52173913043481" y="1214.4927536231885"/>
+            <point key="canvasLocation" x="231" y="950"/>
         </scene>
         <!--Timed Options-->
         <scene sceneID="xhK-jK-VJT">
@@ -805,181 +837,181 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Saved Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-Db-3Iw">
-                                <rect key="frame" x="189.33333333333337" y="231.33333333333337" width="357.33333333333326" height="39.666666666666629"/>
+                                <rect key="frame" x="189.33333333333337" y="230.66666666666669" width="357.33333333333326" height="39.666666666666686"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Scores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpF-KS-ySl">
-                                <rect key="frame" x="30" y="279" width="306.33333333333331" height="34"/>
+                                <rect key="frame" x="30" y="278.33333333333331" width="306.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Puzzles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhu-Zx-IOJ">
-                                <rect key="frame" x="419.66666666666674" y="279" width="306.33333333333326" height="34"/>
+                                <rect key="frame" x="419.66666666666674" y="278.33333333333331" width="306.33333333333326" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Division Symbol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAn-HH-NI2">
-                                <rect key="frame" x="210.66666666666669" y="28" width="315.33333333333331" height="39.666666666666671"/>
+                                <rect key="frame" x="210.33333333333337" y="28" width="315.33333333333326" height="39.666666666666671"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kT2-eT-NcN">
-                                <rect key="frame" x="219.33333333333331" y="75.666666666666671" width="108.99999999999994" height="46"/>
+                                <rect key="frame" x="219" y="75.666666666666671" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Hyphen"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <action selector="divisionSymbolButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="XIP-dt-BKr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muB-ss-f0O">
-                                <rect key="frame" x="28.666666666666671" y="321" width="145" height="46"/>
+                                <rect key="frame" x="29.333333333333329" y="320.33333333333331" width="145" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Original"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteOriginalHighScores" id="310-sg-zJ6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMo-gH-0fe">
-                                <rect key="frame" x="122" y="177.33333333333334" width="181" height="46"/>
+                                <rect key="frame" x="121.66666666666669" y="176.66666666666666" width="181" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Monochrome"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <action selector="colorSchemeButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="RiH-zN-WzK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIv-u4-iUj">
-                                <rect key="frame" x="323" y="177.33333333333334" width="91" height="46"/>
+                                <rect key="frame" x="322.66666666666669" y="176.66666666666666" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Ocean"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <action selector="colorSchemeButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="vSD-4x-9y6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPo-Nk-End">
-                                <rect key="frame" x="434" y="177.33333333333334" width="145" height="46"/>
+                                <rect key="frame" x="433.66666666666663" y="176.66666666666666" width="144.99999999999989" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Daybreak"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <action selector="colorSchemeButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="c0Y-2o-Mu6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZP-ZR-SL6">
-                                <rect key="frame" x="203.66666666666669" y="321" width="91.000000000000057" height="46"/>
+                                <rect key="frame" x="204" y="320.33333333333331" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Timed"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteTimedHighScores" id="TNf-ND-LTn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ne5-lu-R2p">
-                                <rect key="frame" x="518" y="321" width="109" height="46"/>
+                                <rect key="frame" x="518.66666666666663" y="320.33333333333331" width="109" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Medium"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteChallengePuzzles" id="9yX-bu-TlU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkq-Yh-xId">
-                                <rect key="frame" x="425" y="321" width="73" height="46"/>
+                                <rect key="frame" x="425.66666666666669" y="320.33333333333331" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Easy"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteChallengePuzzles" id="VFk-DY-8Bg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AtP-x4-8Ka">
-                                <rect key="frame" x="647" y="321" width="73" height="46"/>
+                                <rect key="frame" x="647.66666666666663" y="320.33333333333331" width="73" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Hard"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <segue destination="RU1-63-yrt" kind="presentation" identifier="deleteChallengePuzzles" id="VNu-cy-NXn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPd-s8-jhQ">
-                                <rect key="frame" x="408.33333333333331" y="75.666666666666671" width="91" height="46"/>
+                                <rect key="frame" x="408" y="75.666666666666671" width="91" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Slash"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="20"/>
                                 </variation>
                                 <connections>
                                     <action selector="divisionSymbolButtonPressed:" destination="txH-vL-6zT" eventType="touchUpInside" id="Yka-g4-xar"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="➗" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtU-Zo-cfp">
-                                <rect key="frame" x="348.33333333333331" y="75.666666666666671" width="40" height="46"/>
+                                <rect key="frame" x="348" y="75.666666666666686" width="40" height="45.333333333333329"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Scheme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bri-ld-hH3">
-                                <rect key="frame" x="241.99999999999997" y="129.66666666666666" width="252.33333333333329" height="39.666666666666686"/>
+                                <rect key="frame" x="241.99999999999997" y="129" width="252.33333333333329" height="39.666666666666657"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dry-Ew-EOL" userLabel="High Scores Center">
-                                <rect key="frame" x="183" y="321" width="1" height="46"/>
+                                <rect key="frame" x="183.33333333333334" y="320.33333333333331" width="1" height="46"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="TBx-Dv-O87"/>
@@ -987,7 +1019,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRC-io-yN4">
-                                <rect key="frame" x="326.33333333333331" y="354" width="85" height="52"/>
+                                <rect key="frame" x="325.66666666666669" y="354" width="85" height="52"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Done"/>
@@ -1003,8 +1035,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bhu-Zx-IOJ" secondAttribute="trailing" constant="10" id="0gc-6E-if3"/>
                             <constraint firstItem="pPo-Nk-End" firstAttribute="centerY" secondItem="xIv-u4-iUj" secondAttribute="centerY" id="2Iq-pG-Ixh"/>
+                            <constraint firstItem="eGR-Db-3Iw" firstAttribute="top" secondItem="pPo-Nk-End" secondAttribute="bottom" constant="5" id="2nc-sJ-vzI"/>
+                            <constraint firstItem="YpF-KS-ySl" firstAttribute="top" secondItem="eGR-Db-3Iw" secondAttribute="bottom" constant="5" id="3Jq-3b-W1a"/>
                             <constraint firstItem="dry-Ew-EOL" firstAttribute="centerX" secondItem="YpF-KS-ySl" secondAttribute="centerX" id="3cY-Op-UYk"/>
                             <constraint firstItem="AtP-x4-8Ka" firstAttribute="leading" secondItem="ne5-lu-R2p" secondAttribute="trailing" constant="20" id="47O-5I-nhb"/>
+                            <constraint firstItem="FAn-HH-NI2" firstAttribute="top" secondItem="HJn-Uf-oWC" secondAttribute="bottom" constant="5" id="4eQ-HO-H5e"/>
                             <constraint firstItem="DPd-s8-jhQ" firstAttribute="leading" secondItem="XtU-Zo-cfp" secondAttribute="trailing" constant="20" id="4fY-WX-0p0"/>
                             <constraint firstItem="pPo-Nk-End" firstAttribute="leading" secondItem="xIv-u4-iUj" secondAttribute="trailing" constant="20" id="7gW-S0-Na6"/>
                             <constraint firstItem="FAn-HH-NI2" firstAttribute="top" secondItem="HJn-Uf-oWC" secondAttribute="bottom" constant="8" id="7uA-aA-IHU"/>
@@ -1013,15 +1048,21 @@
                             <constraint firstItem="YpF-KS-ySl" firstAttribute="leading" secondItem="HfP-r2-0NO" secondAttribute="leadingMargin" constant="10" id="9u0-0x-aYh"/>
                             <constraint firstItem="5ZP-ZR-SL6" firstAttribute="leading" secondItem="dry-Ew-EOL" secondAttribute="trailing" constant="19.5" id="B6M-Ix-rXa"/>
                             <constraint firstItem="bri-ld-hH3" firstAttribute="top" secondItem="XtU-Zo-cfp" secondAttribute="bottom" constant="8" id="Btd-Jl-3Ac"/>
+                            <constraint firstItem="bhu-Zx-IOJ" firstAttribute="top" secondItem="eGR-Db-3Iw" secondAttribute="bottom" constant="5" id="Clb-uB-ZCb"/>
                             <constraint firstItem="BRC-io-yN4" firstAttribute="centerX" secondItem="HfP-r2-0NO" secondAttribute="centerX" id="ERH-IJ-Q6l"/>
+                            <constraint firstItem="dry-Ew-EOL" firstAttribute="top" secondItem="YpF-KS-ySl" secondAttribute="bottom" constant="5" id="FAi-8b-REl"/>
                             <constraint firstItem="dry-Ew-EOL" firstAttribute="top" secondItem="YpF-KS-ySl" secondAttribute="bottom" constant="8" id="Iuk-2K-sHe"/>
+                            <constraint firstItem="XtU-Zo-cfp" firstAttribute="top" secondItem="FAn-HH-NI2" secondAttribute="bottom" constant="5" id="JJq-lm-42k"/>
                             <constraint firstItem="YpF-KS-ySl" firstAttribute="top" secondItem="eGR-Db-3Iw" secondAttribute="bottom" constant="8" id="JRH-x3-QTV"/>
                             <constraint firstItem="xIv-u4-iUj" firstAttribute="centerY" secondItem="gMo-gH-0fe" secondAttribute="centerY" id="LZf-b2-0wN"/>
                             <constraint firstItem="eGR-Db-3Iw" firstAttribute="top" secondItem="pPo-Nk-End" secondAttribute="bottom" constant="8" id="Nbx-DN-qZW"/>
                             <constraint firstItem="AtP-x4-8Ka" firstAttribute="centerY" secondItem="ne5-lu-R2p" secondAttribute="centerY" id="QZl-YI-zit"/>
+                            <constraint firstItem="ezE-Pn-vHy" firstAttribute="top" secondItem="BRC-io-yN4" secondAttribute="bottom" constant="5" id="RLa-k2-Bcq"/>
+                            <constraint firstItem="ne5-lu-R2p" firstAttribute="top" secondItem="bhu-Zx-IOJ" secondAttribute="bottom" constant="5" id="RPq-5m-ThO"/>
                             <constraint firstItem="bhu-Zx-IOJ" firstAttribute="top" secondItem="eGR-Db-3Iw" secondAttribute="bottom" constant="8" id="SHF-Un-ZU4"/>
                             <constraint firstItem="XtU-Zo-cfp" firstAttribute="top" secondItem="FAn-HH-NI2" secondAttribute="bottom" constant="8" id="VMC-ER-uVN"/>
                             <constraint firstItem="bhu-Zx-IOJ" firstAttribute="width" secondItem="YpF-KS-ySl" secondAttribute="width" id="WSA-TK-2Tc"/>
+                            <constraint firstItem="xIv-u4-iUj" firstAttribute="top" secondItem="bri-ld-hH3" secondAttribute="bottom" constant="5" id="ZWm-3J-2UD"/>
                             <constraint firstItem="eGR-Db-3Iw" firstAttribute="centerX" secondItem="HfP-r2-0NO" secondAttribute="centerX" id="byx-wN-ADF"/>
                             <constraint firstItem="ezE-Pn-vHy" firstAttribute="top" secondItem="BRC-io-yN4" secondAttribute="bottom" constant="8" id="cCf-aL-UC5"/>
                             <constraint firstItem="dry-Ew-EOL" firstAttribute="centerY" secondItem="muB-ss-f0O" secondAttribute="centerY" id="e02-LC-ASP"/>
@@ -1032,6 +1073,7 @@
                             <constraint firstItem="xIv-u4-iUj" firstAttribute="centerX" secondItem="HfP-r2-0NO" secondAttribute="centerX" id="l6N-xz-6qJ"/>
                             <constraint firstItem="ne5-lu-R2p" firstAttribute="centerX" secondItem="bhu-Zx-IOJ" secondAttribute="centerX" id="oq1-ln-v5u"/>
                             <constraint firstItem="XtU-Zo-cfp" firstAttribute="centerY" secondItem="kT2-eT-NcN" secondAttribute="centerY" id="p28-S0-cwY"/>
+                            <constraint firstItem="bri-ld-hH3" firstAttribute="top" secondItem="DPd-s8-jhQ" secondAttribute="bottom" constant="5" id="qwH-UA-Ndb"/>
                             <constraint firstItem="ne5-lu-R2p" firstAttribute="centerY" secondItem="Fkq-Yh-xId" secondAttribute="centerY" id="ra9-ta-oLW"/>
                             <constraint firstItem="dry-Ew-EOL" firstAttribute="leading" secondItem="muB-ss-f0O" secondAttribute="trailing" constant="9.5" id="sKe-iH-STy"/>
                             <constraint firstItem="FAn-HH-NI2" firstAttribute="centerX" secondItem="HfP-r2-0NO" secondAttribute="centerX" id="uhE-PA-yuO"/>
@@ -1039,6 +1081,44 @@
                             <constraint firstItem="XtU-Zo-cfp" firstAttribute="centerX" secondItem="HfP-r2-0NO" secondAttribute="centerX" id="yEQ-hJ-mM0"/>
                             <constraint firstItem="xIv-u4-iUj" firstAttribute="top" secondItem="bri-ld-hH3" secondAttribute="bottom" constant="8" id="zKE-Dn-EBP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4eQ-HO-H5e"/>
+                                <exclude reference="qwH-UA-Ndb"/>
+                                <exclude reference="2nc-sJ-vzI"/>
+                                <exclude reference="3Jq-3b-W1a"/>
+                                <exclude reference="JJq-lm-42k"/>
+                                <exclude reference="ZWm-3J-2UD"/>
+                                <exclude reference="RLa-k2-Bcq"/>
+                                <exclude reference="FAi-8b-REl"/>
+                                <exclude reference="Clb-uB-ZCb"/>
+                                <exclude reference="RPq-5m-ThO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="4eQ-HO-H5e"/>
+                                <exclude reference="7uA-aA-IHU"/>
+                                <exclude reference="Btd-Jl-3Ac"/>
+                                <include reference="qwH-UA-Ndb"/>
+                                <include reference="2nc-sJ-vzI"/>
+                                <exclude reference="Nbx-DN-qZW"/>
+                                <include reference="3Jq-3b-W1a"/>
+                                <exclude reference="JRH-x3-QTV"/>
+                                <include reference="JJq-lm-42k"/>
+                                <exclude reference="VMC-ER-uVN"/>
+                                <include reference="ZWm-3J-2UD"/>
+                                <exclude reference="zKE-Dn-EBP"/>
+                                <include reference="RLa-k2-Bcq"/>
+                                <exclude reference="cCf-aL-UC5"/>
+                                <include reference="FAi-8b-REl"/>
+                                <exclude reference="Iuk-2K-sHe"/>
+                                <include reference="Clb-uB-ZCb"/>
+                                <exclude reference="SHF-Un-ZU4"/>
+                                <include reference="RPq-5m-ThO"/>
+                                <exclude reference="iir-g7-55O"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="divisionSymbolLabel" destination="XtU-Zo-cfp" id="Ypg-X7-9oo"/>
@@ -1074,7 +1154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are You Sure?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce5-tu-Ncu">
-                                <rect key="frame" x="193" y="128" width="351.33333333333337" height="51"/>
+                                <rect key="frame" x="192.33333333333337" y="128.33333333333334" width="351.33333333333326" height="51"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1083,7 +1163,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Will Delete:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo6-6r-Y5X">
-                                <rect key="frame" x="200.66666666666669" y="187" width="336.33333333333331" height="40"/>
+                                <rect key="frame" x="200" y="187.33333333333337" width="336.33333333333337" height="39.666666666666657"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1101,7 +1181,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-tQ-7bn">
-                                <rect key="frame" x="193" y="342" width="127" height="52"/>
+                                <rect key="frame" x="192.33333333333331" y="342" width="126.99999999999994" height="52"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Cancel"/>
@@ -1113,7 +1193,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8Z-xl-fVj">
-                                <rect key="frame" x="417.33333333333337" y="342" width="127.00000000000011" height="52"/>
+                                <rect key="frame" x="416.66666666666663" y="342" width="126.99999999999989" height="52"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Delete"/>
@@ -1125,7 +1205,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This action cannot be undone." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASE-uW-fJe">
-                                <rect key="frame" x="194.33333333333337" y="277" width="348.33333333333326" height="22.666666666666686"/>
+                                <rect key="frame" x="194" y="277" width="348.33333333333337" height="22.666666666666686"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1179,7 +1259,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showPuzzleMediumDifficulty" id="Xtm-sH-4WU"/>
+                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="7kx-mW-TA2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyO-Xj-csb">
@@ -1191,7 +1271,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showPuzzleHardDifficulty" id="7UN-bh-QvO"/>
+                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="hG8-6L-oyw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3Q-5n-bRl">
@@ -1203,7 +1283,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showPuzzleEasyDifficulty" id="Z7g-Ii-fTi"/>
+                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="j7P-gT-8wO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14y-1C-dWV">
@@ -1284,7 +1364,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showPuzzleRandomDifficulty" id="bcW-eA-Imx"/>
+                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="MVL-Sd-3CK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVI-J2-PyW">
@@ -1332,10 +1412,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Difficulty" id="q74-hA-qla"/>
                     <connections>
-                        <outlet property="easyHighScoreLabel" destination="6n9-1C-INi" id="bAZ-wn-xdO"/>
-                        <outlet property="hardHighScoreLabel" destination="BPn-mk-KB0" id="HSW-Fk-8zh"/>
-                        <outlet property="mediumHighScoreLabel" destination="iem-4s-skU" id="VIZ-9P-8bZ"/>
-                        <outlet property="randomHighScoreLabel" destination="YVI-J2-PyW" id="Cyn-Zg-uNC"/>
+                        <outletCollection property="highScoreLabels" destination="6n9-1C-INi" collectionClass="NSMutableArray" id="Qd9-9h-X5y"/>
+                        <outletCollection property="highScoreLabels" destination="iem-4s-skU" collectionClass="NSMutableArray" id="K8i-h0-f3B"/>
+                        <outletCollection property="highScoreLabels" destination="BPn-mk-KB0" collectionClass="NSMutableArray" id="Xia-Jh-BEt"/>
+                        <outletCollection property="highScoreLabels" destination="YVI-J2-PyW" collectionClass="NSMutableArray" id="SiL-DF-Ku8"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showPuzzleSegue" id="XSZ-rt-rRG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFk-1G-08p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2297,7 +2378,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZI7-dR-bXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Vvb-Z5-x3J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-771" y="1216"/>
+            <point key="canvasLocation" x="-772" y="950"/>
         </scene>
         <!--Timed Completed View Controller-->
         <scene sceneID="H7f-vV-hRb">

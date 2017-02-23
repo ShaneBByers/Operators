@@ -38,3 +38,10 @@ class Filenames {
     static let challenge = "challengePuzzles"
     static let settings = "settings"
 }
+
+class OperandCount {
+    static let easy = 3
+    static let medium = 4
+    static let hard = 5
+    static let random = Int(arc4random_uniform(3) + 3)
+}

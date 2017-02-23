@@ -20,7 +20,6 @@ class ChallengePuzzleCompletedViewController: UIViewController {
     
     var puzzleViewController : PuzzleViewController?
     
-    
     func configureText(completedPuzzleDifficulty : Difficulty, completedPuzzleNumber : Int, nextPuzzleDifficulty : Difficulty?, nextPuzzleNumber : Int?) {
         completedPuzzleText = "\(completedPuzzleDifficulty.rawValue) Challenge Puzzle #\(completedPuzzleNumber + 1)"
         

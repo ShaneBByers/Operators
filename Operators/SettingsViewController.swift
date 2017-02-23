@@ -34,14 +34,17 @@ class SettingsViewController: UIViewController {
         
         switch segue.identifier! {
         case "deleteOriginalHighScores":
+            
             let destination = segue.destination as! SettingsConfirmDeleteViewController
             
             destination.configureConfirmDeleteScores(deleteText: "All High Scores on \"Original\" Game Mode", deleteScoresFunction: settingsModel.deleteOriginalHighScores)
         case "deleteTimedHighScores":
+            
             let destination = segue.destination as! SettingsConfirmDeleteViewController
             
             destination.configureConfirmDeleteScores(deleteText: "All High Scores on \"Timed\" Game Mode", deleteScoresFunction: settingsModel.deleteTimedHighScores)
         case "deleteChallengePuzzles":
+            
             let destination = segue.destination as! SettingsConfirmDeleteViewController
             
             let difficulty = Difficulty(rawValue: button.titleLabel!.text!)!
@@ -65,6 +68,19 @@ class SettingsViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        updateColorScheme()
+        
+        for button in challengePuzzleButtons {
+            button.isEnabled = settingsModel.canDeleteChallengePuzzles(forDifficulty: Difficulty(rawValue: button.titleLabel!.text!)!)
+        }
+        
+        originalHighScoreButton.isEnabled = settingsModel.canDeleteOriginalHighScores()
+        
+        timedHighScoreButton.isEnabled = settingsModel.canDeleteTimedHighScores()
+    }
+    
     override func viewDidLayoutSubviews() {
         if Symbols.Divide == Symbols.HyphenDots {
             hyphenButton.titleLabel!.font = UIFont(descriptor: hyphenButton.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: hyphenButton.titleLabel!.font.pointSize)
@@ -79,24 +95,6 @@ class SettingsViewController: UIViewController {
                 button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        ColorScheme.updateScheme(forView: self.view)
-        divisionSymbolLabel.textColor = .black
-        
-        challengePuzzleButtons[0].tintColor = .green
-        challengePuzzleButtons[1].tintColor = .yellow
-        challengePuzzleButtons[2].tintColor = .red
-        
-        for button in challengePuzzleButtons {
-            button.isEnabled = settingsModel.canDeleteChallengePuzzles(forDifficulty: Difficulty(rawValue: button.titleLabel!.text!)!)
-        }
-        
-        originalHighScoreButton.isEnabled = settingsModel.canDeleteOriginalHighScores()
-        
-        timedHighScoreButton.isEnabled = settingsModel.canDeleteTimedHighScores()
     }
     
     @IBAction func divisionSymbolButtonPressed(_ sender: UIButton) {
@@ -120,6 +118,10 @@ class SettingsViewController: UIViewController {
         
         settingsModel.changeColorScheme(toScheme: sender.titleLabel!.text!)
         
+        updateColorScheme()
+    }
+    
+    func updateColorScheme() {
         ColorScheme.updateScheme(forView: self.view)
         
         divisionSymbolLabel.textColor = .black

@@ -18,6 +18,22 @@ class ChallengeViewController: UIViewController {
     
     var isInitial = true
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "challengePuzzleSelectedSegue":
+            let index = sender as! Int
+            
+            let equation = challengeModel.equationAtIndex(index: index)
+            
+            let destinationViewController = segue.destination as! PuzzleViewController
+            
+            destinationViewController.configureChallenge(withEquation: equation)
+        case "unwindToGameType": break
+        default:
+            assert(false, "Unhandled Segue")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -44,7 +60,6 @@ class ChallengeViewController: UIViewController {
             isInitial = false
         }
     }
-    
     
     @IBAction func difficultyButtonPressed(_ sender: UIButton) {
         
@@ -81,25 +96,6 @@ class ChallengeViewController: UIViewController {
         let index = title - 1
         
         self.performSegue(withIdentifier: "challengePuzzleSelectedSegue", sender: index)
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
-        switch segue.identifier! {
-        case "challengePuzzleSelectedSegue":
-            let index = sender as! Int
-            
-            let equation = challengeModel.equationAtIndex(index: index)
-            
-            let destinationViewController = segue.destination as! PuzzleViewController
-            
-            destinationViewController.configureChallenge(withEquation: equation)
-        case "unwindToGameType": break
-        default:
-            assert(false, "Unhandled Segue")
-        }
     }
     
     @IBAction func unwindToChallenge(segue: UIStoryboardSegue) {}
