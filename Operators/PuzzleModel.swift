@@ -17,6 +17,7 @@ class PuzzleModel {
     
     var equation : Equation?
     
+    
     func newEquation(operands: Int) -> Equation {
         
         var invalidSolution = true
@@ -83,6 +84,36 @@ class PuzzleModel {
                 }
             }
             
+            if !invalidSolution {
+                var _intermediateExpression : [String]
+                var _intermediateDoubleExpression : [String]
+                let operandCount = (_expression.count-1)/2
+                for size in 1...operandCount {
+                    if !invalidSolution {
+                        for position in 0..<operandCount - size + 1 {
+                            if !invalidSolution {
+                                let range = 2*position...2*position+2*size
+                                _intermediateExpression = Array(_expression[range])
+                                _intermediateDoubleExpression = Array(_doubleExpression[range])
+                                
+                                let _intermediateExpressionString = _intermediateExpression.joined()
+                                let _intermediateDoubleExpressionString = _intermediateDoubleExpression.joined()
+                                
+                                let intermediateMathExpression = NSExpression(format: _intermediateExpressionString, argumentArray: [])
+                                let intermediateDoubleMathExpression = NSExpression(format: _intermediateDoubleExpressionString, argumentArray: [])
+                                
+                                let intermediateSolution = intermediateMathExpression.expressionValue(with: nil, context: nil) as? Int
+                                let intermediateDoubleSolution = intermediateDoubleMathExpression.expressionValue(with: nil, context: nil) as? Double
+                                
+                                if Double(intermediateSolution!) != intermediateDoubleSolution {
+                                    invalidSolution = true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
         
         let _equals = Element(Symbols.Equals)
@@ -95,7 +126,9 @@ class PuzzleModel {
         equation = Equation(elements: _equation!, solution: _solution)
         
         return equation!
+        
     }
+    
     
     func solutionFor(expression : [String]) -> Int? {
         var _expression : [String] = []
