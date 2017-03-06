@@ -27,6 +27,7 @@
 		435DC2F61E3C0A5D0047FD47 /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC2F51E3C0A5D0047FD47 /* GameModeViewController.swift */; };
 		435DC2F81E3C0A810047FD47 /* GameTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC2F71E3C0A810047FD47 /* GameTypeViewController.swift */; };
 		435DC2FA1E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC2F91E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift */; };
+		4373CBD81E6DC7D9009C5513 /* HintsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4373CBD71E6DC7D9009C5513 /* HintsModel.swift */; };
 		4377F0B71E5F19A1009428B5 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4377F0B61E5F19A1009428B5 /* Enumerations.swift */; };
 		438B48CB1DD757C40048EDB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B48CA1DD757C40048EDB5 /* AppDelegate.swift */; };
 		438B48D01DD757C40048EDB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438B48CE1DD757C40048EDB5 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		435DC2F51E3C0A5D0047FD47 /* GameModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
 		435DC2F71E3C0A810047FD47 /* GameTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTypeViewController.swift; sourceTree = "<group>"; };
 		435DC2F91E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengePuzzleCompletedViewController.swift; sourceTree = "<group>"; };
+		4373CBD71E6DC7D9009C5513 /* HintsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsModel.swift; sourceTree = "<group>"; };
 		4377F0B61E5F19A1009428B5 /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		438B48C71DD757C40048EDB5 /* Operators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Operators.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438B48CA1DD757C40048EDB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				43B8A7391DFE1EC100840590 /* ArchiveData.swift */,
 				438B48EE1DD766A50048EDB5 /* PuzzleModel.swift */,
 				431F70EC1DFB87E8002B0455 /* BestScoreModel.swift */,
+				4373CBD71E6DC7D9009C5513 /* HintsModel.swift */,
 				4399F2C81E588AA900038306 /* SettingsModel.swift */,
 				431F70EA1DFA1617002B0455 /* challengePuzzles.plist */,
 			);
@@ -357,6 +360,7 @@
 				438B48EB1DD7588A0048EDB5 /* Constants.swift in Sources */,
 				438B48EF1DD766A50048EDB5 /* PuzzleModel.swift in Sources */,
 				435DC2F61E3C0A5D0047FD47 /* GameModeViewController.swift in Sources */,
+				4373CBD81E6DC7D9009C5513 /* HintsModel.swift in Sources */,
 				4399F2CD1E5DE8C900038306 /* SettingsConfirmDeleteViewController.swift in Sources */,
 				4377F0B71E5F19A1009428B5 /* Enumerations.swift in Sources */,
 			);

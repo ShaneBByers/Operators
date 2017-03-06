@@ -11,6 +11,8 @@ import Foundation
 class BestScoreModel {
     static let sharedInstance = BestScoreModel()
     
+    let hintsModel = HintsModel.sharedInstance
+    
     private var current : Int?
     
     private var total : Int = 0
@@ -49,16 +51,18 @@ class BestScoreModel {
     
     func updateScores(withEquation equation: Equation, withSolution solution: Int, forDifficulty difficulty: Difficulty) -> Int? {
         if let correctSolution = equation.solution.number {
+            let hintsMultiplier = hintsModel.multiplier()
             let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + scoreBooster)
-            let newScore = Int(maxScore - ceil(percentageError*maxScore))
+            let newScore = Int(round(maxScore*hintsMultiplier - ceil(percentageError*maxScore*hintsMultiplier)))
             if let currentScore = current {
-                if newScore >= 0 && newScore >= currentScore {
-                    self.total -= self.current!
-                    self.current = newScore
-                    self.total += self.current!
+                let addedScore = Int(round(hintsMultiplier*Double(newScore - currentScore)))
+                if addedScore > 0 {
+                    self.current! += addedScore
+                    self.total += addedScore
                 }
             } else {
-                if newScore >= 0 {
+                let addedScore = Int(round(hintsMultiplier*Double(newScore)))
+                if addedScore >= 0 {
                     self.current = newScore
                 } else {
                     self.current = 0

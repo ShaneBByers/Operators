@@ -117,6 +117,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     let challengeModel = ChallengeModel.sharedInstance
     let bestScoreModel = BestScoreModel.sharedInstance
     let timedModel = TimedModel.sharedInstance
+    let hintsModel = HintsModel.sharedInstance
     let settingsModel = SettingsModel.sharedInstance
     
     // MARK: - Constants
@@ -131,6 +132,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     let kLongAnimationDuration : TimeInterval = 0.5
     let kWildcardOperatorPosition = 2
     let kTimerInterval : TimeInterval = 0.1
+    let kOperatorUsesLabelAlpha : CGFloat = 0.5
     
     let wildcardOperator : UILabel
     
@@ -150,6 +152,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var expressionLabel: UILabel!
     @IBOutlet weak var primaryLabel: UILabel!
     @IBOutlet weak var secondaryLabel: UILabel!
+    @IBOutlet weak var hintsMultiplierLabel: UILabel!
     
     // MARK: - Buttons
     //
@@ -165,6 +168,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var challengeEquation : Equation?
     var timer : Timer?
     var solvePuzzleButtonPressed : Bool = false
+    var operatorUsesCountsShown : Bool = false
     let colorElements : ColorElements
     
     // MARK: - Configurations
@@ -191,6 +195,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     //
     @IBAction func backButtonPressed(_ sender: UIButton) {
         resetOnDisappear()
+        
+        hintsModel.reset()
         
         switch gameType! {
         case .challenge:
@@ -236,7 +242,33 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         case "hintsSegue":
             let destination = segue.destination as! HintsViewController
             
-            destination.configureViewController(viewController: self)
+            var emptyCounter = 0
+            
+            for i in puzzleLabels.indices {
+                if puzzleLabels[i].isOperand && puzzleLabels[i+1].isOperand {
+                    emptyCounter += 1
+                }
+            }
+            
+            var defaultEnables : [Hint:Bool] = [:]
+            
+            defaultEnables[.random] = emptyCounter >= 2
+            
+            defaultEnables[.custom] = emptyCounter >= 1
+            
+            defaultEnables[.allUses] = !operatorUsesCountsShown
+            
+            var maxCounts : [Hint:Int] = [:]
+            
+            maxCounts[.random] = emptyCounter - 1
+            
+            maxCounts[.custom] = emptyCounter
+            
+            maxCounts[.allUses] = 1
+            
+            hintsModel.configureDefaults(defaultEnables, max: maxCounts)
+            
+            destination.configureReturnFunction(returnFunction: self.implementHints)
         case "unwindToOriginal": break
         case "unwindToChallenge": break
         case "unwindToTimed": break
@@ -275,6 +307,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         hintsButton.alpha = 0.0
         hintsButton.isEnabled = false
+        
+        hintsMultiplierLabel.alpha = 0.0
         
         newPuzzleButton.alpha = 0.0
         newPuzzleButton.isEnabled = false
@@ -483,8 +517,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func defaultOperatorDoubleTapped(_ recognizer: UITapGestureRecognizer) {
         
-        var resetEnabled = false
-        
         if let view = recognizer.view {
             let label = view as! UILabel
             var operatorCounter = 0
@@ -513,11 +545,21 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         
                         newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
                         
-                        defaultOperatorLabels.remove(at: kWildcardOperatorPosition)
+                        hintsModel.useCustom()
                         
-                        placeDefaultOperators(isInitial: false)
-                        
-                        wildcardOperator.removeFromSuperview()
+                        if hintsModel.customCount() == 0 {
+                            defaultOperatorLabels.remove(at: kWildcardOperatorPosition)
+                            
+                            placeDefaultOperators(isInitial: false)
+                            
+                            wildcardOperator.removeFromSuperview()
+                            
+                            operatorCountLabels[wildcardOperator.text!]!.removeFromSuperview()
+                            
+                            operatorCountLabels.removeValue(forKey: wildcardOperator.text!)
+                        } else {
+                            operatorCountLabels[wildcardOperator.text!]!.text = "\(hintsModel.customCount())"
+                        }
                     } else {
                         newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true, viewController: self)
                     }
@@ -552,24 +594,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
         }
-        
-        for puzzleLabel in puzzleLabels {
-            if puzzleLabel.isOperator && puzzleLabel.isMovable {
-                resetEnabled = true
-            }
-        }
-        
-        switch gameType! {
-        case .original:
-            if let score = bestScoreModel.currentScore() {
-                if score == Int(bestScoreModel.maxScore) {
-                    resetEnabled = false
-                }
-            }
-        default: break
-        }
-        
-        resetButtonAction(enable: resetEnabled)
         
     }
     
@@ -805,11 +829,18 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     newLabel = PuzzleLabel(text: operatorText!, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
                     
-                    defaultOperatorLabels.remove(at: kWildcardOperatorPosition)
+                    hintsModel.useCustom()
                     
-                    placeDefaultOperators(isInitial: false)
+                    if hintsModel.customCount() == 0 {
+                        defaultOperatorLabels.remove(at: kWildcardOperatorPosition)
                     
-                    wildcardOperator.removeFromSuperview()
+                        placeDefaultOperators(isInitial: false)
+                    
+                        wildcardOperator.removeFromSuperview()
+                    } else {
+                        operatorCountLabels[wildcardOperator.text!]!.text = "\(hintsModel.customCount())"
+                    }
+                    
                 } else {
                     newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true, viewController: self)
                 }
@@ -898,24 +929,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 })
             }
         }
-        
-        var resetEnabled = false
-        
-        for puzzleLabel in puzzleLabels {
-            if puzzleLabel.isOperator && puzzleLabel.isMovable {
-                resetEnabled = true
-            }
-        }
-        
-        if gameType! == .original {
-            if let score = bestScoreModel.currentScore() {
-                if score == Int(bestScoreModel.maxScore) {
-                    resetEnabled = false
-                }
-            }
-        }
-        
-        resetButtonAction(enable: resetEnabled)
     }
     
     // MARK: - Placeholder Manipulation
@@ -1235,6 +1248,14 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         hintsButtonAction(enable: true)
         
+        hintsModel.reset()
+        
+        operatorUsesCountsShown = false
+        
+        UIView.animate(withDuration: kShortAnimationDuration) { 
+            self.hintsMultiplierLabel.alpha = 0.0
+        }
+        
         resetHints()
         
         if defaultOperatorLabels[kWildcardOperatorPosition].text! == Symbols.Wildcard {
@@ -1250,6 +1271,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBAction func solveButtonPressed(_ sender: UIButton) {
         solvePuzzleButtonPressed = true
+        
+        operatorUsesCountsShown = false
         
         let equation = puzzleModel.equation!
         
@@ -1301,11 +1324,35 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.resetButtonAction(enable: false)
                     
                     self.hintsButtonAction(enable: false)
+                    
+                    UIView.animate(withDuration: self.kShortAnimationDuration, animations: { 
+                        self.hintsMultiplierLabel.alpha = 0.0
+                    })
                 }
             })
         }
         
         solveButtonAction(enable: false)
+    }
+    
+    func implementHints() {
+        
+        for _ in 0..<hintsModel.proposedCount(forHint: .random) {
+            hintsRandomOperator()
+        }
+        
+        let newCustomOperators = hintsModel.proposedCount(forHint: .custom) - hintsModel.customCount()
+        
+        if newCustomOperators > 0 {
+            hintsCustomOperators(copies: newCustomOperators)
+            hintsModel.convertCustomCount()
+        }
+        
+        if hintsModel.proposedCount(forHint: .allUses) > 0 {
+            hintsOperatorUses()
+        }
+        
+        hintsModel.resetProposedCounts()
     }
     
     
@@ -1395,24 +1442,77 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
-        if operatorCounter == Int(totalOperands) - 2 {
-            hintsButtonAction(enable: false)
+        hintsModel.updateMultiplier(hint: Hint.random, copies: 1)
+        if let multiplier = hintsModel.hintsSubtractPercentage() {
+            hintsMultiplierLabel.text = "-\(multiplier)%"
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                self.hintsMultiplierLabel.alpha = 1.0
+            })
         }
     }
     
-    func hintsCustomOperator() {
-        defaultOperatorLabels.insert(wildcardOperator, at: kWildcardOperatorPosition)
+    func hintsCustomOperators(copies: Int) {
+        if hintsModel.customCount() == 0 {
+            defaultOperatorLabels.insert(wildcardOperator, at: kWildcardOperatorPosition)
+            
+            placeDefaultOperators(isInitial: false)
+            
+            let size = CGSize(width: kPuzzleLabelSize.width + kLabelBuffer, height: kPuzzleLabelSize.height + kLabelBuffer)
+            
+            let countLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: size))
+            countLabel.text = "\(copies)"
+            countLabel.font = Fonts.wRhC
+            countLabel.textAlignment = .center
+            countLabel.center.x = wildcardOperator.frame.origin.x + wildcardOperator.frame.size.width
+            countLabel.center.y = wildcardOperator.frame.origin.y
+            countLabel.alpha = 0.0
+            countLabel.textColor = colorElements.labelColor
+            self.view.addSubview(countLabel)
+            countLabel.sendSubview(toBack: self.view)
+            UIView.animate(withDuration: kShortAnimationDuration, animations: { 
+                countLabel.alpha = self.kOperatorUsesLabelAlpha
+            })
+            
+            operatorCountLabels[wildcardOperator.text!] = countLabel
+            
+            hintsModel.updateMultiplier(hint: Hint.custom, copies: copies)
+            if let multiplier = hintsModel.hintsSubtractPercentage() {
+                hintsMultiplierLabel.text = "-\(multiplier)%"
+                UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                    self.hintsMultiplierLabel.alpha = 1.0
+                })
+            }
+        } else {
+            operatorCountLabels[wildcardOperator.text!]!.text! = "\(hintsModel.customCount() + copies)"
+            hintsModel.updateMultiplier(hint: Hint.custom, copies: copies)
+            if let multiplier = hintsModel.hintsSubtractPercentage() {
+                UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                    self.hintsMultiplierLabel.alpha = 0.0
+                }, completion: { (value) in
+                    self.hintsMultiplierLabel.text = "-\(multiplier)%"
+                    UIView.animate(withDuration: self.kShortAnimationDuration, animations: {
+                        self.hintsMultiplierLabel.alpha = 1.0
+                    })
+                })
+            }
+        }
         
-        placeDefaultOperators(isInitial: false)
     }
     
     func hintsOperatorUses() {
         
-        let kOperatorUsesLabelAlpha : CGFloat = 0.5
-        
         for operatorLabel in defaultOperatorLabels {
             var operatorCount = 0
-            if operatorLabel.text! != Symbols.Wildcard {
+            if operatorLabel.text! == Symbols.Wildcard {
+                if let label = operatorCountLabels[operatorLabel.text!] {
+                    label.text = "\(hintsModel.customCount())"
+                    self.view.addSubview(label)
+                    label.sendSubview(toBack: self.view)
+                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                        label.alpha = self.kOperatorUsesLabelAlpha
+                    })
+                }
+            } else {
                 for element in puzzleModel.equation!.elements {
                     if operatorLabel.text! == element.string {
                         operatorCount += 1
@@ -1423,10 +1523,20 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.view.addSubview(label)
                     label.sendSubview(toBack: self.view)
                     UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                        label.alpha = kOperatorUsesLabelAlpha
+                        label.alpha = self.kOperatorUsesLabelAlpha
                     })
                 }
             }
+        }
+        
+        operatorUsesCountsShown = true
+        
+        hintsModel.updateMultiplier(hint: Hint.allUses, copies: 1)
+        if let multiplier = hintsModel.hintsSubtractPercentage() {
+            hintsMultiplierLabel.text = "-\(multiplier)%"
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                self.hintsMultiplierLabel.alpha = 1.0
+            })
         }
     }
     
@@ -1530,5 +1640,4 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
 }
