@@ -98,11 +98,19 @@ class HintsModel {
         proposedMultiplierValue = multiplierValue
     }
     
-    func hintsSubtractPercentage() -> Int? {
-        if multiplierValue == 1.00 {
+    func subtractPercentage() -> Int? {
+        if Int(round(100*multiplierValue)) == 100 {
             return nil
         } else {
             return Int(round(100-100*multiplierValue))
+        }
+    }
+    
+    func subtractProposedPercentage() -> Int? {
+        if Int(round(100*proposedMultiplierValue)) == 100 {
+            return nil
+        } else {
+            return Int(round(100-100*proposedMultiplierValue))
         }
     }
     

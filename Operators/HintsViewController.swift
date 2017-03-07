@@ -12,6 +12,8 @@ class HintsViewController: UIViewController {
     
     let hintsModel = HintsModel.sharedInstance
     
+    @IBOutlet weak var currentPenaltyLabel: UILabel!
+    
     @IBOutlet weak var randomCountLabel: UILabel!
     @IBOutlet weak var customCountLabel: UILabel!
     @IBOutlet weak var allUsesCountLabel: UILabel!
@@ -35,6 +37,14 @@ class HintsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        if let subtract = hintsModel.subtractPercentage() {
+            currentPenaltyLabel.text = "Current Penalty: -\(subtract)%"
+        } else {
+            currentPenaltyLabel.text = "Current Penalty: N/A"
+        }
+        
+        
         countLabels[Hint.random] = randomCountLabel
         countLabels[Hint.custom] = customCountLabel
         countLabels[Hint.allUses] = allUsesCountLabel
@@ -70,6 +80,12 @@ class HintsViewController: UIViewController {
                 hintsModel.addHint(hint: key)
                 countLabels[key]!.text = "\(hintsModel.proposedCount(forHint: key))"
             }
+        }
+        
+        if let subtract = hintsModel.subtractProposedPercentage() {
+            currentPenaltyLabel.text = "Current Penalty: -\(subtract)%"
+        } else {
+            currentPenaltyLabel.text = "Current Penalty: N/A"
         }
         
         updateEnableButtons()

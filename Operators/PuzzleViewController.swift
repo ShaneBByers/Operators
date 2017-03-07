@@ -1352,6 +1352,13 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             hintsOperatorUses()
         }
         
+        if let multiplier = hintsModel.subtractPercentage() {
+            hintsMultiplierLabel.text = "-\(multiplier)%"
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                self.hintsMultiplierLabel.alpha = 1.0
+            })
+        }
+        
         hintsModel.resetProposedCounts()
     }
     
@@ -1442,13 +1449,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
-        hintsModel.updateMultiplier(hint: Hint.random, copies: 1)
-        if let multiplier = hintsModel.hintsSubtractPercentage() {
-            hintsMultiplierLabel.text = "-\(multiplier)%"
-            UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                self.hintsMultiplierLabel.alpha = 1.0
-            })
-        }
+        hintsModel.updateMultiplier(hint: .random, copies: 1)
     }
     
     func hintsCustomOperators(copies: Int) {
@@ -1476,25 +1477,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             operatorCountLabels[wildcardOperator.text!] = countLabel
             
             hintsModel.updateMultiplier(hint: Hint.custom, copies: copies)
-            if let multiplier = hintsModel.hintsSubtractPercentage() {
-                hintsMultiplierLabel.text = "-\(multiplier)%"
-                UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                    self.hintsMultiplierLabel.alpha = 1.0
-                })
-            }
         } else {
             operatorCountLabels[wildcardOperator.text!]!.text! = "\(hintsModel.customCount() + copies)"
-            hintsModel.updateMultiplier(hint: Hint.custom, copies: copies)
-            if let multiplier = hintsModel.hintsSubtractPercentage() {
-                UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                    self.hintsMultiplierLabel.alpha = 0.0
-                }, completion: { (value) in
-                    self.hintsMultiplierLabel.text = "-\(multiplier)%"
-                    UIView.animate(withDuration: self.kShortAnimationDuration, animations: {
-                        self.hintsMultiplierLabel.alpha = 1.0
-                    })
-                })
-            }
+            hintsModel.updateMultiplier(hint: .custom, copies: copies)
         }
         
     }
@@ -1531,13 +1516,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         operatorUsesCountsShown = true
         
-        hintsModel.updateMultiplier(hint: Hint.allUses, copies: 1)
-        if let multiplier = hintsModel.hintsSubtractPercentage() {
-            hintsMultiplierLabel.text = "-\(multiplier)%"
-            UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                self.hintsMultiplierLabel.alpha = 1.0
-            })
-        }
+        hintsModel.updateMultiplier(hint: .allUses, copies: 1)
     }
     
     func setupPuzzle(withEquation eq: Equation) {
