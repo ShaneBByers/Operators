@@ -16,19 +16,25 @@ class HintsViewController: UIViewController {
     
     @IBOutlet weak var randomCountLabel: UILabel!
     @IBOutlet weak var customCountLabel: UILabel!
-    @IBOutlet weak var allUsesCountLabel: UILabel!
+    @IBOutlet weak var usesCountLabel: UILabel!
     
     @IBOutlet weak var randomMinusButton: UIButton!
     @IBOutlet weak var customMinusButton: UIButton!
-    @IBOutlet weak var allUsesMinusButton: UIButton!
+    @IBOutlet weak var usesMinusButton: UIButton!
     
     @IBOutlet weak var randomPlusButton: UIButton!
     @IBOutlet weak var customPlusButton: UIButton!
-    @IBOutlet weak var allUsesPlusButton: UIButton!
+    @IBOutlet weak var usesPlusButton: UIButton!
+    
+    @IBOutlet weak var randomPercentageLabel: UILabel!
+    @IBOutlet weak var customPercentageLabel: UILabel!
+    @IBOutlet weak var usesPercentageLabel: UILabel!
+    
     
     var countLabels : [Hint:UILabel] = [:]
     var minusButtons : [Hint:UIButton] = [:]
     var plusButtons : [Hint:UIButton] = [:]
+    var percentageLabels : [Hint:UILabel] = [:]
     
     var returnFunction : ((Void) -> Void)?
     
@@ -45,21 +51,27 @@ class HintsViewController: UIViewController {
         }
         
         
-        countLabels[Hint.random] = randomCountLabel
-        countLabels[Hint.custom] = customCountLabel
-        countLabels[Hint.allUses] = allUsesCountLabel
+        countLabels[.random] = randomCountLabel
+        countLabels[.custom] = customCountLabel
+        countLabels[.uses] = usesCountLabel
         
-        minusButtons[Hint.random] = randomMinusButton
-        minusButtons[Hint.custom] = customMinusButton
-        minusButtons[Hint.allUses] = allUsesMinusButton
+        minusButtons[.random] = randomMinusButton
+        minusButtons[.custom] = customMinusButton
+        minusButtons[.uses] = usesMinusButton
         
-        plusButtons[Hint.random] = randomPlusButton
-        plusButtons[Hint.custom] = customPlusButton
-        plusButtons[Hint.allUses] = allUsesPlusButton
+        plusButtons[.random] = randomPlusButton
+        plusButtons[.custom] = customPlusButton
+        plusButtons[.uses] = usesPlusButton
+        
+        percentageLabels[.random] = randomPercentageLabel
+        percentageLabels[.custom] = customPercentageLabel
+        percentageLabels[.uses] = usesPercentageLabel
         
         updateEnableButtons()
         
         customCountLabel.text = "\(hintsModel.customCount())"
+        
+        usesCountLabel.text = "\(hintsModel.usesCount())"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +84,11 @@ class HintsViewController: UIViewController {
             if value == sender {
                 hintsModel.subtractHint(hint: key)
                 countLabels[key]!.text = "\(hintsModel.proposedCount(forHint: key))"
+                if let subtractPercentage = hintsModel.subtractProposedPercentage(forHint: key) {
+                    percentageLabels[key]!.text = "-\(subtractPercentage)%"
+                } else {
+                    percentageLabels[key]!.text = "N/A"
+                }
             }
         }
         
@@ -79,6 +96,11 @@ class HintsViewController: UIViewController {
             if value == sender {
                 hintsModel.addHint(hint: key)
                 countLabels[key]!.text = "\(hintsModel.proposedCount(forHint: key))"
+                if let subtractPercentage = hintsModel.subtractProposedPercentage(forHint: key) {
+                    percentageLabels[key]!.text = "-\(subtractPercentage)%"
+                } else {
+                    percentageLabels[key]!.text = "N/A"
+                }
             }
         }
         

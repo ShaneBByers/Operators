@@ -24,5 +24,5 @@ enum GameType {
 enum Hint: Double {
     case random = 0.1
     case custom = 0.2
-    case allUses = 0.3
+    case uses = 0.15
 }

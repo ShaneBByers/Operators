@@ -168,7 +168,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var challengeEquation : Equation?
     var timer : Timer?
     var solvePuzzleButtonPressed : Bool = false
-    var operatorUsesCountsShown : Bool = false
     let colorElements : ColorElements
     
     // MARK: - Configurations
@@ -256,7 +255,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             defaultEnables[.custom] = emptyCounter >= 1
             
-            defaultEnables[.allUses] = !operatorUsesCountsShown
+            defaultEnables[.uses] = true
             
             var maxCounts : [Hint:Int] = [:]
             
@@ -264,7 +263,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             maxCounts[.custom] = emptyCounter
             
-            maxCounts[.allUses] = 1
+            maxCounts[.uses] = 4
             
             hintsModel.configureDefaults(defaultEnables, max: maxCounts)
             
@@ -1250,8 +1249,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         hintsModel.reset()
         
-        operatorUsesCountsShown = false
-        
         UIView.animate(withDuration: kShortAnimationDuration) { 
             self.hintsMultiplierLabel.alpha = 0.0
         }
@@ -1271,8 +1268,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBAction func solveButtonPressed(_ sender: UIButton) {
         solvePuzzleButtonPressed = true
-        
-        operatorUsesCountsShown = false
         
         let equation = puzzleModel.equation!
         
@@ -1345,12 +1340,13 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if newCustomOperators > 0 {
             hintsCustomOperators(copies: newCustomOperators)
-            hintsModel.convertCustomCount()
         }
         
-        if hintsModel.proposedCount(forHint: .allUses) > 0 {
+        for _ in 0..<hintsModel.proposedCount(forHint: .uses) - hintsModel.usesCount() {
             hintsOperatorUses()
         }
+        
+        hintsModel.convertCounts()
         
         if let multiplier = hintsModel.subtractPercentage() {
             hintsMultiplierLabel.text = "-\(multiplier)%"
@@ -1486,37 +1482,38 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func hintsOperatorUses() {
         
-        for operatorLabel in defaultOperatorLabels {
-            var operatorCount = 0
-            if operatorLabel.text! == Symbols.Wildcard {
-                if let label = operatorCountLabels[operatorLabel.text!] {
-                    label.text = "\(hintsModel.customCount())"
-                    self.view.addSubview(label)
-                    label.sendSubview(toBack: self.view)
-                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                        label.alpha = self.kOperatorUsesLabelAlpha
-                    })
-                }
-            } else {
-                for element in puzzleModel.equation!.elements {
-                    if operatorLabel.text! == element.string {
-                        operatorCount += 1
-                    }
-                }
-                if let label = operatorCountLabels[operatorLabel.text!] {
-                    label.text = "\(operatorCount)"
-                    self.view.addSubview(label)
-                    label.sendSubview(toBack: self.view)
-                    UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                        label.alpha = self.kOperatorUsesLabelAlpha
-                    })
+        var availablePositions : [Int] = []
+        
+        for (i,label) in defaultOperatorLabels.enumerated() {
+            if label != wildcardOperator {
+                if operatorCountLabels[label.text!]!.alpha != kOperatorUsesLabelAlpha {
+                    availablePositions.append(i)
                 }
             }
         }
         
-        operatorUsesCountsShown = true
+        let random = Int(arc4random_uniform(UInt32(availablePositions.count)))
         
-        hintsModel.updateMultiplier(hint: .allUses, copies: 1)
+        let defaultPosition = availablePositions[random]
+        
+        let operatorKey = defaultOperatorLabels[defaultPosition].text!
+        
+        let operatorCountLabel = operatorCountLabels[operatorKey]!
+        
+        var operatorCount = 0
+        for element in puzzleModel.equation!.elements {
+            if operatorKey == element.string {
+                operatorCount += 1
+            }
+        }
+        operatorCountLabel.text = "\(operatorCount)"
+        self.view.addSubview(operatorCountLabel)
+        operatorCountLabel.sendSubview(toBack: self.view)
+        UIView.animate(withDuration: kShortAnimationDuration, animations: {
+            operatorCountLabel.alpha = self.kOperatorUsesLabelAlpha
+        })
+        
+        hintsModel.updateMultiplier(hint: .uses, copies: 1)
     }
     
     func setupPuzzle(withEquation eq: Equation) {

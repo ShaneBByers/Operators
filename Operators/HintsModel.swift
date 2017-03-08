@@ -19,6 +19,8 @@ class HintsModel {
     
     var customCountValue = 0
     
+    var usesCountValue = 0
+    
     var maxCounts : [Hint:Int] = [:]
     
     var defaultAllowed : [Hint:Bool] = [:]
@@ -29,16 +31,18 @@ class HintsModel {
         defaultAllowed = defaults
         maxCounts = max
         proposedCounts[.custom] = customCountValue
+        proposedCounts[.uses] = usesCountValue
+        updateAllowed()
     }
     
     init() {
         proposedCounts[.random] = 0
         proposedCounts[.custom] = 0
-        proposedCounts[.allUses] = 0
+        proposedCounts[.uses] = 0
         
         allowed[.random] = true
         allowed[.custom] = true
-        allowed[.allUses] = true
+        allowed[.uses] = true
     }
     
     func addHint(hint: Hint) {
@@ -70,10 +74,13 @@ class HintsModel {
     }
     
     func canSubtract(hint: Hint) -> Bool {
-        if hint == .custom {
-            return proposedCounts[hint]! > customCountValue
-        } else {
+        switch hint {
+        case .random:
             return proposedCounts[hint]! > 0
+        case .custom:
+            return proposedCounts[hint]! > customCountValue
+        case .uses:
+            return proposedCounts[hint]! > usesCountValue
         }
     }
     
@@ -114,8 +121,17 @@ class HintsModel {
         }
     }
     
-    func convertCustomCount() {
+    func subtractProposedPercentage(forHint hint: Hint) -> Int? {
+        if proposedCounts[hint]! > 0 {
+            return Int(round(100.0*Double(proposedCounts[hint]!)*hint.rawValue))
+        } else {
+            return nil
+        }
+    }
+    
+    func convertCounts() {
         customCountValue = proposedCounts[.custom]!
+        usesCountValue = proposedCounts[.uses]!
     }
     
     func useCustom() {
@@ -126,10 +142,15 @@ class HintsModel {
         return customCountValue
     }
     
+    func usesCount() -> Int {
+        return usesCountValue
+    }
+    
     func reset() {
         multiplierValue = 1.00
         proposedMultiplierValue = 1.00
         customCountValue = 0
+        usesCountValue = 0
         for key in proposedCounts.keys {
             proposedCounts[key] = 0
             allowed[key] = true
