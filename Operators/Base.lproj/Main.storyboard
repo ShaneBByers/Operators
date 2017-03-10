@@ -137,7 +137,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aF-30-0ib">
-                                <rect key="frame" x="277.66666666666669" y="360" width="181" height="46"/>
+                                <rect key="frame" x="278" y="360" width="181" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="New Puzzle"/>
@@ -161,7 +161,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y0-4I-by6">
-                                <rect key="frame" x="247.99999999999997" y="259.33333333333326" width="240.33333333333329" height="56.666666666666686"/>
+                                <rect key="frame" x="247.66666666666669" y="259" width="241.00000000000006" height="57"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current: N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mm-SZ-ht2">
-                                <rect key="frame" x="260" y="324" width="216.33333333333331" height="34"/>
+                                <rect key="frame" x="259.66666666666669" y="324" width="217" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expression" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-Mh-psi">
-                                <rect key="frame" x="278" y="26" width="180.33333333333331" height="34"/>
+                                <rect key="frame" x="278" y="26" width="181" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -208,35 +208,78 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="×2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4c3-w3-qqC">
+                                <rect key="frame" x="496" y="305.66666666666669" width="24.333333333333371" height="22.666666666666629"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="15"/>
+                                </variation>
+                            </label>
+                            <progressView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="puD-aV-c3k">
+                                <rect key="frame" x="248" y="316.66666666666669" width="240" height="2"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="0ya-G5-spf"/>
+                                    <constraint firstAttribute="width" constant="240" id="XDG-9v-YEX"/>
+                                </constraints>
+                                <color key="trackTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.24660209760273974" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxJ-t7-pju" userLabel="Porgress Bar Constraint View">
+                                <rect key="frame" x="248" y="316" width="240" height="2.6666666666666856"/>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-4g-2ur">
+                                <rect key="frame" x="240" y="317" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="15"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5Mm-SZ-ht2" firstAttribute="top" secondItem="1y0-4I-by6" secondAttribute="bottom" constant="8" id="0h2-q4-evC"/>
+                            <constraint firstItem="uxJ-t7-pju" firstAttribute="bottom" secondItem="puD-aV-c3k" secondAttribute="bottom" id="0lF-9x-5DX"/>
+                            <constraint firstItem="uxJ-t7-pju" firstAttribute="leading" secondItem="puD-aV-c3k" secondAttribute="leading" id="0vF-0O-qal"/>
+                            <constraint firstItem="4c3-w3-qqC" firstAttribute="leading" secondItem="uxJ-t7-pju" secondAttribute="trailing" constant="8" id="1EN-9a-NNQ"/>
                             <constraint firstItem="9nY-uR-PjB" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="432-dH-ZhU"/>
+                            <constraint firstItem="puD-aV-c3k" firstAttribute="top" secondItem="1y0-4I-by6" secondAttribute="bottom" id="4l9-6n-Va8"/>
                             <constraint firstItem="tw8-GX-Zqv" firstAttribute="centerY" secondItem="Blg-qp-bfd" secondAttribute="centerY" id="7bO-7w-Qx8"/>
                             <constraint firstItem="WEf-Mh-psi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8P2-pn-2jb"/>
+                            <constraint firstItem="puD-aV-c3k" firstAttribute="centerY" secondItem="sqT-4g-2ur" secondAttribute="centerY" id="9Az-uR-aSt"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7aF-30-0ib" secondAttribute="bottom" constant="8" id="9Oh-X3-Ib3"/>
                             <constraint firstItem="WEf-Mh-psi" firstAttribute="centerY" secondItem="41k-Je-KOT" secondAttribute="centerY" id="9TD-Ws-Eqf"/>
+                            <constraint firstItem="uxJ-t7-pju" firstAttribute="trailing" secondItem="puD-aV-c3k" secondAttribute="trailing" id="E44-OD-bLe"/>
                             <constraint firstItem="9nY-uR-PjB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Nqf-C7-rJo"/>
                             <constraint firstItem="1y0-4I-by6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ODi-h5-WSK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Blg-qp-bfd" secondAttribute="bottom" constant="8" id="Qgw-8P-HJl"/>
                             <constraint firstItem="Blg-qp-bfd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="RgY-gM-QSH"/>
                             <constraint firstItem="tw8-GX-Zqv" firstAttribute="leading" secondItem="Blg-qp-bfd" secondAttribute="trailing" constant="8" id="SzO-IB-ghH"/>
+                            <constraint firstItem="puD-aV-c3k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VGt-Yu-hRK"/>
                             <constraint firstItem="5Mm-SZ-ht2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gmA-nG-ijx"/>
                             <constraint firstItem="Msk-eC-qBu" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="iEe-mU-7gU"/>
+                            <constraint firstItem="4c3-w3-qqC" firstAttribute="centerY" secondItem="puD-aV-c3k" secondAttribute="centerY" id="j4V-lL-7g3"/>
                             <constraint firstItem="41k-Je-KOT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jBw-FK-0Yn"/>
                             <constraint firstItem="7aF-30-0ib" firstAttribute="top" secondItem="5Mm-SZ-ht2" secondAttribute="bottom" constant="2" id="n4t-bl-2Fa"/>
+                            <constraint firstItem="uxJ-t7-pju" firstAttribute="leading" secondItem="sqT-4g-2ur" secondAttribute="trailing" constant="8" id="ovN-MK-hsR"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Msk-eC-qBu" secondAttribute="bottom" constant="8" id="pC5-vL-wiI"/>
                             <constraint firstItem="41k-Je-KOT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qjQ-Fb-XiH"/>
+                            <constraint firstItem="uxJ-t7-pju" firstAttribute="top" secondItem="puD-aV-c3k" secondAttribute="top" id="uOd-fg-fke"/>
                             <constraint firstItem="7aF-30-0ib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="we2-2c-Y8u"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentMultiplierLabel" destination="sqT-4g-2ur" id="FPV-EK-kkk"/>
                         <outlet property="expressionLabel" destination="WEf-Mh-psi" id="okg-wo-2cC"/>
                         <outlet property="hintsButton" destination="Blg-qp-bfd" id="WNg-Fh-DKg"/>
                         <outlet property="hintsMultiplierLabel" destination="tw8-GX-Zqv" id="UZD-CQ-oUQ"/>
                         <outlet property="newPuzzleButton" destination="7aF-30-0ib" id="Vsp-DX-WsV"/>
+                        <outlet property="nextMultiplierLabel" destination="4c3-w3-qqC" id="tQs-lW-mMM"/>
                         <outlet property="primaryLabel" destination="1y0-4I-by6" id="R3X-ek-bgr"/>
+                        <outlet property="progressBarView" destination="puD-aV-c3k" id="mzb-be-WVk"/>
                         <outlet property="resetButton" destination="9nY-uR-PjB" id="9UI-51-A4e"/>
                         <outlet property="secondaryLabel" destination="5Mm-SZ-ht2" id="Inn-oG-Ijb"/>
                         <outlet property="solveButton" destination="Msk-eC-qBu" id="6rS-e4-S2d"/>

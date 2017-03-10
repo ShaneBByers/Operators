@@ -154,6 +154,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var secondaryLabel: UILabel!
     @IBOutlet weak var hintsMultiplierLabel: UILabel!
     
+    
+    @IBOutlet weak var progressBarView: UIProgressView!
+    @IBOutlet weak var currentMultiplierLabel: UILabel!
+    @IBOutlet weak var nextMultiplierLabel: UILabel!
+    
+    
     // MARK: - Buttons
     //
     @IBOutlet weak var resetButton: UIButton!
@@ -317,6 +323,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         switch gameType! {
         case .original:
+            bestScoreModel.configureMaxScore(withDifficulty: difficulty!)
             self.initializeBestScore()
             self.newPuzzleButtonPressed(UIButton())
         case .challenge:
@@ -458,6 +465,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         solveButton.alpha = 1.0
         solveButton.isEnabled = true
+        
+        progressBarView.isHidden = false
+        currentMultiplierLabel.isHidden = false
+        nextMultiplierLabel.isHidden = false
         
         hintsButtonAction(enable: true)
     }
@@ -1001,6 +1012,18 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 hintsButtonAction(enable: false)
                 solveButtonAction(enable: false)
             }
+            progressBarView.setProgress(bestScoreModel.multiplierProgress(), animated: true)
+            let currentMultiplier = bestScoreModel.currentPointsMultiplier()
+            if currentMultiplier != 1 {
+                currentMultiplierLabel.text = "×\(currentMultiplier)"
+            } else {
+                currentMultiplierLabel.text = ""
+            }
+            if let nextMultiplier = bestScoreModel.nextPointsMultiplier() {
+                nextMultiplierLabel.text = "×\(nextMultiplier)"
+            } else {
+                nextMultiplierLabel.text = ""
+            }
         } else {
             secondaryLabel.text = "Current: N/A"
         }
@@ -1220,6 +1243,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func newPuzzleButtonPressed(_ sender: UIButton) {
+        
         let equation : Equation
         
         switch difficulty! {

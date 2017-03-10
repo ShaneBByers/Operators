@@ -25,12 +25,23 @@ class BestScoreModel {
     
     private let scoreBooster = 10
     
-    public let maxScore = 100.0
+    public var maxScore = 100.0
+    
+    private var pointsMultipliers = [(range: CountableRange<Int>, multiplier: Double)]()
+    
+    private var pointsMultiplier = (range: 0..<1000, multiplier: 1.0)
+    
+    var currentDifficulty : Difficulty = .easy
     
     init() {
         let fileManager = FileManager.default
         let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         bestScoreURL = documentURL.appendingPathComponent(Filenames.bestScore + ".archive")
+        
+        pointsMultipliers.append((range: 0..<1000, multiplier: 1.0))
+        pointsMultipliers.append((range: 1000..<5000, multiplier: 2.0))
+        pointsMultipliers.append((range: 5000..<20000, multiplier: 5.0))
+        pointsMultipliers.append((range: 20000..<Int.max, multiplier: 10.0))
         
         let fileExists = fileManager.fileExists(atPath: bestScoreURL.path)
         
@@ -49,19 +60,28 @@ class BestScoreModel {
         }        
     }
     
+    func configureMaxScore(withDifficulty diff: Difficulty) {
+        switch diff {
+        case .easy: maxScore = 100.0
+        case .medium: maxScore = 200.0
+        case .hard: maxScore = 300.0
+        case .random: maxScore = 250.0
+        }
+    }
+    
     func updateScores(withEquation equation: Equation, withSolution solution: Int, forDifficulty difficulty: Difficulty) -> Int? {
         if let correctSolution = equation.solution.number {
             let hintsMultiplier = hintsModel.multiplier()
             let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + scoreBooster)
-            let newScore = Int(round(maxScore*hintsMultiplier - ceil(percentageError*maxScore*hintsMultiplier)))
+            let newScore = Int(round(maxScore*hintsMultiplier*pointsMultiplier.multiplier - ceil(percentageError*maxScore*hintsMultiplier*pointsMultiplier.multiplier)))
             if let currentScore = current {
-                let addedScore = Int(round(hintsMultiplier*Double(newScore - currentScore)))
+                let addedScore = Int(round(pointsMultiplier.multiplier*hintsMultiplier*Double(newScore - currentScore)))
                 if addedScore > 0 {
                     self.current! += addedScore
                     self.total += addedScore
                 }
             } else {
-                let addedScore = Int(round(hintsMultiplier*Double(newScore)))
+                let addedScore = Int(round(pointsMultiplier.multiplier*hintsMultiplier*Double(newScore)))
                 if addedScore >= 0 {
                     self.current = newScore
                 } else {
@@ -77,7 +97,40 @@ class BestScoreModel {
             saveArchive()
         }
         
+        for pointMult in pointsMultipliers {
+            if pointMult.range ~= self.total {
+                pointsMultiplier = pointMult
+                break
+            }
+        }
+        
         return current
+    }
+    
+    func multiplierProgress() -> Float {
+        let lower = pointsMultiplier.range.lowerBound
+        let upper = pointsMultiplier.range.upperBound
+        if upper == Int.max {
+            return 1.00
+        } else {
+            return Float(self.total-lower)/Float(upper-lower)
+        }
+    }
+    
+    func currentPointsMultiplier() -> Int {
+        return Int(pointsMultiplier.multiplier)
+    }
+    
+    func nextPointsMultiplier() -> Int? {
+        for (i,pointMult) in pointsMultipliers.enumerated() {
+            if pointMult == pointsMultiplier {
+                if i+1 < pointsMultipliers.count {
+                    return Int(pointsMultipliers[i+1].multiplier)
+                }
+                break
+            }
+        }
+        return nil
     }
     
     func currentScore() -> Int? {
