@@ -12,8 +12,6 @@ class HintsViewController: UIViewController {
     
     let hintsModel = HintsModel.sharedInstance
     
-    @IBOutlet weak var currentPenaltyLabel: UILabel!
-    
     @IBOutlet weak var randomCountLabel: UILabel!
     @IBOutlet weak var customCountLabel: UILabel!
     @IBOutlet weak var usesCountLabel: UILabel!
@@ -30,6 +28,10 @@ class HintsViewController: UIViewController {
     @IBOutlet weak var customPercentageLabel: UILabel!
     @IBOutlet weak var usesPercentageLabel: UILabel!
     
+    @IBOutlet weak var previousPenaltyLabel: UILabel!
+    @IBOutlet weak var addedPenaltyLabel: UILabel!
+    @IBOutlet weak var totalPenaltyLabel: UILabel!
+    
     
     var countLabels : [Hint:UILabel] = [:]
     var minusButtons : [Hint:UIButton] = [:]
@@ -45,9 +47,9 @@ class HintsViewController: UIViewController {
     override func viewDidLoad() {
         
         if let subtract = hintsModel.subtractPercentage() {
-            currentPenaltyLabel.text = "Current Penalty: -\(subtract)%"
+            previousPenaltyLabel.text = "-\(subtract)%"
         } else {
-            currentPenaltyLabel.text = "Current Penalty: N/A"
+            previousPenaltyLabel.text = "N/A"
         }
         
         
@@ -82,7 +84,7 @@ class HintsViewController: UIViewController {
     @IBAction func changeCountButtonPressed(_ sender: UIButton) {
         for (key, value) in minusButtons {
             if value == sender {
-                hintsModel.subtractHint(hint: key)
+                hintsModel.changeHintCount(hint: key, isAdd: false)
                 countLabels[key]!.text = "\(hintsModel.proposedCount(forHint: key))"
                 if let subtractPercentage = hintsModel.subtractProposedPercentage(forHint: key) {
                     percentageLabels[key]!.text = "-\(subtractPercentage)%"
@@ -94,7 +96,7 @@ class HintsViewController: UIViewController {
         
         for (key, value) in plusButtons {
             if value == sender {
-                hintsModel.addHint(hint: key)
+                hintsModel.changeHintCount(hint: key, isAdd: true)
                 countLabels[key]!.text = "\(hintsModel.proposedCount(forHint: key))"
                 if let subtractPercentage = hintsModel.subtractProposedPercentage(forHint: key) {
                     percentageLabels[key]!.text = "-\(subtractPercentage)%"
@@ -104,10 +106,20 @@ class HintsViewController: UIViewController {
             }
         }
         
-        if let subtract = hintsModel.subtractProposedPercentage() {
-            currentPenaltyLabel.text = "Current Penalty: -\(subtract)%"
+        if let subtractProposed = hintsModel.subtractProposedPercentage() {
+            if let subtract = hintsModel.subtractPercentage() {
+                if subtractProposed == subtract {
+                    addedPenaltyLabel.text = "N/A"
+                } else {
+                    addedPenaltyLabel.text = "-\(subtractProposed - subtract)%"
+                }
+            } else {
+                addedPenaltyLabel.text = "-\(subtractProposed)%"
+            }
+            totalPenaltyLabel.text = "-\(subtractProposed)%"
         } else {
-            currentPenaltyLabel.text = "Current Penalty: N/A"
+            addedPenaltyLabel.text = "N/A"
+            totalPenaltyLabel.text = "N/A"
         }
         
         updateEnableButtons()

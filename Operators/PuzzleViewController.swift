@@ -267,7 +267,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             
             maxCounts[.random] = emptyCounter - 1
             
-            maxCounts[.custom] = emptyCounter
+            maxCounts[.custom] = emptyCounter - 1
             
             maxCounts[.uses] = 4
             
@@ -1372,6 +1372,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         hintsModel.convertCounts()
         
+        hintsModel.updateMultiplier()
+        
         if let multiplier = hintsModel.subtractPercentage() {
             hintsMultiplierLabel.text = "-\(multiplier)%"
             UIView.animate(withDuration: kShortAnimationDuration, animations: {
@@ -1381,7 +1383,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         hintsModel.resetProposedCounts()
     }
-    
     
     func hintsRandomOperator() {
         var totalOperands : UInt32 = 0
@@ -1468,8 +1469,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 operatorCounter += 1
             }
         }
-        
-        hintsModel.updateMultiplier(hint: .random, copies: 1)
     }
     
     func hintsCustomOperators(copies: Int) {
@@ -1495,11 +1494,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             })
             
             operatorCountLabels[wildcardOperator.text!] = countLabel
-            
-            hintsModel.updateMultiplier(hint: Hint.custom, copies: copies)
         } else {
             operatorCountLabels[wildcardOperator.text!]!.text! = "\(hintsModel.customCount() + copies)"
-            hintsModel.updateMultiplier(hint: .custom, copies: copies)
         }
         
     }
@@ -1536,8 +1532,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         UIView.animate(withDuration: kShortAnimationDuration, animations: {
             operatorCountLabel.alpha = self.kOperatorUsesLabelAlpha
         })
-        
-        hintsModel.updateMultiplier(hint: .uses, copies: 1)
     }
     
     func setupPuzzle(withEquation eq: Equation) {

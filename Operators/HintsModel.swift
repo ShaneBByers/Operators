@@ -45,15 +45,24 @@ class HintsModel {
         allowed[.uses] = true
     }
     
-    func addHint(hint: Hint) {
-        proposedCounts[hint]! += 1
-        proposedMultiplierValue -= hint.rawValue
-        updateAllowed()
-    }
-    
-    func subtractHint(hint: Hint) {
-        proposedCounts[hint]! -= 1
-        proposedMultiplierValue += hint.rawValue
+    func changeHintCount(hint: Hint, isAdd: Bool) {
+        proposedMultiplierValue = multiplierValue
+        if isAdd {
+            proposedCounts[hint]! += 1
+        } else {
+            
+            proposedCounts[hint]! -= 1
+        }
+        
+        for (key,count) in proposedCounts {
+            if count > 1 {
+                for i in 1...count {
+                    proposedMultiplierValue -= key.rawValue/pow(1.5, Double(i-1))
+                }
+            } else if count == 1 {
+                proposedMultiplierValue -= key.rawValue
+            }
+        }
         updateAllowed()
     }
     
@@ -88,9 +97,8 @@ class HintsModel {
         return proposedCounts[hint]!
     }
     
-    func updateMultiplier(hint: Hint, copies: Int) {
-        multiplierValue -= hint.rawValue*Double(copies)
-        proposedMultiplierValue = multiplierValue
+    func updateMultiplier() {
+        multiplierValue = proposedMultiplierValue
     }
     
     func multiplier() -> Double {
