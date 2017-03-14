@@ -460,6 +460,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         newPuzzleButton.alpha = 1.0
         newPuzzleButton.isEnabled = true
         
+        progressBarView.isHidden = false
+        progressBarView.progress = 1.0
+        
         secondaryLabel.text = "Score: 0"
     }
     
@@ -693,21 +696,21 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                                 })
                             }
                         }
+                        var resetEnabled = false
+                        
+                        for puzzleLabel in puzzleLabels {
+                            if puzzleLabel.isOperator && puzzleLabel.isMovable {
+                                resetEnabled = true
+                            }
+                        }
+                        
+                        resetButtonAction(enable: resetEnabled)
                     default: break
                     }
                     break
                 }
             }
         }
-        var resetEnabled = false
-        
-        for puzzleLabel in puzzleLabels {
-            if puzzleLabel.isOperator && puzzleLabel.isMovable {
-                resetEnabled = true
-            }
-        }
-        
-        resetButtonAction(enable: resetEnabled)
         
         /*var totalOperands = 0
          var operatorCounter = 0
@@ -1037,6 +1040,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             if best == Int(bestScoreModel.maxScore) {
                 hintsButtonAction(enable: false)
                 solveButtonAction(enable: false)
+                displayCompleted()
             }
             progressBarView.setProgress(bestScoreModel.multiplierProgress(), animated: true)
             let currentMultiplier = bestScoreModel.currentPointsMultiplier()
@@ -1055,6 +1059,32 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         primaryLabel.text = "Score: " + String(bestScoreModel.totalScore())
+    }
+    
+    func displayCompleted() {
+        let completedLabel = UILabel()
+        completedLabel.text = "Complete!"
+        completedLabel.textAlignment = .center
+        completedLabel.font = UIFont(name: Fonts.wRhC!.fontName, size: 60)
+        completedLabel.frame.size.width = self.view.frame.size.width
+        completedLabel.frame.size.height = kPuzzleLabelSize.height + 2*kLabelBuffer
+        completedLabel.center.x = self.view.center.x
+        completedLabel.center.y = kPuzzleLabelsYPosition + kPuzzleLabelSize.height
+        completedLabel.alpha = 0.0
+        
+        self.view.addSubview(completedLabel)
+        
+        UIView.animate(withDuration: kLongAnimationDuration, animations: {
+            completedLabel.alpha = 1.0
+            completedLabel.center.y = self.kPuzzleLabelsYPosition
+        }) { (value) in
+            UIView.animate(withDuration: self.kLongAnimationDuration, delay: self.kShortAnimationDuration, options: .allowAnimatedContent, animations: {
+                completedLabel.alpha = 0.0
+                completedLabel.center.y = self.kPuzzleLabelsYPosition - self.kPuzzleLabelSize.height
+            }, completion: { (value) in
+                completedLabel.removeFromSuperview()
+            })
+        }
     }
     
     func updateTimedScore() {
@@ -1122,7 +1152,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             } else {
                 primaryLabel.textColor = colorElements.buttonColor
             }
+            progressBarView.progress = Float(doubleRemaining)/Float(timedModel.totalTime!)
         } else {
+            primaryLabel.text = "0.0"
             timer.invalidate()
             self.performSegue(withIdentifier: "timerCompletedSegue", sender: self)
         }

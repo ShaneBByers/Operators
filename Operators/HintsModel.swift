@@ -48,14 +48,25 @@ class HintsModel {
     func changeHintCount(hint: Hint, isAdd: Bool) {
         proposedMultiplierValue = multiplierValue
         if isAdd {
-            proposedCounts[hint]! += 1
+            if hint == .uses && proposedCounts[hint]! == 2 {
+                proposedCounts[hint]! += 2
+            } else {
+                proposedCounts[hint]! += 1
+            }
         } else {
-            
-            proposedCounts[hint]! -= 1
+            if hint == .uses && proposedCounts[hint]! == 4 {
+                proposedCounts[hint]! -= 2
+            } else {
+                proposedCounts[hint]! -= 1
+            }
         }
         
         for (key,count) in proposedCounts {
-            if count > 1 {
+            if count == 4 && key == .uses {
+                for i in 1..<count {
+                    proposedMultiplierValue -= key.rawValue/pow(1.5, Double(i-1))
+                }
+            } else if count > 1 {
                 for i in 1...count {
                     proposedMultiplierValue -= key.rawValue/pow(1.5, Double(i-1))
                 }
