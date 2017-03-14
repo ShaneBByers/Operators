@@ -20,6 +20,7 @@ struct PuzzleLabel {
     
     private let kDefaultLabelSize = 60
     private let kLockString = "🔒"
+    private let kUnlockString = "🔓"
     let kLockLabelAlpha : CGFloat = 0.5
     
     init(text: String, isOperand: Bool, isOperator: Bool, isSolution: Bool, isMovable: Bool, viewController: PuzzleViewController?) {
@@ -69,7 +70,7 @@ struct PuzzleLabel {
             let _lockLabel = UILabel(frame: CGRect(x: 0, y: 0, width: kDefaultLabelSize, height: kDefaultLabelSize))
             
             _lockLabel.font = Fonts.wRhC
-            _lockLabel.text = kLockString
+            _lockLabel.text = kUnlockString
             _lockLabel.textAlignment = .center
             _lockLabel.alpha = kLockLabelAlpha
             _lockLabel.isHidden = isMovable
@@ -105,6 +106,14 @@ struct PuzzleLabel {
     
     func changeLock() -> PuzzleLabel {
         return PuzzleLabel(label: self.label, lockLabel: self.lockLabel!, isMovable: !self.isMovable, operatorPanGestureRecognizer: self.operatorPanGestureRecognizer, operatorDoubleTapGestureRecognizer: self.operatorDoubleTapGestureRecognizer, operatorHoldGestureRecognizer: self.operatorHoldGestureRecognizer)
+    }
+    
+    func changeLockString() {
+        if lockLabel!.text! == kLockString {
+            lockLabel!.text = kUnlockString
+        } else {
+            lockLabel!.text = kLockString
+        }
     }
 }
 
@@ -645,11 +654,28 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func puzzleOperatorHeld(_ recognizer: UILongPressGestureRecognizer) {
-        if recognizer.state == .began {
-            if let view = recognizer.view {
-                let label = view as! UILabel
-                for i in puzzleLabels.indices {
-                    if puzzleLabels[i].label == label {
+        if let view = recognizer.view {
+            let label = view as! UILabel
+            for i in puzzleLabels.indices {
+                if puzzleLabels[i].label == label {
+                    switch recognizer.state {
+                    case .began:
+                        if let lockLabel = puzzleLabels[i].lockLabel {
+                            if puzzleLabels[i].lockLabel!.isHidden {
+                                lockLabel.alpha = 0.0
+                                lockLabel.isHidden = false
+                                self.view.bringSubview(toFront: lockLabel)
+                                UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                                    lockLabel.alpha = self.puzzleLabels[i].kLockLabelAlpha
+                                })
+                            } else {
+                                self.view.bringSubview(toFront: lockLabel)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + kShortAnimationDuration, execute: {
+                                    self.puzzleLabels[i].changeLockString()
+                                })
+                            }
+                        }
+                    case .ended:
                         puzzleLabels[i] = puzzleLabels[i].changeLock()
                         let puzzleLabel = puzzleLabels[i]
                         
@@ -661,15 +687,15 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                                     lockLabel.isHidden = true
                                 })
                             } else {
-                                lockLabel.alpha = 0.0
-                                lockLabel.isHidden = false
-                                UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                                    lockLabel.alpha = self.puzzleLabels[i].kLockLabelAlpha
+                                puzzleLabel.changeLockString()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + kShortAnimationDuration, execute: {
+                                    self.view.sendSubview(toBack: lockLabel)
                                 })
                             }
                         }
-                        break
+                    default: break
                     }
+                    break
                 }
             }
         }
@@ -683,23 +709,23 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         resetButtonAction(enable: resetEnabled)
         
-        var totalOperands = 0
-        var operatorCounter = 0
-        
-        for i in puzzleLabels.indices {
-            if puzzleLabels[i].isOperator && !puzzleLabels[i].isMovable {
-                operatorCounter += 1
-            }
-            if puzzleLabels[i].isOperand {
-                totalOperands += 1
-            }
-        }
-        
-        if operatorCounter == Int(totalOperands) - 2 {
-            hintsButtonAction(enable: false)
-        } else {
-            hintsButtonAction(enable: true)
-        }
+        /*var totalOperands = 0
+         var operatorCounter = 0
+         
+         for i in puzzleLabels.indices {
+         if puzzleLabels[i].isOperator && !puzzleLabels[i].isMovable {
+         operatorCounter += 1
+         }
+         if puzzleLabels[i].isOperand {
+         totalOperands += 1
+         }
+         }
+         
+         if operatorCounter == Int(totalOperands) - 2 {
+         hintsButtonAction(enable: false)
+         } else {
+         hintsButtonAction(enable: true)
+         }*/
     }
     
     // MARK: - Label Panned Cases
@@ -1488,7 +1514,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             countLabel.alpha = 0.0
             countLabel.textColor = colorElements.labelColor
             self.view.addSubview(countLabel)
-            countLabel.sendSubview(toBack: self.view)
+            self.view.sendSubview(toBack: countLabel)
             UIView.animate(withDuration: kShortAnimationDuration, animations: { 
                 countLabel.alpha = self.kOperatorUsesLabelAlpha
             })
@@ -1528,7 +1554,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         operatorCountLabel.text = "\(operatorCount)"
         self.view.addSubview(operatorCountLabel)
-        operatorCountLabel.sendSubview(toBack: self.view)
+        self.view.sendSubview(toBack: operatorCountLabel)
         UIView.animate(withDuration: kShortAnimationDuration, animations: {
             operatorCountLabel.alpha = self.kOperatorUsesLabelAlpha
         })
