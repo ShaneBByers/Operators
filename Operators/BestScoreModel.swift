@@ -75,13 +75,13 @@ class BestScoreModel {
             let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + scoreBooster)
             let newScore = Int(round(maxScore*hintsMultiplier*pointsMultiplier.multiplier - ceil(percentageError*maxScore*hintsMultiplier*pointsMultiplier.multiplier)))
             if let currentScore = current {
-                let addedScore = Int(round(pointsMultiplier.multiplier*hintsMultiplier*Double(newScore - currentScore)))
+                let addedScore = Int(round(Double(newScore - currentScore)))
                 if addedScore > 0 {
                     self.current! += addedScore
                     self.total += addedScore
                 }
             } else {
-                let addedScore = Int(round(pointsMultiplier.multiplier*hintsMultiplier*Double(newScore)))
+                let addedScore = Int(round(Double(newScore)))
                 if addedScore >= 0 {
                     self.current = newScore
                 } else {

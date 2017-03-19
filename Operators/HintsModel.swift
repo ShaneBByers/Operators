@@ -27,6 +27,8 @@ class HintsModel {
     
     var allowed : [Hint:Bool] = [:]
     
+    var additional : [Hint:Double] = [:]
+    
     func configureDefaults(_ defaults : [Hint:Bool], max : [Hint:Int]) {
         defaultAllowed = defaults
         maxCounts = max
@@ -43,6 +45,10 @@ class HintsModel {
         allowed[.random] = true
         allowed[.custom] = true
         allowed[.uses] = true
+        
+        additional[.random] = 0.0
+        additional[.custom] = 0.0
+        additional[.uses] = 0.0
     }
     
     func changeHintCount(hint: Hint, isAdd: Bool) {
@@ -62,17 +68,26 @@ class HintsModel {
         }
         
         for (key,count) in proposedCounts {
-            if count == 4 && key == .uses {
-                for i in 1..<count {
-                    proposedMultiplierValue -= key.rawValue/pow(1.5, Double(i-1))
+            additional[key] = 0.0
+            var countTo : Int
+            switch key {
+            case .custom: countTo = count - customCountValue
+            case .uses:
+                if count == 4 {
+                    countTo = count - usesCountValue - 1
+                } else {
+                    countTo = count - usesCountValue
                 }
-            } else if count > 1 {
-                for i in 1...count {
-                    proposedMultiplierValue -= key.rawValue/pow(1.5, Double(i-1))
-                }
-            } else if count == 1 {
-                proposedMultiplierValue -= key.rawValue
+            default: countTo = count
             }
+            if count > 1 {
+                for i in 1...countTo {
+                    additional[key]! += key.rawValue/pow(1.5, Double(i-1))
+                }
+            } else if countTo == 1 {
+                additional[key] = key.rawValue
+            }
+            proposedMultiplierValue -= additional[key]!
         }
         updateAllowed()
     }
@@ -141,8 +156,8 @@ class HintsModel {
     }
     
     func subtractProposedPercentage(forHint hint: Hint) -> Int? {
-        if proposedCounts[hint]! > 0 {
-            return Int(round(100.0*Double(proposedCounts[hint]!)*hint.rawValue))
+        if additional[hint]! > 0.0 {
+            return Int(round(100.0*additional[hint]!))
         } else {
             return nil
         }

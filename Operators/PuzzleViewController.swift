@@ -70,7 +70,7 @@ struct PuzzleLabel {
             let _lockLabel = UILabel(frame: CGRect(x: 0, y: 0, width: kDefaultLabelSize, height: kDefaultLabelSize))
             
             _lockLabel.font = Fonts.wRhC
-            _lockLabel.text = kUnlockString
+            _lockLabel.text = kLockString
             _lockLabel.textAlignment = .center
             _lockLabel.alpha = kLockLabelAlpha
             _lockLabel.isHidden = isMovable
@@ -114,6 +114,10 @@ struct PuzzleLabel {
         } else {
             lockLabel!.text = kLockString
         }
+    }
+    
+    func resetLockString() {
+        lockLabel!.text = kUnlockString
     }
 }
 
@@ -183,6 +187,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var challengeEquation : Equation?
     var timer : Timer?
     var solvePuzzleButtonPressed : Bool = false
+    var operatorBeingMoved : UILabel?
     let colorElements : ColorElements
     
     // MARK: - Configurations
@@ -313,9 +318,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         kPuzzleLabelsYPosition = self.view.center.y - kPuzzleLabelSize.height - kLabelBuffer
         
-        self.intializeGestureRecognizers()
-        self.initializeDefaultOperators()
-        self.initializeOperatorCountLabels()
+        intializeGestureRecognizers()
+        initializeDefaultOperators()
+        initializeOperatorCountLabels()
         
         expressionLabel.text = ""
         
@@ -359,6 +364,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             label.textColor = .black
         }
         expressionLabel.textColor = .black
+        progressBarView.progressTintColor = colorElements.buttonColor
     }
     
     func resetOnDisappear() {
@@ -415,7 +421,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func placeDefaultOperators(isInitial: Bool) {
-        let yPositionCenter = primaryLabel.frame.origin.y - kPuzzleLabelSize.height/2.0
+        let yPositionCenter = self.view.center.y
         
         let totalWidth = self.view.frame.size.width
         
@@ -525,14 +531,18 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     func operatorPanned(_ recognizer: UIPanGestureRecognizer, isDefaultOperator: Bool) {
         if let view = recognizer.view {
             let label = view as! UILabel
-            switch recognizer.state {
-            case .began:
-                self.operatorBeganPanning(label: label, isDefaultOperator: isDefaultOperator)
-            case .changed:
-                self.operatorChangedPanning(recognizer: recognizer, label: label)
-            case .ended:
-                self.operatorEndedPanning(label: label, isDefaultOperator: isDefaultOperator)
-            default: break
+            if operatorBeingMoved == nil || operatorBeingMoved! == label {
+                operatorBeingMoved = label
+                switch recognizer.state {
+                case .began:
+                    self.operatorBeganPanning(label: label, isDefaultOperator: isDefaultOperator)
+                case .changed:
+                    self.operatorChangedPanning(recognizer: recognizer, label: label)
+                case .ended:
+                    self.operatorEndedPanning(label: label, isDefaultOperator: isDefaultOperator)
+                    operatorBeingMoved = nil
+                default: break
+                }
             }
         }
     }
@@ -616,7 +626,15 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
         }
+        var resetEnabled = false
         
+        for puzzleLabel in puzzleLabels {
+            if puzzleLabel.isOperator && puzzleLabel.isMovable {
+                resetEnabled = true
+            }
+        }
+        
+        resetButtonAction(enable: resetEnabled)
     }
     
     func puzzleOperatorDoubleTapped(_ recognizer: UITapGestureRecognizer) {
@@ -654,6 +672,15 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
         }
+        var resetEnabled = false
+        
+        for puzzleLabel in puzzleLabels {
+            if puzzleLabel.isOperator && puzzleLabel.isMovable {
+                resetEnabled = true
+            }
+        }
+        
+        resetButtonAction(enable: resetEnabled)
     }
     
     func puzzleOperatorHeld(_ recognizer: UILongPressGestureRecognizer) {
@@ -665,6 +692,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                     case .began:
                         if let lockLabel = puzzleLabels[i].lockLabel {
                             if puzzleLabels[i].lockLabel!.isHidden {
+                                puzzleLabels[i].resetLockString()
                                 lockLabel.alpha = 0.0
                                 lockLabel.isHidden = false
                                 self.view.bringSubview(toFront: lockLabel)
@@ -968,6 +996,15 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 })
             }
         }
+        var resetEnabled = false
+        
+        for puzzleLabel in puzzleLabels {
+            if puzzleLabel.isOperator && puzzleLabel.isMovable {
+                resetEnabled = true
+            }
+        }
+        
+        resetButtonAction(enable: resetEnabled)
     }
     
     // MARK: - Placeholder Manipulation
@@ -1037,7 +1074,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             } else if best > 0 {
                 primaryLabelUpdate(withText: "\(best)")
             }
-            if best == Int(bestScoreModel.maxScore) {
+            if best == Int(bestScoreModel.maxScore*Double(bestScoreModel.currentPointsMultiplier())) {
                 hintsButtonAction(enable: false)
                 solveButtonAction(enable: false)
                 displayCompleted()

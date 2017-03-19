@@ -32,6 +32,7 @@ class HintsViewController: UIViewController {
     @IBOutlet weak var addedPenaltyLabel: UILabel!
     @IBOutlet weak var totalPenaltyLabel: UILabel!
     
+    @IBOutlet weak var doneButton: UIButton!
     
     var countLabels : [Hint:UILabel] = [:]
     var minusButtons : [Hint:UIButton] = [:]
@@ -82,6 +83,7 @@ class HintsViewController: UIViewController {
     }
     
     @IBAction func changeCountButtonPressed(_ sender: UIButton) {
+        
         for (key, value) in minusButtons {
             if value == sender {
                 hintsModel.changeHintCount(hint: key, isAdd: false)
@@ -110,16 +112,20 @@ class HintsViewController: UIViewController {
             if let subtract = hintsModel.subtractPercentage() {
                 if subtractProposed == subtract {
                     addedPenaltyLabel.text = "N/A"
+                    doneButton.isHidden = true
                 } else {
                     addedPenaltyLabel.text = "-\(subtractProposed - subtract)%"
+                    doneButton.isHidden = false
                 }
             } else {
                 addedPenaltyLabel.text = "-\(subtractProposed)%"
+                doneButton.isHidden = false
             }
             totalPenaltyLabel.text = "-\(subtractProposed)%"
         } else {
             addedPenaltyLabel.text = "N/A"
             totalPenaltyLabel.text = "N/A"
+            doneButton.isHidden = true
         }
         
         updateEnableButtons()
