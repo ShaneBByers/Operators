@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/HintsViewController.swift"
-            timestampString = "511624975.196167"
+            timestampString = "512354929.718228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "changeCountButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>

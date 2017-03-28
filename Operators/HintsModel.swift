@@ -80,7 +80,7 @@ class HintsModel {
                 }
             default: countTo = count
             }
-            if count > 1 {
+            if countTo > 1 {
                 for i in 1...countTo {
                     additional[key]! += key.rawValue/pow(1.5, Double(i-1))
                 }

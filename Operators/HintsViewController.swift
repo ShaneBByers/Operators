@@ -28,8 +28,12 @@ class HintsViewController: UIViewController {
     @IBOutlet weak var customPercentageLabel: UILabel!
     @IBOutlet weak var usesPercentageLabel: UILabel!
     
+    @IBOutlet weak var previousLabel: UILabel!
     @IBOutlet weak var previousPenaltyLabel: UILabel!
+    
+    @IBOutlet weak var addedLabel: UILabel!
     @IBOutlet weak var addedPenaltyLabel: UILabel!
+    
     @IBOutlet weak var totalPenaltyLabel: UILabel!
     
     @IBOutlet weak var doneButton: UIButton!
@@ -49,10 +53,11 @@ class HintsViewController: UIViewController {
         
         if let subtract = hintsModel.subtractPercentage() {
             previousPenaltyLabel.text = "-\(subtract)%"
+            totalPenaltyLabel.text = "-\(subtract)%"
         } else {
             previousPenaltyLabel.text = "N/A"
+            totalPenaltyLabel.text = "N/A"
         }
-        
         
         countLabels[.random] = randomCountLabel
         countLabels[.custom] = customCountLabel
@@ -112,23 +117,32 @@ class HintsViewController: UIViewController {
             if let subtract = hintsModel.subtractPercentage() {
                 if subtractProposed == subtract {
                     addedPenaltyLabel.text = "N/A"
-                    doneButton.isHidden = true
+                    addedPenalty(added: false)
                 } else {
                     addedPenaltyLabel.text = "-\(subtractProposed - subtract)%"
-                    doneButton.isHidden = false
+                    addedPenalty(added: true)
                 }
             } else {
-                addedPenaltyLabel.text = "-\(subtractProposed)%"
+                addedPenalty(added: false)
                 doneButton.isHidden = false
             }
             totalPenaltyLabel.text = "-\(subtractProposed)%"
         } else {
             addedPenaltyLabel.text = "N/A"
             totalPenaltyLabel.text = "N/A"
-            doneButton.isHidden = true
+            addedPenalty(added: false)
         }
         
         updateEnableButtons()
+    }
+    
+    func addedPenalty(added: Bool) {
+        doneButton.isHidden = !added
+        
+        previousLabel.isHidden = !added
+        previousPenaltyLabel.isHidden = !added
+        addedLabel.isHidden = !added
+        addedPenaltyLabel.isHidden = !added
     }
     
     func updateEnableButtons() {
