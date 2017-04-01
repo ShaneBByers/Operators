@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		431F70D71DF273C2002B0455 /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70D61DF273C2002B0455 /* DifficultyViewController.swift */; };
+		431F70D71DF273C2002B0455 /* OriginalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70D61DF273C2002B0455 /* OriginalViewController.swift */; };
 		431F70DF1DF3467A002B0455 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70DE1DF3467A002B0455 /* ChallengeModel.swift */; };
 		431F70E11DF34871002B0455 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70E01DF34871002B0455 /* ChallengeViewController.swift */; };
 		431F70E31DF3558A002B0455 /* Equation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70E21DF3558A002B0455 /* Equation.swift */; };
 		431F70EB1DFA1617002B0455 /* challengePuzzles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 431F70EA1DFA1617002B0455 /* challengePuzzles.plist */; };
-		431F70ED1DFB87E8002B0455 /* BestScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70EC1DFB87E8002B0455 /* BestScoreModel.swift */; };
+		431F70ED1DFB87E8002B0455 /* OriginalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70EC1DFB87E8002B0455 /* OriginalModel.swift */; };
 		432DEC201E51E4B200002C80 /* HintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DEC1F1E51E4B200002C80 /* HintsViewController.swift */; };
 		43430DD61DFC9BBD00841DF4 /* TimedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43430DD51DFC9BBD00841DF4 /* TimedViewController.swift */; };
 		43430DD81DFC9F5B00841DF4 /* TimedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43430DD71DFC9F5B00841DF4 /* TimedModel.swift */; };
@@ -41,6 +41,10 @@
 		4399F2C91E588AA900038306 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399F2C81E588AA900038306 /* SettingsModel.swift */; };
 		4399F2CB1E5C9F1600038306 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399F2CA1E5C9F1600038306 /* ColorScheme.swift */; };
 		4399F2CD1E5DE8C900038306 /* SettingsConfirmDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399F2CC1E5DE8C900038306 /* SettingsConfirmDeleteViewController.swift */; };
+		43A8E1621E8F1C9F0047A14E /* PuzzleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E1611E8F1C9F0047A14E /* PuzzleLabel.swift */; };
+		43A8E1641E90456E0047A14E /* OriginalPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E1631E90456E0047A14E /* OriginalPuzzleViewController.swift */; };
+		43A8E1661E9045B10047A14E /* ChallengePuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E1651E9045B10047A14E /* ChallengePuzzleViewController.swift */; };
+		43A8E1681E9045EA0047A14E /* TimedPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E1671E9045EA0047A14E /* TimedPuzzleViewController.swift */; };
 		43B8A73A1DFE1EC100840590 /* ArchiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8A7391DFE1EC100840590 /* ArchiveData.swift */; };
 		43F6C9B31E463C360082EF8F /* TimedCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */; };
 /* End PBXBuildFile section */
@@ -56,12 +60,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		431F70D61DF273C2002B0455 /* DifficultyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
+		431F70D61DF273C2002B0455 /* OriginalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginalViewController.swift; sourceTree = "<group>"; };
 		431F70DE1DF3467A002B0455 /* ChallengeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
 		431F70E01DF34871002B0455 /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		431F70E21DF3558A002B0455 /* Equation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equation.swift; sourceTree = "<group>"; };
 		431F70EA1DFA1617002B0455 /* challengePuzzles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = challengePuzzles.plist; sourceTree = "<group>"; };
-		431F70EC1DFB87E8002B0455 /* BestScoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BestScoreModel.swift; sourceTree = "<group>"; };
+		431F70EC1DFB87E8002B0455 /* OriginalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginalModel.swift; sourceTree = "<group>"; };
 		432DEC1F1E51E4B200002C80 /* HintsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsViewController.swift; sourceTree = "<group>"; };
 		43430DD51DFC9BBD00841DF4 /* TimedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedViewController.swift; sourceTree = "<group>"; };
 		43430DD71DFC9F5B00841DF4 /* TimedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedModel.swift; sourceTree = "<group>"; };
@@ -94,6 +98,10 @@
 		4399F2C81E588AA900038306 /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		4399F2CA1E5C9F1600038306 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		4399F2CC1E5DE8C900038306 /* SettingsConfirmDeleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsConfirmDeleteViewController.swift; sourceTree = "<group>"; };
+		43A8E1611E8F1C9F0047A14E /* PuzzleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleLabel.swift; sourceTree = "<group>"; };
+		43A8E1631E90456E0047A14E /* OriginalPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginalPuzzleViewController.swift; sourceTree = "<group>"; };
+		43A8E1651E9045B10047A14E /* ChallengePuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengePuzzleViewController.swift; sourceTree = "<group>"; };
+		43A8E1671E9045EA0047A14E /* TimedPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedPuzzleViewController.swift; sourceTree = "<group>"; };
 		43B8A7391DFE1EC100840590 /* ArchiveData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveData.swift; sourceTree = "<group>"; };
 		43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedCompletedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,7 +154,7 @@
 				431F70DE1DF3467A002B0455 /* ChallengeModel.swift */,
 				43B8A7391DFE1EC100840590 /* ArchiveData.swift */,
 				438B48EE1DD766A50048EDB5 /* PuzzleModel.swift */,
-				431F70EC1DFB87E8002B0455 /* BestScoreModel.swift */,
+				431F70EC1DFB87E8002B0455 /* OriginalModel.swift */,
 				4373CBD71E6DC7D9009C5513 /* HintsModel.swift */,
 				4399F2C81E588AA900038306 /* SettingsModel.swift */,
 				431F70EA1DFA1617002B0455 /* challengePuzzles.plist */,
@@ -157,17 +165,15 @@
 		431F70E71DF35807002B0455 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				43A8E16C1E90488B0047A14E /* Options */,
+				43A8E1691E9048130047A14E /* Completion */,
+				43A8E16A1E90483E0047A14E /* Settings */,
+				43A8E16B1E9048550047A14E /* Custom Puzzles */,
 				435DC2F51E3C0A5D0047FD47 /* GameModeViewController.swift */,
 				435DC2F71E3C0A810047FD47 /* GameTypeViewController.swift */,
-				43430DD51DFC9BBD00841DF4 /* TimedViewController.swift */,
-				43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */,
-				431F70E01DF34871002B0455 /* ChallengeViewController.swift */,
-				435DC2F91E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift */,
-				431F70D61DF273C2002B0455 /* DifficultyViewController.swift */,
 				432DEC1F1E51E4B200002C80 /* HintsViewController.swift */,
-				4399F2C61E57586400038306 /* SettingsViewController.swift */,
-				4399F2CC1E5DE8C900038306 /* SettingsConfirmDeleteViewController.swift */,
 				438B48EC1DD75BC50048EDB5 /* PuzzleViewController.swift */,
+				43A8E1611E8F1C9F0047A14E /* PuzzleLabel.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -209,6 +215,44 @@
 				438B48E11DD757C40048EDB5 /* Info.plist */,
 			);
 			path = OperatorsTests;
+			sourceTree = "<group>";
+		};
+		43A8E1691E9048130047A14E /* Completion */ = {
+			isa = PBXGroup;
+			children = (
+				435DC2F91E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift */,
+				43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */,
+			);
+			name = Completion;
+			sourceTree = "<group>";
+		};
+		43A8E16A1E90483E0047A14E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4399F2C61E57586400038306 /* SettingsViewController.swift */,
+				4399F2CC1E5DE8C900038306 /* SettingsConfirmDeleteViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		43A8E16B1E9048550047A14E /* Custom Puzzles */ = {
+			isa = PBXGroup;
+			children = (
+				43A8E1631E90456E0047A14E /* OriginalPuzzleViewController.swift */,
+				43A8E1671E9045EA0047A14E /* TimedPuzzleViewController.swift */,
+				43A8E1651E9045B10047A14E /* ChallengePuzzleViewController.swift */,
+			);
+			name = "Custom Puzzles";
+			sourceTree = "<group>";
+		};
+		43A8E16C1E90488B0047A14E /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				43430DD51DFC9BBD00841DF4 /* TimedViewController.swift */,
+				431F70E01DF34871002B0455 /* ChallengeViewController.swift */,
+				431F70D61DF273C2002B0455 /* OriginalViewController.swift */,
+			);
+			name = Options;
 			sourceTree = "<group>";
 		};
 		43B8A76D1DFE385B00840590 /* App Icons */ = {
@@ -340,17 +384,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43A8E1661E9045B10047A14E /* ChallengePuzzleViewController.swift in Sources */,
 				435DC2FA1E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift in Sources */,
 				43430DD81DFC9F5B00841DF4 /* TimedModel.swift in Sources */,
 				43F6C9B31E463C360082EF8F /* TimedCompletedViewController.swift in Sources */,
 				43B8A73A1DFE1EC100840590 /* ArchiveData.swift in Sources */,
 				4399F2C71E57586400038306 /* SettingsViewController.swift in Sources */,
-				431F70ED1DFB87E8002B0455 /* BestScoreModel.swift in Sources */,
+				431F70ED1DFB87E8002B0455 /* OriginalModel.swift in Sources */,
+				43A8E1681E9045EA0047A14E /* TimedPuzzleViewController.swift in Sources */,
+				43A8E1621E8F1C9F0047A14E /* PuzzleLabel.swift in Sources */,
 				435DC2F81E3C0A810047FD47 /* GameTypeViewController.swift in Sources */,
 				431F70E11DF34871002B0455 /* ChallengeViewController.swift in Sources */,
+				43A8E1641E90456E0047A14E /* OriginalPuzzleViewController.swift in Sources */,
 				438B48CB1DD757C40048EDB5 /* AppDelegate.swift in Sources */,
 				4399F2CB1E5C9F1600038306 /* ColorScheme.swift in Sources */,
-				431F70D71DF273C2002B0455 /* DifficultyViewController.swift in Sources */,
+				431F70D71DF273C2002B0455 /* OriginalViewController.swift in Sources */,
 				431F70DF1DF3467A002B0455 /* ChallengeModel.swift in Sources */,
 				432DEC201E51E4B200002C80 /* HintsViewController.swift in Sources */,
 				43430DD61DFC9BBD00841DF4 /* TimedViewController.swift in Sources */,

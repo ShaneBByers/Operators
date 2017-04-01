@@ -8,10 +8,12 @@
 
 import Foundation
 
-class BestScoreModel {
-    static let sharedInstance = BestScoreModel()
+class OriginalModel {
+    static let sharedInstance = OriginalModel()
     
     let hintsModel = HintsModel.sharedInstance
+    
+    var difficulty : Difficulty?
     
     private var current : Int?
     
@@ -30,8 +32,6 @@ class BestScoreModel {
     private var pointsMultipliers = [(range: CountableRange<Int>, multiplier: Double)]()
     
     private var pointsMultiplier = (range: 0..<1000, multiplier: 1.0)
-    
-    var currentDifficulty : Difficulty = .easy
     
     init() {
         let fileManager = FileManager.default
@@ -60,8 +60,8 @@ class BestScoreModel {
         }        
     }
     
-    func configureMaxScore(withDifficulty diff: Difficulty) {
-        switch diff {
+    func configureMaxScore() {
+        switch difficulty! {
         case .easy: maxScore = 100.0
         case .medium: maxScore = 200.0
         case .hard: maxScore = 300.0
@@ -69,8 +69,9 @@ class BestScoreModel {
         }
     }
     
-    func updateScores(withEquation equation: Equation, withSolution solution: Int, forDifficulty difficulty: Difficulty) -> Int? {
+    func updateScores(withEquation equation: Equation, withSolution solution: Int) -> Int? {
         if let correctSolution = equation.solution.number {
+            configureMaxScore()
             let hintsMultiplier = hintsModel.multiplier()
             let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + scoreBooster)
             let newScore = Int(round(maxScore*hintsMultiplier*pointsMultiplier.multiplier - ceil(percentageError*maxScore*hintsMultiplier*pointsMultiplier.multiplier)))
@@ -91,8 +92,8 @@ class BestScoreModel {
             }
         }
         
-        if self.total > highScores[difficulty.rawValue]! {
-            highScores[difficulty.rawValue] = self.total
+        if self.total > highScores[difficulty!.rawValue]! {
+            highScores[difficulty!.rawValue] = self.total
             archive.scores = highScores
             saveArchive()
         }

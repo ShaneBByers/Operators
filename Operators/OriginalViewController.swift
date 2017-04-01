@@ -8,27 +8,26 @@
 
 import UIKit
 
-class DifficultyViewController: UIViewController {
+class OriginalViewController: UIViewController {
     
-    let bestScoreModel = BestScoreModel.sharedInstance
+    let originalModel = OriginalModel.sharedInstance
 
     @IBOutlet var highScoreLabels: [UILabel]!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        PuzzleModel.sharedInstance.gameType = .original
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        highScoreLabels[0].text = String(bestScoreModel.highScore(forDifficulty: .easy))
-        highScoreLabels[1].text = String(bestScoreModel.highScore(forDifficulty: .medium))
-        highScoreLabels[2].text = String(bestScoreModel.highScore(forDifficulty: .hard))
-        highScoreLabels[3].text = String(bestScoreModel.highScore(forDifficulty: .random))
+        highScoreLabels[0].text = String(originalModel.highScore(forDifficulty: .easy))
+        highScoreLabels[1].text = String(originalModel.highScore(forDifficulty: .medium))
+        highScoreLabels[2].text = String(originalModel.highScore(forDifficulty: .hard))
+        highScoreLabels[3].text = String(originalModel.highScore(forDifficulty: .random))
         
         ColorScheme.updateScheme(forView: self.view)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         switch segue.identifier! {
         case "showPuzzleSegue": showPuzzle(segue: segue, sender: sender)
         case "unwindToGameType": break
@@ -41,9 +40,7 @@ class DifficultyViewController: UIViewController {
         
         let difficulty = button.titleLabel!.text!
         
-        let destinationViewController = segue.destination as! PuzzleViewController
-        
-        destinationViewController.configureBestScore(withDifficulty: difficulty)
+        originalModel.difficulty = Difficulty(rawValue: difficulty)
     }
     
     @IBAction func difficultyButtonPressed(_ sender: UIButton) {

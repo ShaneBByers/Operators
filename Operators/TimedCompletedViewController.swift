@@ -16,7 +16,7 @@ class TimedCompletedViewController: UIViewController {
     
     var highScore : Int?
     
-    var puzzleViewController : PuzzleViewController?
+    var puzzleViewController : TimedPuzzleViewController?
     
     @IBOutlet weak var completedPuzzlesLabel: UILabel!
     
@@ -30,7 +30,7 @@ class TimedCompletedViewController: UIViewController {
         self.highScore = highScore
     }
     
-    func configurePuzzleViewController(viewController : PuzzleViewController) {
+    func configurePuzzleViewController(viewController : TimedPuzzleViewController) {
         puzzleViewController = viewController
     }
     

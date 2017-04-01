@@ -17,6 +17,9 @@ class PuzzleModel {
     
     var equation : Equation?
     
+    var gameType : GameType?
+    
+    var difficulty : Difficulty?
     
     func newEquation(operands: Int) -> Equation {
         

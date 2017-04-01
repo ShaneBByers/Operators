@@ -25,23 +25,15 @@ class TimedViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "timedOptionsSelectedSegue":
-            let destination = segue.destination as! PuzzleViewController
-            
-            let difficulty = currentDifficulty.rawValue
-            
-            let time = currentTime
-            
-            timedModel.initialize(withDifficulty: difficulty, withTime: time)
-            
-            destination.configureTimed(withDifficulty: difficulty, withTime: timedModel.totalTime!)
+            timedModel.initialize(withDifficulty: currentDifficulty, withTime: currentTime)
         case "unwindToGameType": break
         default: assert(false, "Unhandled Segue")
         }
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        timedModel.initialize(withDifficulty: currentDifficulty.rawValue, withTime: currentTime)
+        timedModel.initialize(withDifficulty: currentDifficulty, withTime: currentTime)
+        PuzzleModel.sharedInstance.gameType = .timed
     }
     
     override func viewWillAppear(_ animated: Bool) {

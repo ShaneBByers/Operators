@@ -8,132 +8,21 @@
 
 import UIKit
 
-struct PuzzleLabel {
-    var isOperand : Bool
-    var isOperator : Bool
-    var isMovable : Bool
-    let label : UILabel
-    var lockLabel : UILabel?
-    var operatorPanGestureRecognizer : UIPanGestureRecognizer
-    var operatorDoubleTapGestureRecognizer : UITapGestureRecognizer
-    var operatorHoldGestureRecognizer : UILongPressGestureRecognizer
-    
-    private let kDefaultLabelSize = 60
-    private let kLockString = "🔒"
-    private let kUnlockString = "🔓"
-    let kLockLabelAlpha : CGFloat = 0.5
-    
-    init(text: String, isOperand: Bool, isOperator: Bool, isSolution: Bool, isMovable: Bool, viewController: PuzzleViewController?) {
-        
-        let _label : UILabel
-        
-        if isSolution {
-            let width = 30*text.characters.count + 5
-            _label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: kDefaultLabelSize))
-        } else {
-            _label = UILabel(frame: CGRect(x: 0, y: 0, width: kDefaultLabelSize, height: kDefaultLabelSize))
-        }
-        
-        _label.font = Fonts.wRhC
-        _label.textAlignment = .center
-        _label.text = text
-        
-        let colorElements : ColorElements
-        
-        switch ColorScheme.scheme {
-        case .monochrome: colorElements = SchemeElements.monochrome
-        case .ocean: colorElements = SchemeElements.ocean
-        case .daybreak: colorElements = SchemeElements.daybreak
-        }
-        
-        if isOperator {
-            _label.textColor = .black
-        } else {
-            _label.textColor = colorElements.buttonColor
-        }
-        
-        operatorPanGestureRecognizer = UIPanGestureRecognizer(target: viewController, action: #selector(PuzzleViewController.puzzleOperatorPanned(_:)))
-        
-        operatorDoubleTapGestureRecognizer = UITapGestureRecognizer(target: viewController, action: #selector(PuzzleViewController.puzzleOperatorDoubleTapped(_:)))
-        operatorDoubleTapGestureRecognizer.numberOfTapsRequired = 2
-        
-        operatorHoldGestureRecognizer = UILongPressGestureRecognizer(target: viewController, action: #selector(PuzzleViewController.puzzleOperatorHeld(_:)))
-        
-        if viewController != nil {
-            _label.addGestureRecognizer(operatorPanGestureRecognizer)
-            _label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
-            _label.addGestureRecognizer(operatorHoldGestureRecognizer)
-        }
-        
-        if isOperator {
-            _label.isUserInteractionEnabled = true
-            let _lockLabel = UILabel(frame: CGRect(x: 0, y: 0, width: kDefaultLabelSize, height: kDefaultLabelSize))
-            
-            _lockLabel.font = Fonts.wRhC
-            _lockLabel.text = kLockString
-            _lockLabel.textAlignment = .center
-            _lockLabel.alpha = kLockLabelAlpha
-            _lockLabel.isHidden = isMovable
-            self.lockLabel = _lockLabel
-        }
-        
-        self.label = _label
-        self.isOperand = isOperand
-        self.isOperator = isOperator
-        self.isMovable = isMovable
-        
-    }
-    
-    private init(label: UILabel, lockLabel: UILabel, isMovable: Bool, operatorPanGestureRecognizer: UIPanGestureRecognizer, operatorDoubleTapGestureRecognizer: UITapGestureRecognizer, operatorHoldGestureRecognizer: UILongPressGestureRecognizer) {
-        self.isOperand = false
-        self.isOperator = true
-        self.isMovable = isMovable
-        self.label = label
-        self.lockLabel = lockLabel
-        self.operatorPanGestureRecognizer = operatorPanGestureRecognizer
-        self.operatorDoubleTapGestureRecognizer = operatorDoubleTapGestureRecognizer
-        self.operatorHoldGestureRecognizer = operatorHoldGestureRecognizer
-        
-        if isMovable {
-            self.label.addGestureRecognizer(operatorPanGestureRecognizer)
-            self.label.addGestureRecognizer(operatorDoubleTapGestureRecognizer)
-            self.label.addGestureRecognizer(operatorHoldGestureRecognizer)
-        } else {
-            self.label.removeGestureRecognizer(operatorPanGestureRecognizer)
-            self.label.removeGestureRecognizer(operatorDoubleTapGestureRecognizer)
-        }
-    }
-    
-    func changeLock() -> PuzzleLabel {
-        return PuzzleLabel(label: self.label, lockLabel: self.lockLabel!, isMovable: !self.isMovable, operatorPanGestureRecognizer: self.operatorPanGestureRecognizer, operatorDoubleTapGestureRecognizer: self.operatorDoubleTapGestureRecognizer, operatorHoldGestureRecognizer: self.operatorHoldGestureRecognizer)
-    }
-    
-    func changeLockString() {
-        if lockLabel!.text! == kLockString {
-            lockLabel!.text = kUnlockString
-        } else {
-            lockLabel!.text = kLockString
-        }
-    }
-    
-    func resetLockString() {
-        lockLabel!.text = kUnlockString
-    }
-}
-
-
 class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    // MARK: - Models
+    
+    // MARK: - Variables
     //
+    // MARK: Models
     let puzzleModel = PuzzleModel.sharedInstance
-    let challengeModel = ChallengeModel.sharedInstance
-    let bestScoreModel = BestScoreModel.sharedInstance
-    let timedModel = TimedModel.sharedInstance
     let hintsModel = HintsModel.sharedInstance
     let settingsModel = SettingsModel.sharedInstance
+    let originalModel = OriginalModel.sharedInstance
+    let challengeModel = ChallengeModel.sharedInstance
+    let timedModel = TimedModel.sharedInstance
     
-    // MARK: - Constants
+    
+    // MARK: Constants
     //
     let kInitDefaultOperatorCount = 4
     let kGrowthFactor : CGFloat = 1.1
@@ -144,7 +33,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     let kShortAnimationDuration : TimeInterval = 0.2
     let kLongAnimationDuration : TimeInterval = 0.5
     let kWildcardOperatorPosition = 2
-    let kTimerInterval : TimeInterval = 0.1
     let kOperatorUsesLabelAlpha : CGFloat = 0.5
     
     let wildcardOperator : UILabel
@@ -155,7 +43,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     var initialPoint : CGPoint = CGPoint.zero
     var kPuzzleLabelsYPosition : CGFloat = 0.0
     
-    // MARK: - Labels
+    
+    // MARK: Labels
     //
     var defaultOperatorLabels : [UILabel] = []
     var operatorCountLabels : [String:UILabel] = [:]
@@ -173,42 +62,34 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var nextMultiplierLabel: UILabel!
     
     
-    // MARK: - Buttons
+    // MARK: Buttons
     //
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var hintsButton: UIButton!
     @IBOutlet weak var newPuzzleButton: UIButton!
     @IBOutlet weak var solveButton: UIButton!
     
-    // MARK: - Custom Variables
+    
+    // MARK: Custom Variables
     //
-    var gameType : GameType?
-    var difficulty : Difficulty?
-    var challengeEquation : Equation?
-    var timer : Timer?
     var solvePuzzleButtonPressed : Bool = false
     var operatorBeingMoved : UILabel?
     let colorElements : ColorElements
     
+    
     // MARK: - Configurations
     //
-    func configureBestScore(withDifficulty diff: String) {
-        difficulty = Difficulty(rawValue: diff)
-        
-        gameType = GameType.original
+    override func awakeFromNib() {
+        switch PuzzleModel.sharedInstance.gameType! {
+        case .original:
+            object_setClass(self, OriginalPuzzleViewController.self)
+        case .challenge:
+            object_setClass(self, ChallengePuzzleViewController.self)
+        case .timed:
+            object_setClass(self, TimedPuzzleViewController.self)
+        }
     }
     
-    func configureChallenge(withEquation eq: Equation) {
-        challengeEquation = eq
-        
-        gameType = GameType.challenge
-    }
-    
-    func configureTimed(withDifficulty diff: String, withTime: TimeInterval) {
-        difficulty = Difficulty(rawValue: diff)
-        
-        gameType = GameType.timed
-    }
     
     // MARK: - Segues
     //
@@ -216,48 +97,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         resetOnDisappear()
         
         hintsModel.reset()
-        
-        switch gameType! {
-        case .challenge:
-            performSegue(withIdentifier: "unwindToChallenge", sender: self)
-        case .original:
-            performSegue(withIdentifier: "unwindToOriginal", sender: self)
-        case .timed:
-            performSegue(withIdentifier: "unwindToTimed", sender: self)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
-        case "challengePuzzleCompletedSegue":
-            let destination = segue.destination as! ChallengePuzzleCompletedViewController
-            
-            if challengeModel.hasNextPuzzle() {
-                destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: challengeModel.difficulty, nextPuzzleNumber: challengeModel.currentIndex! + 1)
-            } else {
-                switch challengeModel.difficulty {
-                case .easy:
-                    challengeModel.changeDifficulty(toDifficulty: .medium)
-                    destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: .medium, nextPuzzleNumber: nil)
-                case .medium:
-                    challengeModel.changeDifficulty(toDifficulty: .hard)
-                    destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: .hard, nextPuzzleNumber: nil)
-                case .hard:
-                    destination.configureText(completedPuzzleDifficulty: challengeModel.difficulty, completedPuzzleNumber: challengeModel.currentIndex!, nextPuzzleDifficulty: nil, nextPuzzleNumber: nil)
-                case .random: break
-                }
-            }
-            
-            destination.configurePuzzleViewController(viewController : self)
-            
-            resetOnDisappear()
-        case "timerCompletedSegue":
-            let destination = segue.destination as! TimedCompletedViewController
-            
-            destination.configureText(completedPuzzles: timedModel.completedPuzzles(), score: timedModel.score(), highScore: timedModel.highScore())
-            destination.configurePuzzleViewController(viewController: self)
-            
-            resetOnDisappear()
+        case "challengePuzzleCompletedSegue": break
+        case "timerCompletedSegue": break
         case "hintsSegue":
             let destination = segue.destination as! HintsViewController
             
@@ -312,8 +157,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         kPlaceholderLabel.label.alpha = 0.0
         
         kPuzzleLabelsYPosition = self.view.center.y - kPuzzleLabelSize.height - kLabelBuffer
@@ -335,24 +178,14 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         solveButton.alpha = 0.0
         solveButton.isEnabled = false
         
-        switch gameType! {
-        case .original:
-            bestScoreModel.configureMaxScore(withDifficulty: difficulty!)
-            self.initializeBestScore()
-            self.newPuzzleButtonPressed(UIButton())
-        case .challenge:
-            self.initializeChallenge()
-            self.setupPuzzle(withEquation: self.challengeEquation!)
-        case .timed:
-            self.initializeTimer()
-            self.newPuzzleButtonPressed(UIButton())
-        }
-        
         resetButton.alpha = 0.0
         resetButton.isEnabled = false
         
     }
     
+    
+    // MARK: - Appear/Disappear
+    //
     override func viewWillAppear(_ animated: Bool) {
         ColorScheme.updateScheme(forView: self.view)
         for puzzleLabel in puzzleLabels {
@@ -367,17 +200,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         progressBarView.progressTintColor = colorElements.buttonColor
     }
     
-    func resetOnDisappear() {
-        if let timer = timer {
-            timer.invalidate()
-        }
-        
-        switch gameType! {
-        case .original: bestScoreModel.resetTotalScore()
-        case .timed: timedModel.restart()
-        default: break
-        }
-    }
+    func resetOnDisappear() {}
+    
     
     // MARK: - Initializations
     //
@@ -456,45 +280,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func initializeTimer() {
-        
-        primaryLabel.textColor = colorElements.labelColor
-        primaryLabel.text = "\(timedModel.remainingMinutesSeconds(timeElapsed: 0.0)!)"
-        
-        timer = Timer.scheduledTimer(timeInterval: kTimerInterval, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
-        
-        newPuzzleButton.alpha = 1.0
-        newPuzzleButton.isEnabled = true
-        
-        progressBarView.isHidden = false
-        progressBarView.progress = 1.0
-        
-        secondaryLabel.text = "Score: 0"
-    }
-    
-    func initializeBestScore() {
-        
-        primaryLabel.text = "Score: 0"
-        
-        secondaryLabel.text = "Current: N/A"
-        
-        newPuzzleButton.alpha = 1.0
-        newPuzzleButton.isEnabled = true
-        
-        solveButton.alpha = 1.0
-        solveButton.isEnabled = true
-        
-        progressBarView.isHidden = false
-        currentMultiplierLabel.isHidden = false
-        nextMultiplierLabel.isHidden = false
-        
-        hintsButtonAction(enable: true)
-    }
-    
-    func initializeChallenge() {
-        primaryLabel.text = "\(challengeModel.difficulty.rawValue) Puzzle #\(challengeModel.currentPuzzleNumber())"
-        secondaryLabel.alpha = 0.0
-    }
     
     // MARK: - Label Gestures
     //
@@ -520,35 +305,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         wildcardOperator.addGestureRecognizer(doubleTapRecognizer)
     }
     
-    func defaultOperatorPanned(_ recognizer : UIPanGestureRecognizer) {
-        operatorPanned(recognizer, isDefaultOperator: true)
-    }
     
-    func puzzleOperatorPanned(_ recognizer: UIPanGestureRecognizer) {
-        operatorPanned(recognizer, isDefaultOperator: false)
-    }
-    
-    func operatorPanned(_ recognizer: UIPanGestureRecognizer, isDefaultOperator: Bool) {
-        if let view = recognizer.view {
-            let label = view as! UILabel
-            if operatorBeingMoved == nil || operatorBeingMoved! == label {
-                operatorBeingMoved = label
-                switch recognizer.state {
-                case .began:
-                    self.operatorBeganPanning(label: label, isDefaultOperator: isDefaultOperator)
-                case .changed:
-                    self.operatorChangedPanning(recognizer: recognizer, label: label)
-                case .ended:
-                    self.operatorEndedPanning(label: label, isDefaultOperator: isDefaultOperator)
-                    operatorBeingMoved = nil
-                default: break
-                }
-            }
-        }
-    }
-    
+    // MARK: Double Tap Gestures
+    //
     func defaultOperatorDoubleTapped(_ recognizer: UITapGestureRecognizer) {
-        
         if let view = recognizer.view {
             let label = view as! UILabel
             var operatorCounter = 0
@@ -596,31 +356,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         newLabel = PuzzleLabel(text: label.text!, isOperand: false, isOperator: true, isSolution: false, isMovable: true, viewController: self)
                     }
                     
-                    self.puzzleLabels.insert(newLabel, at: i+1)
+                    puzzleLabels.insert(newLabel, at: i+1)
                     
-                    self.placePuzzle(isNewPuzzle: false)
+                    placePuzzle(isNewPuzzle: false)
                     
-                    self.displayExpression()
-                    
-                    switch gameType! {
-                    case .original:
-                        if !solvePuzzleButtonPressed {
-                            updateBestScore()
-                        }
-                    case .challenge:
-                        if correctChallengeSolution() {
-                            performSegue(withIdentifier: "challengePuzzleCompletedSegue", sender: self)
-                            challengeModel.completeCurrentPuzzle()
-                        }
-                    case .timed:
-                        updateTimedScore()
-                        if correctTimedSolution() {
-                            timedModel.completePuzzle()
-                            self.newPuzzleButtonPressed(UIButton())
-                            resetButtonAction(enable: false)
-                            addTime(difficulty: difficulty!)
-                        }
-                    }
+                    displayExpression()
                     
                     break
                 }
@@ -683,6 +423,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         resetButtonAction(enable: resetEnabled)
     }
     
+    
+    // MARK: Long Press Gesture
+    //
     func puzzleOperatorHeld(_ recognizer: UILongPressGestureRecognizer) {
         if let view = recognizer.view {
             let label = view as! UILabel
@@ -739,28 +482,38 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
         }
-        
-        /*var totalOperands = 0
-         var operatorCounter = 0
-         
-         for i in puzzleLabels.indices {
-         if puzzleLabels[i].isOperator && !puzzleLabels[i].isMovable {
-         operatorCounter += 1
-         }
-         if puzzleLabels[i].isOperand {
-         totalOperands += 1
-         }
-         }
-         
-         if operatorCounter == Int(totalOperands) - 2 {
-         hintsButtonAction(enable: false)
-         } else {
-         hintsButtonAction(enable: true)
-         }*/
     }
     
-    // MARK: - Label Panned Cases
+    
+    // MARK: Panned Gestures
     //
+    func defaultOperatorPanned(_ recognizer : UIPanGestureRecognizer) {
+        operatorPanned(recognizer, isDefaultOperator: true)
+    }
+    
+    func puzzleOperatorPanned(_ recognizer: UIPanGestureRecognizer) {
+        operatorPanned(recognizer, isDefaultOperator: false)
+    }
+    
+    func operatorPanned(_ recognizer: UIPanGestureRecognizer, isDefaultOperator: Bool) {
+        if let view = recognizer.view {
+            let label = view as! UILabel
+            if operatorBeingMoved == nil || operatorBeingMoved! == label {
+                operatorBeingMoved = label
+                switch recognizer.state {
+                case .began:
+                    self.operatorBeganPanning(label: label, isDefaultOperator: isDefaultOperator)
+                case .changed:
+                    self.operatorChangedPanning(recognizer: recognizer, label: label)
+                case .ended:
+                    self.operatorEndedPanning(label: label, isDefaultOperator: isDefaultOperator)
+                    operatorBeingMoved = nil
+                default: break
+                }
+            }
+        }
+    }
+    
     func operatorBeganPanning(label: UILabel, isDefaultOperator: Bool) {
         
         label.transform = CGAffineTransform(scaleX: kGrowthFactor, y: kGrowthFactor)
@@ -866,9 +619,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         if (label.center.y >= kPuzzleLabelsYPosition - kPuzzleLabelSize.height/2 && label.center.y <= kPuzzleLabelsYPosition + kPuzzleLabelSize.height/2) {
             
             if hasPlaceholder {
-                
-                
-                
                 let newLabel : PuzzleLabel
                 
                 if label.text! == Symbols.Wildcard {
@@ -920,26 +670,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 
                 displayExpression()
                 
-                switch gameType! {
-                case .original:
-                    if !solvePuzzleButtonPressed {
-                        updateBestScore()
-                    }
-                case .challenge:
-                    if correctChallengeSolution() {
-                        performSegue(withIdentifier: "challengePuzzleCompletedSegue", sender: self)
-                        challengeModel.completeCurrentPuzzle()
-                    }
-                case .timed:
-                    updateTimedScore()
-                    if correctTimedSolution() {
-                        timedModel.completePuzzle()
-                        self.newPuzzleButtonPressed(UIButton())
-                        resetButtonAction(enable: false)
-                        addTime(difficulty: difficulty!)
-                    }
-                }
-                
                 label.alpha = 0.0
                 
                 if isDefaultOperator {
@@ -961,12 +691,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                 } else {
                     displayExpression()
                     
-                    switch gameType! {
-                    case .original:
-                        updateBestScore()
-                    default: break
-                    }
-                    
                     UIView.animate(withDuration: kLongAnimationDuration, animations: {
                         label.alpha = 0.0
                     }, completion: { (value) in
@@ -982,12 +706,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             } else {
                 
                 displayExpression()
-                
-                switch gameType! {
-                case .original:
-                    updateBestScore()
-                default: break
-                }
                 
                 UIView.animate(withDuration: kLongAnimationDuration, animations: {
                     label.alpha = 0.0
@@ -1007,6 +725,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         resetButtonAction(enable: resetEnabled)
     }
     
+    
     // MARK: - Placeholder Manipulation
     //
     func insertPlaceholder(at index: Int) {
@@ -1022,6 +741,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         hasPlaceholder = false
         placeholderIndex = nil
     }
+    
     
     // MARK: - Custom Configuration Updates
     //
@@ -1042,182 +762,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         } else {
             expressionLabel!.text = ""
         }
-        
-    }
-    
-    func updateBestScore() {
-        
-        var newExpression : [String] = []
-        
-        var currentScore : Int?
-        
-        let oldScore = bestScoreModel.currentScore()
-        
-        for puzzleLabel in puzzleLabels {
-            if puzzleLabel.isOperand || puzzleLabel.isOperator {
-                newExpression.append(puzzleLabel.label.text!)
-            }
-        }
-        
-        if let solution = puzzleModel.solutionFor(expression: newExpression) {
-            currentScore = bestScoreModel.updateScores(withEquation: puzzleModel.equation!, withSolution: solution, forDifficulty: difficulty!)
-        } else {
-            currentScore = bestScoreModel.currentScore()
-        }
-        
-        if let best = currentScore {
-            secondaryLabel.text = "Current: " + String(best)
-            if let old = oldScore {
-                if best > old {
-                    primaryLabelUpdate(withText: "\(best-old)")
-                }
-            } else if best > 0 {
-                primaryLabelUpdate(withText: "\(best)")
-            }
-            if best == Int(bestScoreModel.maxScore*Double(bestScoreModel.currentPointsMultiplier())) {
-                hintsButtonAction(enable: false)
-                solveButtonAction(enable: false)
-                displayCompleted()
-            }
-            progressBarView.setProgress(bestScoreModel.multiplierProgress(), animated: true)
-            let currentMultiplier = bestScoreModel.currentPointsMultiplier()
-            if currentMultiplier != 1 {
-                currentMultiplierLabel.text = "×\(currentMultiplier)"
-            } else {
-                currentMultiplierLabel.text = ""
-            }
-            if let nextMultiplier = bestScoreModel.nextPointsMultiplier() {
-                nextMultiplierLabel.text = "×\(nextMultiplier)"
-            } else {
-                nextMultiplierLabel.text = ""
-            }
-        } else {
-            secondaryLabel.text = "Current: N/A"
-        }
-        
-        primaryLabel.text = "Score: " + String(bestScoreModel.totalScore())
-    }
-    
-    func displayCompleted() {
-        let completedLabel = UILabel()
-        completedLabel.text = "Complete!"
-        completedLabel.textAlignment = .center
-        completedLabel.font = UIFont(name: Fonts.wRhC!.fontName, size: 60)
-        completedLabel.frame.size.width = self.view.frame.size.width
-        completedLabel.frame.size.height = kPuzzleLabelSize.height + 2*kLabelBuffer
-        completedLabel.center.x = self.view.center.x
-        completedLabel.center.y = kPuzzleLabelsYPosition + kPuzzleLabelSize.height
-        completedLabel.alpha = 0.0
-        
-        self.view.addSubview(completedLabel)
-        
-        UIView.animate(withDuration: kLongAnimationDuration, animations: {
-            completedLabel.alpha = 1.0
-            completedLabel.center.y = self.kPuzzleLabelsYPosition
-        }) { (value) in
-            UIView.animate(withDuration: self.kLongAnimationDuration, delay: self.kShortAnimationDuration, options: .allowAnimatedContent, animations: {
-                completedLabel.alpha = 0.0
-                completedLabel.center.y = self.kPuzzleLabelsYPosition - self.kPuzzleLabelSize.height
-            }, completion: { (value) in
-                completedLabel.removeFromSuperview()
-            })
-        }
-    }
-    
-    func updateTimedScore() {
-        
-        var newExpression : [String] = []
-        
-        for puzzleLabel in puzzleLabels {
-            if puzzleLabel.isOperand || puzzleLabel.isOperator {
-                newExpression.append(puzzleLabel.label.text!)
-            }
-        }
-        
-        if let solution = puzzleModel.solutionFor(expression: newExpression) {
-            timedModel.updateScore(withEquation: puzzleModel.equation!, withSolution: solution)
-        }
-        
-        secondaryLabel.text = "Score: " + String(timedModel.score())
-        
-    }
-    
-    func correctChallengeSolution() -> Bool {
-        var newExpression : [String] = []
-        
-        for puzzleLabel in puzzleLabels {
-            if puzzleLabel.isOperand || puzzleLabel.isOperator {
-                newExpression.append(puzzleLabel.label.text!)
-            }
-        }
-        
-        let solution = puzzleModel.solutionFor(expression: newExpression)
-        
-        if let solution = solution {
-            return solution == challengeModel.currentSolution()
-        } else {
-            return false
-        }
-    }
-    
-    func nextChallengePuzzle() {
-        self.challengeEquation = self.challengeModel.nextEquation()
-        primaryLabel.text = "\(challengeModel.difficulty.rawValue) Puzzle #\(challengeModel.currentPuzzleNumber())"
-        self.setupPuzzle(withEquation: self.challengeEquation!)
-        resetButtonAction(enable: false)
-    }
-    
-    func restartTimedPuzzle() {
-        self.timedModel.restart()
-        
-        self.primaryLabel.text = "\(self.timedModel.remainingMinutesSeconds(timeElapsed: 0.0)!)"
-        self.timer = Timer.scheduledTimer(timeInterval: kTimerInterval, target: self, selector: #selector(PuzzleViewController.timerFired(timer:)), userInfo: nil, repeats: true)
-        
-        self.newPuzzleButtonPressed(UIButton())
-    }
-    
-    func timerFired(timer : Timer) {
-        
-        let countdownTimerAmount : TimeInterval = 10.1
-        
-        if let remaining = timedModel.remainingMinutesSeconds(timeElapsed: timer.timeInterval) {
-            primaryLabel.text = remaining
-            let doubleRemaining = Double(timedModel.currentTime!)
-            let intRemaining = Int(doubleRemaining)
-            if doubleRemaining <= countdownTimerAmount && abs(doubleRemaining - Double(intRemaining)) <= kTimerInterval {
-                primaryLabel.textColor = .red
-            } else {
-                primaryLabel.textColor = colorElements.buttonColor
-            }
-            progressBarView.progress = Float(doubleRemaining)/Float(timedModel.totalTime!)
-        } else {
-            primaryLabel.text = "0.0"
-            timer.invalidate()
-            self.performSegue(withIdentifier: "timerCompletedSegue", sender: self)
-        }
-    }
-    
-    func correctTimedSolution() -> Bool {
-        var newExpression : [String] = []
-        
-        for puzzleLabel in puzzleLabels {
-            if puzzleLabel.isOperand || puzzleLabel.isOperator {
-                newExpression.append(puzzleLabel.label.text!)
-            }
-        }
-        
-        let solution = puzzleModel.solutionFor(expression: newExpression)
-        
-        if let solution = solution {
-            return solution == timedModel.currentSolution()
-        } else {
-            return false
-        }
-    }
-    
-    func addTime(difficulty diff: Difficulty) {
-        let timeAdded = timedModel.addTime(difficulty: diff)
-        primaryLabelUpdate(withText: "\(Int(timeAdded))")
     }
     
     func primaryLabelUpdate(withText text: String) {
@@ -1248,17 +792,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func resetHints() {
-        for countLabel in operatorCountLabels.values {
-            UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                countLabel.alpha = 0.0
-            }, completion: { (value) in
-                countLabel.text = ""
-                countLabel.removeFromSuperview()
-            })
-        }
-    }
     
+    // MARK: - Button Actions
+    //
     func resetButtonAction(enable: Bool) {
         if enable {
             resetButton.isEnabled = true
@@ -1301,7 +837,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    // MARK: - Puzzle Updates
+    
+    // MARK: - Button Presses
     //
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         var count = 0
@@ -1339,29 +876,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func newPuzzleButtonPressed(_ sender: UIButton) {
         
-        let equation : Equation
-        
-        switch difficulty! {
-        case .easy: equation = puzzleModel.newEquation(operands: OperandCount.easy)
-        case .medium: equation = puzzleModel.newEquation(operands: OperandCount.medium)
-        case .hard: equation = puzzleModel.newEquation(operands: OperandCount.hard)
-        case .random: equation = puzzleModel.newEquation(operands: OperandCount.random())
-        }
-        
-        switch gameType! {
-        case .original:
-            bestScoreModel.resetCurrentScore()
-            primaryLabel.text = "Score: " + String(bestScoreModel.totalScore())
-            secondaryLabel.text = "Current: N/A"
-        case .timed:
-            timedModel.resetCurrentScore()
-            secondaryLabel.text = "Score: " + String(timedModel.score())
-            timedModel.updateSolution(solution: equation.solution.number!)
-        default: break
-        }
-        
-        self.setupPuzzle(withEquation: equation)
-        
         resetButtonAction(enable: false)
         
         hintsButtonAction(enable: true)
@@ -1378,10 +892,6 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             defaultOperatorLabels[kWildcardOperatorPosition].removeFromSuperview()
             defaultOperatorLabels.remove(at: kWildcardOperatorPosition)
             placeDefaultOperators(isInitial: false)
-        }
-        
-        if gameType! == .original {
-            solveButtonAction(enable: true)
         }
     }
 
@@ -1447,6 +957,20 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         solveButtonAction(enable: false)
+    }
+    
+    
+    // MARK: - Hints
+    //
+    func resetHints() {
+        for countLabel in operatorCountLabels.values {
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                countLabel.alpha = 0.0
+            }, completion: { (value) in
+                countLabel.text = ""
+                countLabel.removeFromSuperview()
+            })
+        }
     }
     
     func implementHints() {
@@ -1629,6 +1153,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         })
     }
     
+    
+    // MARK: - Puzzle Display
+    //
     func setupPuzzle(withEquation eq: Equation) {
         
         for puzzleLabel in puzzleLabels {

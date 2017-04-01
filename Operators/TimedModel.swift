@@ -11,7 +11,7 @@ import Foundation
 class TimedModel {
     static let sharedInstance = TimedModel()
     
-    private var difficulty : Difficulty?
+    public var difficulty : Difficulty?
     
     public var totalTime : TimeInterval?
     
@@ -62,12 +62,12 @@ class TimedModel {
         }
     }
     
-    func initialize(withDifficulty diff: String, withTime time: String) {
+    func initialize(withDifficulty diff: Difficulty, withTime time: String) {
         changeTime(toTime: time)
         
         currentTime = totalTime!
         
-        difficulty = Difficulty(rawValue: diff)
+        difficulty = diff
     }
     
     func remainingTime(timeElapsed elapsed: TimeInterval) -> TimeInterval? {
@@ -113,9 +113,9 @@ class TimedModel {
         }
     }
     
-    func addTime(difficulty diff: Difficulty) -> Double {
+    func addTime() -> Double {
         let timeAdded : TimeInterval
-        switch diff {
+        switch difficulty! {
         case .easy: timeAdded = 5
         case .medium: timeAdded = 10
         case .hard: timeAdded = 15

@@ -18,7 +18,7 @@ class ChallengePuzzleCompletedViewController: UIViewController {
     
     var nextPuzzleText : String?
     
-    var puzzleViewController : PuzzleViewController?
+    var puzzleViewController : ChallengePuzzleViewController?
     
     func configureText(completedPuzzleDifficulty : Difficulty, completedPuzzleNumber : Int, nextPuzzleDifficulty : Difficulty?, nextPuzzleNumber : Int?) {
         completedPuzzleText = "\(completedPuzzleDifficulty.rawValue) Challenge Puzzle #\(completedPuzzleNumber + 1)"
@@ -31,7 +31,7 @@ class ChallengePuzzleCompletedViewController: UIViewController {
         }
     }
     
-    func configurePuzzleViewController(viewController : PuzzleViewController) {
+    func configurePuzzleViewController(viewController : ChallengePuzzleViewController) {
         puzzleViewController = viewController
     }
 

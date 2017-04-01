@@ -23,11 +23,7 @@ class ChallengeViewController: UIViewController {
         case "challengePuzzleSelectedSegue":
             let index = sender as! Int
             
-            let equation = challengeModel.equationAtIndex(index: index)
-            
-            let destinationViewController = segue.destination as! PuzzleViewController
-            
-            destinationViewController.configureChallenge(withEquation: equation)
+            challengeModel.currentIndex = index
         case "unwindToGameType": break
         default:
             assert(false, "Unhandled Segue")
@@ -35,7 +31,7 @@ class ChallengeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        PuzzleModel.sharedInstance.gameType = .challenge
     }
     
     override func viewWillAppear(_ animated: Bool) {

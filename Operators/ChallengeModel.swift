@@ -91,6 +91,24 @@ class ChallengeModel {
 
     }
     
+    func equationAtCurrentIndex() -> Equation {
+        let equationStrings = equations[difficulty]![currentIndex!]
+        
+        var expression : [Element] = []
+        
+        for string in equationStrings {
+            expression.append(Element(string))
+        }
+        
+        let solution = expression.popLast()!
+        
+        let equation = Equation(elements: expression, solution: solution)
+        
+        currentEquation = equation
+        
+        return equation
+    }
+    
     func puzzleAvailableAt(index: Int) -> Bool {
         archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
         availablePuzzles = archive.availablePuzzles

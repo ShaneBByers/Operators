@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1534,7 +1534,7 @@
         <!--Difficulty-->
         <scene sceneID="eJD-SA-fv1">
             <objects>
-                <viewController id="cup-Uc-UYw" customClass="DifficultyViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cup-Uc-UYw" customClass="OriginalViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9ce-ku-yr2"/>
                         <viewControllerLayoutGuide type="bottom" id="2oU-I4-7RS"/>
@@ -2782,7 +2782,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7Xf-0H-0gA"/>
         <segue reference="VNu-cy-NXn"/>
+        <segue reference="XSZ-rt-rRG"/>
     </inferredMetricsTieBreakers>
 </document>
