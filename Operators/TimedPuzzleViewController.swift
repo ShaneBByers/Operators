@@ -138,7 +138,7 @@ class TimedPuzzleViewController : PuzzleViewController {
         self.newPuzzleButtonPressed(UIButton())
     }
     
-    func timerFired(timer : Timer) {
+    @objc func timerFired(timer : Timer) {
         
         let kTimerInterval : TimeInterval = 0.1
         

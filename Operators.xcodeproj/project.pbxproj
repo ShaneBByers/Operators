@@ -13,6 +13,7 @@
 		431F70E31DF3558A002B0455 /* Equation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70E21DF3558A002B0455 /* Equation.swift */; };
 		431F70EB1DFA1617002B0455 /* challengePuzzles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 431F70EA1DFA1617002B0455 /* challengePuzzles.plist */; };
 		431F70ED1DFB87E8002B0455 /* OriginalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70EC1DFB87E8002B0455 /* OriginalModel.swift */; };
+		432603481EB0F15A00E926A4 /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432603471EB0F15A00E926A4 /* TutorialModel.swift */; };
 		432DEC201E51E4B200002C80 /* HintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DEC1F1E51E4B200002C80 /* HintsViewController.swift */; };
 		43430DD61DFC9BBD00841DF4 /* TimedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43430DD51DFC9BBD00841DF4 /* TimedViewController.swift */; };
 		43430DD81DFC9F5B00841DF4 /* TimedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43430DD71DFC9F5B00841DF4 /* TimedModel.swift */; };
@@ -45,6 +46,8 @@
 		43A8E1641E90456E0047A14E /* OriginalPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E1631E90456E0047A14E /* OriginalPuzzleViewController.swift */; };
 		43A8E1661E9045B10047A14E /* ChallengePuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E1651E9045B10047A14E /* ChallengePuzzleViewController.swift */; };
 		43A8E1681E9045EA0047A14E /* TimedPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E1671E9045EA0047A14E /* TimedPuzzleViewController.swift */; };
+		43A8E16E1E9ED70B0047A14E /* TutorialPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E16D1E9ED70B0047A14E /* TutorialPuzzleViewController.swift */; };
+		43A8E1701E9EE17B0047A14E /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E16F1E9EE17B0047A14E /* TutorialViewController.swift */; };
 		43B8A73A1DFE1EC100840590 /* ArchiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8A7391DFE1EC100840590 /* ArchiveData.swift */; };
 		43F6C9B31E463C360082EF8F /* TimedCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +69,7 @@
 		431F70E21DF3558A002B0455 /* Equation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equation.swift; sourceTree = "<group>"; };
 		431F70EA1DFA1617002B0455 /* challengePuzzles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = challengePuzzles.plist; sourceTree = "<group>"; };
 		431F70EC1DFB87E8002B0455 /* OriginalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginalModel.swift; sourceTree = "<group>"; };
+		432603471EB0F15A00E926A4 /* TutorialModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
 		432DEC1F1E51E4B200002C80 /* HintsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsViewController.swift; sourceTree = "<group>"; };
 		43430DD51DFC9BBD00841DF4 /* TimedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedViewController.swift; sourceTree = "<group>"; };
 		43430DD71DFC9F5B00841DF4 /* TimedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedModel.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		43A8E1631E90456E0047A14E /* OriginalPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginalPuzzleViewController.swift; sourceTree = "<group>"; };
 		43A8E1651E9045B10047A14E /* ChallengePuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengePuzzleViewController.swift; sourceTree = "<group>"; };
 		43A8E1671E9045EA0047A14E /* TimedPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedPuzzleViewController.swift; sourceTree = "<group>"; };
+		43A8E16D1E9ED70B0047A14E /* TutorialPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPuzzleViewController.swift; sourceTree = "<group>"; };
+		43A8E16F1E9EE17B0047A14E /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		43B8A7391DFE1EC100840590 /* ArchiveData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveData.swift; sourceTree = "<group>"; };
 		43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedCompletedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +163,7 @@
 				431F70EC1DFB87E8002B0455 /* OriginalModel.swift */,
 				4373CBD71E6DC7D9009C5513 /* HintsModel.swift */,
 				4399F2C81E588AA900038306 /* SettingsModel.swift */,
+				432603471EB0F15A00E926A4 /* TutorialModel.swift */,
 				431F70EA1DFA1617002B0455 /* challengePuzzles.plist */,
 			);
 			name = Model;
@@ -241,6 +248,7 @@
 				43A8E1631E90456E0047A14E /* OriginalPuzzleViewController.swift */,
 				43A8E1671E9045EA0047A14E /* TimedPuzzleViewController.swift */,
 				43A8E1651E9045B10047A14E /* ChallengePuzzleViewController.swift */,
+				43A8E16D1E9ED70B0047A14E /* TutorialPuzzleViewController.swift */,
 			);
 			name = "Custom Puzzles";
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 		43A8E16C1E90488B0047A14E /* Options */ = {
 			isa = PBXGroup;
 			children = (
+				43A8E16F1E9EE17B0047A14E /* TutorialViewController.swift */,
 				43430DD51DFC9BBD00841DF4 /* TimedViewController.swift */,
 				431F70E01DF34871002B0455 /* ChallengeViewController.swift */,
 				431F70D61DF273C2002B0455 /* OriginalViewController.swift */,
@@ -315,17 +324,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Shane Byers";
 				TargetAttributes = {
 					438B48C61DD757C40048EDB5 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 7QHJV2RJB2;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					438B48DA1DD757C40048EDB5 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 7QHJV2RJB2;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 438B48C61DD757C40048EDB5;
 					};
@@ -400,11 +411,14 @@
 				4399F2CB1E5C9F1600038306 /* ColorScheme.swift in Sources */,
 				431F70D71DF273C2002B0455 /* OriginalViewController.swift in Sources */,
 				431F70DF1DF3467A002B0455 /* ChallengeModel.swift in Sources */,
+				43A8E1701E9EE17B0047A14E /* TutorialViewController.swift in Sources */,
 				432DEC201E51E4B200002C80 /* HintsViewController.swift in Sources */,
 				43430DD61DFC9BBD00841DF4 /* TimedViewController.swift in Sources */,
+				43A8E16E1E9ED70B0047A14E /* TutorialPuzzleViewController.swift in Sources */,
 				438B48ED1DD75BC50048EDB5 /* PuzzleViewController.swift in Sources */,
 				431F70E31DF3558A002B0455 /* Equation.swift in Sources */,
 				4399F2C91E588AA900038306 /* SettingsModel.swift in Sources */,
+				432603481EB0F15A00E926A4 /* TutorialModel.swift in Sources */,
 				438B48EB1DD7588A0048EDB5 /* Constants.swift in Sources */,
 				438B48EF1DD766A50048EDB5 /* PuzzleModel.swift in Sources */,
 				435DC2F61E3C0A5D0047FD47 /* GameModeViewController.swift in Sources */,
@@ -461,7 +475,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -469,7 +485,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -512,7 +532,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -520,7 +542,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -556,7 +582,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Byers.Shane.Operators;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -570,7 +597,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Byers.Shane.Operators;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -585,7 +613,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.psu.cse.sbb5159.OperatorsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Operators.app/Operators";
 			};
 			name = Debug;
@@ -600,7 +629,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.psu.cse.sbb5159.OperatorsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Operators.app/Operators";
 			};
 			name = Release;

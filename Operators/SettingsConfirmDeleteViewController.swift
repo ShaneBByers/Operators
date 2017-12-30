@@ -14,7 +14,7 @@ class SettingsConfirmDeleteViewController: UIViewController {
     
     var deleteText : String?
     
-    var deleteScoresFunction: ((Void) -> (Void))?
+    var deleteScoresFunction: (() -> (Void))?
     
     var deletePuzzlesFunction: ((Difficulty) -> (Void))?
     
@@ -22,7 +22,7 @@ class SettingsConfirmDeleteViewController: UIViewController {
     
     @IBOutlet weak var deleteTextLabel: UILabel!
     
-    func configureConfirmDeleteScores(deleteText: String, deleteScoresFunction: @escaping (Void) -> (Void)) {
+    func configureConfirmDeleteScores(deleteText: String, deleteScoresFunction: @escaping () -> (Void)) {
         self.deleteText = deleteText
         self.deleteScoresFunction = deleteScoresFunction
     }

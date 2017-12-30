@@ -19,6 +19,7 @@ enum GameType {
     case original
     case challenge
     case timed
+    case tutorial
 }
 
 enum Hint: Double {

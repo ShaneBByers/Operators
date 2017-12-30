@@ -43,9 +43,9 @@ class HintsViewController: UIViewController {
     var plusButtons : [Hint:UIButton] = [:]
     var percentageLabels : [Hint:UILabel] = [:]
     
-    var returnFunction : ((Void) -> Void)?
+    var returnFunction : (() -> Void)?
     
-    func configureReturnFunction(returnFunction: @escaping ((Void) -> Void)) {
+    func configureReturnFunction(returnFunction: @escaping (() -> Void)) {
         self.returnFunction = returnFunction
     }
     
