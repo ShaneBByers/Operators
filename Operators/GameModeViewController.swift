@@ -16,5 +16,14 @@ class GameModeViewController: UIViewController {
         ColorScheme.updateScheme(forView: self.view)
     }
 
+    @IBAction func singlePlayerButtonPressed(_ sender: UIButton) {
+        //if settingsModel.tutorialShown {
+        //    performSegue(withIdentifier: "showGameTypeSegue", sender: self)
+        //} else {
+            performSegue(withIdentifier: "showTutorialOptionsSegue", sender: self)
+        //    settingsModel.showTutorial()
+        //}
+    }
+    
     @IBAction func unwindToGameMode(segue: UIStoryboardSegue) {}
 }

@@ -20,6 +20,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     let originalModel = OriginalModel.sharedInstance
     let challengeModel = ChallengeModel.sharedInstance
     let timedModel = TimedModel.sharedInstance
+    let tutorialModel = TutorialModel.sharedInstance
     
     
     // MARK: Constants
@@ -87,6 +88,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             object_setClass(self, ChallengePuzzleViewController.self)
         case .timed:
             object_setClass(self, TimedPuzzleViewController.self)
+        case .tutorial:
+            object_setClass(self, TutorialPuzzleViewController.self)
         }
     }
     
@@ -136,6 +139,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         case "unwindToOriginal": break
         case "unwindToChallenge": break
         case "unwindToTimed": break
+        case "unwindToGameType": break
         default: assert(false, "Unhandled Segue")
         }
     }
@@ -308,7 +312,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: Double Tap Gestures
     //
-    func defaultOperatorDoubleTapped(_ recognizer: UITapGestureRecognizer) {
+    @objc func defaultOperatorDoubleTapped(_ recognizer: UITapGestureRecognizer) {
         if let view = recognizer.view {
             let label = view as! UILabel
             var operatorCounter = 0
@@ -377,7 +381,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         resetButtonAction(enable: resetEnabled)
     }
     
-    func puzzleOperatorDoubleTapped(_ recognizer: UITapGestureRecognizer) {
+    @objc func puzzleOperatorDoubleTapped(_ recognizer: UITapGestureRecognizer) {
         if let view = recognizer.view {
             let label = view as! UILabel
             var hasOperator : Bool = false
@@ -426,7 +430,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: Long Press Gesture
     //
-    func puzzleOperatorHeld(_ recognizer: UILongPressGestureRecognizer) {
+    @objc func puzzleOperatorHeld(_ recognizer: UILongPressGestureRecognizer) {
         if let view = recognizer.view {
             let label = view as! UILabel
             for i in puzzleLabels.indices {
@@ -487,11 +491,11 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: Panned Gestures
     //
-    func defaultOperatorPanned(_ recognizer : UIPanGestureRecognizer) {
+    @objc func defaultOperatorPanned(_ recognizer : UIPanGestureRecognizer) {
         operatorPanned(recognizer, isDefaultOperator: true)
     }
     
-    func puzzleOperatorPanned(_ recognizer: UIPanGestureRecognizer) {
+    @objc func puzzleOperatorPanned(_ recognizer: UIPanGestureRecognizer) {
         operatorPanned(recognizer, isDefaultOperator: false)
     }
     

@@ -28,7 +28,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Um2-tp-vzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3485" y="38"/>
+            <point key="canvasLocation" x="-3377" y="55"/>
         </scene>
         <!--Game Mode-->
         <scene sceneID="Tpp-JN-YIJ">
@@ -51,7 +51,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="biE-Q0-UEI" kind="show" id="dJa-8Y-KVe"/>
+                                    <action selector="singlePlayerButtonPressed:" destination="fc4-5o-GWx" eventType="touchUpInside" id="xrZ-jg-4xP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pg-kl-kwJ">
@@ -95,10 +95,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Mode" id="vww-Tr-qQO"/>
+                    <connections>
+                        <segue destination="biE-Q0-UEI" kind="show" identifier="showGameTypeSegue" id="jdE-EL-dWz"/>
+                        <segue destination="LtC-St-rx6" kind="show" identifier="showTutorialOptionsSegue" id="Tfr-tR-Vb9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcr-Ud-Kbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2674.7282608695655" y="37.681159420289859"/>
+            <point key="canvasLocation" x="-2574" y="55"/>
         </scene>
         <!--Puzzle View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -1534,7 +1538,7 @@
         <!--Difficulty-->
         <scene sceneID="eJD-SA-fv1">
             <objects>
-                <viewController id="cup-Uc-UYw" customClass="OriginalViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cup-Uc-UYw" customClass="DifficultyViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9ce-ku-yr2"/>
                         <viewControllerLayoutGuide type="bottom" id="2oU-I4-7RS"/>
@@ -2780,9 +2784,72 @@
             </objects>
             <point key="canvasLocation" x="231.52173913043481" y="-952.17391304347836"/>
         </scene>
+        <!--Game Mode-->
+        <scene sceneID="AxU-VX-KFa">
+            <objects>
+                <viewController id="LtC-St-rx6" customClass="TutorialViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bOo-NY-dYg"/>
+                        <viewControllerLayoutGuide type="bottom" id="1QO-mJ-iHM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hyd-f6-e8l">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eP-sA-QXS">
+                                <rect key="frame" x="319.66666666666669" y="178" width="97" height="58"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Play"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="playTutorialSegue" id="wmA-0X-OOO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvY-Av-N2U">
+                                <rect key="frame" x="319.66666666666669" y="244" width="97" height="58"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Skip"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="biE-Q0-UEI" kind="show" identifier="skipTutorialSegue" id="td9-6F-u7X"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play The Tutorial?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxM-7i-N5W">
+                                <rect key="frame" x="152" y="124.66666666666666" width="433" height="45.999999999999972"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9eP-sA-QXS" firstAttribute="top" secondItem="OxM-7i-N5W" secondAttribute="bottom" constant="8" id="1nA-Qz-iT8"/>
+                            <constraint firstItem="9eP-sA-QXS" firstAttribute="centerX" secondItem="Hyd-f6-e8l" secondAttribute="centerX" id="ILf-Uj-Jph"/>
+                            <constraint firstItem="OxM-7i-N5W" firstAttribute="centerX" secondItem="Hyd-f6-e8l" secondAttribute="centerX" id="NCg-Zw-vgm"/>
+                            <constraint firstItem="JvY-Av-N2U" firstAttribute="centerX" secondItem="Hyd-f6-e8l" secondAttribute="centerX" id="Zen-6D-x4Q"/>
+                            <constraint firstItem="JvY-Av-N2U" firstAttribute="top" secondItem="9eP-sA-QXS" secondAttribute="bottom" constant="8" id="eTU-Ne-Wwc"/>
+                            <constraint firstItem="9eP-sA-QXS" firstAttribute="centerY" secondItem="Hyd-f6-e8l" secondAttribute="centerY" id="efe-ws-4K8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Game Mode" id="vB2-Kt-V2S"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBl-RF-asS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1771" y="-952"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="wmA-0X-OOO"/>
+        <segue reference="td9-6F-u7X"/>
         <segue reference="VNu-cy-NXn"/>
-        <segue reference="XSZ-rt-rRG"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@ struct ArchiveKey {
     static let timedHighScores = "timedHighScores"
     static let divisionSymbol = "divisionSymbol"
     static let colorScheme = "colorScheme"
+    static let tutorialShown = "tutorialShown"
 }
 
 class ChallengeArchive : NSObject, NSCoding {
@@ -72,21 +73,25 @@ class TimedArchive : NSObject, NSCoding {
 class SettingsArchive : NSObject, NSCoding {
     var divisionSymbol : String
     var colorScheme : String
+    var tutorialShown : Bool
     
-    init(divisionSymbol : String, colorScheme: String) {
+    init(divisionSymbol : String, colorScheme: String, tutorialShown: Bool) {
         self.divisionSymbol = divisionSymbol
         self.colorScheme = colorScheme
+        self.tutorialShown = tutorialShown
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let symbol = aDecoder.decodeObject(forKey: ArchiveKey.divisionSymbol) as! String
         let scheme = aDecoder.decodeObject(forKey: ArchiveKey.colorScheme) as! String
+        let tutorial = aDecoder.decodeBool(forKey: ArchiveKey.tutorialShown)
         
-        self.init(divisionSymbol: symbol, colorScheme: scheme)
+        self.init(divisionSymbol: symbol, colorScheme: scheme, tutorialShown: tutorial)
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(divisionSymbol, forKey: ArchiveKey.divisionSymbol)
         aCoder.encode(colorScheme, forKey: ArchiveKey.colorScheme)
+        aCoder.encode(tutorialShown, forKey: ArchiveKey.tutorialShown)
     }
 }

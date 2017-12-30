@@ -18,6 +18,8 @@ class SettingsModel {
     
     private let settingsArchive : SettingsArchive
     
+    public var tutorialShown : Bool
+    
     init() {
         fileManager = FileManager.default
         documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -31,10 +33,15 @@ class SettingsModel {
             
             Symbols.Divide = settingsArchive.divisionSymbol
             ColorScheme.scheme = SchemeChoice(rawValue: settingsArchive.colorScheme)!
+            tutorialShown = settingsArchive.tutorialShown
+            
         } else {
             Symbols.Divide = Symbols.HyphenDots
             ColorScheme.scheme = .monochrome
-            settingsArchive = SettingsArchive(divisionSymbol: Symbols.Divide, colorScheme: ColorScheme.scheme.rawValue)
+            tutorialShown = false
+            
+            settingsArchive = SettingsArchive(divisionSymbol: Symbols.Divide, colorScheme: ColorScheme.scheme.rawValue, tutorialShown: tutorialShown)
+            
             NSKeyedArchiver.archiveRootObject(settingsArchive, toFile: settingsURL.path)
         }
     }
@@ -162,6 +169,12 @@ class SettingsModel {
     func changeColorScheme(toScheme scheme : String) {
         ColorScheme.scheme = SchemeChoice(rawValue: scheme)!
         settingsArchive.colorScheme = ColorScheme.scheme.rawValue
+        saveSettingsArchive()
+    }
+    
+    func showTutorial() {
+        tutorialShown = true
+        settingsArchive.tutorialShown = true
         saveSettingsArchive()
     }
     
