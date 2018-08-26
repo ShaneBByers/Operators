@@ -37,6 +37,7 @@ class Filenames {
     static let timed = "timedHighScores"
     static let challenge = "challengePuzzles"
     static let settings = "settings"
+    static let tutorial = "tutorialPuzzles"
 }
 
 class OperandCount {

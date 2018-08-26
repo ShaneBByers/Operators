@@ -38,6 +38,8 @@ class HintsViewController: UIViewController {
     
     @IBOutlet weak var doneButton: UIButton!
     
+    var allowedHints : [Hint:Bool] = [:]
+    
     var countLabels : [Hint:UILabel] = [:]
     var minusButtons : [Hint:UIButton] = [:]
     var plusButtons : [Hint:UIButton] = [:]
@@ -45,8 +47,24 @@ class HintsViewController: UIViewController {
     
     var returnFunction : (() -> Void)?
     
+    var tutorialMode = false
+    
     func configureReturnFunction(returnFunction: @escaping (() -> Void)) {
         self.returnFunction = returnFunction
+        allowedHints[.random] = true
+        allowedHints[.custom] = true
+        allowedHints[.uses] = true
+    }
+    
+    func configureTutorial(allowed: Hint...) {
+        for key in allowedHints.keys {
+            if allowed.contains(key) {
+                allowedHints[key] = true
+            } else {
+                allowedHints[key] = false
+            }
+        }
+        tutorialMode = true
     }
     
     override func viewDidLoad() {
@@ -77,9 +95,20 @@ class HintsViewController: UIViewController {
         
         updateEnableButtons()
         
+        enableAllowedHints(on: countLabels, minusButtons, plusButtons, percentageLabels)
+        
         customCountLabel.text = "\(hintsModel.customCount())"
         
         usesCountLabel.text = "\(hintsModel.usesCount())"
+    }
+    
+    func enableAllowedHints(on dictionaries : [Hint:UIView]...) {
+        for dictionary in dictionaries {
+            for (key, value) in dictionary {
+                value.isUserInteractionEnabled = allowedHints[key]!
+                value.alpha = allowedHints[key]! ? 1.0 : 0.0
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

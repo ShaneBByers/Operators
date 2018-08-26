@@ -14,6 +14,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Variables
     //
     // MARK: Models
+    //
     let puzzleModel = PuzzleModel.sharedInstance
     let hintsModel = HintsModel.sharedInstance
     let settingsModel = SettingsModel.sharedInstance
@@ -33,7 +34,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     let kPlaceholderLabel = PuzzleLabel(text: "", isOperand: false, isOperator: false, isSolution: false, isMovable: true, viewController: nil)
     let kShortAnimationDuration : TimeInterval = 0.2
     let kLongAnimationDuration : TimeInterval = 0.5
-    let kWildcardOperatorPosition = 2
+    var kWildcardOperatorPosition = 2
     let kOperatorUsesLabelAlpha : CGFloat = 0.5
     
     let wildcardOperator : UILabel
@@ -73,6 +74,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: Custom Variables
     //
+    var resetAllowed : Bool = true
     var solvePuzzleButtonPressed : Bool = false
     var operatorBeingMoved : UILabel?
     let colorElements : ColorElements
@@ -165,7 +167,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         kPuzzleLabelsYPosition = self.view.center.y - kPuzzleLabelSize.height - kLabelBuffer
         
-        intializeGestureRecognizers()
+        initializeGestureRecognizers()
         initializeDefaultOperators()
         initializeOperatorCountLabels()
         
@@ -287,7 +289,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Label Gestures
     //
-    func intializeGestureRecognizers() {
+    func initializeGestureRecognizers() {
         for label in defaultOperatorLabels {
             let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PuzzleViewController.defaultOperatorPanned(_:)))
             panRecognizer.delegate = self
@@ -800,16 +802,18 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Button Actions
     //
     func resetButtonAction(enable: Bool) {
-        if enable {
-            resetButton.isEnabled = true
-            UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                self.resetButton.alpha = 1.0
-            })
-        } else {
-            resetButton.isEnabled = false
-            UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                self.resetButton.alpha = 0.0
-            })
+        if resetAllowed {
+            if enable {
+                resetButton.isEnabled = true
+                UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                    self.resetButton.alpha = 1.0
+                })
+            } else {
+                resetButton.isEnabled = false
+                UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                    self.resetButton.alpha = 0.0
+                })
+            }
         }
     }
     

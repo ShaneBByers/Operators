@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4304EFC01FF748BD007C00AB /* Operators_App_Icon_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 4304EFBF1FF748BD007C00AB /* Operators_App_Icon_1024.png */; };
+		4304EFC21FF8537D007C00AB /* tutorialPuzzles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4304EFC11FF8537D007C00AB /* tutorialPuzzles.plist */; };
 		431F70D71DF273C2002B0455 /* OriginalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70D61DF273C2002B0455 /* OriginalViewController.swift */; };
 		431F70DF1DF3467A002B0455 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70DE1DF3467A002B0455 /* ChallengeModel.swift */; };
 		431F70E11DF34871002B0455 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F70E01DF34871002B0455 /* ChallengeViewController.swift */; };
@@ -63,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4304EFBF1FF748BD007C00AB /* Operators_App_Icon_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Operators_App_Icon_1024.png; sourceTree = "<group>"; };
+		4304EFC11FF8537D007C00AB /* tutorialPuzzles.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = tutorialPuzzles.plist; sourceTree = "<group>"; };
 		431F70D61DF273C2002B0455 /* OriginalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginalViewController.swift; sourceTree = "<group>"; };
 		431F70DE1DF3467A002B0455 /* ChallengeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
 		431F70E01DF34871002B0455 /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				4373CBD71E6DC7D9009C5513 /* HintsModel.swift */,
 				4399F2C81E588AA900038306 /* SettingsModel.swift */,
 				432603471EB0F15A00E926A4 /* TutorialModel.swift */,
+				4304EFC11FF8537D007C00AB /* tutorialPuzzles.plist */,
 				431F70EA1DFA1617002B0455 /* challengePuzzles.plist */,
 			);
 			name = Model;
@@ -275,6 +280,7 @@
 				434D2A581E5F1786006C3E8E /* Operators_App_Icon_120.png */,
 				434D2A621E5F1814006C3E8E /* Operators_App_Icon_120_2.png */,
 				434D2A591E5F1786006C3E8E /* Operators_App_Icon_180.png */,
+				4304EFBF1FF748BD007C00AB /* Operators_App_Icon_1024.png */,
 			);
 			name = "App Icons";
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4304EFC01FF748BD007C00AB /* Operators_App_Icon_1024.png in Resources */,
 				434D2A611E5F1786006C3E8E /* Operators_App_Icon_180.png in Resources */,
 				431F70EB1DFA1617002B0455 /* challengePuzzles.plist in Resources */,
 				434D2A5B1E5F1786006C3E8E /* Operators_App_Icon_58.png in Resources */,
@@ -373,6 +380,7 @@
 				434D2A601E5F1786006C3E8E /* Operators_App_Icon_120.png in Resources */,
 				434D2A631E5F1814006C3E8E /* Operators_App_Icon_120_2.png in Resources */,
 				438B48D51DD757C40048EDB5 /* LaunchScreen.storyboard in Resources */,
+				4304EFC21FF8537D007C00AB /* tutorialPuzzles.plist in Resources */,
 				438B48D21DD757C40048EDB5 /* Assets.xcassets in Resources */,
 				434D2A5A1E5F1786006C3E8E /* Operators_App_Icon_60.png in Resources */,
 				434D2A5C1E5F1786006C3E8E /* Operators_App_Icon_40.png in Resources */,

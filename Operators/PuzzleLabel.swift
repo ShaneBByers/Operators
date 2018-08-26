@@ -29,7 +29,7 @@ struct PuzzleLabel {
         let _label : UILabel
         
         if isSolution {
-            let width = 30*text.characters.count + 5
+            let width = 30*text.count + 5
             _label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: kDefaultLabelSize))
         } else {
             _label = UILabel(frame: CGRect(x: 0, y: 0, width: kDefaultLabelSize, height: kDefaultLabelSize))
