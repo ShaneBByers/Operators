@@ -29,7 +29,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
             switch tutorialModel.stepNumber() {
             case 1: // Initialize first puzzle
                 setupPuzzle(withEquation: tutorialModel.getCurrentPuzzle())
-                puzzleModel.equation = tutorialModel.getCurrentPuzzle() // TEMPORARY FIX!!!!!1
+                puzzleModel.equation = tutorialModel.getCurrentPuzzle()
                 expressionLabel.alpha = 0.0
                 resetAllowed = false
                 primaryLabel.alpha = 0.0
@@ -71,23 +71,24 @@ class TutorialPuzzleViewController: PuzzleViewController {
                         newExpression.append(puzzleLabel.label.text!)
                     }
                 }
-                if let solution = puzzleModel.solutionFor(expression: newExpression) {
-                    tutorialModel.updateTotalScore(withSolution: solution)
-                    
+//                if let solution = puzzleModel.solutionFor(expression: newExpression) {
+//                    tutorialModel.updateScores(withEquation: puzzleModel.equation!, withSolution: solution)
+//
                     primaryLabel.text = "Score: 0"
                     UIView.animate(withDuration: kShortAnimationDuration, animations: {
                         self.primaryLabel.alpha = 1.0
                     }, completion: {(value) in
                         self.executeNextStep()
                     })
-                }
+//                }
             case 4: // Show score increasing
-                primaryLabel.text = "Score: \(tutorialModel.getTotalScore())"
-                primaryLabelUpdate(withText: "\(tutorialModel.getTotalScore())")
+//                primaryLabel.text = "Score: \(tutorialModel.getTotalScore())"
+//                primaryLabelUpdate(withText: "\(tutorialModel.getTotalScore())")
+                updateTutorialScore()
                 progressBarView.isHidden = false
                 currentMultiplierLabel.isHidden = false
                 nextMultiplierLabel.isHidden = false
-                progressBarView.setProgress(originalModel.multiplierProgress(), animated: true)
+                progressBarView.setProgress(tutorialModel.multiplierProgress(), animated: true)
                 let currentMultiplier = tutorialModel.currentPointsMultiplier()
                 if currentMultiplier != 1 {
                     currentMultiplierLabel.text = "×\(currentMultiplier)"
@@ -129,23 +130,32 @@ class TutorialPuzzleViewController: PuzzleViewController {
             switch tutorialModel.stepNumber() {
             case 1: // Prepare puzzle and show hints button
                 setupPuzzle(withEquation: tutorialModel.getCurrentPuzzle())
-                puzzleModel.equation = tutorialModel.getCurrentPuzzle() // TEMPORARY FIX!!!!!1
+                puzzleModel.equation = tutorialModel.getCurrentPuzzle()
+                for label in defaultOperatorLabels {
+                    label.isUserInteractionEnabled = false
+                    label.alpha = 0.5
+                }
                 self.hintsButtonAction(enable: true)
             case 2: // Place wildcard into place
-                for label in defaultOperatorLabels {
-                    if label != defaultOperatorLabels[1] {
-                        label.isUserInteractionEnabled = false
-                        label.alpha = 0.5
-                    }
-                }
+//                for label in defaultOperatorLabels {
+//                    if label != defaultOperatorLabels[1] {
+//                        label.isUserInteractionEnabled = false
+//                        label.alpha = 0.5
+//                    }
+//                }
+                break
             case 3: // Show lock and have them unlock
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
-                        puzzleLabel.label.removeGestureRecognizer(puzzleLabel.operatorPanGestureRecognizer)
-                        puzzleLabel.label.removeGestureRecognizer(puzzleLabel.operatorDoubleTapGestureRecognizer)
+                        puzzleLabel.label.isUserInteractionEnabled = false
                     }
                 }
             case 4: // Show how to lock again
+                for puzzleLabel in puzzleLabels {
+                    if puzzleLabel.isOperator {
+                        puzzleLabel.label.isUserInteractionEnabled = false
+                    }
+                }
                 break
             case 5: // Allow user to place another operator
                 resetAllowed = true
@@ -168,7 +178,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
             switch tutorialModel.stepNumber() {
             case 1: // Prepare puzzle and show score multiplier
                 setupPuzzle(withEquation: tutorialModel.getCurrentPuzzle())
-                puzzleModel.equation = tutorialModel.getCurrentPuzzle() // TEMPORARY FIX!!!!!1
+                puzzleModel.equation = tutorialModel.getCurrentPuzzle()
                 self.hintsButtonAction(enable: true)
             case 2: // Show solve button as an option
                 self.solveButtonAction(enable: true)
@@ -176,7 +186,8 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 tutorialModel.puzzleComplete()
                 executeNextStep()
             }
-        default: break // PERFORM SEGUE FROM PUZZLE VC TO "TUTORIAL COMPLETE" VC THEN BACK TO FIRST VC
+        default:  // PERFORM SEGUE FROM PUZZLE VC TO "TUTORIAL COMPLETE" VC THEN BACK TO FIRST VC
+            performSegue(withIdentifier: "showGameModeSegue", sender: self)
             
         }
     }
@@ -221,10 +232,18 @@ class TutorialPuzzleViewController: PuzzleViewController {
     override func operatorEndedPanning(label: UILabel, isDefaultOperator: Bool) {
         super.operatorEndedPanning(label: label, isDefaultOperator: isDefaultOperator)
         
+        if !tutorialModel.status(isPuzzle: 1, isStep: 2) {
+            updateTutorialScore()
+        }
+        
         if isDefaultOperator {
             if (correctTutorialSolution()) ||
                 (tutorialModel.status(isPuzzle: 1, isStep: 1) && puzzleLabels[1].label.text! == Symbols.Add) ||
                 (tutorialModel.status(isPuzzle: 2, isStep: 2) && puzzleLabels[1].label.text! == Symbols.Add){
+                if tutorialModel.status(isPuzzle: 3, isStep: 2) {
+                    newPuzzleButton.setTitle("End Tutorial", for: .normal)
+                    newPuzzleButtonAction(enable: true)
+                }
                 executeNextStep()
             } else if tutorialModel.status(isPuzzle: 1, isStep: 8) {
                 for puzzleLabel in puzzleLabels {
@@ -234,6 +253,12 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 }
             } else if tutorialModel.status(isPuzzle: 2, isStep: 5) && resetButton.isEnabled {
                 executeNextStep()
+            } else if tutorialModel.status(isPuzzle: 3, isStep: 1) {
+                for puzzleLabel in puzzleLabels {
+                    if puzzleLabel.isOperator {
+                        executeNextStep()
+                    }
+                }
             }
         } else {
             if (tutorialModel.status(isPuzzle: 1, isStep: 5)) {
@@ -256,9 +281,17 @@ class TutorialPuzzleViewController: PuzzleViewController {
     override func defaultOperatorDoubleTapped(_ recognizer: UITapGestureRecognizer) {
         super.defaultOperatorDoubleTapped(recognizer)
         
+        if !tutorialModel.status(isPuzzle: 1, isStep: 2) {
+            updateTutorialScore()
+        }
+        
         if (correctTutorialSolution()) ||
             (tutorialModel.status(isPuzzle: 1, isStep: 2)) ||
             (tutorialModel.status(isPuzzle: 2, isStep: 2)) {
+            if tutorialModel.status(isPuzzle: 3, isStep: 2) {
+                newPuzzleButton.setTitle("End Tutorial", for: .normal)
+                newPuzzleButtonAction(enable: true)
+            }
             executeNextStep()
         } else if tutorialModel.status(isPuzzle: 1, isStep: 8) {
             for puzzleLabel in puzzleLabels {
@@ -268,6 +301,12 @@ class TutorialPuzzleViewController: PuzzleViewController {
             }
         } else if tutorialModel.status(isPuzzle: 2, isStep: 5) && resetButton.isEnabled {
             executeNextStep()
+        } else if tutorialModel.status(isPuzzle: 3, isStep: 1) {
+            for puzzleLabel in puzzleLabels {
+                if puzzleLabel.isOperator {
+                    executeNextStep()
+                }
+            }
         }
     }
     
@@ -298,6 +337,18 @@ class TutorialPuzzleViewController: PuzzleViewController {
         
     }
     
+    override func newPuzzleButtonPressed(_ sender: UIButton) {
+        newPuzzleButton.titleLabel!.text! = "New Puzzle"
+        performSegue(withIdentifier: "showGameModeSegue", sender: self)
+    }
+    
+    override func solveButtonPressed(_ sender: UIButton) {
+        super.solveButtonPressed(sender)
+        
+        newPuzzleButton.setTitle("End Tutorial", for: .normal)
+        newPuzzleButtonAction(enable: true)
+    }
+    
     func correctTutorialSolution() -> Bool {
         var newExpression : [String] = []
         
@@ -314,5 +365,53 @@ class TutorialPuzzleViewController: PuzzleViewController {
         } else {
             return false
         }
+    }
+    
+    func updateTutorialScore() {
+        
+        var newExpression : [String] = []
+        
+        var currentScore : Int?
+        
+        let oldScore = tutorialModel.currentScore()
+        
+        for puzzleLabel in puzzleLabels {
+            if puzzleLabel.isOperand || puzzleLabel.isOperator {
+                newExpression.append(puzzleLabel.label.text!)
+            }
+        }
+        
+        if let solution = puzzleModel.solutionFor(expression: newExpression) {
+            currentScore = tutorialModel.updateScores(withEquation: puzzleModel.equation!, withSolution: solution)
+        } else {
+            currentScore = tutorialModel.currentScore()
+        }
+        
+        if let best = currentScore {
+            secondaryLabel.text = "Current: " + String(best)
+            if let old = oldScore {
+                if best > old {
+                    primaryLabelUpdate(withText: "\(best-old)")
+                }
+            } else if best > 0 {
+                primaryLabelUpdate(withText: "\(best)")
+            }
+            progressBarView.setProgress(tutorialModel.multiplierProgress(), animated: true)
+            let currentMultiplier = tutorialModel.currentPointsMultiplier()
+            if currentMultiplier != 1 {
+                currentMultiplierLabel.text = "×\(currentMultiplier)"
+            } else {
+                currentMultiplierLabel.text = ""
+            }
+            if let nextMultiplier = tutorialModel.nextPointsMultiplier() {
+                nextMultiplierLabel.text = "×\(nextMultiplier)"
+            } else {
+                nextMultiplierLabel.text = ""
+            }
+        } else {
+            secondaryLabel.text = "Current: N/A"
+        }
+        
+        primaryLabel.text = "Score: " + String(tutorialModel.totalScore())
     }
 }

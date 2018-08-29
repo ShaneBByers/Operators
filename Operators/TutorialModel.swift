@@ -11,6 +11,8 @@ import Foundation
 class TutorialModel {
     static let sharedInstance = TutorialModel()
     
+    private let hintsModel = HintsModel.sharedInstance
+    
     private var equations : [[String]] = []
     
     private var currentEquation : Equation?
@@ -23,13 +25,19 @@ class TutorialModel {
     
     private let maxScore : Double = 100
     
-    private var currentScore : Int = 0
+    private var currentScoreValue : Int? = 0
     
-    private var totalScore : Int = 0
+    private var totalScoreValue : Int = 0
     
-    private var pointsMultiplier = (range: 0..<200, multiplier: 1.0)
+    private var pointsMultipliers = [(range: CountableRange<Int>, multiplier: Double)]()
+    
+    private var pointsMultiplier = (range: 0..<180, multiplier: 1.0)
     
     init() {
+        
+        pointsMultipliers.append((range: 0..<180, multiplier: 1.0))
+        pointsMultipliers.append((range: 0..<1000, multiplier: 2.0))
+        pointsMultipliers.append((range: 0..<2000, multiplier: 5.0))
         
         if let path = Bundle.main.path(forResource: Filenames.tutorial, ofType: "plist") {
             
@@ -65,22 +73,24 @@ class TutorialModel {
             let newScore = Int(round(maxScore-ceil(percentageError*maxScore)))
             let addedScore = Int(round(Double(newScore)))
             if addedScore >= 0 {
-                self.currentScore = newScore
+                self.currentScoreValue = newScore
             } else {
-                self.currentScore = 0
+                self.currentScoreValue = 0
             }
-            self.totalScore += self.currentScore
+            self.totalScoreValue += self.currentScoreValue!
         }
     }
     
     func getTotalScore() -> Int {
-        return totalScore
+        return totalScoreValue
     }
     
     func puzzleComplete() {
         step = 0
         
         puzzle += 1
+        
+        resetCurrentScore()
     }
     
     func currentSolution() -> Int {
@@ -103,13 +113,45 @@ class TutorialModel {
         return puzzle + 1 == puzzleNo && step == stepNo
     }
     
+    func updateScores(withEquation equation: Equation, withSolution solution: Int) -> Int? {
+        if let correctSolution = equation.solution.number {
+            let hintsMultiplier = hintsModel.multiplier()
+            let percentageError = (Double(abs(correctSolution - solution)))/Double(abs(correctSolution) + scoreBooster)
+            let newScore = Int(round(maxScore*hintsMultiplier*pointsMultiplier.multiplier - ceil(percentageError*maxScore*hintsMultiplier*pointsMultiplier.multiplier)))
+            if let currentScore = currentScoreValue {
+                let addedScore = Int(round(Double(newScore - currentScore)))
+                if addedScore > 0 {
+                    self.currentScoreValue! += addedScore
+                    self.totalScoreValue += addedScore
+                }
+            } else {
+                let addedScore = Int(round(Double(newScore)))
+                if addedScore >= 0 {
+                    self.currentScoreValue = newScore
+                } else {
+                    self.currentScoreValue = 0
+                }
+                self.totalScoreValue += self.currentScoreValue!
+            }
+        }
+        
+        for pointMult in pointsMultipliers {
+            if pointMult.range ~= self.totalScoreValue {
+                pointsMultiplier = pointMult
+                break
+            }
+        }
+        
+        return currentScoreValue
+    }
+    
     func multiplierProgress() -> Float {
         let lower = pointsMultiplier.range.lowerBound
         let upper = pointsMultiplier.range.upperBound
         if upper == Int.max {
             return 1.00
         } else {
-            return Float(self.totalScore-lower)/Float(upper-lower)
+            return Float(self.totalScoreValue-lower)/Float(upper-lower)
         }
     }
     
@@ -118,14 +160,30 @@ class TutorialModel {
     }
     
     func nextPointsMultiplier() -> Int? {
-        if pointsMultiplier.multiplier == 1.0 {
-            return 2
-        } else {
-            return nil
+        for (i,pointMult) in pointsMultipliers.enumerated() {
+            if pointMult == pointsMultiplier {
+                if i+1 < pointsMultipliers.count {
+                    return Int(pointsMultipliers[i+1].multiplier)
+                }
+                break
+            }
         }
+        return nil
     }
     
-    func increasePointsMultiplier() {
-        pointsMultiplier.multiplier = 2.0
+    func currentScore() -> Int? {
+        return currentScoreValue
+    }
+    
+    func resetCurrentScore() {
+        currentScoreValue = nil
+    }
+    
+    func totalScore() -> Int {
+        return totalScoreValue
+    }
+    
+    func resetTotalScore() {
+        totalScoreValue = 0
     }
 }

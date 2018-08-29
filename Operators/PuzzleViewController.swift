@@ -142,6 +142,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         case "unwindToChallenge": break
         case "unwindToTimed": break
         case "unwindToGameType": break
+        case "showGameModeSegue": break
         default: assert(false, "Unhandled Segue")
         }
     }
@@ -660,6 +661,10 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                         placeDefaultOperators(isInitial: false)
                     
                         wildcardOperator.removeFromSuperview()
+                        
+                        operatorCountLabels[wildcardOperator.text!]!.removeFromSuperview()
+                        
+                        operatorCountLabels.removeValue(forKey: wildcardOperator.text!)
                     } else {
                         operatorCountLabels[wildcardOperator.text!]!.text = "\(hintsModel.customCount())"
                     }
@@ -845,6 +850,19 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    func newPuzzleButtonAction(enable: Bool) {
+        if enable {
+            newPuzzleButton.isEnabled = true
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                self.newPuzzleButton.alpha = 1.0
+            })
+        } else {
+            newPuzzleButton.isEnabled = false
+            UIView.animate(withDuration: kShortAnimationDuration, animations: {
+                self.newPuzzleButton.alpha = 0.0
+            })
+        }
+    }
     
     // MARK: - Button Presses
     //
@@ -919,6 +937,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         for element in equation.elements {
             if Int(element.string) == nil {
                 let newLabel = PuzzleLabel(text: element.string, isOperand: false, isOperator: true, isSolution: false, isMovable: false, viewController: self)
+                
+                newLabel.label.isUserInteractionEnabled = false
+                
+                if let lockLabel = newLabel.lockLabel {
+                    lockLabel.isUserInteractionEnabled = false
+                }
                 
                 insertOperators.append(newLabel)
             }
