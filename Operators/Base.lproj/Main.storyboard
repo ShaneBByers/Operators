@@ -22,12 +22,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="fc4-5o-GWx" kind="relationship" relationship="rootViewController" id="Opc-U1-fZW"/>
+                        <segue destination="LtC-St-rx6" kind="relationship" relationship="rootViewController" id="Ixn-2R-ukn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Um2-tp-vzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3377" y="55"/>
+            <point key="canvasLocation" x="-4290" y="54"/>
         </scene>
         <!--Game Mode-->
         <scene sceneID="Tpp-JN-YIJ">
@@ -51,6 +51,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="singlePlayerButtonPressed:" destination="fc4-5o-GWx" eventType="touchUpInside" id="xrZ-jg-4xP"/>
+                                    <segue destination="biE-Q0-UEI" kind="show" identifier="showGameTypeSegue" id="0ys-TE-zOI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pg-kl-kwJ">
@@ -94,19 +95,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Mode" id="vww-Tr-qQO"/>
-                    <connections>
-                        <segue destination="biE-Q0-UEI" kind="show" identifier="showGameTypeSegue" id="jdE-EL-dWz"/>
-                        <segue destination="LtC-St-rx6" kind="show" identifier="showTutorialOptionsSegue" id="Tfr-tR-Vb9"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcr-Ud-Kbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2574" y="55"/>
         </scene>
-        <!--showGameModeSegue-->
+        <!--Puzzle View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="showGameModeSegue" id="BYZ-38-t0r" customClass="PuzzleViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PuzzleViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -280,6 +277,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="41k-Je-KOT" id="Vru-vK-i4k"/>
                         <outlet property="currentMultiplierLabel" destination="sqT-4g-2ur" id="FPV-EK-kkk"/>
                         <outlet property="expressionLabel" destination="WEf-Mh-psi" id="okg-wo-2cC"/>
                         <outlet property="hintsButton" destination="Blg-qp-bfd" id="WNg-Fh-DKg"/>
@@ -1054,7 +1052,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="cup-Uc-UYw" kind="show" identifier="originalTypeSegue" id="t5x-Pj-iEl"/>
+                                    <segue destination="cup-Uc-UYw" kind="show" identifier="originalTypeSegue" id="88x-j6-pxM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpS-tj-uK9">
@@ -1397,8 +1395,8 @@
                                 <exclude reference="qwH-UA-Ndb"/>
                                 <exclude reference="3Jq-3b-W1a"/>
                                 <exclude reference="2nc-sJ-vzI"/>
-                                <exclude reference="JJq-lm-42k"/>
                                 <exclude reference="ZWm-3J-2UD"/>
+                                <exclude reference="JJq-lm-42k"/>
                                 <exclude reference="RLa-k2-Bcq"/>
                                 <exclude reference="Clb-uB-ZCb"/>
                                 <exclude reference="RPq-5m-ThO"/>
@@ -1414,10 +1412,10 @@
                                 <exclude reference="JRH-x3-QTV"/>
                                 <include reference="2nc-sJ-vzI"/>
                                 <exclude reference="Nbx-DN-qZW"/>
-                                <include reference="JJq-lm-42k"/>
-                                <exclude reference="VMC-ER-uVN"/>
                                 <include reference="ZWm-3J-2UD"/>
                                 <exclude reference="zKE-Dn-EBP"/>
+                                <include reference="JJq-lm-42k"/>
+                                <exclude reference="VMC-ER-uVN"/>
                                 <include reference="RLa-k2-Bcq"/>
                                 <exclude reference="cCf-aL-UC5"/>
                                 <include reference="Clb-uB-ZCb"/>
@@ -1553,7 +1551,7 @@
         <!--Difficulty-->
         <scene sceneID="eJD-SA-fv1">
             <objects>
-                <viewController id="cup-Uc-UYw" customClass="DifficultyViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cup-Uc-UYw" customClass="OriginalViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9ce-ku-yr2"/>
                         <viewControllerLayoutGuide type="bottom" id="2oU-I4-7RS"/>
@@ -1571,7 +1569,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="7kx-mW-TA2"/>
+                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="Ns6-Bx-GsA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyO-Xj-csb">
@@ -1583,7 +1581,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="hG8-6L-oyw"/>
+                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="Lnz-lK-Mh3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3Q-5n-bRl">
@@ -1595,7 +1593,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="j7P-gT-8wO"/>
+                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="JzG-Gg-LRb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14y-1C-dWV">
@@ -1676,7 +1674,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                                 <connections>
-                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="MVL-Sd-3CK"/>
+                                    <action selector="difficultyButtonPressed:" destination="cup-Uc-UYw" eventType="touchUpInside" id="0AP-hf-cW9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVI-J2-PyW">
@@ -1725,10 +1723,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Difficulty" id="q74-hA-qla"/>
                     <connections>
-                        <outletCollection property="highScoreLabels" destination="6n9-1C-INi" collectionClass="NSMutableArray" id="Qd9-9h-X5y"/>
-                        <outletCollection property="highScoreLabels" destination="iem-4s-skU" collectionClass="NSMutableArray" id="K8i-h0-f3B"/>
-                        <outletCollection property="highScoreLabels" destination="BPn-mk-KB0" collectionClass="NSMutableArray" id="Xia-Jh-BEt"/>
-                        <outletCollection property="highScoreLabels" destination="YVI-J2-PyW" collectionClass="NSMutableArray" id="SiL-DF-Ku8"/>
+                        <outletCollection property="highScoreLabels" destination="6n9-1C-INi" collectionClass="NSMutableArray" id="d78-Yu-7Mf"/>
+                        <outletCollection property="highScoreLabels" destination="iem-4s-skU" collectionClass="NSMutableArray" id="pOL-8b-WlQ"/>
+                        <outletCollection property="highScoreLabels" destination="BPn-mk-KB0" collectionClass="NSMutableArray" id="R4e-Ue-kNn"/>
+                        <outletCollection property="highScoreLabels" destination="YVI-J2-PyW" collectionClass="NSMutableArray" id="12I-mv-hNr"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showPuzzleSegue" id="XSZ-rt-rRG"/>
                     </connections>
                 </viewController>
@@ -2703,8 +2701,8 @@
                                     <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZcL-gY-qp8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Times Up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-zO-leE">
-                                <rect key="frame" x="260" y="78.333333333333329" width="216.33333333333337" height="45.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time's Up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-zO-leE">
+                                <rect key="frame" x="248" y="78.333333333333329" width="241" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2752,10 +2750,10 @@
             </objects>
             <point key="canvasLocation" x="231.52173913043481" y="-952.17391304347836"/>
         </scene>
-        <!--Game Mode-->
+        <!--PlayTutorial-->
         <scene sceneID="AxU-VX-KFa">
             <objects>
-                <viewController id="LtC-St-rx6" customClass="TutorialViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="PlayTutorial" id="LtC-St-rx6" customClass="TutorialViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bOo-NY-dYg"/>
                         <viewControllerLayoutGuide type="bottom" id="1QO-mJ-iHM"/>
@@ -2785,7 +2783,7 @@
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="biE-Q0-UEI" kind="show" identifier="skipTutorialSegue" id="td9-6F-u7X"/>
+                                    <segue destination="fc4-5o-GWx" kind="show" identifier="skipTutorialSegue" id="lST-nX-D9y"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play The Tutorial?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxM-7i-N5W">
@@ -2809,16 +2807,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Mode" id="vB2-Kt-V2S"/>
+                    <connections>
+                        <segue destination="fc4-5o-GWx" kind="show" identifier="tutorialShownSegue" animates="NO" id="wBF-pm-coa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBl-RF-asS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1771" y="-952"/>
+            <point key="canvasLocation" x="-3439" y="55"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="TNf-ND-LTn"/>
-        <segue reference="td9-6F-u7X"/>
-        <segue reference="7Xf-0H-0gA"/>
-        <segue reference="JGP-Us-bV4"/>
+        <segue reference="wmA-0X-OOO"/>
+        <segue reference="wBF-pm-coa"/>
     </inferredMetricsTieBreakers>
 </document>

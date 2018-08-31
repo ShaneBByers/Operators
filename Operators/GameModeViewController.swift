@@ -20,7 +20,7 @@ class GameModeViewController: UIViewController {
         //if settingsModel.tutorialShown {
         //    performSegue(withIdentifier: "showGameTypeSegue", sender: self)
         //} else {
-            performSegue(withIdentifier: "showTutorialOptionsSegue", sender: self)
+//            performSegue(withIdentifier: "showTutorialOptionsSegue", sender: self)
         //    settingsModel.showTutorial()
         //}
     }

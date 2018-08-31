@@ -66,6 +66,8 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: Buttons
     //
+
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var hintsButton: UIButton!
     @IBOutlet weak var newPuzzleButton: UIButton!

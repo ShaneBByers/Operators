@@ -19,6 +19,10 @@ class TutorialPuzzleViewController: PuzzleViewController {
     
     func initializeTutorial() {
         storedOperatorLabels = defaultOperatorLabels
+        backButton.alpha = 0.0
+        backButton.isEnabled = false
+        newPuzzleButton.setTitle("Skip Tutorial", for: .normal)
+        newPuzzleButtonAction(enable: true)
         executeNextStep()
     }
     
@@ -147,13 +151,26 @@ class TutorialPuzzleViewController: PuzzleViewController {
             case 3: // Show lock and have them unlock
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
-                        puzzleLabel.label.isUserInteractionEnabled = false
+                        for recognizer in puzzleLabel.label.gestureRecognizers! {
+                            if recognizer is UIPanGestureRecognizer {
+                                puzzleLabel.label.removeGestureRecognizer(recognizer)
+                            } else if recognizer is UITapGestureRecognizer {
+                                puzzleLabel.label.removeGestureRecognizer(recognizer)
+                            }
+                        }
                     }
                 }
+
             case 4: // Show how to lock again
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
-                        puzzleLabel.label.isUserInteractionEnabled = false
+                        for recognizer in puzzleLabel.label.gestureRecognizers! {
+                            if recognizer is UIPanGestureRecognizer {
+                                puzzleLabel.label.removeGestureRecognizer(recognizer)
+                            } else if recognizer is UITapGestureRecognizer {
+                                puzzleLabel.label.removeGestureRecognizer(recognizer)
+                            }
+                        }
                     }
                 }
                 break
@@ -172,6 +189,16 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 break
             default: // Next puzzle
                 tutorialModel.puzzleComplete()
+                resetButtonAction(enable: false)
+                hintsButtonAction(enable: false)
+                hintsModel.reset()
+                
+                UIView.animate(withDuration: kShortAnimationDuration) {
+                    self.hintsMultiplierLabel.alpha = 0.0
+                }
+                
+                resetHints()
+                
                 executeNextStep()
             }
         case 3:
@@ -242,7 +269,6 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 (tutorialModel.status(isPuzzle: 2, isStep: 2) && puzzleLabels[1].label.text! == Symbols.Add){
                 if tutorialModel.status(isPuzzle: 3, isStep: 2) {
                     newPuzzleButton.setTitle("End Tutorial", for: .normal)
-                    newPuzzleButtonAction(enable: true)
                 }
                 executeNextStep()
             } else if tutorialModel.status(isPuzzle: 1, isStep: 8) {
@@ -290,7 +316,6 @@ class TutorialPuzzleViewController: PuzzleViewController {
             (tutorialModel.status(isPuzzle: 2, isStep: 2)) {
             if tutorialModel.status(isPuzzle: 3, isStep: 2) {
                 newPuzzleButton.setTitle("End Tutorial", for: .normal)
-                newPuzzleButtonAction(enable: true)
             }
             executeNextStep()
         } else if tutorialModel.status(isPuzzle: 1, isStep: 8) {

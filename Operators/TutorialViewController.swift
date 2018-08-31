@@ -9,9 +9,21 @@
 import UIKit
 
 class TutorialViewController: UIViewController {
+    
+    let settingsModel = SettingsModel.sharedInstance
 
     override func viewDidLoad() {
-        PuzzleModel.sharedInstance.gameType = .tutorial
+        if settingsModel.tutorialShown {
+            performSegue(withIdentifier: "tutorialShownSegue", sender: self)
+        }
+        else
+        {
+            PuzzleModel.sharedInstance.gameType = .tutorial
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        settingsModel.showTutorial()
     }
     
     override func viewWillAppear(_ animated: Bool) {

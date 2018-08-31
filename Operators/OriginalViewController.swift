@@ -12,6 +12,8 @@ class OriginalViewController: UIViewController {
     
     let originalModel = OriginalModel.sharedInstance
 
+    
+    
     @IBOutlet var highScoreLabels: [UILabel]!
     
     override func viewDidLoad() {
@@ -44,9 +46,9 @@ class OriginalViewController: UIViewController {
     }
     
     @IBAction func difficultyButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "showPuzzleSegue", sender: sender)
+                performSegue(withIdentifier: "showPuzzleSegue", sender: sender)
     }
+    
     @IBAction func unwindToOriginal(segue: UIStoryboardSegue) {}
     
-
 }
