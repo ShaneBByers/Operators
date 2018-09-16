@@ -27,6 +27,7 @@
 		434D2A601E5F1786006C3E8E /* Operators_App_Icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 434D2A581E5F1786006C3E8E /* Operators_App_Icon_120.png */; };
 		434D2A611E5F1786006C3E8E /* Operators_App_Icon_180.png in Resources */ = {isa = PBXBuildFile; fileRef = 434D2A591E5F1786006C3E8E /* Operators_App_Icon_180.png */; };
 		434D2A631E5F1814006C3E8E /* Operators_App_Icon_120_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 434D2A621E5F1814006C3E8E /* Operators_App_Icon_120_2.png */; };
+		434FB3F7214EA0B000EE7C14 /* TutorialStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FB3F6214EA0B000EE7C14 /* TutorialStepViewController.swift */; };
 		435DC2F61E3C0A5D0047FD47 /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC2F51E3C0A5D0047FD47 /* GameModeViewController.swift */; };
 		435DC2F81E3C0A810047FD47 /* GameTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC2F71E3C0A810047FD47 /* GameTypeViewController.swift */; };
 		435DC2FA1E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC2F91E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift */; };
@@ -36,7 +37,6 @@
 		438B48D01DD757C40048EDB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438B48CE1DD757C40048EDB5 /* Main.storyboard */; };
 		438B48D21DD757C40048EDB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438B48D11DD757C40048EDB5 /* Assets.xcassets */; };
 		438B48D51DD757C40048EDB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438B48D31DD757C40048EDB5 /* LaunchScreen.storyboard */; };
-		438B48E01DD757C40048EDB5 /* OperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B48DF1DD757C40048EDB5 /* OperatorsTests.swift */; };
 		438B48EB1DD7588A0048EDB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B48EA1DD7588A0048EDB5 /* Constants.swift */; };
 		438B48ED1DD75BC50048EDB5 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B48EC1DD75BC50048EDB5 /* PuzzleViewController.swift */; };
 		438B48EF1DD766A50048EDB5 /* PuzzleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B48EE1DD766A50048EDB5 /* PuzzleModel.swift */; };
@@ -53,16 +53,6 @@
 		43B8A73A1DFE1EC100840590 /* ArchiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B8A7391DFE1EC100840590 /* ArchiveData.swift */; };
 		43F6C9B31E463C360082EF8F /* TimedCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		438B48DC1DD757C40048EDB5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 438B48BF1DD757C40048EDB5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 438B48C61DD757C40048EDB5;
-			remoteInfo = Operators;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4304EFBF1FF748BD007C00AB /* Operators_App_Icon_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Operators_App_Icon_1024.png; sourceTree = "<group>"; };
@@ -85,6 +75,7 @@
 		434D2A581E5F1786006C3E8E /* Operators_App_Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Operators_App_Icon_120.png; sourceTree = "<group>"; };
 		434D2A591E5F1786006C3E8E /* Operators_App_Icon_180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Operators_App_Icon_180.png; sourceTree = "<group>"; };
 		434D2A621E5F1814006C3E8E /* Operators_App_Icon_120_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Operators_App_Icon_120_2.png; sourceTree = "<group>"; };
+		434FB3F6214EA0B000EE7C14 /* TutorialStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialStepViewController.swift; sourceTree = "<group>"; };
 		435DC2F51E3C0A5D0047FD47 /* GameModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
 		435DC2F71E3C0A810047FD47 /* GameTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTypeViewController.swift; sourceTree = "<group>"; };
 		435DC2F91E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengePuzzleCompletedViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +87,6 @@
 		438B48D11DD757C40048EDB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		438B48D41DD757C40048EDB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		438B48D61DD757C40048EDB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		438B48DB1DD757C40048EDB5 /* OperatorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OperatorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		438B48DF1DD757C40048EDB5 /* OperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorsTests.swift; sourceTree = "<group>"; };
 		438B48E11DD757C40048EDB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		438B48EA1DD7588A0048EDB5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -118,13 +108,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		438B48C41DD757C40048EDB5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		438B48D81DD757C40048EDB5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -203,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				438B48C71DD757C40048EDB5 /* Operators.app */,
-				438B48DB1DD757C40048EDB5 /* OperatorsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,6 +216,7 @@
 			children = (
 				435DC2F91E3CE57B0047FD47 /* ChallengePuzzleCompletedViewController.swift */,
 				43F6C9B21E463C360082EF8F /* TimedCompletedViewController.swift */,
+				434FB3F6214EA0B000EE7C14 /* TutorialStepViewController.swift */,
 			);
 			name = Completion;
 			sourceTree = "<group>";
@@ -305,24 +288,6 @@
 			productReference = 438B48C71DD757C40048EDB5 /* Operators.app */;
 			productType = "com.apple.product-type.application";
 		};
-		438B48DA1DD757C40048EDB5 /* OperatorsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 438B48E71DD757C40048EDB5 /* Build configuration list for PBXNativeTarget "OperatorsTests" */;
-			buildPhases = (
-				438B48D71DD757C40048EDB5 /* Sources */,
-				438B48D81DD757C40048EDB5 /* Frameworks */,
-				438B48D91DD757C40048EDB5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				438B48DD1DD757C40048EDB5 /* PBXTargetDependency */,
-			);
-			name = OperatorsTests;
-			productName = OperatorsTests;
-			productReference = 438B48DB1DD757C40048EDB5 /* OperatorsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -338,13 +303,6 @@
 						DevelopmentTeam = 7QHJV2RJB2;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
-					};
-					438B48DA1DD757C40048EDB5 = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 7QHJV2RJB2;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 438B48C61DD757C40048EDB5;
 					};
 				};
 			};
@@ -362,7 +320,6 @@
 			projectRoot = "";
 			targets = (
 				438B48C61DD757C40048EDB5 /* Operators */,
-				438B48DA1DD757C40048EDB5 /* OperatorsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -389,13 +346,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		438B48D91DD757C40048EDB5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -416,6 +366,7 @@
 				431F70E11DF34871002B0455 /* ChallengeViewController.swift in Sources */,
 				43A8E1641E90456E0047A14E /* OriginalPuzzleViewController.swift in Sources */,
 				438B48CB1DD757C40048EDB5 /* AppDelegate.swift in Sources */,
+				434FB3F7214EA0B000EE7C14 /* TutorialStepViewController.swift in Sources */,
 				4399F2CB1E5C9F1600038306 /* ColorScheme.swift in Sources */,
 				431F70D71DF273C2002B0455 /* OriginalViewController.swift in Sources */,
 				431F70DF1DF3467A002B0455 /* ChallengeModel.swift in Sources */,
@@ -436,23 +387,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		438B48D71DD757C40048EDB5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				438B48E01DD757C40048EDB5 /* OperatorsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		438B48DD1DD757C40048EDB5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 438B48C61DD757C40048EDB5 /* Operators */;
-			targetProxy = 438B48DC1DD757C40048EDB5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		438B48CE1DD757C40048EDB5 /* Main.storyboard */ = {
@@ -615,38 +550,6 @@
 			};
 			name = Release;
 		};
-		438B48E81DD757C40048EDB5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 7QHJV2RJB2;
-				INFOPLIST_FILE = OperatorsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.psu.cse.sbb5159.OperatorsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Operators.app/Operators";
-			};
-			name = Debug;
-		};
-		438B48E91DD757C40048EDB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 7QHJV2RJB2;
-				INFOPLIST_FILE = OperatorsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.psu.cse.sbb5159.OperatorsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Operators.app/Operators";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -664,15 +567,6 @@
 			buildConfigurations = (
 				438B48E51DD757C40048EDB5 /* Debug */,
 				438B48E61DD757C40048EDB5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		438B48E71DD757C40048EDB5 /* Build configuration list for PBXNativeTarget "OperatorsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				438B48E81DD757C40048EDB5 /* Debug */,
-				438B48E91DD757C40048EDB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

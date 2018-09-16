@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CourierNew.ttf">
+            <string>CourierNewPSMT</string>
+        </array>
+        <array key="CourierNewBold.ttf">
+            <string>CourierNewPS-BoldMT</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="ZFB-rX-r4v">
@@ -295,12 +303,80 @@
                         <segue destination="9dV-rM-8gZ" kind="presentation" identifier="challengePuzzleCompletedSegue" id="fxC-z7-tW4"/>
                         <segue destination="4jn-1d-UeH" kind="presentation" identifier="timerCompletedSegue" id="18n-C9-cag"/>
                         <segue destination="fc4-5o-GWx" kind="show" identifier="showGameModeSegue" id="JGP-Us-bV4"/>
+                        <segue destination="ad7-xh-9RD" kind="presentation" identifier="showTutorialStepSegue" id="7pe-of-eos"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="P6i-I5-cgB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="231.52173913043481" y="37.681159420289859"/>
+        </scene>
+        <!--Tutorial Step View Controller-->
+        <scene sceneID="vLi-LP-Ngy">
+            <objects>
+                <viewController id="ad7-xh-9RD" customClass="TutorialStepViewController" customModule="Operators" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nNt-Aw-RWT"/>
+                        <viewControllerLayoutGuide type="bottom" id="k28-fC-mtg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KZK-ZM-2wt">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGT-rE-RvK">
+                                <rect key="frame" x="20" y="336" width="313" height="58"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Skip Tutorial"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                </variation>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="1kK-8z-NNq" eventType="touchUpInside" id="8Ec-SC-7iG"/>
+                                    <action selector="skipTutorialButtonPressed:" destination="ad7-xh-9RD" eventType="touchUpInside" id="4ee-dJ-hhS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuE-hU-0xG">
+                                <rect key="frame" x="667" y="336" width="49" height="58"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="OK"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                </variation>
+                                <connections>
+                                    <action selector="OKButtonPressed:" destination="ad7-xh-9RD" eventType="touchUpInside" id="2Jo-sk-WAi"/>
+                                    <action selector="cancelButtonPressed:" destination="1kK-8z-NNq" eventType="touchUpInside" id="zgh-Kb-ljE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StR-kl-QEu">
+                                <rect key="frame" x="235.99999999999997" y="184" width="264.33333333333326" height="46"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="StR-kl-QEu" firstAttribute="top" secondItem="nNt-Aw-RWT" secondAttribute="bottom" constant="184" id="FPL-xQ-uIO"/>
+                            <constraint firstItem="k28-fC-mtg" firstAttribute="top" secondItem="HGT-rE-RvK" secondAttribute="bottom" constant="20" id="GcV-ne-AFz"/>
+                            <constraint firstItem="fuE-hU-0xG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HGT-rE-RvK" secondAttribute="trailing" constant="20" id="L35-gY-OuB"/>
+                            <constraint firstItem="k28-fC-mtg" firstAttribute="top" secondItem="fuE-hU-0xG" secondAttribute="bottom" constant="20" id="c4a-do-CPz"/>
+                            <constraint firstItem="StR-kl-QEu" firstAttribute="centerX" secondItem="KZK-ZM-2wt" secondAttribute="centerX" id="ciJ-7Y-kZK"/>
+                            <constraint firstItem="fuE-hU-0xG" firstAttribute="trailing" secondItem="KZK-ZM-2wt" secondAttribute="trailingMargin" id="ix9-D2-GXc"/>
+                            <constraint firstItem="HGT-rE-RvK" firstAttribute="leading" secondItem="KZK-ZM-2wt" secondAttribute="leadingMargin" id="kgt-4n-rrt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="StR-kl-QEu" id="tAj-9a-WI2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S9f-aN-IMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1237" y="-952"/>
         </scene>
         <!--Hints View Controller-->
         <scene sceneID="fzK-EG-Na9">
@@ -429,7 +505,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="001-md-rFa">
-                                <rect key="frame" x="499.33333333333331" y="52" width="18.333333333333314" height="34"/>
+                                <rect key="frame" x="499.66666666666669" y="52" width="18.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -438,7 +514,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-6P-2st">
-                                <rect key="frame" x="499.33333333333331" y="127" width="18.333333333333314" height="34"/>
+                                <rect key="frame" x="499.66666666666669" y="127" width="18.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -447,7 +523,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUG-Mk-hr3">
-                                <rect key="frame" x="499.33333333333331" y="201" width="18.333333333333314" height="34"/>
+                                <rect key="frame" x="499.66666666666669" y="201" width="18.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -577,7 +653,6 @@
                             <constraint firstItem="I1W-ig-6o7" firstAttribute="trailing" secondItem="2Bx-5K-o4H" secondAttribute="trailing" id="1iy-Dt-uQT"/>
                             <constraint firstItem="rrC-oq-DL3" firstAttribute="leading" secondItem="2Bx-5K-o4H" secondAttribute="leading" id="36E-R8-tR6"/>
                             <constraint firstItem="la7-YC-QIs" firstAttribute="top" secondItem="Dh9-17-M5j" secondAttribute="bottom" constant="8" id="36w-Ax-mtu"/>
-                            <constraint firstItem="qUG-Mk-hr3" firstAttribute="centerX" secondItem="2Bx-5K-o4H" secondAttribute="centerX" id="3we-kD-87E"/>
                             <constraint firstItem="80Q-Nk-z6f" firstAttribute="centerY" secondItem="uwV-Uw-7rE" secondAttribute="centerY" id="4zZ-V2-OFK"/>
                             <constraint firstItem="EK2-er-Ikt" firstAttribute="centerY" secondItem="qUG-Mk-hr3" secondAttribute="centerY" id="52U-DT-hDP"/>
                             <constraint firstItem="Anm-3r-ZsD" firstAttribute="centerY" secondItem="IeT-J3-2bY" secondAttribute="centerY" id="5f6-QW-kSb"/>
@@ -587,16 +662,14 @@
                             <constraint firstItem="RSl-91-vAt" firstAttribute="trailing" secondItem="4u9-k3-8B4" secondAttribute="trailingMargin" id="749-ez-141"/>
                             <constraint firstItem="jTE-6P-2st" firstAttribute="centerY" secondItem="uwV-Uw-7rE" secondAttribute="centerY" id="9hu-QY-x5v"/>
                             <constraint firstItem="VvS-v6-vyc" firstAttribute="top" secondItem="IUG-et-IWu" secondAttribute="bottom" constant="8" id="AKF-lf-s1A"/>
-                            <constraint firstItem="001-md-rFa" firstAttribute="centerX" secondItem="2Bx-5K-o4H" secondAttribute="centerX" id="BHw-Y7-bay"/>
                             <constraint firstItem="EK2-er-Ikt" firstAttribute="trailing" secondItem="2Bx-5K-o4H" secondAttribute="trailing" id="Bb3-xH-Jvw"/>
                             <constraint firstItem="Y6x-mD-4bZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4u9-k3-8B4" secondAttribute="leadingMargin" constant="20" id="CuI-2N-XM0"/>
+                            <constraint firstItem="jTE-6P-2st" firstAttribute="leading" secondItem="rrC-oq-DL3" secondAttribute="trailing" constant="15" id="DWn-SO-Gz5"/>
                             <constraint firstItem="mKN-IY-STv" firstAttribute="leading" secondItem="4u9-k3-8B4" secondAttribute="leadingMargin" id="DZh-6m-36R"/>
                             <constraint firstItem="Anm-3r-ZsD" firstAttribute="leading" secondItem="RSl-91-vAt" secondAttribute="leading" id="Fod-5g-Ept"/>
+                            <constraint firstItem="001-md-rFa" firstAttribute="leading" secondItem="4Xa-an-zCj" secondAttribute="trailing" constant="15" id="GKL-2b-bsz"/>
                             <constraint firstItem="jTE-6P-2st" firstAttribute="centerY" secondItem="rrC-oq-DL3" secondAttribute="centerY" id="HSS-N5-MgC"/>
                             <constraint firstItem="uMF-IO-wE2" firstAttribute="leading" secondItem="Y6x-mD-4bZ" secondAttribute="trailing" constant="5" id="Hux-eo-tOl"/>
-                            <constraint firstItem="RSl-91-vAt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2Bx-5K-o4H" secondAttribute="trailing" constant="20" id="IGk-F5-eMs">
-                                <variation key="heightClass=compact-widthClass=compact" constant="10"/>
-                            </constraint>
                             <constraint firstItem="Anm-3r-ZsD" firstAttribute="trailing" secondItem="RSl-91-vAt" secondAttribute="trailing" id="Iz6-Nd-NqS"/>
                             <constraint firstItem="4Xa-an-zCj" firstAttribute="leading" secondItem="2Bx-5K-o4H" secondAttribute="leading" id="JOv-k7-NEC"/>
                             <constraint firstItem="IUG-et-IWu" firstAttribute="trailing" secondItem="4u9-k3-8B4" secondAttribute="trailingMargin" id="JR2-uS-Xbu"/>
@@ -604,7 +677,10 @@
                             <constraint firstItem="001-md-rFa" firstAttribute="centerY" secondItem="4Xa-an-zCj" secondAttribute="centerY" id="Jc5-bP-0aQ"/>
                             <constraint firstItem="rWk-R3-RnQ" firstAttribute="leading" secondItem="2Bx-5K-o4H" secondAttribute="leading" id="Kvf-UX-UNm"/>
                             <constraint firstItem="IUG-et-IWu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L7I-ZL-3OV" secondAttribute="trailing" constant="20" id="LND-NL-BRO"/>
+                            <constraint firstItem="qUG-Mk-hr3" firstAttribute="leading" secondItem="rWk-R3-RnQ" secondAttribute="trailing" constant="15" id="Le0-7u-Lyh"/>
+                            <constraint firstItem="yci-dK-I2r" firstAttribute="leading" secondItem="jTE-6P-2st" secondAttribute="trailing" constant="15" id="LyF-XM-mIe"/>
                             <constraint firstItem="RSl-91-vAt" firstAttribute="centerY" secondItem="2Bx-5K-o4H" secondAttribute="centerY" id="MgJ-8v-AsP"/>
+                            <constraint firstItem="I1W-ig-6o7" firstAttribute="leading" secondItem="001-md-rFa" secondAttribute="trailing" constant="15" id="NDM-cl-GQp"/>
                             <constraint firstItem="uMF-IO-wE2" firstAttribute="leading" secondItem="la7-YC-QIs" secondAttribute="trailing" constant="5" id="RiV-mG-EW2"/>
                             <constraint firstItem="Iwh-CU-GrT" firstAttribute="leading" secondItem="4u9-k3-8B4" secondAttribute="leadingMargin" id="RlC-uL-ATq"/>
                             <constraint firstItem="2Bx-5K-o4H" firstAttribute="top" secondItem="4u9-k3-8B4" secondAttribute="topMargin" constant="10" id="Sfw-NI-zh8"/>
@@ -646,7 +722,7 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
                             </constraint>
                             <constraint firstItem="4Xa-an-zCj" firstAttribute="leading" secondItem="IeT-J3-2bY" secondAttribute="trailing" constant="20" id="pj7-bK-BAo"/>
-                            <constraint firstItem="jTE-6P-2st" firstAttribute="centerX" secondItem="2Bx-5K-o4H" secondAttribute="centerX" id="qOg-4Y-y7D"/>
+                            <constraint firstItem="EK2-er-Ikt" firstAttribute="leading" secondItem="qUG-Mk-hr3" secondAttribute="trailing" constant="15" id="r8p-sU-ZYa"/>
                             <constraint firstItem="L7I-ZL-3OV" firstAttribute="leading" secondItem="uMF-IO-wE2" secondAttribute="trailing" constant="17" id="rYI-5V-Mc8">
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
                             </constraint>
@@ -1528,9 +1604,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Yzo-Fo-b0c" secondAttribute="trailing" id="G4L-Mp-7I0"/>
                             <constraint firstItem="Oo6-6r-Y5X" firstAttribute="centerY" secondItem="BwH-ZF-iFj" secondAttribute="centerY" id="Gmi-er-A4L"/>
                             <constraint firstItem="Yzo-Fo-b0c" firstAttribute="top" secondItem="Oo6-6r-Y5X" secondAttribute="bottom" constant="8" id="Jgs-hv-NMi"/>
+                            <constraint firstItem="K8Z-xl-fVj" firstAttribute="leading" relation="lessThanOrEqual" secondItem="fLV-tQ-7bn" secondAttribute="trailing" constant="350" id="Kky-Dz-MDQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="K8Z-xl-fVj" secondAttribute="trailing" constant="50" id="M3E-Ty-59u"/>
                             <constraint firstItem="145-eN-Imm" firstAttribute="top" secondItem="fLV-tQ-7bn" secondAttribute="bottom" constant="20" id="V76-4S-npO"/>
-                            <constraint firstItem="K8Z-xl-fVj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fLV-tQ-7bn" secondAttribute="trailing" constant="200" id="WK5-gI-R6g"/>
                             <constraint firstItem="Ce5-tu-Ncu" firstAttribute="leading" secondItem="BwH-ZF-iFj" secondAttribute="leadingMargin" id="YQi-Lg-4SE"/>
                             <constraint firstItem="145-eN-Imm" firstAttribute="top" secondItem="K8Z-xl-fVj" secondAttribute="bottom" constant="20" id="dz7-Xh-wb9"/>
                             <constraint firstItem="ASE-uW-fJe" firstAttribute="top" secondItem="Yzo-Fo-b0c" secondAttribute="bottom" constant="8" id="lgH-ob-ciC"/>
@@ -2819,6 +2895,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="TNf-ND-LTn"/>
         <segue reference="wmA-0X-OOO"/>
-        <segue reference="wBF-pm-coa"/>
+        <segue reference="JGP-Us-bV4"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -2,34 +2,69 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<array>
-		<string>1</string>
-		<string>➕</string>
-		<string>1</string>
-		<string>➖</string>
-		<string>1</string>
-		<string>=</string>
-		<string>1</string>
-	</array>
-	<array>
-		<string>2</string>
-		<string>➕</string>
-		<string>3</string>
-		<string>✖️</string>
-		<string>4</string>
-		<string>=</string>
-		<string>14</string>
-	</array>
-	<array>
-		<string>9</string>
-		<string>➗</string>
-		<string>3</string>
-		<string>➖</string>
-		<string>4</string>
-		<string>✖️</string>
-		<string>2</string>
-		<string>=</string>
-		<string>-5</string>
-	</array>
+	<dict>
+		<key>puzzle</key>
+		<array>
+			<string>1</string>
+			<string>➕</string>
+			<string>1</string>
+			<string>➖</string>
+			<string>1</string>
+			<string>=</string>
+			<string>1</string>
+		</array>
+		<key>stepDescriptions</key>
+		<array>
+			<string>Puzzle 1 Step 1</string>
+			<string>Puzzle 1 Step 2</string>
+			<string>Puzzle 1 Step 3</string>
+			<string>Puzzle 1 Step 4</string>
+			<string>Puzzle 1 Step 5</string>
+			<string>Puzzle 1 Step 6</string>
+			<string>Puzzle 1 Step 7</string>
+			<string>Puzzle 1 Step 8</string>
+		</array>
+	</dict>
+	<dict>
+		<key>puzzle</key>
+		<array>
+			<string>2</string>
+			<string>➕</string>
+			<string>3</string>
+			<string>✖️</string>
+			<string>4</string>
+			<string>=</string>
+			<string>14</string>
+		</array>
+		<key>stepDescriptions</key>
+		<array>
+			<string>Puzzle 2 Step 1</string>
+			<string>Puzzle 2 Step 2</string>
+			<string>Puzzle 2 Step 3</string>
+			<string>Puzzle 2 Step 4</string>
+			<string>Puzzle 2 Step 5</string>
+			<string>Puzzle 2 Step 6</string>
+			<string>Puzzle 2 Step 7</string>
+		</array>
+	</dict>
+	<dict>
+		<key>puzzle</key>
+		<array>
+			<string>9</string>
+			<string>➗</string>
+			<string>3</string>
+			<string>➖</string>
+			<string>4</string>
+			<string>✖️</string>
+			<string>2</string>
+			<string>=</string>
+			<string>-5</string>
+		</array>
+		<key>stepDescriptions</key>
+		<array>
+			<string>Puzzle 3 Step 1</string>
+			<string>Puzzle 3 Step 2</string>
+		</array>
+	</dict>
 </array>
 </plist>

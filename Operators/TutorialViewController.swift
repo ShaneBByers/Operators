@@ -14,12 +14,14 @@ class TutorialViewController: UIViewController {
 
     override func viewDidLoad() {
         if settingsModel.tutorialShown {
-            performSegue(withIdentifier: "tutorialShownSegue", sender: self)
+//            performSegue(withIdentifier: "tutorialShownSegue", sender: self)
         }
         else
         {
             PuzzleModel.sharedInstance.gameType = .tutorial
         }
+        
+        PuzzleModel.sharedInstance.gameType = .tutorial
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

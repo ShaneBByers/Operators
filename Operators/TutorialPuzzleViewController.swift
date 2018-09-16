@@ -32,6 +32,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
         case 1:
             switch tutorialModel.stepNumber() {
             case 1: // Initialize first puzzle
+                showTutorialStep()
                 setupPuzzle(withEquation: tutorialModel.getCurrentPuzzle())
                 puzzleModel.equation = tutorialModel.getCurrentPuzzle()
                 expressionLabel.alpha = 0.0
@@ -48,6 +49,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
                     }
                 }
             case 2: // Double tap + into puzzle
+                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         for recognizer in puzzleLabel.label.gestureRecognizers! {
@@ -62,6 +64,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
                     }
                 }
             case 3: // Show score label with 0 score
+                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         for recognizer in puzzleLabel.label.gestureRecognizers! {
@@ -86,6 +89,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
                     })
 //                }
             case 4: // Show score increasing
+                showTutorialStep()
 //                primaryLabel.text = "Score: \(tutorialModel.getTotalScore())"
 //                primaryLabelUpdate(withText: "\(tutorialModel.getTotalScore())")
                 updateTutorialScore()
@@ -106,17 +110,20 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 }
                 executeNextStep()
             case 5: // Show expression label
+                showTutorialStep()
                 displayExpression()
                 UIView.animate(withDuration: kShortAnimationDuration, animations: {
                     self.expressionLabel.alpha = 1.0
                 })
                 executeNextStep()
             case 6: // Show - operator
+                showTutorialStep()
                 keepDefaults(Symbols.Add, Symbols.Subtract)
                 super.initializeGestureRecognizers()
                 placeDefaultOperators(isInitial: false)
                 executeNextStep()
             case 7: // Show pan and double tap puzzle operators to remove
+                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         puzzleLabel.label.addGestureRecognizer(puzzleLabel.operatorPanGestureRecognizer)
@@ -125,6 +132,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 }
                 executeNextStep()
             case 8: // Allow user to complete the puzzle
+                showTutorialStep()
                 break
             default: // Next puzzle
                 tutorialModel.puzzleComplete()
@@ -133,6 +141,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
         case 2:
             switch tutorialModel.stepNumber() {
             case 1: // Prepare puzzle and show hints button
+                showTutorialStep()
                 setupPuzzle(withEquation: tutorialModel.getCurrentPuzzle())
                 puzzleModel.equation = tutorialModel.getCurrentPuzzle()
                 for label in defaultOperatorLabels {
@@ -141,6 +150,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 }
                 self.hintsButtonAction(enable: true)
             case 2: // Place wildcard into place
+                showTutorialStep()
 //                for label in defaultOperatorLabels {
 //                    if label != defaultOperatorLabels[1] {
 //                        label.isUserInteractionEnabled = false
@@ -149,6 +159,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
 //                }
                 break
             case 3: // Show lock and have them unlock
+                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         for recognizer in puzzleLabel.label.gestureRecognizers! {
@@ -162,6 +173,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 }
 
             case 4: // Show how to lock again
+                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         for recognizer in puzzleLabel.label.gestureRecognizers! {
@@ -175,17 +187,20 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 }
                 break
             case 5: // Allow user to place another operator
+                showTutorialStep()
                 resetAllowed = true
                 for label in defaultOperatorLabels {
                     label.isUserInteractionEnabled = true
                     label.alpha = 1.0
                 }
             case 6: // Show reset button and say how to use it
+                showTutorialStep()
                 keepDefaults(Symbols.Add, Symbols.Subtract, Symbols.Multiply, Symbols.Divide)
                 super.initializeGestureRecognizers()
                 placeDefaultOperators(isInitial: false)
                 executeNextStep()
             case 7: // Allow user to complete the puzzle
+                showTutorialStep()
                 break
             default: // Next puzzle
                 tutorialModel.puzzleComplete()
@@ -204,10 +219,12 @@ class TutorialPuzzleViewController: PuzzleViewController {
         case 3:
             switch tutorialModel.stepNumber() {
             case 1: // Prepare puzzle and show score multiplier
+                showTutorialStep()
                 setupPuzzle(withEquation: tutorialModel.getCurrentPuzzle())
                 puzzleModel.equation = tutorialModel.getCurrentPuzzle()
                 self.hintsButtonAction(enable: true)
             case 2: // Show solve button as an option
+                showTutorialStep()
                 self.solveButtonAction(enable: true)
             default: // Finish tutorial
                 tutorialModel.puzzleComplete()
@@ -217,6 +234,14 @@ class TutorialPuzzleViewController: PuzzleViewController {
             performSegue(withIdentifier: "showGameModeSegue", sender: self)
             
         }
+    }
+    
+    func skipTutorial() {
+        performSegue(withIdentifier: "showGameModeSegue", sender: self)
+    }
+    
+    func showTutorialStep() {
+        performSegue(withIdentifier: "showTutorialStepSegue", sender: self)
     }
     
     func keepDefaults(_ operatorStrings: String...) {
@@ -239,13 +264,28 @@ class TutorialPuzzleViewController: PuzzleViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        if let destination = segue.destination as? HintsViewController {
-            if tutorialModel.status(isPuzzle: 2, isStep: 1) {
-                destination.configureTutorial(allowed: .custom)
-            } else if tutorialModel.status(isPuzzle: 3, isStep: 1) {
-                destination.configureTutorial(allowed: .random, .uses)
+        switch segue.identifier! {
+        case "hintsSegue":
+            if let destination = segue.destination as? HintsViewController {
+                if tutorialModel.status(isPuzzle: 2, isStep: 1) {
+                    destination.configureTutorial(allowed: .custom)
+                } else if tutorialModel.status(isPuzzle: 3, isStep: 1) {
+                    destination.configureTutorial(allowed: .random, .uses)
+                }
             }
+        case "showTutorialStepSegue":
+            if let destination = segue.destination as? TutorialStepViewController {
+                destination.configureTutorialPuzzleViewController(with: self)
+                
+                let description = tutorialModel.getCurrentDescription()
+                
+                destination.configureTutorialStepDescription(with: description)
+            }
+        case "showGameModeSegue": break
+        default: assert(false, "Unhandled Segue")
         }
+        
+
     }
     
     override func implementHints() {

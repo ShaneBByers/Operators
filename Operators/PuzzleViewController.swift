@@ -145,6 +145,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         case "unwindToTimed": break
         case "unwindToGameType": break
         case "showGameModeSegue": break
+        case "showTutorialStepSegue": break
         default: assert(false, "Unhandled Segue")
         }
     }

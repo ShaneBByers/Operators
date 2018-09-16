@@ -33,6 +33,8 @@ class TutorialModel {
     
     private var pointsMultiplier = (range: 0..<180, multiplier: 1.0)
     
+    private var stepDescriptions = [[String]]()
+    
     init() {
         
         pointsMultipliers.append((range: 0..<180, multiplier: 1.0))
@@ -41,9 +43,23 @@ class TutorialModel {
         
         if let path = Bundle.main.path(forResource: Filenames.tutorial, ofType: "plist") {
             
-            if let puzzles = NSArray(contentsOfFile: path) as? [Any] {
-                for puzzle in puzzles {
-                    equations.append(puzzle as! [String])
+            if let itemArray = NSArray(contentsOfFile: path) as? [Any] {
+                for item in itemArray {
+                    if let dictionary = item as? [String:[String]] {
+                        if let puzzle = dictionary["puzzle"] {
+                            equations.append(puzzle)
+                        }
+                        
+                        var stepDescriptionPuzzle = [String]()
+                        
+                        if let stepDescriptions = dictionary["stepDescriptions"] {
+                            for stepDescription in stepDescriptions {
+                                stepDescriptionPuzzle.append(stepDescription)
+                            }
+                        }
+                        
+                        stepDescriptions.append(stepDescriptionPuzzle)
+                    }
                 }
             }
         }
@@ -185,5 +201,9 @@ class TutorialModel {
     
     func resetTotalScore() {
         totalScoreValue = 0
+    }
+    
+    func getCurrentDescription() -> String {
+        return stepDescriptions[puzzle][step - 1]
     }
 }
