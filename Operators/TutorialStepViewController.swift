@@ -14,6 +14,8 @@ class TutorialStepViewController: UIViewController {
     
     var stepDescription: String?
     
+    var exitingClosure: (()->Void)?
+    
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
@@ -42,5 +44,8 @@ class TutorialStepViewController: UIViewController {
     
     @IBAction func OKButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true)
+        if let closure = exitingClosure {
+            closure()
+        }
     }
 }

@@ -46,8 +46,19 @@ class OriginalModel {
         let fileExists = fileManager.fileExists(atPath: bestScoreURL.path)
         
         if fileExists {
-            archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
-            highScores = archive.scores
+//            archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
+//            highScores = archive.scores
+            let fileContents = fileManager.contents(atPath: bestScoreURL.path)
+            if let contents = fileContents {
+                do {
+                    archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! BestScoreArchive
+                    highScores = archive.scores
+                } catch {
+                    fatalError("Cannot find Best Score Archive object")
+                }
+            } else {
+                fatalError("Cannot find contents of Best Score Archive file")
+            }
         } else {
             
             highScores[Difficulty.easy.rawValue] = 0
@@ -56,8 +67,9 @@ class OriginalModel {
             highScores[Difficulty.random.rawValue] = 0
             
             archive = BestScoreArchive(highScores: highScores)
-            NSKeyedArchiver.archiveRootObject(archive, toFile: bestScoreURL.path)
-        }        
+//            NSKeyedArchiver.archiveRootObject(archive, toFile: bestScoreURL.path)
+            saveArchive()
+        }
     }
     
     func configureMaxScore() {
@@ -151,12 +163,18 @@ class OriginalModel {
     }
     
     func highScore(forDifficulty difficulty: Difficulty) -> Int {
-        archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
+//        archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
         highScores = archive.scores
         return highScores[difficulty.rawValue]!
     }
     
     func saveArchive() {
-        NSKeyedArchiver.archiveRootObject(archive, toFile: bestScoreURL.path)
+//        NSKeyedArchiver.archiveRootObject(archive, toFile: bestScoreURL.path)
+        do {
+            let codedData = try NSKeyedArchiver.archivedData(withRootObject: archive, requiringSecureCoding: false)
+            try codedData.write(to: bestScoreURL)
+        } catch {
+            fatalError("Save archive OriginalModel data failed.")
+        }
     }
 }

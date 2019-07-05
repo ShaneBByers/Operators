@@ -42,8 +42,21 @@ class TimedModel {
         timedURL = documentURL.appendingPathComponent(Filenames.timed + ".archive")
         
         if fileManager.fileExists(atPath: timedURL.path) {
-            archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
-            highScores = archive.scores
+//            archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
+//            highScores = archive.scores
+            let fileContents = fileManager.contents(atPath: timedURL.path)
+            if let contents = fileContents {
+                do {
+                    archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! TimedArchive
+                    highScores = archive.scores
+                } catch {
+                    fatalError("Cannot find Timed Archive object")
+                }
+            }
+            else
+            {
+                fatalError("Cannot find contents of Timed Archive file")
+            }
         } else {
             
             var initTimeHighScores : [Int:Int] = [:]
@@ -186,12 +199,18 @@ class TimedModel {
     }
     
     func highScore() -> Int {
-        archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
+//        archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
         highScores = archive.scores
         return highScores[difficulty!.rawValue]![Int(totalTime!)]!
     }
     
     func saveArchive() {
-        NSKeyedArchiver.archiveRootObject(archive, toFile: timedURL.path)
+//        NSKeyedArchiver.archiveRootObject(archive, toFile: timedURL.path)
+        do {
+            let codedData = try NSKeyedArchiver.archivedData(withRootObject: archive, requiringSecureCoding: false)
+            try codedData.write(to: timedURL)
+        } catch {
+            fatalError("Save archive TimedModel data failed.")
+        }
     }
 }

@@ -29,11 +29,24 @@ class SettingsModel {
         let fileExists = fileManager.fileExists(atPath: settingsURL.path)
         
         if fileExists {
-            settingsArchive = NSKeyedUnarchiver.unarchiveObject(withFile: settingsURL.path)! as! SettingsArchive
-            
-            Symbols.Divide = settingsArchive.divisionSymbol
-            ColorScheme.scheme = SchemeChoice(rawValue: settingsArchive.colorScheme)!
-            tutorialShown = settingsArchive.tutorialShown
+//            settingsArchive = NSKeyedUnarchiver.unarchiveObject(withFile: settingsURL.path)! as! SettingsArchive
+//
+//            Symbols.Divide = settingsArchive.divisionSymbol
+//            ColorScheme.scheme = SchemeChoice(rawValue: settingsArchive.colorScheme)!
+//            tutorialShown = settingsArchive.tutorialShown
+            let fileContents = fileManager.contents(atPath: settingsURL.path)
+            if let contents = fileContents {
+                do {
+                    settingsArchive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! SettingsArchive
+                    Symbols.Divide = settingsArchive.divisionSymbol
+                    ColorScheme.scheme = SchemeChoice(rawValue: settingsArchive.colorScheme)!
+                    tutorialShown = settingsArchive.tutorialShown
+                } catch {
+                    fatalError("Cannot find Settings Archive object")
+                }
+            } else {
+                fatalError("Cannot find contents of Settings Archive file")
+            }
             
         } else {
             Symbols.Divide = Symbols.HyphenDots
@@ -42,7 +55,8 @@ class SettingsModel {
             
             settingsArchive = SettingsArchive(divisionSymbol: Symbols.Divide, colorScheme: ColorScheme.scheme.rawValue, tutorialShown: tutorialShown)
             
-            NSKeyedArchiver.archiveRootObject(settingsArchive, toFile: settingsURL.path)
+//            NSKeyedArchiver.archiveRootObject(settingsArchive, toFile: settingsURL.path)
+            saveSettingsArchive()
         }
     }
     
@@ -54,13 +68,27 @@ class SettingsModel {
         let fileExists = fileManager.fileExists(atPath: challengeURL.path)
         
         if fileExists {
-            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
-            
-            for i in 1..<archive.availablePuzzles[difficulty.rawValue]!.count {
-                if archive.availablePuzzles[difficulty.rawValue]![i] {
-                    return true
+            let fileContents = fileManager.contents(atPath: challengeURL.path)
+            if let contents = fileContents {
+                do {
+                    let archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! ChallengeArchive
+                    for i in 1..<archive.availablePuzzles[difficulty.rawValue]!.count {
+                        if archive.availablePuzzles[difficulty.rawValue]![i] {
+                            return true
+                        }
+                    }
+                    
+                } catch {
+                    fatalError("Cannot find Challenge Archive object")
                 }
             }
+//            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
+//
+//            for i in 1..<archive.availablePuzzles[difficulty.rawValue]!.count {
+//                if archive.availablePuzzles[difficulty.rawValue]![i] {
+//                    return true
+//                }
+//            }
         }
         return false
     }
@@ -73,13 +101,26 @@ class SettingsModel {
         let fileExists = fileManager.fileExists(atPath: bestScoreURL.path)
         
         if fileExists {
-            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
-            
-            for score in archive.scores.values {
-                if score > 0 {
-                    return true
+            let fileContents = fileManager.contents(atPath: bestScoreURL.path)
+            if let contents = fileContents {
+                do {
+                    let archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! BestScoreArchive
+                    for score in archive.scores.values {
+                        if score > 0 {
+                            return true
+                        }
+                    }
+                } catch {
+                    fatalError("Cannot find Best Score Archive object")
                 }
             }
+//            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
+//
+//            for score in archive.scores.values {
+//                if score > 0 {
+//                    return true
+//                }
+//            }
         }
         return false
     }
@@ -92,15 +133,30 @@ class SettingsModel {
         let fileExists = fileManager.fileExists(atPath: timedURL.path)
         
         if fileExists {
-            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
-            
-            for dict in archive.scores.values {
-                for score in dict.values {
-                    if score > 0 {
-                        return true
+            let fileContents = fileManager.contents(atPath: timedURL.path)
+            if let contents = fileContents {
+                do {
+                    let archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! TimedArchive
+                    for dict in archive.scores.values {
+                        for score in dict.values {
+                            if score > 0 {
+                                return true
+                            }
+                        }
                     }
+                } catch {
+                    fatalError("Cannot find Timed Archive object")
                 }
             }
+//            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
+//
+//            for dict in archive.scores.values {
+//                for score in dict.values {
+//                    if score > 0 {
+//                        return true
+//                    }
+//                }
+//            }
         }
         return false
     }
@@ -113,11 +169,24 @@ class SettingsModel {
         let fileExists = fileManager.fileExists(atPath: bestScoreURL.path)
         
         if fileExists {
-            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
-            for scoreKey in archive.scores.keys {
-                archive.scores[scoreKey] = 0
+//            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: bestScoreURL.path)! as! BestScoreArchive
+//            for scoreKey in archive.scores.keys {
+//                archive.scores[scoreKey] = 0
+//            }
+//            NSKeyedArchiver.archiveRootObject(archive, toFile: bestScoreURL.path)
+            let fileContents = fileManager.contents(atPath: bestScoreURL.path)
+            if let contents = fileContents {
+                do {
+                    let archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! BestScoreArchive
+                    for scoreKey in archive.scores.keys {
+                        archive.scores[scoreKey] = 0
+                    }
+                    let codedData = try NSKeyedArchiver.archivedData(withRootObject: archive, requiringSecureCoding: false)
+                    try codedData.write(to: bestScoreURL)
+                } catch {
+                    fatalError("Cannot delete Best Score Archive data.")
+                }
             }
-            NSKeyedArchiver.archiveRootObject(archive, toFile: bestScoreURL.path)
         }
     }
     
@@ -129,13 +198,28 @@ class SettingsModel {
         let fileExists = fileManager.fileExists(atPath: timedURL.path)
         
         if fileExists {
-            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
-            for difficultyKey in archive.scores.keys {
-                for timeKey in archive.scores[difficultyKey]!.keys {
-                    archive.scores[difficultyKey]![timeKey]! = 0
+//            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: timedURL.path)! as! TimedArchive
+//            for difficultyKey in archive.scores.keys {
+//                for timeKey in archive.scores[difficultyKey]!.keys {
+//                    archive.scores[difficultyKey]![timeKey]! = 0
+//                }
+//            }
+//            NSKeyedArchiver.archiveRootObject(archive, toFile: timedURL.path)
+            let fileContents = fileManager.contents(atPath: timedURL.path)
+            if let contents = fileContents {
+                do {
+                    let archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! TimedArchive
+                    for difficultyKey in archive.scores.keys {
+                        for timeKey in archive.scores[difficultyKey]!.keys {
+                            archive.scores[difficultyKey]![timeKey]! = 0
+                        }
+                    }
+                    let codedData = try NSKeyedArchiver.archivedData(withRootObject: archive, requiringSecureCoding: false)
+                    try codedData.write(to: timedURL)
+                } catch {
+                    fatalError("Cannot delete Timed Archive data.")
                 }
             }
-            NSKeyedArchiver.archiveRootObject(archive, toFile: timedURL.path)
         }
     }
     
@@ -147,12 +231,25 @@ class SettingsModel {
         let fileExists = fileManager.fileExists(atPath: challengeURL.path)
         
         if fileExists {
-            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
-            
-            for i in 1..<archive.availablePuzzles[difficulty.rawValue]!.count {
-                archive.availablePuzzles[difficulty.rawValue]![i] = false
+//            let archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
+//
+//            for i in 1..<archive.availablePuzzles[difficulty.rawValue]!.count {
+//                archive.availablePuzzles[difficulty.rawValue]![i] = false
+//            }
+//            NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
+            let fileContents = fileManager.contents(atPath: challengeURL.path)
+            if let contents = fileContents {
+                do {
+                    let archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! ChallengeArchive
+                    for i in 1..<archive.availablePuzzles[difficulty.rawValue]!.count {
+                        archive.availablePuzzles[difficulty.rawValue]![i] = false
+                    }
+                    let codedData = try NSKeyedArchiver.archivedData(withRootObject: archive, requiringSecureCoding: false)
+                    try codedData.write(to: challengeURL)
+                } catch {
+                    fatalError("Cannot delete Challenge Archive data.")
+                }
             }
-            NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
         }
     }
     
@@ -179,6 +276,12 @@ class SettingsModel {
     }
     
     func saveSettingsArchive() {
-        NSKeyedArchiver.archiveRootObject(settingsArchive, toFile: settingsURL.path)
+//        NSKeyedArchiver.archiveRootObject(settingsArchive, toFile: settingsURL.path)
+        do {
+            let codedData = try NSKeyedArchiver.archivedData(withRootObject: settingsArchive, requiringSecureCoding: false)
+            try codedData.write(to: settingsURL)
+        } catch {
+            fatalError("Save archive SettingsModel data failed.")
+        }
     }
 }

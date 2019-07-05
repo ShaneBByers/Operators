@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo1-TJ-XGC">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="CourierNew.ttf">
-            <string>CourierNewPSMT</string>
-        </array>
-        <array key="CourierNewBold.ttf">
-            <string>CourierNewPS-BoldMT</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="ZFB-rX-r4v">
@@ -208,7 +197,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw8-GX-Zqv">
-                                <rect key="frame" x="118.99999999999999" y="366.66666666666669" width="54.333333333333329" height="34"/>
+                                <rect key="frame" x="118.99999999999999" y="366" width="54.333333333333329" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -226,7 +215,7 @@
                                 </variation>
                             </label>
                             <progressView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="puD-aV-c3k">
-                                <rect key="frame" x="248" y="316.66666666666669" width="240" height="2"/>
+                                <rect key="frame" x="248" y="316" width="240" height="2"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="0ya-G5-spf"/>
@@ -235,7 +224,7 @@
                                 <color key="trackTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.24660209760273974" colorSpace="calibratedRGB"/>
                             </progressView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxJ-t7-pju" userLabel="Porgress Bar Constraint View">
-                                <rect key="frame" x="248" y="316" width="240" height="2.6666666666666856"/>
+                                <rect key="frame" x="248" y="316" width="240" height="2"/>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-4g-2ur">
                                 <rect key="frame" x="240" y="317" width="0.0" height="0.0"/>
@@ -349,23 +338,24 @@
                                     <action selector="cancelButtonPressed:" destination="1kK-8z-NNq" eventType="touchUpInside" id="zgh-Kb-ljE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StR-kl-QEu">
-                                <rect key="frame" x="235.99999999999997" y="184" width="264.33333333333326" height="46"/>
-                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StR-kl-QEu">
+                                <rect key="frame" x="40" y="190" width="656" height="34"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="35"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="StR-kl-QEu" firstAttribute="top" secondItem="nNt-Aw-RWT" secondAttribute="bottom" constant="184" id="FPL-xQ-uIO"/>
                             <constraint firstItem="k28-fC-mtg" firstAttribute="top" secondItem="HGT-rE-RvK" secondAttribute="bottom" constant="20" id="GcV-ne-AFz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="StR-kl-QEu" secondAttribute="trailing" constant="20" id="Jm0-8d-RAf"/>
                             <constraint firstItem="fuE-hU-0xG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HGT-rE-RvK" secondAttribute="trailing" constant="20" id="L35-gY-OuB"/>
                             <constraint firstItem="k28-fC-mtg" firstAttribute="top" secondItem="fuE-hU-0xG" secondAttribute="bottom" constant="20" id="c4a-do-CPz"/>
-                            <constraint firstItem="StR-kl-QEu" firstAttribute="centerX" secondItem="KZK-ZM-2wt" secondAttribute="centerX" id="ciJ-7Y-kZK"/>
+                            <constraint firstItem="StR-kl-QEu" firstAttribute="centerY" secondItem="KZK-ZM-2wt" secondAttribute="centerY" id="dHX-8C-RQz" userLabel="Description Label.bottom = centerY"/>
+                            <constraint firstItem="StR-kl-QEu" firstAttribute="leading" secondItem="KZK-ZM-2wt" secondAttribute="leadingMargin" constant="20" id="euG-05-CK3"/>
                             <constraint firstItem="fuE-hU-0xG" firstAttribute="trailing" secondItem="KZK-ZM-2wt" secondAttribute="trailingMargin" id="ix9-D2-GXc"/>
                             <constraint firstItem="HGT-rE-RvK" firstAttribute="leading" secondItem="KZK-ZM-2wt" secondAttribute="leadingMargin" id="kgt-4n-rrt"/>
                         </constraints>
@@ -391,7 +381,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Operator Uses" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKN-IY-STv">
-                                <rect key="frame" x="20" y="200.66666666666666" width="414.33333333333331" height="34"/>
+                                <rect key="frame" x="20" y="200" width="414.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -400,7 +390,7 @@
                                 </variation>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2A-Y7-Qj4">
-                                <rect key="frame" x="405.66666666666669" y="261.66666666666669" width="54.333333333333314" height="34"/>
+                                <rect key="frame" x="405.66666666666669" y="260" width="54.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -409,7 +399,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7I-ZL-3OV">
-                                <rect key="frame" x="405.66666666666669" y="345.66666666666669" width="54.333333333333314" height="34"/>
+                                <rect key="frame" x="405.66666666666669" y="344" width="54.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -442,7 +432,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Wildcard Operator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwV-Uw-7rE">
-                                <rect key="frame" x="20" y="126.66666666666669" width="414.33333333333331" height="34"/>
+                                <rect key="frame" x="20" y="126" width="414.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -451,7 +441,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Random Operator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeT-J3-2bY">
-                                <rect key="frame" x="20" y="52.666666666666657" width="414.33333333333331" height="34"/>
+                                <rect key="frame" x="20" y="52" width="414.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -478,7 +468,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80Q-Nk-z6f">
-                                <rect key="frame" x="589.66666666666663" y="127" width="126.33333333333337" height="34"/>
+                                <rect key="frame" x="589.66666666666663" y="126" width="126.33333333333337" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -487,7 +477,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54s-Q1-e37">
-                                <rect key="frame" x="589.66666666666663" y="201" width="126.33333333333337" height="34"/>
+                                <rect key="frame" x="589.66666666666663" y="200" width="126.33333333333337" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -505,7 +495,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="001-md-rFa">
-                                <rect key="frame" x="499.66666666666669" y="52" width="18.333333333333314" height="34"/>
+                                <rect key="frame" x="499.33333333333331" y="52" width="18.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -514,7 +504,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-6P-2st">
-                                <rect key="frame" x="499.66666666666669" y="127" width="18.333333333333314" height="34"/>
+                                <rect key="frame" x="499.33333333333331" y="126" width="18.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -523,7 +513,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUG-Mk-hr3">
-                                <rect key="frame" x="499.66666666666669" y="201" width="18.333333333333314" height="34"/>
+                                <rect key="frame" x="499.33333333333331" y="200" width="18.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -532,7 +522,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1W-ig-6o7">
-                                <rect key="frame" x="532.66666666666663" y="46.666666666666657" width="30" height="46"/>
+                                <rect key="frame" x="532.66666666666663" y="46" width="30" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="+"/>
@@ -544,7 +534,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yci-dK-I2r">
-                                <rect key="frame" x="532.66666666666663" y="121.66666666666669" width="30" height="46"/>
+                                <rect key="frame" x="532.66666666666663" y="120" width="30" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="+"/>
@@ -556,7 +546,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK2-er-Ikt">
-                                <rect key="frame" x="532.66666666666663" y="195.66666666666666" width="30" height="46"/>
+                                <rect key="frame" x="532.66666666666663" y="194" width="30" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="+"/>
@@ -568,7 +558,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xa-an-zCj">
-                                <rect key="frame" x="454.33333333333331" y="46.666666666666657" width="30" height="46"/>
+                                <rect key="frame" x="454.33333333333331" y="46" width="30" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="-"/>
@@ -580,7 +570,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrC-oq-DL3">
-                                <rect key="frame" x="454.33333333333331" y="121.66666666666669" width="30" height="46"/>
+                                <rect key="frame" x="454.33333333333331" y="120" width="30" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="-"/>
@@ -592,7 +582,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWk-R3-RnQ">
-                                <rect key="frame" x="454.33333333333331" y="195.66666666666666" width="30" height="46"/>
+                                <rect key="frame" x="454.33333333333331" y="194" width="30" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="-"/>
@@ -604,14 +594,14 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMF-IO-wE2" userLabel="Penalty Center View">
-                                <rect key="frame" x="387.66666666666669" y="261.66666666666669" width="1" height="152.33333333333331"/>
+                                <rect key="frame" x="387.66666666666669" y="260" width="1" height="154"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="NWU-Io-yhc"/>
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previous:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6x-mD-4bZ">
-                                <rect key="frame" x="220.33333333333331" y="261.66666666666669" width="162.33333333333331" height="34"/>
+                                <rect key="frame" x="220.33333333333331" y="260" width="162.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -620,7 +610,7 @@
                                 </variation>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dh9-17-M5j">
-                                <rect key="frame" x="274.33333333333331" y="303.66666666666669" width="108.33333333333331" height="34"/>
+                                <rect key="frame" x="274.33333333333331" y="302" width="108.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -629,7 +619,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="la7-YC-QIs">
-                                <rect key="frame" x="274.33333333333331" y="345.66666666666669" width="108.33333333333331" height="34"/>
+                                <rect key="frame" x="274.33333333333331" y="344" width="108.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -638,7 +628,7 @@
                                 </variation>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D64-wU-0O0">
-                                <rect key="frame" x="405.66666666666669" y="303.66666666666669" width="54.333333333333314" height="34"/>
+                                <rect key="frame" x="405.66666666666669" y="302" width="54.333333333333314" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -772,7 +762,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlW-qo-Kcf">
-                                <rect key="frame" x="199.99999999999997" y="131.66666666666666" width="336.33333333333326" height="45.333333333333343"/>
+                                <rect key="frame" x="199.99999999999997" y="131" width="336.33333333333326" height="45.333333333333343"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -816,7 +806,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congrats!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbc-Lx-PaJ">
-                                <rect key="frame" x="260" y="78.333333333333329" width="216.33333333333337" height="45.333333333333329"/>
+                                <rect key="frame" x="260" y="77.666666666666671" width="216.33333333333337" height="45.333333333333329"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1266,7 +1256,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muB-ss-f0O">
-                                <rect key="frame" x="29.333333333333329" y="301" width="145" height="46"/>
+                                <rect key="frame" x="30" y="301" width="145" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Original"/>
@@ -1374,7 +1364,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="➗" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtU-Zo-cfp">
-                                <rect key="frame" x="348" y="55.666666666666657" width="40" height="45.333333333333343"/>
+                                <rect key="frame" x="348" y="55.666666666666657" width="40" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1682,7 +1672,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX1-Hk-FUc">
-                                <rect key="frame" x="581" y="88.666666666666671" width="135" height="34"/>
+                                <rect key="frame" x="581" y="88" width="135" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="bz2-hf-QZ3"/>
                                 </constraints>
@@ -1694,10 +1684,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6n9-1C-INi">
-                                <rect key="frame" x="581" y="136.66666666666666" width="135" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="135" id="0vA-Qf-1Xt"/>
-                                </constraints>
+                                <rect key="frame" x="581" y="136" width="135" height="34"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1706,7 +1693,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iem-4s-skU">
-                                <rect key="frame" x="581" y="190.66666666666666" width="135" height="34"/>
+                                <rect key="frame" x="581" y="190" width="135" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="mKd-AV-7zk"/>
                                 </constraints>
@@ -1718,7 +1705,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-mk-KB0">
-                                <rect key="frame" x="581" y="244.66666666666663" width="135" height="34"/>
+                                <rect key="frame" x="581" y="244" width="135" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="Csu-83-vnZ"/>
                                 </constraints>
@@ -1754,7 +1741,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVI-J2-PyW">
-                                <rect key="frame" x="581" y="298.66666666666669" width="135" height="34"/>
+                                <rect key="frame" x="581" y="298" width="135" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="ppp-Rb-utH"/>
                                 </constraints>
@@ -1824,10 +1811,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NR-JU-Ta7">
-                                <rect key="frame" x="342" y="173.66666666666666" width="52.333333333333314" height="52.333333333333343"/>
+                                <rect key="frame" x="341.66666666666669" y="174.33333333333334" width="52.666666666666686" height="52.333333333333343"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="1sR-09-lrY"/>
                                     <constraint firstAttribute="height" constant="40" id="C8A-5g-hJi"/>
                                     <constraint firstAttribute="width" secondItem="5NR-JU-Ta7" secondAttribute="height" multiplier="1:1" id="HUE-hS-XGU"/>
                                 </constraints>
@@ -1836,14 +1822,12 @@
                                 <state key="normal" title="13"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="1sR-09-lrY"/>
                                         <exclude reference="C8A-5g-hJi"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                     <mask key="constraints">
-                                        <include reference="1sR-09-lrY"/>
                                         <include reference="C8A-5g-hJi"/>
                                     </mask>
                                 </variation>
@@ -1852,7 +1836,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-xJ-hLa">
-                                <rect key="frame" x="402.33333333333331" y="173.66666666666666" width="52.666666666666686" height="52.333333333333343"/>
+                                <rect key="frame" x="402.33333333333331" y="174.33333333333334" width="52.666666666666686" height="52.333333333333343"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i9L-xJ-hLa" secondAttribute="height" multiplier="1:1" id="1a3-BT-yy2"/>
@@ -1880,7 +1864,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzB-Ol-eNQ">
-                                <rect key="frame" x="463" y="173.66666666666666" width="52.666666666666629" height="52.333333333333343"/>
+                                <rect key="frame" x="463" y="174.33333333333334" width="52.666666666666629" height="52.333333333333343"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BzB-Ol-eNQ" secondAttribute="height" multiplier="1:1" id="Tb7-6e-2ih"/>
@@ -1908,7 +1892,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuY-ZH-iHU">
-                                <rect key="frame" x="220.66666666666666" y="173.66666666666666" width="52.666666666666657" height="52.333333333333343"/>
+                                <rect key="frame" x="220.66666666666666" y="174.33333333333334" width="52.333333333333343" height="52.333333333333343"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="F8O-r6-JVL"/>
@@ -1936,10 +1920,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x88-UJ-jRo">
-                                <rect key="frame" x="281.33333333333331" y="173.66666666666666" width="52.666666666666686" height="52.333333333333343"/>
+                                <rect key="frame" x="281" y="174.33333333333334" width="52.666666666666686" height="52.333333333333343"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="0Uc-9o-Pie"/>
                                     <constraint firstAttribute="height" constant="40" id="5Ok-ak-Sce"/>
                                     <constraint firstAttribute="width" secondItem="x88-UJ-jRo" secondAttribute="height" multiplier="1:1" id="HKU-Rk-gla"/>
                                 </constraints>
@@ -1948,14 +1931,12 @@
                                 <state key="normal" title="12"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="0Uc-9o-Pie"/>
                                         <exclude reference="5Ok-ak-Sce"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="25"/>
                                     <mask key="constraints">
-                                        <include reference="0Uc-9o-Pie"/>
                                         <include reference="5Ok-ak-Sce"/>
                                     </mask>
                                 </variation>
@@ -1964,7 +1945,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIf-0V-mdc">
-                                <rect key="frame" x="342" y="234" width="52.666666666666686" height="53"/>
+                                <rect key="frame" x="341.66666666666669" y="234.66666666666666" width="52.666666666666686" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="adD-kG-Cba"/>
@@ -1992,7 +1973,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqb-EL-a4i">
-                                <rect key="frame" x="402.33333333333331" y="234" width="52.666666666666686" height="53"/>
+                                <rect key="frame" x="402.33333333333331" y="234.66666666666666" width="52.666666666666686" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="44Z-Qg-W6i"/>
@@ -2019,7 +2000,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPl-ev-cyS">
-                                <rect key="frame" x="463" y="234" width="52.666666666666629" height="53"/>
+                                <rect key="frame" x="463" y="234.66666666666666" width="52.666666666666629" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="cKu-Yo-9Is"/>
@@ -2046,7 +2027,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwb-3b-Vbf">
-                                <rect key="frame" x="220.66666666666666" y="234" width="52.666666666666657" height="53"/>
+                                <rect key="frame" x="220.66666666666666" y="234.66666666666666" width="52.333333333333343" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DES-7g-iue"/>
@@ -2073,7 +2054,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMg-cG-pcN">
-                                <rect key="frame" x="281.33333333333331" y="234" width="52.666666666666686" height="53"/>
+                                <rect key="frame" x="281" y="234.66666666666666" width="52.666666666666686" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="aaA-fA-4DG"/>
@@ -2100,7 +2081,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFe-H7-rqM">
-                                <rect key="frame" x="342" y="295" width="52.666666666666686" height="53"/>
+                                <rect key="frame" x="341.66666666666669" y="295.33333333333331" width="52.666666666666686" height="52.666666666666686"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LFe-H7-rqM" secondAttribute="height" multiplier="1:1" id="0rA-00-hM9"/>
@@ -2128,7 +2109,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe6-MJ-lDV">
-                                <rect key="frame" x="220.66666666666666" y="295" width="52.666666666666657" height="53"/>
+                                <rect key="frame" x="220.66666666666666" y="295.33333333333331" width="52.333333333333343" height="52.666666666666686"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="CgQ-87-muv"/>
@@ -2155,7 +2136,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zt-Sm-2oF">
-                                <rect key="frame" x="281.33333333333331" y="295" width="52.666666666666686" height="53"/>
+                                <rect key="frame" x="281" y="295.33333333333331" width="52.666666666666686" height="52.666666666666686"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="6so-na-8eK"/>
@@ -2182,7 +2163,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuB-KT-mR9">
-                                <rect key="frame" x="342" y="113.00000000000001" width="52.333333333333314" height="52.666666666666671"/>
+                                <rect key="frame" x="341.66666666666669" y="113.66666666666667" width="52.666666666666686" height="52.666666666666671"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vuB-KT-mR9" secondAttribute="height" multiplier="1:1" id="PVA-h7-AdU"/>
@@ -2210,7 +2191,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipu-Jj-rpj">
-                                <rect key="frame" x="402.33333333333331" y="113.00000000000001" width="52.666666666666686" height="52.666666666666671"/>
+                                <rect key="frame" x="402.33333333333331" y="113.66666666666667" width="52.666666666666686" height="52.666666666666671"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="af0-nX-QBL"/>
@@ -2237,7 +2218,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDw-Ve-k0Q">
-                                <rect key="frame" x="463" y="113.00000000000001" width="52.666666666666629" height="52.666666666666671"/>
+                                <rect key="frame" x="463" y="113.66666666666667" width="52.666666666666629" height="52.666666666666671"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="94W-Ej-0ps"/>
@@ -2264,7 +2245,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ly9-Jh-Sbh">
-                                <rect key="frame" x="220.66666666666666" y="113.00000000000001" width="52.666666666666657" height="52.666666666666671"/>
+                                <rect key="frame" x="220.66666666666666" y="113.66666666666667" width="52.333333333333343" height="52.666666666666671"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="ZWQ-kn-6Bk"/>
@@ -2291,7 +2272,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIn-zG-IRQ">
-                                <rect key="frame" x="281.33333333333331" y="113.00000000000001" width="52.666666666666686" height="52.666666666666671"/>
+                                <rect key="frame" x="281" y="113.66666666666667" width="52.666666666666686" height="52.666666666666671"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="G4L-Ox-g8Y"/>
@@ -2318,7 +2299,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOl-Pk-2Xt">
-                                <rect key="frame" x="342" y="52.333333333333343" width="52.333333333333314" height="52.666666666666657"/>
+                                <rect key="frame" x="341.66666666666669" y="53" width="52.666666666666686" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="HtK-qf-WaV"/>
@@ -2346,7 +2327,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgN-fm-y3K">
-                                <rect key="frame" x="402.33333333333331" y="52.333333333333343" width="52.666666666666686" height="52.666666666666657"/>
+                                <rect key="frame" x="402.33333333333331" y="53" width="52.666666666666686" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Hja-go-doV"/>
@@ -2373,7 +2354,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCR-EB-a9S">
-                                <rect key="frame" x="463" y="52.333333333333343" width="52.666666666666629" height="52.666666666666657"/>
+                                <rect key="frame" x="463" y="53" width="52.666666666666629" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cnt-zy-dDD"/>
@@ -2400,7 +2381,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rae-w0-zJi">
-                                <rect key="frame" x="220.66666666666666" y="52.333333333333343" width="52.666666666666657" height="52.666666666666657"/>
+                                <rect key="frame" x="220.66666666666666" y="53" width="52.333333333333343" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EoT-vG-mbs"/>
@@ -2427,7 +2408,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qin-21-LKp">
-                                <rect key="frame" x="281.33333333333331" y="52.333333333333343" width="52.666666666666686" height="52.666666666666657"/>
+                                <rect key="frame" x="281" y="53" width="52.666666666666686" height="52.666666666666657"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DeM-Ph-na3"/>
@@ -2454,7 +2435,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjR-A5-aDc">
-                                <rect key="frame" x="402.33333333333331" y="295" width="52.666666666666686" height="53"/>
+                                <rect key="frame" x="402.33333333333331" y="295.33333333333331" width="52.666666666666686" height="52.666666666666686"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Fi7-la-9jZ"/>
@@ -2481,7 +2462,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKb-ct-WCI">
-                                <rect key="frame" x="463" y="295" width="52.666666666666629" height="52.333333333333314"/>
+                                <rect key="frame" x="463" y="295.33333333333331" width="52.666666666666629" height="52.666666666666686"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="7bM-7Q-74x"/>
@@ -2734,7 +2715,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed: Puzzles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8u-gu-ym2">
-                                <rect key="frame" x="104" y="131.66666666666666" width="528.33333333333337" height="45.333333333333343"/>
+                                <rect key="frame" x="104" y="131" width="528.33333333333337" height="45.333333333333343"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2778,7 +2759,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time's Up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-zO-leE">
-                                <rect key="frame" x="248" y="78.333333333333329" width="241" height="46"/>
+                                <rect key="frame" x="247.66666666666663" y="77" width="241" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2787,7 +2768,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckA-4I-IpQ">
-                                <rect key="frame" x="20" y="237.66666666666666" width="696" height="45.333333333333343"/>
+                                <rect key="frame" x="20" y="237.33333333333334" width="696" height="45.333333333333343"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2863,7 +2844,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play The Tutorial?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxM-7i-N5W">
-                                <rect key="frame" x="152" y="124.66666666666669" width="433" height="46"/>
+                                <rect key="frame" x="151.66666666666663" y="124" width="433" height="46"/>
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

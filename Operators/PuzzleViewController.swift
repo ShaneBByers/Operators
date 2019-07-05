@@ -448,12 +448,12 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                                 puzzleLabels[i].resetLockString()
                                 lockLabel.alpha = 0.0
                                 lockLabel.isHidden = false
-                                self.view.bringSubview(toFront: lockLabel)
+                                self.view.bringSubviewToFront(lockLabel)
                                 UIView.animate(withDuration: kShortAnimationDuration, animations: {
                                     lockLabel.alpha = self.puzzleLabels[i].kLockLabelAlpha
                                 })
                             } else {
-                                self.view.bringSubview(toFront: lockLabel)
+                                self.view.bringSubviewToFront(lockLabel)
                                 DispatchQueue.main.asyncAfter(deadline: .now() + kShortAnimationDuration, execute: {
                                     self.puzzleLabels[i].changeLockString()
                                 })
@@ -473,7 +473,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
                             } else {
                                 puzzleLabel.changeLockString()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + kShortAnimationDuration, execute: {
-                                    self.view.sendSubview(toBack: lockLabel)
+                                    self.view.sendSubviewToBack(lockLabel)
                                 })
                             }
                         }
@@ -530,7 +530,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         initialPoint = label.center
         
-        self.view.bringSubview(toFront: label)
+        self.view.bringSubviewToFront(label)
         
         if !isDefaultOperator {
             
@@ -1142,7 +1142,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
             countLabel.alpha = 0.0
             countLabel.textColor = colorElements.labelColor
             self.view.addSubview(countLabel)
-            self.view.sendSubview(toBack: countLabel)
+            self.view.sendSubviewToBack(countLabel)
             UIView.animate(withDuration: kShortAnimationDuration, animations: { 
                 countLabel.alpha = self.kOperatorUsesLabelAlpha
             })
@@ -1182,7 +1182,7 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         operatorCountLabel.text = "\(operatorCount)"
         self.view.addSubview(operatorCountLabel)
-        self.view.sendSubview(toBack: operatorCountLabel)
+        self.view.sendSubviewToBack(operatorCountLabel)
         UIView.animate(withDuration: kShortAnimationDuration, animations: {
             operatorCountLabel.alpha = self.kOperatorUsesLabelAlpha
         })

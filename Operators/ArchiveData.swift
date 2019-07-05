@@ -23,6 +23,11 @@ class ChallengeArchive : NSObject, NSCoding {
         self.availablePuzzles = availablePuzzles
     }
     
+    override init()
+    {
+        self.availablePuzzles = [String:[Bool]]()
+    }
+    
     required convenience init?(coder aDecoder: NSCoder) {
         let puzzles = aDecoder.decodeObject(forKey: ArchiveKey.availablePuzzles) as! [String:[Bool]]
         self.init(availablePuzzles : puzzles)

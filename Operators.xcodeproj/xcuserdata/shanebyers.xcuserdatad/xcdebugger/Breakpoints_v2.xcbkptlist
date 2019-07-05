@@ -10,11 +10,89 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/TutorialPuzzleViewController.swift"
-            timestampString = "558823660.529614"
+            timestampString = "583990276.254427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "executeNextStep()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Operators.TutorialPuzzleViewController.executeNextStep() -&gt; ()"
+                  moduleName = "Operators"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shanebyers/Documents/Operators%20App/Operators/TutorialPuzzleViewController.swift"
+                  timestampString = "583893369.554873"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1060">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Operators.TutorialPuzzleViewController.executeNextStep() -&gt; ()"
+                  moduleName = "Operators"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shanebyers/Documents/Operators%20App/Operators/TutorialPuzzleViewController.swift"
+                  timestampString = "583893369.558444"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1093">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Operators.TutorialPuzzleViewController.executeNextStep() -&gt; ()"
+                  moduleName = "Operators"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shanebyers/Documents/Operators%20App/Operators/TutorialPuzzleViewController.swift"
+                  timestampString = "583893369.5602829"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "16867">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Operators.TutorialPuzzleViewController.executeNextStep() -&gt; ()"
+                  moduleName = "Operators"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shanebyers/Documents/Operators%20App/Operators/TutorialPuzzleViewController.swift"
+                  timestampString = "583893369.5620641"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "23964">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.254896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "executeNextStep()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/TutorialPuzzleViewController.swift"
-            timestampString = "558823660.5298719"
+            timestampString = "583990276.255126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "executeNextStep()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/TutorialPuzzleViewController.swift"
-            timestampString = "558823660.530044"
+            timestampString = "583990276.2553591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "executeNextStep()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,27 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/TutorialPuzzleViewController.swift"
-            timestampString = "558823660.530208"
+            timestampString = "583990276.255569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "executeNextStep()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Operators/TutorialPuzzleViewController.swift"
-            timestampString = "558823660.53037"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
             landmarkName = "correctTutorialSolution()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/TutorialPuzzleViewController.swift"
-            timestampString = "558823660.530532"
+            timestampString = "583990276.255795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
             landmarkName = "updateTutorialScore()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,12 +168,173 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Operators/TutorialModel.swift"
-            timestampString = "558823660.530699"
+            timestampString = "583952524.230903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "updateScores(withEquation:withSolution:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.256052"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "executeNextStep()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.256259"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "executeNextStep()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.256508"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "executeNextStep()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.2568589"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "executeNextStep()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in Operators.TutorialPuzzleViewController.executeNextStep() -&gt; ()"
+                  moduleName = "Operators"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shanebyers/Documents/Operators%20App/Operators/TutorialPuzzleViewController.swift"
+                  timestampString = "583948299.92575"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "308">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (Swift.Bool) -&gt; () in Operators.TutorialPuzzleViewController.executeNextStep() -&gt; ()"
+                  moduleName = "Operators"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shanebyers/Documents/Operators%20App/Operators/TutorialPuzzleViewController.swift"
+                  timestampString = "583948299.927786"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "69">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            condition = "closure !=  nil"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.257071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "showTutorialStep(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.257288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
+            landmarkName = "defaultOperatorDoubleTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.257515"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "operatorEndedPanning(label:isDefaultOperator:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Operators/TutorialPuzzleViewController.swift"
+            timestampString = "583990276.257713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "executeNextStep()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

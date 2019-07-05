@@ -92,14 +92,14 @@ class SettingsViewController: UIViewController {
             if button.titleLabel!.text! == ColorScheme.scheme.rawValue {
                 button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: button.titleLabel!.font.pointSize)
             } else {
-                button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
+                button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits())!, size: button.titleLabel!.font.pointSize)
             }
         }
     }
     
     @IBAction func divisionSymbolButtonPressed(_ sender: UIButton) {
         for button in divisionSymbolButtons {
-            button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
+            button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits())!, size: button.titleLabel!.font.pointSize)
         }
         
         sender.titleLabel!.font = UIFont(descriptor: sender.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: sender.titleLabel!.font.pointSize)
@@ -111,7 +111,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func colorSchemeButtonPressed(_ sender: UIButton) {
         for button in colorSchemeButtons {
-            button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits())!, size: button.titleLabel!.font.pointSize)
+            button.titleLabel!.font = UIFont(descriptor: button.titleLabel!.font.fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits())!, size: button.titleLabel!.font.pointSize)
         }
         
         sender.titleLabel!.font = UIFont(descriptor: sender.titleLabel!.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: sender.titleLabel!.font.pointSize)

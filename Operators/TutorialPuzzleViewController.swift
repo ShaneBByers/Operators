@@ -12,6 +12,8 @@ class TutorialPuzzleViewController: PuzzleViewController {
     
     var storedOperatorLabels : [UILabel]?
     
+    var returnFromStepClosure : (()->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTutorial()
@@ -64,7 +66,6 @@ class TutorialPuzzleViewController: PuzzleViewController {
                     }
                 }
             case 3: // Show score label with 0 score
-                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         for recognizer in puzzleLabel.label.gestureRecognizers! {
@@ -85,11 +86,18 @@ class TutorialPuzzleViewController: PuzzleViewController {
                     UIView.animate(withDuration: kShortAnimationDuration, animations: {
                         self.primaryLabel.alpha = 1.0
                     }, completion: {(value) in
-                        self.executeNextStep()
+//                        self.executeNextStep()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                            self.showTutorialStep() {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                                    self.executeNextStep()
+                                }
+                            }
+                        }
                     })
 //                }
             case 4: // Show score increasing
-                showTutorialStep()
+//                showTutorialStep()
 //                primaryLabel.text = "Score: \(tutorialModel.getTotalScore())"
 //                primaryLabelUpdate(withText: "\(tutorialModel.getTotalScore())")
                 updateTutorialScore()
@@ -108,58 +116,88 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 } else {
                     nextMultiplierLabel.text = ""
                 }
-                executeNextStep()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep() {
+                        self.executeNextStep()
+                    }
+                }
+//                executeNextStep()
             case 5: // Show expression label
-                showTutorialStep()
+//                showTutorialStep()
                 displayExpression()
-                UIView.animate(withDuration: kShortAnimationDuration, animations: {
-                    self.expressionLabel.alpha = 1.0
-                })
-                executeNextStep()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep() {
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                            UIView.animate(withDuration: self.kShortAnimationDuration, animations: {
+                                self.expressionLabel.alpha = 1.0
+                            }, completion: {(value) in
+                                self.executeNextStep()
+                            })
+//                        }
+                    }
+                }
+//                executeNextStep()
             case 6: // Show - operator
-                showTutorialStep()
-                keepDefaults(Symbols.Add, Symbols.Subtract)
-                super.initializeGestureRecognizers()
-                placeDefaultOperators(isInitial: false)
-                executeNextStep()
+//                showTutorialStep()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep() {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                            self.keepDefaults(Symbols.Add, Symbols.Subtract)
+                            super.initializeGestureRecognizers()
+                            self.placeDefaultOperators(isInitial: false)
+                            self.executeNextStep()
+                        }
+                    }
+                }
+//                executeNextStep()
             case 7: // Show pan and double tap puzzle operators to remove
-                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         puzzleLabel.label.addGestureRecognizer(puzzleLabel.operatorPanGestureRecognizer)
                         puzzleLabel.label.addGestureRecognizer(puzzleLabel.operatorDoubleTapGestureRecognizer)
                     }
                 }
-                executeNextStep()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    self.showTutorialStep() {
+                        self.executeNextStep()
+                    }
+                }
             case 8: // Allow user to complete the puzzle
-                showTutorialStep()
                 break
             default: // Next puzzle
-                tutorialModel.puzzleComplete()
-                executeNextStep()
+                self.tutorialModel.puzzleComplete()
+                self.executeNextStep()
             }
         case 2:
             switch tutorialModel.stepNumber() {
             case 1: // Prepare puzzle and show hints button
-                showTutorialStep()
+//                showTutorialStep()
                 setupPuzzle(withEquation: tutorialModel.getCurrentPuzzle())
                 puzzleModel.equation = tutorialModel.getCurrentPuzzle()
                 for label in defaultOperatorLabels {
                     label.isUserInteractionEnabled = false
                     label.alpha = 0.5
                 }
-                self.hintsButtonAction(enable: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1))  {
+                    self.showTutorialStep() {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                            self.hintsButtonAction(enable: true)
+                        }
+                    }
+                }
             case 2: // Place wildcard into place
-                showTutorialStep()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep()
+                }
 //                for label in defaultOperatorLabels {
 //                    if label != defaultOperatorLabels[1] {
 //                        label.isUserInteractionEnabled = false
 //                        label.alpha = 0.5
 //                    }
 //                }
-                break
             case 3: // Show lock and have them unlock
-                showTutorialStep()
+//                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         for recognizer in puzzleLabel.label.gestureRecognizers! {
@@ -170,10 +208,13 @@ class TutorialPuzzleViewController: PuzzleViewController {
                             }
                         }
                     }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep()
                 }
 
             case 4: // Show how to lock again
-                showTutorialStep()
+//                showTutorialStep()
                 for puzzleLabel in puzzleLabels {
                     if puzzleLabel.isOperator {
                         for recognizer in puzzleLabel.label.gestureRecognizers! {
@@ -185,22 +226,41 @@ class TutorialPuzzleViewController: PuzzleViewController {
                         }
                     }
                 }
-                break
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep()
+                }
             case 5: // Allow user to place another operator
-                showTutorialStep()
-                resetAllowed = true
-                for label in defaultOperatorLabels {
-                    label.isUserInteractionEnabled = true
-                    label.alpha = 1.0
+//                showTutorialStep()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep() {
+                        for label in self.defaultOperatorLabels {
+                            label.isUserInteractionEnabled = true
+                            label.alpha = 1.0
+                        }
+                    }
                 }
             case 6: // Show reset button and say how to use it
-                showTutorialStep()
-                keepDefaults(Symbols.Add, Symbols.Subtract, Symbols.Multiply, Symbols.Divide)
-                super.initializeGestureRecognizers()
-                placeDefaultOperators(isInitial: false)
-                executeNextStep()
+//                showTutorialStep()
+                DispatchQueue.main.asyncAfter(deadline: .now() +  .seconds(1)) {
+                    self.showTutorialStep() {
+                        self.resetAllowed = true
+                        self.resetButtonAction(enable: true)
+//                        self.executeNextStep()
+                    }
+                }
+//                keepDefaults(Symbols.Add, Symbols.Subtract, Symbols.Multiply, Symbols.Divide)
+//                super.initializeGestureRecognizers()
+//                placeDefaultOperators(isInitial: false)
+//                executeNextStep()
             case 7: // Allow user to complete the puzzle
-                showTutorialStep()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep() {
+                        self.keepDefaults(Symbols.Add, Symbols.Subtract, Symbols.Multiply, Symbols.Divide)
+                        super.initializeGestureRecognizers()
+                        self.placeDefaultOperators(isInitial: false)
+                    }
+                }
                 break
             default: // Next puzzle
                 tutorialModel.puzzleComplete()
@@ -219,13 +279,35 @@ class TutorialPuzzleViewController: PuzzleViewController {
         case 3:
             switch tutorialModel.stepNumber() {
             case 1: // Prepare puzzle and show score multiplier
-                showTutorialStep()
+//                showTutorialStep()
                 setupPuzzle(withEquation: tutorialModel.getCurrentPuzzle())
                 puzzleModel.equation = tutorialModel.getCurrentPuzzle()
                 self.hintsButtonAction(enable: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    self.showTutorialStep()
+                }
             case 2: // Show solve button as an option
-                showTutorialStep()
-                self.solveButtonAction(enable: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep() {
+                        self.solveButtonAction(enable: true)
+                    }
+                }
+//                showTutorialStep()
+//                self.solveButtonAction(enable: true)
+            case 3: // Show "End Tutorial" button
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.showTutorialStep() {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                            self.newPuzzleButton.setTitle("End Tutorial", for: .normal)
+                            self.hintsButtonAction(enable: false)
+                            self.solveButtonAction(enable: false)
+                            self.resetButtonAction(enable: false)
+                            self.newPuzzleButtonAction(enable: true)
+                        }
+                    }
+                }
+//                showTutorialStep()
+
             default: // Finish tutorial
                 tutorialModel.puzzleComplete()
                 executeNextStep()
@@ -240,7 +322,8 @@ class TutorialPuzzleViewController: PuzzleViewController {
         performSegue(withIdentifier: "showGameModeSegue", sender: self)
     }
     
-    func showTutorialStep() {
+    func showTutorialStep(_ closure: (()->Void)? = nil) {
+        returnFromStepClosure = closure
         performSegue(withIdentifier: "showTutorialStepSegue", sender: self)
     }
     
@@ -280,6 +363,9 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 let description = tutorialModel.getCurrentDescription()
                 
                 destination.configureTutorialStepDescription(with: description)
+                if let closure = returnFromStepClosure {
+                    destination.exitingClosure = closure
+                }
             }
         case "showGameModeSegue": break
         default: assert(false, "Unhandled Segue")
@@ -317,7 +403,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
                         puzzleLabel.label.removeGestureRecognizer(puzzleLabel.operatorHoldGestureRecognizer)
                     }
                 }
-            } else if tutorialModel.status(isPuzzle: 2, isStep: 5) && resetButton.isEnabled {
+            } else if tutorialModel.status(isPuzzle: 2, isStep: 5) {
                 executeNextStep()
             } else if tutorialModel.status(isPuzzle: 3, isStep: 1) {
                 for puzzleLabel in puzzleLabels {
@@ -364,7 +450,7 @@ class TutorialPuzzleViewController: PuzzleViewController {
                     puzzleLabel.label.removeGestureRecognizer(puzzleLabel.operatorHoldGestureRecognizer)
                 }
             }
-        } else if tutorialModel.status(isPuzzle: 2, isStep: 5) && resetButton.isEnabled {
+        } else if tutorialModel.status(isPuzzle: 2, isStep: 5) {
             executeNextStep()
         } else if tutorialModel.status(isPuzzle: 3, isStep: 1) {
             for puzzleLabel in puzzleLabels {
@@ -387,9 +473,10 @@ class TutorialPuzzleViewController: PuzzleViewController {
                 operandCount += 1
             }
         }
-        if operatorCount <= operandCount - 2 {
-            executeNextStep()
-        }
+//        if operatorCount <= operandCount - 2 &&
+//            !tutorialModel.status(isPuzzle: 3, isStep: 2) {
+//            executeNextStep()
+//        }
     }
     
     override func puzzleOperatorHeld(_ recognizer: UILongPressGestureRecognizer) {
@@ -412,6 +499,14 @@ class TutorialPuzzleViewController: PuzzleViewController {
         
         newPuzzleButton.setTitle("End Tutorial", for: .normal)
         newPuzzleButtonAction(enable: true)
+    }
+    
+    override func resetButtonPressed(_ sender: UIButton) {
+        super.resetButtonPressed(sender)
+        
+        if tutorialModel.status(isPuzzle: 2, isStep: 6) {
+            executeNextStep()
+        }
     }
     
     func correctTutorialSolution() -> Bool {

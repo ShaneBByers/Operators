@@ -37,8 +37,19 @@ class ChallengeModel {
         
         if fileExists {
             
-            archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
-            availablePuzzles = archive.availablePuzzles
+//            archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
+            let fileContents = fileManager.contents(atPath: challengeURL.path)
+            if let contents = fileContents {
+//                archive = try? NSKeyedUnarchiver.unarchivedObject(ofClass: ChallengeArchive, from: contents)
+                do {
+                    archive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(contents) as! ChallengeArchive
+                    availablePuzzles = archive.availablePuzzles
+                } catch {
+                    fatalError("Cannot find Challenge Archive object")
+                }
+            } else {
+                fatalError("Cannot find contents of Challenge Archive file")
+            }
             
         } else {
             
@@ -57,7 +68,13 @@ class ChallengeModel {
             availablePuzzles[Difficulty.easy.rawValue]![0] = true
             
             archive = ChallengeArchive(availablePuzzles: availablePuzzles)
-            NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
+//            NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
+            do {
+                let codedData = try NSKeyedArchiver.archivedData(withRootObject: archive, requiringSecureCoding: false)
+                try codedData.write(to: challengeURL)
+            } catch {
+                fatalError("Archive ChallengeModel data failed.")
+            }
         }
         
         if let path = Bundle.main.path(forResource: Filenames.challenge, ofType: "plist") {
@@ -110,7 +127,7 @@ class ChallengeModel {
     }
     
     func puzzleAvailableAt(index: Int) -> Bool {
-        archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
+//        archive = NSKeyedUnarchiver.unarchiveObject(withFile: challengeURL.path)! as! ChallengeArchive
         availablePuzzles = archive.availablePuzzles
         return availablePuzzles[difficulty.rawValue]![index]
     }
@@ -175,6 +192,12 @@ class ChallengeModel {
     }
     
     internal func saveArchive() {
-        NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
+//        NSKeyedArchiver.archiveRootObject(archive, toFile: challengeURL.path)
+        do {
+            let codedData = try NSKeyedArchiver.archivedData(withRootObject: archive, requiringSecureCoding: false)
+            try codedData.write(to: challengeURL)
+        } catch {
+            fatalError("Save archive ChallengeModel data failed.")
+        }
     }
 }

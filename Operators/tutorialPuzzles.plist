@@ -15,14 +15,13 @@
 		</array>
 		<key>stepDescriptions</key>
 		<array>
-			<string>Puzzle 1 Step 1</string>
-			<string>Puzzle 1 Step 2</string>
-			<string>Puzzle 1 Step 3</string>
-			<string>Puzzle 1 Step 4</string>
-			<string>Puzzle 1 Step 5</string>
-			<string>Puzzle 1 Step 6</string>
-			<string>Puzzle 1 Step 7</string>
-			<string>Puzzle 1 Step 8</string>
+			<string>Welcome to Operators! Start by dragging the plus symbol in between two numbers in the equation.</string>
+			<string>Great work! You can also double tap on an operator to place it into the next available position from left to right.</string>
+			<string>Wow! You completed a puzzle! You will receive some points for getting close to the correct answer! The closer to the correct answer you are, the more points you receive! You have completed a puzzle and receive maximum points once you place all the operators into the correct positions.</string>
+			<string>You gained some points with that last solution! Remember, the closer you are to the correct solution, the more points you receive!</string>
+			<string>To help you understand the equation that you&apos;re building, the current equation that you have built will be shown on the top of the puzzle screen. Check it out!</string>
+			<string>Let&apos;s add another operator into the mix. You can now use the minus operator in the same way you&apos;ve used the plus operator.</string>
+			<string>Notice that you can&apos;t place any more operators into the equation! You can now remove an operator already in the equation just by dragging the operator away from the equation or double tapping the operator.</string>
 		</array>
 	</dict>
 	<dict>
@@ -38,13 +37,14 @@
 		</array>
 		<key>stepDescriptions</key>
 		<array>
-			<string>Puzzle 2 Step 1</string>
-			<string>Puzzle 2 Step 2</string>
-			<string>Puzzle 2 Step 3</string>
-			<string>Puzzle 2 Step 4</string>
-			<string>Puzzle 2 Step 5</string>
-			<string>Puzzle 2 Step 6</string>
-			<string>Puzzle 2 Step 7</string>
+			<string>For times that you get stuck and can&apos;t figure out an equation, there are hints available! Let&apos;s try one of them now. Click on &quot;Hints&quot; on the bottom left of the puzzle screen.</string>
+			<string>Look at that! You got a wildcard  operator! This operator will become the correct operator as soon as you place it into one of the open positions in the equation. Try it out now!</string>
+			<string>Watch what happened when that operator got placed into the equation: a lock appeared behind it! That means that this operator is locked into position and will not be removed  unless it is unlocked. You can unlock an operator by pressing and holding on it until the lock becomes unlocked.</string>
+			<string>Look at that! Since this was a wildcard operator, we know that it&apos;s the correct operator in the correct position, so let&apos;s lock it back into place. Use the same press and hold gesture to lock it back into place. You can lock and unlock any operator in the equation at any time.</string>
+			<string>Go ahead and place another operator into the equation so we can get closer to solving this puzzle!</string>
+			<string>If at any point you feel you need to start the puzzle from scratch, feel free to use the Reset button on the top right of the puzzle screen. This will clear out the equation of all unlocked operators, but the locked operators will stay in place. Give it a try now!</string>
+			<string>Let&apos;s start using all of the operators now, including multiplication and division! Go ahead and finish up this puzzle and we&apos;ll move on to the last puzzle of this tutorial.</string>
+			<string>You got this! Finish up this equation and we&apos;ll move onto the last equation in this tutorial!</string>
 		</array>
 	</dict>
 	<dict>
@@ -62,8 +62,9 @@
 		</array>
 		<key>stepDescriptions</key>
 		<array>
-			<string>Puzzle 3 Step 1</string>
-			<string>Puzzle 3 Step 2</string>
+			<string>Wow! Since you received enough points, you&apos;ve upgraded your score multiplier so that it multiplies all of your scores by two! Keep receiving more points and your score multiplier will continue to increase!</string>
+			<string>If you ever find yourself completely stuck and cannot figure out a puzzle, some game modes will allow you to Solve an equation automatically. Note that this does not raise your score for that equation anymore. Feel free to finish up this equation in any way that you wish!</string>
+			<string>Excellent work! You&apos;re ready to jump into all of the different game modes that Operators has to offer. I suggest starting with the Timed Game Mode to test your equation solving speed!</string>
 		</array>
 	</dict>
 </array>
