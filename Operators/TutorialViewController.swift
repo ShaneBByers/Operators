@@ -14,7 +14,7 @@ class TutorialViewController: UIViewController {
 
     override func viewDidLoad() {
         if settingsModel.tutorialShown {
-//            performSegue(withIdentifier: "tutorialShownSegue", sender: self)
+            performSegue(withIdentifier: "tutorialShownSegue", sender: self)
         }
         else
         {

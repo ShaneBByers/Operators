@@ -1235,7 +1235,9 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func placePuzzle(isNewPuzzle: Bool) {
         
-        let solutionWidth = puzzleLabels[puzzleLabels.count - 1].label.frame.size.width
+        let solutionWidth = puzzleLabels[puzzleLabels.count - 1].label.frame.size.width - self.view.safeAreaInsets.left
+        
+//        let solutionWidth = self.view.safeAreaLayoutGuide.layoutFrame.size.width
         
         let totalWidth = self.view.frame.size.width - kLabelBuffer*2.0*3.0 - solutionWidth - kPuzzleLabelSize.width
         
@@ -1245,14 +1247,14 @@ class PuzzleViewController: UIViewController, UIGestureRecognizerDelegate {
         
         for (i, puzzleLabel) in puzzleLabels.enumerated() {
             
-            let xPositionCenter: CGFloat
+            let xPositionCenter : CGFloat
             
             if i == puzzleLabels.count - 1 {
-                xPositionCenter = self.view.frame.size.width - kLabelBuffer*2.0 - solutionWidth/2
+                xPositionCenter = self.view.frame.size.width - kLabelBuffer*2.0 - solutionWidth/2 - self.view.safeAreaInsets.left/2
             } else if i == puzzleLabels.count - 2 {
-                xPositionCenter = self.view.frame.size.width - kLabelBuffer*2.0*2.0 - solutionWidth - puzzleLabel.label.frame.size.width/2
+                xPositionCenter = self.view.frame.size.width - kLabelBuffer*2.0*2.0 - solutionWidth - puzzleLabel.label.frame.size.width/2 - self.view.safeAreaInsets.left/2
             } else {
-                xPositionCenter = oneWidth*CGFloat(i) + oneWidthCenter
+                xPositionCenter = self.view.safeAreaInsets.left/2 + oneWidth*CGFloat(i) + oneWidthCenter
             }
             
             if isNewPuzzle {
